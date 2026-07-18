@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Europe/Budapest');
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 include("Session.php");
 include("Building.php");
