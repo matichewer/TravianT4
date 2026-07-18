@@ -92,7 +92,8 @@
 			$database->modifyUnit($getFLData['wref'], $uname2.'10', $data['u10'], 0);
 			$database->modifyUnit($getFLData['wref'], 'hero', $data['u11'], 0);
 
-			$database->addMovement(3,$getFLData['wref'],$data['to_vid'],$reference,0,($time+time()));
+			$sentAt = time();
+			$database->addMovement(3,$getFLData['wref'],$data['to_vid'],$reference,$sentAt,($time+$sentAt));
         }    
     }
 	}

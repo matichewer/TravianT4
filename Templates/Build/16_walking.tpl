@@ -85,8 +85,20 @@ if($units[$y]['attack_type'] == 2){ $style = ""; }else{ $style = "outRaid"; }
 				    echo "<div class=\"at small\">";
 				    echo " ".$datetime[1]." hs</div>";
     		?>
-					<!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Cancelar" alt="Cancelar" /></a>-->
+					<?php
+					$sentAt = ctype_digit((string) $units[$y]['data']) ? (int) $units[$y]['data'] : 0;
+					$elapsed = time() - $sentAt;
+					if($sentAt > 0 && $elapsed >= 0 && $elapsed <= Units::TROOP_CANCEL_WINDOW && (int) $units[$y]['endtime'] > time()) {
+					?>
+					<div class="abort">
+						<form method="post" action="build.php?id=39" style="display:inline" onsubmit="return confirm('¿Cancelar este movimiento de tropas?');">
+							<input type="hidden" name="action" value="cancelTroopMovement" />
+							<input type="hidden" name="moveid" value="<?php echo (int) $units[$y]['moveid']; ?>" />
+							<input type="hidden" name="c" value="<?php echo htmlspecialchars($session->mchecker, ENT_QUOTES, 'UTF-8'); ?>" />
+							<button type="submit" class="icon" title="Cancelar movimiento"><img src="img/x.gif" class="del" title="Cancelar" alt="Cancelar" /></button>
+						</form>
 					</div>
+					<?php } ?>
 				</td>
 			</tr>
 		</tbody>
@@ -230,4 +242,3 @@ $timer += 1;
         }
         }
         ?>
-

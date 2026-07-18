@@ -2040,6 +2040,38 @@
 				return mysqli_query($this->connection,$q);
 			}
 
+			function getOutgoingMovement($moveid, $from, $owner) {
+				$moveid = (int) $moveid;
+				$from = (int) $from;
+				$owner = (int) $owner;
+				$q = "SELECT m.*, a.attack_type FROM " . TB_PREFIX . "movement m INNER JOIN " . TB_PREFIX . "attacks a ON a.id = m.ref INNER JOIN " . TB_PREFIX . "vdata v ON v.wref = m.`from` WHERE m.moveid = $moveid AND m.`from` = $from AND v.owner = $owner AND m.sort_type = 3 AND m.proc = 0 LIMIT 1";
+				$result = mysqli_query($this->connection,$q);
+				return $result ? mysqli_fetch_assoc($result) : false;
+			}
+
+			function cancelOutgoingMovement($moveid, $from, $sentAt, $now, $returnEndtime) {
+				$moveid = (int) $moveid;
+				$from = (int) $from;
+				$sentAt = (int) $sentAt;
+				$now = (int) $now;
+				$returnEndtime = (int) $returnEndtime;
+
+				$q = "UPDATE " . TB_PREFIX . "movement SET proc = 1 WHERE moveid = $moveid AND `from` = $from AND sort_type = 3 AND proc = 0 AND data = '$sentAt' AND endtime > $now";
+				mysqli_query($this->connection,$q);
+				if(mysqli_affected_rows($this->connection) !== 1) {
+					return false;
+				}
+
+				$q = "INSERT INTO " . TB_PREFIX . "movement (sort_type, `from`, `to`, ref, ref2, data, endtime, proc, send, wood, clay, iron, crop) SELECT 4, `to`, `from`, ref, 0, '0,0,0,0,0', $returnEndtime, 0, 1, 0, 0, 0, 0 FROM " . TB_PREFIX . "movement WHERE moveid = $moveid LIMIT 1";
+				$result = mysqli_query($this->connection,$q);
+				if(!$result || mysqli_affected_rows($this->connection) !== 1) {
+					mysqli_query($this->connection,"UPDATE " . TB_PREFIX . "movement SET proc = 0 WHERE moveid = $moveid AND `from` = $from AND data = '$sentAt'");
+					return false;
+				}
+
+				return true;
+			}
+
         	function addAttack($vid, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $type, $ctar1, $ctar2, $spy) {
         		$q = "INSERT INTO " . TB_PREFIX . "attacks values (0,$vid,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$type,$ctar1,$ctar2,$spy)";
         		mysqli_query($this->connection,$q);

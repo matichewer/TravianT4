@@ -6,6 +6,19 @@
 <img class="g16 big white" src="img/x.gif" alt="Plaza de reuniones" title="Plaza de reuniones" />
 </a>
 Las tropas de tu aldea se reúnen aquí. Desde aquí puedes enviarlas a conquistar, saquear o reforzar otras aldeas.</div>
+<?php
+if(isset($_SESSION['movement_cancel_status'])) {
+	$cancelStatus = $_SESSION['movement_cancel_status'];
+	unset($_SESSION['movement_cancel_status']);
+	if($cancelStatus === 'success') {
+		echo '<p class="notice">El movimiento fue cancelado. Las tropas están regresando.</p>';
+	} elseif($cancelStatus === 'expired') {
+		echo '<p class="error">El movimiento ya no se puede cancelar. El plazo es de 90 segundos.</p>';
+	} else {
+		echo '<p class="error">No se pudo cancelar el movimiento.</p>';
+	}
+}
+?>
 <?php include("upgrade.tpl"); ?>
 <?php if(!$village->resarray['f'.$id] < 1){ ?>
 <div class="contentNavi tabNavi">
