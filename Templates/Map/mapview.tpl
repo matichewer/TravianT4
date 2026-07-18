@@ -29,9 +29,9 @@ else {
 }
 
 /* --- Map grid with a render buffer, so dragging doesn't reveal blank tiles --- */
-$BUF    = 4;              /* extra tiles rendered beyond the visible area, each side */
-$HX     = 4 + $BUF;       /* half width  (visible half 4 + buffer) -> 2*HX+1 = 17 cols */
-$HY     = 3 + $BUF;       /* half height (visible half 3 + buffer) -> 2*HY+1 = 15 rows */
+$BUF    = 6;              /* extra tiles rendered beyond the visible area, each side */
+$HX     = 4 + $BUF;       /* half width  (visible half 4 + buffer) -> 2*HX+1 = 21 cols */
+$HY     = 3 + $BUF;       /* half height (visible half 3 + buffer) -> 2*HY+1 = 19 rows */
 $COLS   = 2 * $HX + 1;
 $ROWS   = 2 * $HY + 1;
 $PERIOD = 2 * WORLD_MAX + 1;

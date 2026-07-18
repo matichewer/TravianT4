@@ -34,7 +34,7 @@ else {
    Knobs: $VHX/$VHY = visible half-size, $BUF = buffer tiles per side.        */
 $VHX    = 10;                 /* visible half-width  -> 2*VHX+1 = 21 columns */
 $VHY    = 6;                  /* visible half-height -> 2*VHY+1 = 13 rows    */
-$BUF    = 3;                  /* extra tiles rendered beyond the visible area */
+$BUF    = 8;                  /* extra tiles rendered beyond the visible area */
 $HX     = $VHX + $BUF;
 $HY     = $VHY + $BUF;
 $COLS   = 2*$HX + 1;
@@ -61,7 +61,7 @@ foreach ($yfull as $yy) {
     }
 }
 echo "<h1 dir=\"rtl\">Map (<span id=\"x\">".$x."</span>|<span id=\"y\">".$y."</span>)</h1>";
-echo "<div class=\"mapTopBar\"><a href=\"dorf1.php\">&laquo; Village</a><a href=\"karte.php?x=".$x."&y=".$y."\">Normal map</a></div>";
+echo "<div class=\"mapTopBar\"><a href=\"dorf1.php\">&laquo; Aldea</a><a href=\"karte.php?x=".$x."&y=".$y."\">Mapa normal</a></div>";
 $row = 0;
 $coorindex = 0;
 ?>
@@ -248,14 +248,14 @@ break;
 </div>
 		<div class="navigation" style="margin-bottom: -15px;">
 			<a href="karte2.php?x=<?php echo $wrapCoord($x-1); ?>&y=<?php echo $y; ?>" id="navigationMoveLeft" class="moveLeft">
-            <img src="img/x.gif" title="move left"></a>
+            <img src="img/x.gif" title="mover izquierda"></a>
 			<a href="karte2.php?x=<?php echo $wrapCoord($x+1); ?>&y=<?php echo $y; ?>" id="navigationMoveRight" class="moveRight">
-            <img src="img/x.gif" title="move right"></a>
+            <img src="img/x.gif" title="mover derecha"></a>
 			<a href="karte2.php?x=<?php echo $x; ?>&y=<?php echo $wrapCoord($y+1); ?>" id="navigationMoveUp" class="moveUp">
-            <img src="img/x.gif" title="move up"></a>
+            <img src="img/x.gif" title="mover arriba"></a>
 			<a href="karte2.php?x=<?php echo $x; ?>&y=<?php echo $wrapCoord($y-1); ?>" id="navigationMoveDown" class="moveDown">
-            <img src="img/x.gif" title="move down"></a>
-            <a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen normal"><img src="img/x.gif" alt="normal" title="Normal Map"></a>
+            <img src="img/x.gif" title="mover abajo"></a>
+            <a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen normal"><img src="img/x.gif" alt="mapa normal" title="Mapa normal"></a>
 		</div>
 		<form id="mapCoordEnter" name="map_coords" method="post" action="karte2.php" class="toolbar" style="margin-bottom: -15px;">
 	<div class="ml">
