@@ -259,7 +259,7 @@ break;
 			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y+1; ?>" id="navigationMoveUp" class="moveUp"><img src="img/x.gif" title="move up"></a>
 			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y-1; ?>" id="navigationMoveDown" class="moveDown"><img src="img/x.gif" title="move down"></a>
             <?php if($session->plus) { ?>
-            <a href="karte2.php?x=<?php echo $y ?>&y=<?php echo $x; ?>" id="navigationFullScreen" class="viewFullScreen full"><img src="img/x.gif" alt="view fullscreen" title="view fullscreen"></a>
+            <a href="karte2.php?x=<?php echo $x ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen full"><img src="img/x.gif" alt="view fullscreen" title="view fullscreen"></a>
             <?php } ?>
 		</div>
 		<form id="mapCoordEnter" name="map_coords" method="post" action="karte.php" class="toolbar ">
@@ -310,7 +310,7 @@ break;
 	});
 </script>
 <style type="text/css">
-#mapContainer.lowRes #mapData{cursor:grab;cursor:-webkit-grab;}
+#mapContainer.lowRes #mapData{cursor:grab;cursor:-webkit-grab;touch-action:none;user-select:none;-webkit-user-select:none;}
 #mapContainer.lowRes.dragPanning #mapData{cursor:grabbing;cursor:-webkit-grabbing;}
 #mapContainer.lowRes #mapData a,#mapContainer.lowRes #mapData img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;}
 </style>
@@ -327,23 +327,27 @@ break;
 		if(!container||!data) return;
 		var dragging=false, moved=false, sx=0, sy=0, dx=0, dy=0;
 		data.addEventListener('dragstart', function(e){ e.preventDefault(); });
-		data.addEventListener('mousedown', function(e){
-			if(e.button!==0) return;
+		data.addEventListener('pointerdown', function(e){
+			if(e.button!==0) return;               /* primary mouse button / touch / pen */
 			dragging=true; moved=false; sx=e.clientX; sy=e.clientY; dx=0; dy=0;
-			e.preventDefault();
 		});
-		document.addEventListener('mousemove', function(e){
+		document.addEventListener('pointermove', function(e){
 			if(!dragging) return;
 			dx=e.clientX-sx; dy=e.clientY-sy;
 			if(!moved && (Math.abs(dx)>THRESHOLD||Math.abs(dy)>THRESHOLD)){
 				moved=true; container.classList.add('dragPanning');
 			}
-			if(moved){ data.style.transform='translate('+dx+'px,'+dy+'px)'; }
+			if(moved){ e.preventDefault(); data.style.transform='translate('+dx+'px,'+dy+'px)'; }
 		});
-		document.addEventListener('mouseup', function(){
+		document.addEventListener('pointercancel', function(){
+			if(!dragging) return;
+			dragging=false; container.classList.remove('dragPanning');
+			if(moved){ data.style.transform=''; }
+		});
+		document.addEventListener('pointerup', function(){
 			if(!dragging) return;
 			dragging=false;
-			if(!moved) return; /* a click: let the tile <a href> do its thing */
+			if(!moved) return; /* a tap/click: let the tile <a href> do its thing */
 			container.classList.remove('dragPanning');
 			/* swallow the click that fires right after a drag */
 			var kill=function(ev){ ev.preventDefault(); ev.stopPropagation(); document.removeEventListener('click',kill,true); };

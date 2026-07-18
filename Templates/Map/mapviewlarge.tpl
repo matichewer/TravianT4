@@ -1,4 +1,4 @@
-﻿<?php if($session->plus) { ?>
+<?php if($session->plus) { ?>
 <div id="content" class="map">
 
 <div class="t2"></div>
@@ -28,72 +28,52 @@ else {
     $bigmid = $village->wid;
 }
 
-
-$north1 = ($y+1) > WORLD_MAX? $y-WORLD_MAX-WORLD_MAX : $x+1;
-$north2 = ($y+2) > WORLD_MAX? $y-WORLD_MAX-WORLD_MAX+1 : $x+2;
-$north3 = ($y+3) > WORLD_MAX? $y-WORLD_MAX-WORLD_MAX+2 : $x+3;
-$north4 = ($y+4) > WORLD_MAX? $y-WORLD_MAX-WORLD_MAX+3 : $x+4;
-
-$south1 = ($y-1) < -WORLD_MAX? $y+WORLD_MAX+WORLD_MAX : $x-1;
-$south2 = ($y-2) < -WORLD_MAX? $y+WORLD_MAX+WORLD_MAX-1 : $x-2;
-$south3 = ($y-3) < -WORLD_MAX? $y+WORLD_MAX+WORLD_MAX-2 : $x-3;
-$south4 = ($y-4) < -WORLD_MAX? $y+WORLD_MAX+WORLD_MAX-3 : $x-4;
-$south5 = ($y-5) < -WORLD_MAX? $y+WORLD_MAX+WORLD_MAX-4 : $x-5;
-
-$west1 = ($x-1) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX : $y-1;
-$west2 = ($x-2) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-1 : $y-2;
-$west3 = ($x-3) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-2 : $y-3;
-$west4 = ($x-4) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-3 : $y-4;
-$west5 = ($x-5) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-4 : $y-5;
-$west6 = ($x-6) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-5 : $y-6;
-$west7 = ($x-7) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-6 : $y-7;
-$west8 = ($x-8) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-7 : $y-8;
-$west9 = ($x-9) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-8 : $y-9;
-$west10 = ($x-10) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-9 : $y-10;
-$west11 = ($x-11) < -WORLD_MAX? $x+WORLD_MAX+WORLD_MAX-10 : $y-11;
-
-$east1 = ($x+1) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX : $y+1;
-$east2 = ($x+2) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+1 : $y+2;
-$east3 = ($x+3) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+2 : $y+3;
-$east4 = ($x+4) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+3 : $y+4;
-$east5 = ($x+5) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+4 : $y+5;
-$east6 = ($x+6) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+5 : $y+6;
-$east7 = ($x+7) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+6 : $y+7;
-$east8 = ($x+8) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+7 : $y+8;
-$east9 = ($x+9) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+8 : $y+9;
-$east10 = ($x+10) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+9 : $y+10;
-$east11 = ($x+11) > WORLD_MAX? $x-WORLD_MAX-WORLD_MAX+10 : $y+11;
-
-$xarray = array($west11,$west10,$west9,$west8,$west7,$west6,$west5,$west4,$west3,$west2,$west1,$y,$east1,$east2,$east3,$east4,$east5,$east6,$east7,$east8,$east9,$east10,$east11);
-
-$yarray = array($north4,$north3,$north2,$north1,$x,$south1,$south2,$south3,$south4,$south5);
-
-
+/* --- Large (fullscreen) map grid, rebuilt cleanly --------------------------
+   Fixes the old x/y-mixed neighbour math, centres correctly on (x,y), and
+   renders a ring of buffer tiles so click-and-drag doesn't reveal blanks.
+   Knobs: $VHX/$VHY = visible half-size, $BUF = buffer tiles per side.        */
+$VHX    = 10;                 /* visible half-width  -> 2*VHX+1 = 21 columns */
+$VHY    = 6;                  /* visible half-height -> 2*VHY+1 = 13 rows    */
+$BUF    = 3;                  /* extra tiles rendered beyond the visible area */
+$HX     = $VHX + $BUF;
+$HY     = $VHY + $BUF;
+$COLS   = 2*$HX + 1;
+$ROWS   = 2*$HY + 1;
+$VCOLS  = 2*$VHX + 1;
+$VROWS  = 2*$VHY + 1;
+$TILE   = 60;
+$PERIOD = 2*WORLD_MAX + 1;
+$wrapCoord = function($v) use ($PERIOD) {
+    while ($v >  WORLD_MAX) { $v -= $PERIOD; }
+    while ($v < -WORLD_MAX) { $v += $PERIOD; }
+    return $v;
+};
+$xfull = array();
+for ($dx = -$HX; $dx <= $HX; $dx++) { $xfull[] = $wrapCoord($x + $dx); }   /* west -> east */
+$yfull = array();
+for ($dy = $HY; $dy >= -$HY; $dy--) { $yfull[] = $wrapCoord($y + $dy); }   /* north -> south */
+$xarray = array_slice($xfull, $HX - $VHX, $VCOLS);   /* visible slice, for the rulers */
+$yarray = array_slice($yfull, $HY - $VHY, $VROWS);
 $maparray = array();
-$ycount = 0;
-for($i=0;$i<=21;$i++) {
-if($ycount != 10) {
-array_push($maparray,$database->getMInfo($generator->getBaseID($xarray[$i],$yarray[$ycount])));
-if($i==21) {
-$i = -1;
-$ycount +=1;
-}
-}
+foreach ($yfull as $yy) {
+    foreach ($xfull as $xx) {
+        $maparray[] = $database->getMInfo($generator->getBaseID($xx, $yy));
+    }
 }
 echo "<h1 dir=\"rtl\">Map (<span id=\"x\">".$x."</span>|<span id=\"y\">".$y."</span>)</h1>";
 $row = 0;
 $coorindex = 0;
 ?>
 
-<div class="map2 lowRes">
-	<div id="mapContainer" class="lowRes" style="position:absolute;left:-5px;top:0px; width:1320px; height: 600px; display: block; ">
-<div class="mapContainerData" id="mapData" style="width:1320px;height:600px; margin-right:-18px;">
+<div class="map2 lowRes" style="width:<?php echo $VCOLS*$TILE + 27; ?>px;height:auto;margin:0 auto;">
+	<div id="mapContainer" class="lowRes" style="position:relative;left:0;top:0;width:<?php echo $VCOLS*$TILE; ?>px;height:auto;margin-left:27px;display:block;">
+<div id="mapViewport" style="position:relative;width:<?php echo $VCOLS*$TILE; ?>px;height:<?php echo $VROWS*$TILE; ?>px;overflow:hidden;">
+<div class="mapContainerData" id="mapData" style="position:absolute;left:-<?php echo $BUF*$TILE; ?>px;top:-<?php echo $BUF*$TILE; ?>px;width:<?php echo $COLS*$TILE; ?>px;height:<?php echo $ROWS*$TILE; ?>px;">
 <?php
 $index = 0;
 $row1 = 0;
-
-
-for($i=0;$i<=219;$i++) {
+for($i=0;$i<count($maparray);$i++) {
+	$row1 = intdiv($i, $COLS);
 
 	if($maparray[$index]['occupied'] > 0 && $maparray[$index]['fieldtype'] >= 0) {
 	$targetalliance = $database->getUserField($maparray[$index]['owner'],"alliance",0);
@@ -104,7 +84,7 @@ for($i=0;$i<=219;$i++) {
     $enemyarray = array();
     $neutralarray = array();
     }
-    
+
 switch($maparray[$index]['fieldtype']) {
 case 1:
 $tt =  "3-3-3-9";
@@ -184,7 +164,7 @@ break;
 
 
    	$image = ($maparray[$index]['occupied'] == 1 && $maparray[$index]['fieldtype'] > 0)? (($maparray[$index]['owner'] == $session->uid)? ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b30-'.$tribe: 'b20-'.$tribe :'b10-'.$tribe : 'b00-'.$tribe) : (($targetalliance != 0)? (in_array($targetalliance,$friendarray)? ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b31': 'b21' :'b11' : 'b01') : (in_array($targetalliance,$enemyarray)? ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b32': 'b22' :'b12' : 'b02') : (in_array($targetalliance,$neutralarray)? ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b35': 'b25' :'b15' : 'b05') : ($targetalliance == $session->alliance? ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b33': 'b23' :'b13' : 'b03') : ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b34-'.$tribe: 'b24-'.$tribe :'b14-'.$tribe : 'b04-'.$tribe))))) : ($maparray[$index]['pop']>=100? $maparray[$index]['pop']>= 250?$maparray[$index]['pop']>=500? 'b34-'.$tribe: 'b24-'.$tribe :'b14-'.$tribe : 'b04-'.$tribe))) : $maparray[$index]['image'];
-    
+
     if($targetalliance!=0) {
     	$allyname = $database->getAllianceName($targetalliance);
     	}
@@ -197,24 +177,24 @@ break;
     }elseif($tribe==5) {
     	$tribename = "Natar";
         }
-        
+
     $odata = $database->getOMInfo($maparray[$index]['id']);
     $uinfo = $database->getUserField($odata['owner'],'username',0);
-    
+
     if($maparray[$index]['fieldtype'] > 0 && $maparray[$index]['occupied'] == 1) {
     $targettitle = "<font color='white'><b>Village ".$maparray[$index]['name']."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br>Player: ".$username."<br>Population: ".$maparray[$index]['pop']."<br>Alliance ".$allyname."<br>Tribe: ".$tribename."";
     }
     if($maparray[$index]['oasistype'] == 0 && $maparray[$index]['occupied'] == 0) {
     $targettitle = "<font color='white'><b>Abandoned valley ".$tt."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")";
     }
-    
+
     if($maparray[$index]['fieldtype'] == 0 && $maparray[$index]['oasistype'] > 0 && $maparray[$index]['occupied'] == 0) {
     $targettitle = "<font color='white'><b>Unoccupied oasis</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."";
     }elseif($maparray[$index]['fieldtype'] == 0 && $maparray[$index]['oasistype'] > 0 && $maparray[$index]['occupied'] > 0) {
     $targettitle = "<font color='white'><b>occupied oasis</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."<br>Player: ".$uinfo."<br>Alliance: ".$allyname."<br>Tribe: ".$tribename."";
     }
-    
-    
+
+
     	$vid = $maparray[$index]['id'];
 		$incoming_attacks = $database->getMovement(3,$vid,1);
 		$att = '';
@@ -228,7 +208,7 @@ break;
 				$att = '<img style="margin-right:45px;" class="att1" src="img/x.gif" />';
 			}
 		}
-        
+
     if(!$maparray[$index]['fieldtype'] && $maparray[$index]['oasistype'] && $maparray[$index]['occupied']){
     	$occupied = "-s";
     }else{ $occupied = ""; }
@@ -237,63 +217,51 @@ break;
     echo $att;
     }
     echo "</div></a>\n";
-    
-	if($i == 8 || $i == 17 || $i == 26 && $row1 <= 5) {
-		$row1 += 1;
-	}
+
 	$index+=1;
 
 }
 ?>
+</div><!-- #mapData -->
+</div><!-- #mapViewport -->
 
 <div class="clear"></div>
 <div class="ruler x" style="background-color:#FFF; height:23px;">
 	<div class="rulerContainer">
     	<?php
-			for($i=0;$i<=21;$i++) {
+			for($i=0;$i<$VCOLS;$i++) {
 				echo "<div class=\"coordinate zoom1\">".$xarray[$i]."</div>\n";
 			}
 		?>
 				<div class="clear"></div>
 	</div>
 </div>
-<div class="ruler y" style="height:624px;">
+<div class="ruler y" style="height:<?php echo $VROWS*$TILE; ?>px;">
 	<div class="rulerContainer">
     	<?php
-			for($i=0;$i<=9;$i++) {
+			for($i=0;$i<$VROWS;$i++) {
 				echo "<div class=\"coordinate zoom1\">".$yarray[$i]."</div>\n";
 			}
 		?>
 </div>
 </div>
-</div>
 		<div class="navigation" style="margin-bottom: -15px;">
-			<a href="karte2.php?z=<?php echo $generator->getBaseID($x,$west1);?>" id="navigationMoveLeft" class="moveLeft">
+			<a href="karte2.php?x=<?php echo $wrapCoord($x-1); ?>&y=<?php echo $y; ?>" id="navigationMoveLeft" class="moveLeft">
             <img src="img/x.gif" title="move left"></a>
-			<a href="karte2.php?z=<?php echo $generator->getBaseID($x,$east1);?>" id="navigationMoveRight" class="moveRight">
+			<a href="karte2.php?x=<?php echo $wrapCoord($x+1); ?>&y=<?php echo $y; ?>" id="navigationMoveRight" class="moveRight">
             <img src="img/x.gif" title="move right"></a>
-			<a href="karte2.php?z=<?php echo $generator->getBaseID($north1,$y);?>" id="navigationMoveUp" class="moveUp">
+			<a href="karte2.php?x=<?php echo $x; ?>&y=<?php echo $wrapCoord($y+1); ?>" id="navigationMoveUp" class="moveUp">
             <img src="img/x.gif" title="move up"></a>
-			<a href="karte2.php?z=<?php echo $generator->getBaseID($south1,$y);?>" id="navigationMoveDown" class="moveDown">
+			<a href="karte2.php?x=<?php echo $x; ?>&y=<?php echo $wrapCoord($y-1); ?>" id="navigationMoveDown" class="moveDown">
             <img src="img/x.gif" title="move down"></a>
-            <a href="karte.php?z=<?php echo $_GET['z']; ?>" id="navigationFullScreen" class="viewFullScreen normal"><img src="img/x.gif" alt="normál" title="Normal Map"></a>
-                       
+            <a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen normal"><img src="img/x.gif" alt="normal" title="Normal Map"></a>
 		</div>
-		<form id="mapCoordEnter" name="map_coords" method="post" action="karte.php" class="toolbar" style="margin-bottom: -15px;">
+		<form id="mapCoordEnter" name="map_coords" method="post" action="karte2.php" class="toolbar" style="margin-bottom: -15px;">
 	<div class="ml">
 		<div class="mr">
 			<div class="mc">
 				<div class="contents">
 			<div class="coordinatesInput">
-            <?php
-            if(isset($_GET['x']) && isset($_GET['y'])) {
-            	$x = $_GET['x'];
-                $y = $_GET['y'];
-                }else{
-                //$x = "0";
-                //$y = "0";
-                }
-            ?>
 				<div class="xCoord">
 					<label for="xCoordInputMap">X:</label>
                     <input id="mcx" class="text" name="xp" value="" maxlength="4"/>
@@ -310,18 +278,62 @@ break;
 	</div>
 </form>	</div>
 </div>
+<style type="text/css">
+body.map{background:#c8dd9b;}
+#mapContainer.lowRes #mapData{cursor:grab;cursor:-webkit-grab;touch-action:none;user-select:none;-webkit-user-select:none;}
+#mapContainer.lowRes.dragPanning #mapData{cursor:grabbing;cursor:-webkit-grabbing;}
+#mapContainer.lowRes #mapData a,#mapContainer.lowRes #mapData img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;}
+#mapContainer.lowRes .ruler.y .coordinate{height:<?php echo $TILE; ?>px;}
+</style>
 <script type="text/javascript">
-		window.addEvent('domready', function()
-	{
-		
-		Travian.Game.Map.LowRes.Options.default.tileDisplayInformation.type = 'dialog';
-		new Travian.Game.Map.LowRes.Container($merge(Travian.Game.Map.LowRes.Options.default,
-		{
-			fullScreen:	true,
-			mapInitialPosition:
-			{
-				x:	<?php echo $x; ?>,
-				y:	<?php echo $y; ?>			}
-		}));
+/* Click-and-drag panning (mouse + touch) for the fullscreen map: grab, release
+   to re-center. Barely-moving pointers fall through to the plain tile links. */
+(function(){
+	var TILE=<?php echo (int)$TILE; ?>, THRESHOLD=6, WORLD=<?php echo (int)WORLD_MAX; ?>, PERIOD=2*WORLD+1;
+	var curX=<?php echo (int)$x; ?>, curY=<?php echo (int)$y; ?>;
+	function ready(fn){ if(document.readyState!='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
+	ready(function(){
+		var container=document.getElementById('mapContainer');
+		var data=document.getElementById('mapData');
+		if(!container||!data) return;
+		var dragging=false, moved=false, sx=0, sy=0, dx=0, dy=0;
+		data.addEventListener('dragstart', function(e){ e.preventDefault(); });
+		data.addEventListener('pointerdown', function(e){
+			if(e.button!==0) return;               /* primary mouse button / touch / pen */
+			dragging=true; moved=false; sx=e.clientX; sy=e.clientY; dx=0; dy=0;
+		});
+		document.addEventListener('pointermove', function(e){
+			if(!dragging) return;
+			dx=e.clientX-sx; dy=e.clientY-sy;
+			if(!moved && (Math.abs(dx)>THRESHOLD||Math.abs(dy)>THRESHOLD)){
+				moved=true; container.classList.add('dragPanning');
+			}
+			if(moved){ e.preventDefault(); data.style.transform='translate('+dx+'px,'+dy+'px)'; }
+		});
+		document.addEventListener('pointercancel', function(){
+			if(!dragging) return;
+			dragging=false; container.classList.remove('dragPanning');
+			if(moved){ data.style.transform=''; }
+		});
+		document.addEventListener('pointerup', function(){
+			if(!dragging) return;
+			dragging=false;
+			if(!moved) return; /* a tap/click: let the tile <a href> do its thing */
+			container.classList.remove('dragPanning');
+			/* swallow the click that fires right after a drag */
+			var kill=function(ev){ ev.preventDefault(); ev.stopPropagation(); document.removeEventListener('click',kill,true); };
+			document.addEventListener('click',kill,true);
+			setTimeout(function(){ document.removeEventListener('click',kill,true); },50);
+			var tdx=Math.round(dx/TILE); /* drag right -> reveal west -> x decreases */
+			var tdy=Math.round(dy/TILE); /* drag down  -> reveal north -> y increases */
+			if(tdx===0 && tdy===0){ data.style.transform=''; return; } /* sub-tile drag: snap back */
+			/* Freeze snapped to the new centre so it doesn't flash back while reloading. */
+			data.style.transform='translate('+(tdx*TILE)+'px,'+(tdy*TILE)+'px)';
+			var nx=curX-tdx, ny=curY+tdy;
+			if(nx>WORLD) nx-=PERIOD; if(nx<-WORLD) nx+=PERIOD;
+			if(ny>WORLD) ny-=PERIOD; if(ny<-WORLD) ny+=PERIOD;
+			window.location.href='karte2.php?x='+nx+'&y='+ny;
+		});
 	});
+})();
 </script></div> <?php } ?>
