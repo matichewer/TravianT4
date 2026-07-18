@@ -425,13 +425,13 @@ if($inv <= 12){
 <script type="text/javascript">
 	Travian.Game.Hero.Inventory = new (new Class(
 	{
-		b10: '<p><div style="color:#F90">Experience: <?php echo $hero['experience']; ?><br>افزایش تجربه: 10<br>تجربه بعد از استفاده: <?php echo ($hero['experience']+10); ?><br></div>',
+		b10: '<p><div style="color:#F90">Experiencia actual del héroe: <?php echo $hero['experience']; ?><br>Experiencia obtenida: 10<br>Experiencia después de usarlo: <?php echo ($hero['experience']+10); ?><br></div>',
 		
-		b15: '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>Jelenlegi kultúrpont arány</th><td><?php echo $database->getUserField($session->uid, 'cp',0); ?></td></tr><tr class="rowUseValue"><th>امتیاز فرهنگی بدست آمده بعد مصرف اثر هنری:</th><td class="displayUseValue"><?php echo $database->getVSumField($session->uid, 'cp'); ?></td></tr><tr class="rowAfterUse"><th>امتیاز فرهنگی بعد از مصرف اثر هنری:</th><td class="displayAfterUse"><?php echo ($database->getUserField($session->uid, 'cp',0)+$database->getVSumField($session->uid, 'cp')); ?></td></tr></tbody></table>',		
+		b15: '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>Puntos de cultura actuales:</th><td><?php echo $database->getUserField($session->uid, 'cp',0); ?></td></tr><tr class="rowUseValue"><th>Puntos de cultura obtenidos al usar la obra de arte:</th><td class="displayUseValue"><?php echo $database->getVSumField($session->uid, 'cp'); ?></td></tr><tr class="rowAfterUse"><th>Puntos de cultura después de usar la obra de arte:</th><td class="displayAfterUse"><?php echo ($database->getUserField($session->uid, 'cp',0)+$database->getVSumField($session->uid, 'cp')); ?></td></tr></tbody></table>',
 		
 		alreadyOpen: false,
-		textSingle: 'Do you really want to wear this item?',
-		textMulti: 'Total item used: &lt;input class=\"text\" id=\"amount\" type=\"text\" value=\"\" /&gt;'.unescapeHtml(),
+		textSingle: '¿Realmente quieres usar este objeto?',
+		textMulti: 'Cantidad de objetos que se usarán: &lt;input class=\"text\" id=\"amount\" type=\"text\" value=\"\" /&gt;'.unescapeHtml(),
 		initialize: function() {
 			var $this = this;
 			
@@ -494,7 +494,7 @@ $('item_<?php echo $id; ?>').addEvent('click', function() { $this.sellItem(<?php
 					exp_b = amount*10;
 					exp_total = <?php echo $hero['experience']; ?>+exp_b;
 					html = $this.textMulti;
-					html += '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>تجربه‌ی فعلی قهرمان:</th><td>'+exp_a+'</td></tr><tr class="rowUseValue"><th>تجربه‌ی بدست آمده از طریق مصرف کتیبه:</th><td class="displayUseValue">'+exp_b+'</td></tr><tr class="rowAfterUse"><th>تجربه‌ی قهرمان بعد از مصرف کتیبه:</th><td class="displayAfterUse">'+exp_total+'</td></tr></tbody></table>';
+					html += '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>Experiencia actual del héroe:</th><td>'+exp_a+'</td></tr><tr class="rowUseValue"><th>Experiencia obtenida al usar los pergaminos:</th><td class="displayUseValue">'+exp_b+'</td></tr><tr class="rowAfterUse"><th>Experiencia del héroe después de usarlos:</th><td class="displayAfterUse">'+exp_total+'</td></tr></tbody></table>';
 
 				}else
 				if(btype == 15){
@@ -502,7 +502,7 @@ $('item_<?php echo $id; ?>').addEvent('click', function() { $this.sellItem(<?php
 					cp_b = (cp*amount);
 					cp_total = <?php echo $database->getUserField($session->uid, 'cp',0); ?>+cp_b;
 					html = $this.textMulti;
-					html += '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>امتیاز فرهنگی فعلی شما:</th><td>'+cp+'</td></tr><tr class="rowUseValue"><th>امتیاز فرهنگی بدست آمده از طریق مصرف اثر هنری:</th><td class="displayUseValue">'+cp_b+'</td></tr><tr class="rowAfterUse"><th>امتیاز فرهنگی بعد از مصرف اثر هنری:</th><td class="displayAfterUse">'+cp_total+'</td></tr></tbody></table>';
+					html += '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>Puntos de cultura actuales:</th><td>'+cp+'</td></tr><tr class="rowUseValue"><th>Puntos de cultura obtenidos al usar las obras de arte:</th><td class="displayUseValue">'+cp_b+'</td></tr><tr class="rowAfterUse"><th>Puntos de cultura después de usarlas:</th><td class="displayAfterUse">'+cp_total+'</td></tr></tbody></table>';
 					
 				}else{
 					html = $this.textMulti;
@@ -511,9 +511,9 @@ $('item_<?php echo $id; ?>').addEvent('click', function() { $this.sellItem(<?php
 			html.dialog({
 				relativeTo:			$('content'),
 				elementFoucs:		'inventoryAmount',
-				buttonTextOk:		'Ok',
-				buttonTextCancel:	'Cancel',
-				title:				'consumption',
+				buttonTextOk:		'Aceptar',
+				buttonTextCancel:	'Cancelar',
+				title:				'Uso del objeto',
 				onOpen: function(dialog, contentElement){
 					if ($('amount')){
 						$('amount').value = amount;
@@ -557,5 +557,3 @@ include("Templates/quest.tpl");
 </div>
 </body>
 </html>
-
-

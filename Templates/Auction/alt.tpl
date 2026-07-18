@@ -590,8 +590,8 @@
 		$title = "+1% loyalty in village, max 125% Stackable";
 		$item = "109";
 	}elseif($btype==15){
-    	$name = "Artwork";
-		$title = "Instantly gives amount of CP, equal to daily production, but not more than 5000 Stackable";
+		$name = "Obra de arte";
+		$title = "Otorga al instante tantos puntos de cultura como la producción diaria, hasta un máximo de 5000. Se puede apilar.";
         $item = "111";
 	}
 

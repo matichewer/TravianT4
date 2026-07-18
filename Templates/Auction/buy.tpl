@@ -35,7 +35,7 @@
 
 <button title="Filter for Tablets of Law" type="button" value="itemCategory itemCategory_lawTables" <?php if(isset($_GET['filter']) && $_GET['filter'] == 14) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=buy&amp;filter=14'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_lawTables" alt="itemCategory itemCategory_lawTables"></button>
 
-<button title="Filter for Artworks" type="button" value="itemCategory itemCategory_artWork" <?php if(isset($_GET['filter']) && $_GET['filter'] == 15) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=buy&amp;filter=15'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_artWork" alt="itemCategory itemCategory_artWork"></button>
+<button title="Filtrar por obras de arte" type="button" value="itemCategory itemCategory_artWork" <?php if(isset($_GET['filter']) && $_GET['filter'] == 15) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=buy&amp;filter=15'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_artWork" alt="Obras de arte"></button>
 </div>
 	<div class="clear"></div>
 		</div></div></div></div>
