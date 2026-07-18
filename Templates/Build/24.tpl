@@ -3,10 +3,10 @@
 <div id="build" class="gid24">
 <div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(24,4);" class="build_logo">
-	<img class="building big white g24" src="img/x.gif" alt="Városháza" title="Városháza" />
+	<img class="building big white g24" src="img/x.gif" alt="Ayuntamiento" title="Ayuntamiento" />
 </a>
 
-In the Town Hall you can hold pompous celebrations. Such a celebration increases your culture points.
+In the Town Hall you can hold pompous celebrations. Such a celebration increases your puntos de cultura.
 </div>
 
 <?php

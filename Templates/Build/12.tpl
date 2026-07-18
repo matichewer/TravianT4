@@ -2,14 +2,14 @@
 <div id="build" class="gid13">
 <div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(12,4);" class="build_logo">
-<img class="building big white g13" src="img/x.gif" alt="Kovács" title="Kovács" />
+<img class="building big white g13" src="img/x.gif" alt="Herrería" title="Herrería" />
 </a>
-The smithy improves the weapons and armour of your troops. By increasing its level, you can order the fabrication of even better weapons and armour.<?php
+La herrería mejora las armas y armaduras de tus tropas. Al aumentar su nivel, puedes encargar la fabricación de armas y armaduras aún mejores.<?php
 include("upgrade.tpl");
 	if ($building->getTypeLevel(12) > 0) {
 		include("12_upgrades.tpl");
 	} else {
-		echo "<p><b>The last level is possible.</b><br>\n";
+		echo "<p><b>Las mejoras estarán disponibles cuando la herrería esté construida.</b><br>\n";
 	}
 ?>
 </div>

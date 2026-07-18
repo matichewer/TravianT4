@@ -3,7 +3,7 @@
     <div id="build" class="gid37">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(37,4);" class="build_logo">
-        <img class="building big white g37" src="img/x.gif" alt="Hero's Mansion" title="Hero's Mansion"></a>
+        <img class="building big white g37" src="img/x.gif" alt="Mansión del héroe" title="Mansión del héroe"></a>
         In the Hero's Mansion, you can get an overview of surrounding oases. Starting with building level 10, you can occupy an oasis with your hero and increase the resource production of your village..</div>
         
        <?php           

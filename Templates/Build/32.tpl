@@ -3,8 +3,8 @@
     <div id="build" class="gid32">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(32,4);" class="build_logo">
-        <img class="building big white g32" src="img/x.gif" alt="Földfal" title="Földfal"></a>
-        The earth wall protects your village from attacks. The higher the level, the easier it will be for your defenders to successfully fight off the pillaging hordes of your enemies. </div>
+        <img class="building big white g32" src="img/x.gif" alt="Muro de tierra" title="Muro de tierra"></a>
+        El muro de tierra protege tu aldea de los ataques. Cuanto mayor sea el nivel, más fácil será para tus defensores repeler con éxito a las hordas saqueadoras de tus enemigos. </div>
 
 <table cellpadding="1" cellspacing="1" id="build_value">
         <tr>
@@ -15,7 +15,7 @@ Current defense bonus</th>
         <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-            <th>Defense bonus at level <?php echo $village->resarray['f'.$id]+1; ?> </th>
+            <th>Bono de defensa en el nivel <?php echo $village->resarray['f'.$id]+1; ?> </th>
 
             <td><b><?php echo $bid32[$village->resarray['f'.$id]+1]['attri']; ?>%</b></td>
             <?php

@@ -3,7 +3,7 @@
     <div id="build" class="gid42">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(42,4);" class="build_logo">
-        <img class="building big white g42" src="img/x.gif" alt="Műhely" title="Műhely"></a>
+        <img class="building big white g42" src="img/x.gif" alt="Taller" title="Taller"></a>
         A műhelyben városromboló eszközöket lehet építeni, katapultot, faltörő kost. Magasabb szintű épület esetén az építési idő csökken. Az építhető harci egységek technológiáját ki kell fejleszteni előbb az akadémiában</div>
 
 <?php if ($building->getTypeLevel(42) > 0) { ?>
@@ -22,7 +22,7 @@
     <p><input type="image" id="btn_train" class="dynamic_img" value="ok" name="s1" src="img/x.gif" alt="train" /></form></p>
     <?php
     } else {
-        echo "<b>Training can commence when great workshop is completed.</b><br>\n";
+        echo "<b>El entrenamiento puede comenzar cuando el gran taller esté terminado.</b><br>\n";
     }
     $trainlist = $technology->getTrainingList(7);
     if(count($trainlist) > 0) {

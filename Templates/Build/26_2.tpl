@@ -2,24 +2,24 @@
 <div id="build" class="gid26">
 <div class="build_desc">
 	<a href="#" onClick="return Travian.Game.iPopup(26,4, 'gid');" class="build_logo"> 
-    <img class="building big white g26" src="img/x.gif" alt="Palota" title="Palota" /> </a>
-	The king of the nation lives in the palace. The higher the level, the more difficult it is for enemies to conquer the village. Only a palace may be used to set a village as the capital. A palace and residence may not be built in the same village. Only one palace is allowed per account.</div>
+    <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
+	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta.</div>
 
 <?php 
 include("upgrade.tpl");
 include("26_menu.tpl"); 
 ?>
 
-<p>In order to extend your empire you need culture points. These culture points increase in the course of time and do so faster as your building levels increase.</p>
+<p>Para extender tu imperio necesitas puntos de cultura. Estos aumentan con el paso del tiempo, y más rápido cuanto mayores sean los niveles de tus edificios.</p>
 
 <table cellpadding="1" cellspacing="1" id="build_value">
 <tr>
-	<th>Production of this village</th>
-	<td><b><?php echo $database->getVillageField($village->wid, 'cp'); ?></b> Culture Points</td>
+	<th>Producción de esta aldea</th>
+	<td><b><?php echo $database->getVillageField($village->wid, 'cp'); ?></b> puntos de cultura</td>
 </tr>
 <tr>
-	<th>Production of all villages:	</th>
-	<td><b><?php echo $database->getVSumField($session->uid, 'cp'); ?></b> Culture Points</td>
+	<th>Producción de todas las aldeas:	</th>
+	<td><b><?php echo $database->getVSumField($session->uid, 'cp'); ?></b> puntos de cultura</td>
 </tr>
-</table><p>You need <b><?php $mode = CP; $total = count($database->getProfileVillages($session->uid)); echo ${'cp'.$mode}[$total+1]; ?></b> Culture points to settle or chieftian a new village. <br></br>You currently have <b><?php echo $database->getUserField($session->uid, 'cp',0); ?> </b> Culture Points</p>
+</table><p>Necesitas <b><?php $mode = CP; $total = count($database->getProfileVillages($session->uid)); echo ${'cp'.$mode}[$total+1]; ?></b> puntos de cultura para fundar o conquistar una nueva aldea. <br></br>Actualmente tienes <b><?php echo $database->getUserField($session->uid, 'cp',0); ?> </b> puntos de cultura</p>
 </div>

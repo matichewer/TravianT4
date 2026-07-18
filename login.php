@@ -207,7 +207,7 @@ CountActive = true;
 CountStepper = -1;
 LeadingZero = true;
 DisplayFormat = "%%H%%:%%M%%:%%S%%";
-FinishMessage = "START NOW";
+FinishMessage = "¡YA COMENZÓ!";
 
 function calcage(secs, num1, num2) {
   s = ((Math.floor(secs/num1))%num2).toString();

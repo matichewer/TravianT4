@@ -376,6 +376,7 @@ define("EMAIL_NOT_VERIFIED","Email not verified!");
 define("EMAIL_FOLLOW","Follow this link to activate your account.");
 define("VERIFY_EMAIL","Verify Email.");
 define("LOGIN_SERVER_START","Server will start in:");
+define("LOGIN_SERVER_START2","");
 
 
 //404.php

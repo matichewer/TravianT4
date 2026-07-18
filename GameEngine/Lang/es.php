@@ -26,7 +26,7 @@ define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"p
 define("CONTACT","Contactenos!");
 
 //MENU
-define("REG","Registarse");
+define("REG","Registrarse");
 define("FORUM","Foro");
 define("CHAT","Chat");
 define("IMPRINT","Imprimir");
@@ -354,6 +354,7 @@ define("LOGIN_PW_EMAIL","Email");
 define("LOGIN_PW_FORGOTTEN","¿Olvidaste tu contraseña?");
 define("LOGIN_PW_REQUEST","Solicitar contraseña");
 define("LOGIN_SERVER_START","El servidor comenzará en:");
+define("LOGIN_SERVER_START2","");
 define("LOGIN_USERNAME","Nombre de usuario");
 define("LOGIN_WELCOME","Bienvenido al servidor");
 define("LOGOUT_DESC","Si varias personas usan esta PC, por seguridad deberías borrar la cookie con tu nombre de usuario y contraseña");

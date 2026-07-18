@@ -2,12 +2,12 @@
 <div id="build" class="gid26">
 <div class="build_desc">
 	<a href="#" onClick="return Travian.Game.iPopup(26,4, 'gid');" class="build_logo"> 
-    <img class="building big white g26" src="img/x.gif" alt="Palota" title="Palota" /> </a>
-	The king of the nation lives in the palace. The higher the level, the more difficult it is for enemies to conquer the village. Only a palace may be used to set a village as the capital. A palace and residence may not be built in the same village. Only one palace is allowed per account.</div>
+    <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
+	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta.</div>
 
 
 <?php 
 include("upgrade.tpl");
 include("26_menu.tpl"); 
 ?>
-By attacking with senators, chiefs or chieftains a village's loyalty can be brought down. If it reaches zero, the village joins the realm of the attacker. This villages lotalty is:  <b><?php echo $database->getVillageField($village->wid, 'loyalty'); ?></b>%. <br></br><b>This village is Capital so it cannot be taken </b></div>
+Atacando con senadores, jefes o caudillos se puede reducir la lealtad de una aldea. Si llega a cero, la aldea pasa al imperio del atacante. La lealtad de esta aldea es:  <b><?php echo $database->getVillageField($village->wid, 'loyalty'); ?></b>%. <br></br><b>Esta aldea es la capital, no puede ser conquistada </b></div>

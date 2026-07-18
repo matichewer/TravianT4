@@ -2,21 +2,21 @@
 <div id="build" class="gid15">
 <div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(15,4);" class="build_logo">
-<img class="building big white g15" src="img/x.gif" alt="Főépület" title="Főépület" />
-</a>The architects of the village live in the main building. The higher the level, the faster other buildings will be built or upgraded.</div>
+<img class="building big white g15" src="img/x.gif" alt="Edificio principal" title="Edificio principal" />
+</a>Los arquitectos de la aldea viven en el edificio principal. Cuanto mayor sea el nivel, más rápido se construyen o mejoran los demás edificios.</div>
 
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 		<tr>
-			<th>Current construction time:</th>
-			<td><b><?php echo round($bid15[$village->resarray['f'.$id]]['attri']); ?></b> Percent</td>
+			<th>Tiempo de construcción actual:</th>
+			<td><b><?php echo round($bid15[$village->resarray['f'.$id]]['attri']); ?></b> por ciento</td>
 		</tr>
 		<tr>
 		<?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-			<th>Construction time at level <?php echo $village->resarray['f'.$id]+1; ?> </th>
-			<td><b><?php echo round($bid15[$village->resarray['f'.$id]+1]['attri']); ?></b> Percent</td>
+			<th>Tiempo de construcción en el nivel <?php echo $village->resarray['f'.$id]+1; ?> </th>
+			<td><b><?php echo round($bid15[$village->resarray['f'.$id]+1]['attri']); ?></b> por ciento</td>
             <?php
             }
             ?>

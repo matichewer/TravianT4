@@ -7,13 +7,13 @@
 		if($timeleft > Time()){
 			
         	echo '<table cellpadding="1" cellspacing="1" class="under_progress">
-			<thead><tr><td>Celebration</td><td>Duration</td><td>Finish</td></tr></thead>';
+			<thead><tr><td>Celebración</td><td>Duración</td><td>Finaliza</td></tr></thead>';
 			echo '<tbody><tr>';
             echo "<td class=\"desc\">Party </td>";
             echo "<td class=\"dur\"><span id=\"timer".$timer."\">";
             echo $generator->getTimeFormat($timeleft-time());
             echo "</span></td>";
-            echo "<td class=\"fin\">".date('H:i', $timeleft)."<span> Hours</span></td>";
+            echo "<td class=\"fin\">".date('H:i', $timeleft)."<span> hs</span></td>";
 			echo "</tr></tbody></table></div></div></div>";
             $timer +=1;
 		}

@@ -4,9 +4,9 @@
     	echo "
     <br /><table cellpadding=\"1\" cellspacing=\"1\" class=\"under_progress\">
 		<thead><tr>
-			<td>Unit</td>
-			<td>Time</td>
-			<td>Finish</td>
+			<td>Unidad</td>
+			<td>Hora</td>
+			<td>Finaliza</td>
 		</tr></thead>
 		<tbody>";
 		$TrainCount = 0;
@@ -25,7 +25,7 @@
 			$time = $generator->procMTime($train['commence']+($train['eachtime']*$train['amt']));
 			echo " ".$time[1]." óra";
 		} ?>
-		</tr><tr class="next"><td colspan="3">The Next Unit is ready in <span id="timer2"><?php echo $NextFinished; ?></span></td></tr>
+		</tr><tr class="next"><td colspan="3">La próxima unidad estará lista en <span id="timer2"><?php echo $NextFinished; ?></span></td></tr>
 		</tbody></table>
     <?php }
 ?>

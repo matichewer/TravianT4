@@ -2,21 +2,21 @@
 <div id="build" class="gid25">
 <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(25,4, 'gid');" class="build_logo">
-        <img class="building big white g25" src="img/x.gif" alt="Residence" title="Residence" /> </a>
-        The residence is a small palace, where the king or queen lives when (s)he visits the village. The residence protects the village against enemies who want to conquer it</div>
+        <img class="building big white g25" src="img/x.gif" alt="Residencia" title="Residencia" /> </a>
+        La residencia es un pequeño palacio donde vive el rey o la reina cuando visita la aldea. La residencia protege la aldea de los enemigos que quieren conquistarla</div>
 
 <?php
 include("upgrade.tpl");
 include("25_menu.tpl"); ?>
-<h4>Expansions</h4>
+<h4>Expansiones</h4>
 <table cellpadding="1" cellspacing="1" id="expansion">
 <thead>
 <tr>
-	<td colspan="2">Village</td>
-	<td>Players</td>
-	<td>Population</td>
-	<td>Coordinates</td>
-	<td>Date</td>
+	<td colspan="2">Aldea</td>
+	<td>Jugador</td>
+	<td>Población</td>
+	<td>Coordenadas</td>
+	<td>Fecha</td>
 </tr></thead>
 <tbody>
 <?php
@@ -46,7 +46,7 @@ echo '
 	}
 }
 else{
-echo '<tr><td colspan="6" class="none">No new villages have expanded from this Village.</td></tr>';
+echo '<tr><td colspan="6" class="none">Esta aldea todavía no fundó nuevas aldeas.</td></tr>';
 }
 ?>
 </tbody></table></div>

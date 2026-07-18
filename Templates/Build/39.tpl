@@ -3,12 +3,12 @@
     <div id="build" class="gid39">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(39,4);" class="build_logo">
-        <img class="building big white g39" src="img/x.gif" alt="Nagy Magtár" title="Nagy Magtár"></a>
+        <img class="building big white g39" src="img/x.gif" alt="Gran granero" title="Gran granero"></a>
         In the Granary, the wheat produced by your wheat fields is stored. The Great Granary offers you more space than the regular Granary to keep your wheat safe and dry.</div>
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 	<tr>
-		<th>Storage:</th>
+		<th>Capacidad:</th>
 		<td><b><?php echo $bid39[$village->resarray['f'.$id]]['attri']; ?></b></td>
 	</tr>
     
@@ -16,7 +16,7 @@
 <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-		<th>Storage at level <?php echo $village->resarray['f'.$id]+1; ?> :</th>
+		<th>Capacidad en el nivel <?php echo $village->resarray['f'.$id]+1; ?> :</th>
 		<td><b><?php echo $bid39[$village->resarray['f'.$id]+1]['attri']; ?></b></td>
         <?php
             }

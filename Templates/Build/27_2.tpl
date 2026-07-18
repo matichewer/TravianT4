@@ -3,7 +3,7 @@
     <div id="build" class="gid27">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(27,4);" class="build_logo">
-        <img class="building big white g27" src="img/x.gif" alt="Kincstár" title="Kincstár"></a>
+        <img class="building big white g27" src="img/x.gif" alt="Tesorería" title="Tesorería"></a>
         The riches of your empire are kept in the treasure chamber. In each treasure chamber level 10 or higher, there is room for one artifact. After you have captured an artifact it takes 24 hours to be effective, except on speed servers where it only takes 12 hours.</div>
         
         <?php
@@ -16,16 +16,16 @@ include("upgrade.tpl");
     		<thead>
     			<tr>
     				<td></td>
-                                <td>Artefact Name</td>
-                                <td>Village</td>
-                                <td>Date</td>
+                                <td>Nombre del artefacto</td>
+                                <td>Aldea</td>
+                                <td>Fecha</td>
     			</tr>
     		</thead>
     		<tbody>
             <?php
 
         if(mysql_num_rows(mysql_query("SELECT * FROM " . TB_PREFIX . "artefacts")) == 0) {
-        	echo '<td colspan="4" class="none">No Small Artefacts</td>';
+        	echo '<td colspan="4" class="none">No hay artefactos pequeños</td>';
         } else {
 
 

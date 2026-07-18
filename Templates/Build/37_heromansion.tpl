@@ -6,10 +6,10 @@ if($_GET['gid']==37 && isset($_GET['del'])){
 
 ?>
 <div class="clear"></div>
-<h4>Oasis occupied by <?php echo $village->vname; ?> village</h4>
+<h4>Oasis ocupado por <?php echo $village->vname; ?> village</h4>
 
 <table id="oasesOwned" cellpadding="1" cellspacing="1">
-	<thead><tr><td>Type</td><td>Loyalty</td><td>Conquered</td><td>Coordinates</td><td>Resources</td></tr></thead>
+	<thead><tr><td>Tipo</td><td>Lealtad</td><td>Conquistado</td><td>Coordenadas</td><td>Recursos</td></tr></thead>
 	<tbody>
 <?php
 $prefix = "".TB_PREFIX."odata";
@@ -35,7 +35,7 @@ while($row = mysql_fetch_array($sql)){
 				});
 				return false;
 			})()">
-						<img class="del" src="img/x.gif" alt="حذف">
+						<img class="del" src="img/x.gif" alt="eliminar">
 					</a>
 <?php
 switch($type) {
@@ -120,23 +120,23 @@ break;
                 </tbody></table>
 <?php
 	if($query == 0){
-    	echo '<div class="nextOases none">1. Next Oasis from Hero´s Mansion Level 10</div><div class="nextOases none">2. Next Oasis from Hero´s Mansion Level 15</div><div class="nextOases none">3. Next Oasis from Hero´s Mansion Level 20</div>';
+    	echo '<div class="nextOases none">1er oasis con mansión del héroe a nivel 10</div><div class="nextOases none">2do oasis con mansión del héroe a nivel 15</div><div class="nextOases none">3er oasis con mansión del héroe a nivel 20</div>';
 	}if($query == 1){
-    	echo '<div class="nextOases none">2. Next Oasis from Hero´s Mansion Level 15</div><div class="nextOases none">3. Next Oasis from Hero´s Mansion Level 20</div>';
+    	echo '<div class="nextOases none">2do oasis con mansión del héroe a nivel 15</div><div class="nextOases none">3er oasis con mansión del héroe a nivel 20</div>';
 	}elseif($query == 2){
-    	echo '<div class="nextOases none">3. Next Oasis from Hero´s Mansion Level 20</div>';
+    	echo '<div class="nextOases none">3er oasis con mansión del héroe a nivel 20</div>';
     }else{
     	echo '';
     }
 ?>
 
 
-<h4 class="spacer">Other oases </h4>
+<h4 class="spacer">Otros oasis </h4>
 
 
 
 <table id="oasesSurround" cellpadding="1" cellspacing="1">
-	<thead><tr><td>Type</td><td>Owner</td><td>Village</td><td>Coordinates</td><td>Resource</td></tr></thead>
+	<thead><tr><td>Tipo</td><td>Propietario</td><td>Aldea</td><td>Coordenadas</td><td>Recurso</td></tr></thead>
     <tbody>
 <?php
     $getoasis = mysql_query("SELECT * FROM ".TB_PREFIX."wdata WHERE oasistype > 0");

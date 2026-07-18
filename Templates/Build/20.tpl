@@ -1,9 +1,9 @@
-﻿<h1 class="titleInHeader">stable <span class="level"> Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
+﻿<h1 class="titleInHeader">Establo <span class="level"> Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
 <div id="build" class="gid20">
 <p class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(20,4);" class="build_logo">
-<img class="building big white g20" src="img/x.gif" alt="Istálló" title="Istálló" /> </a>
-In the stable cavalry is trained. The higher its level the faster the troops are trained.<br /></p>
+<img class="building big white g20" src="img/x.gif" alt="Establo" title="Establo" /> </a>
+En el establo se entrena la caballería. Cuanto mayor sea su nivel, más rápido se entrenan las tropas.<br /></p>
 <?php 
 include("upgrade.tpl");
 ?>
@@ -19,24 +19,24 @@ include("upgrade.tpl");
                 </div>
 			<div class="clear"></div>
 				    <button type="submit" value="ok" name="s1" id="btn_train" value="ok" class="startTraining">
-                    <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Train</div></div>
+                    <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Entrenar</div></div>
                     </button>
 
 		</form>
 <?php
 	} else {
-		echo "<b>No Units have been Researched</b><br>\n";
+		echo "<b>No se ha investigado ninguna unidad</b><br>\n";
 	}
     $trainlist = $technology->getTrainingList(2);
     if(count($trainlist) > 0) {
     //$timer = 2*count($trainlist);
     	echo "
-        <h4 class=\"round spacer\">Training</h4>
+        <h4 class=\"round spacer\">Entrenamiento</h4>
     <table cellpadding=\"1\" cellspacing=\"1\" class=\"under_progress\">
 		<thead><tr>
-			<td>Unit</td>
-			<td>Duration</td>
-			<td>Finished</td>
+			<td>Unidad</td>
+			<td>Duración</td>
+			<td>Finaliza</td>
 		</tr></thead>
 		<tbody>";
 		$TrainCount = 0;
@@ -54,11 +54,11 @@ include("upgrade.tpl");
 			echo "</span></td><td class=\"fin\">";
 			$time = $generator->procMTime($train['timestamp']);
 			if($time[0] != "today") {
-			echo $time[0]." at ";
+			echo $time[0]." a las ";
 			}
 			echo $time[1];
 			} ?>
-		</tr><tr class="next"><td colspan="3">The next unit is ready <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
+		</tr><tr class="next"><td colspan="3">La próxima unidad estará lista <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
         </tbody></table>
     <?php }
     ?> </p></div>

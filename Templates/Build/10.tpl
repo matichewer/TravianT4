@@ -2,22 +2,22 @@
 <div id="build" class="gid10">
 <div class="build_desc">
 <a href="#" onclick="return Travian.Game.iPopup(10,4, 'gid');" class="build_logo">
-<img class="building big white g10" src="img/x.gif" alt="Raktár">
+<img class="building big white g10" src="img/x.gif" alt="Almacén">
 </a>
-The resources wood, clay, and iron are stored in the warehouse. The higher the level, the larger the resource storage capacity
+La madera, el barro y el hierro se almacenan en el almacén. Cuanto mayor sea el nivel, mayor será la capacidad de almacenamiento
 </div>
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
     <tr>
 			<th>
-Current storage capacity:</th>
+Capacidad de almacenamiento actual:</th>
 			<td><b><?php echo $bid10[$village->resarray['f'.$id]]['attri']*STORAGE_MULTIPLIER; ?></b></td>
 		</tr>
     	<tr>
         <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-			<th>Capacity at level <?php echo $village->resarray['f'.$id]+1; ?> </th>
+			<th>Capacidad en el nivel <?php echo $village->resarray['f'.$id]+1; ?> </th>
 			<td><b><?php echo $bid10[$village->resarray['f'.$id]+1]['attri']*STORAGE_MULTIPLIER; ?></b></td>
         <?php
         }

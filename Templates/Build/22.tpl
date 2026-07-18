@@ -4,9 +4,9 @@
 <div class="build_desc">
 <a href="#" onClick="return Popup(22,4);" class="build_logo">
 
-	<img class="building big white g22" src="img/x.gif" alt="Akadémia" title="Akadémia" />
+	<img class="building big white g22" src="img/x.gif" alt="Academia" title="Academia" />
 </a>
-New troop types must first be researched at the academy before they can be trained. The higher the level, the greater the number of troop types available to be researched..</div>
+Los nuevos tipos de tropas deben investigarse primero en la academia antes de poder entrenarlos. Cuanto mayor sea el nivel, más tipos de tropas estarán disponibles para investigar.</div>
 <?php
 include("upgrade.tpl");
 ?>
@@ -16,7 +16,7 @@ include("upgrade.tpl");
 	if ($building->getTypeLevel(22) > 0) {
 		include("22_".$session->tribe.".tpl");
 	} else {
-		echo "<p><b>No new troop types are currently available to be researched/b><br></p>\n";
+		echo "<p><b>No hay nuevos tipos de tropas disponibles para investigar/b><br></p>\n";
 	}
 ?>
 

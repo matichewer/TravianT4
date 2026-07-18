@@ -1,23 +1,23 @@
-﻿<h1 class="titleInHeader">Brickworks <span class="level">Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
+﻿<h1 class="titleInHeader">Fábrica de ladrillos <span class="level">Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
 <div id="build" class="gid6">
 <div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(6,4);" class="build_logo">
-	<img class="building big white g6" src="img/x.gif" alt="Brickworks" title="Brickworks" />
+	<img class="building big white g6" src="img/x.gif" alt="Fábrica de ladrillos" title="Fábrica de ladrillos" />
 </a>
-Here clay is processed into bricks. Based on its level your Brickyard can increase your clay production up to 25 percent.</div>
+Aquí el barro se procesa en ladrillos. Según su nivel, tu fábrica de ladrillos puede aumentar la producción de barro hasta un 25 por ciento.</div>
 
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 		<tr>
 			<th>
-Current increase in production:</th>
+Aumento de producción actual:</th>
 			<td><b><?php echo $bid6[$village->resarray['f'.$id]]['attri']; ?></b>%</td>
 		</tr>
 		<tr>
 		<?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-			<th>Increase in production at level <?php echo $village->resarray['f'.$id]+1; ?> </th>
+			<th>Aumento de producción en el nivel <?php echo $village->resarray['f'.$id]+1; ?> </th>
 			<td><b><?php echo $bid6[$village->resarray['f'.$id]+1]['attri']; ?></b>%</td>
             <?php
             }

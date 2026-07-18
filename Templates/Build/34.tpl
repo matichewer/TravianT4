@@ -3,7 +3,7 @@
     <div id="build" class="gid34">
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(34,4);" class="build_logo">
-        <img class="building big white g34" src="img/x.gif" alt="Kőfaragő" title="Kőfaragő"></a>
+        <img class="building big white g34" src="img/x.gif" alt="Cabaña del picapedrero" title="Cabaña del picapedrero"></a>
        The stonemason is an expert at manipulating stone. The higher the level, the stronger each of the buildings in your village</div>
 
 
@@ -17,7 +17,7 @@ Stability of buildings at current levels:</th>
 		<?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-			<th>Stability of buildings at level <?php echo $village->resarray['f'.$id]+1; ?></th>
+			<th>Resistencia de los edificios en el nivel <?php echo $village->resarray['f'.$id]+1; ?></th>
 			<td><b><?php echo $bid34[$village->resarray['f'.$id]+1]['attri']; ?>%</b></td>
             <?php
             }

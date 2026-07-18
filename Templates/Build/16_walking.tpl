@@ -85,7 +85,7 @@ if($units[$y]['attack_type'] == 2){ $style = ""; }else{ $style = "outRaid"; }
 				    echo "<div class=\"at small\">";
 				    echo " ".$datetime[1]." hs</div>";
     		?>
-					<!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Annuleren" alt="Annuleren" /></a>-->
+					<!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Cancelar" alt="Cancelar" /></a>-->
 					</div>
 				</td>
 			</tr>
@@ -153,7 +153,7 @@ $timer += 1;
                     echo "<div class=\"at small\">";
                     echo $datetime[1]." hs</div>";
             ?>
-                    <!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Annuleren" alt="Annuleren" /></a>-->
+                    <!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Cancelar" alt="Cancelar" /></a>-->
                     </div>
                 </td>
             </tr>
@@ -220,7 +220,7 @@ $timer += 1;
                     echo "<div class=\"at small\">";
                     echo " ".$datetime[1]."</div>";
             ?>
-                    <!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Annuleren" alt="Annuleren" /></a>-->
+                    <!--<div class="abort"><a href="build.php?id=39&a=4&t=5360004"><img src="img/x.gif" class="del" title="Cancelar" alt="Cancelar" /></a>-->
                     </div>
                 </td>
             </tr>

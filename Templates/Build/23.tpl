@@ -2,13 +2,13 @@
 
 <div id="build" class="gid23"><div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(23,4);" class="build_logo">
-	<img class="building big white g23" src="img/x.gif" alt="Rejtekhely" title="Rejtekhely" />
+	<img class="building big white g23" src="img/x.gif" alt="Escondite" title="Escondite" />
 </a>
-The cranny is used to hide some of your resources when the village is attacked. These resources cannot be stolen.</div>
+El escondite sirve para ocultar parte de tus recursos cuando la aldea es atacada. Esos recursos no pueden ser robados.</div>
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 	<tr>
-		<th>Cranny Size</th>
+		<th>Capacidad del escondite</th>
 		<td><b>
         <?php
 		if($session->tribe == 3) {
@@ -17,13 +17,13 @@ The cranny is used to hide some of your resources when the village is attacked. 
         echo $bid23[$village->resarray['f'.$id]]['attri']*CRANNY_CAPACITY;
         }
         ?>        
-        </b> Units</td>
+        </b> unidades</td>
 	</tr>
 	<tr>
 <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-		<th>Cranny Capacity at level  <?php echo $village->resarray['f'.$id]+1; ?></th>
+		<th>Cranny Capacidad en el nivel  <?php echo $village->resarray['f'.$id]+1; ?></th>
 		<td><b>
         <?php
 		if($session->tribe == 3) {
@@ -33,7 +33,7 @@ The cranny is used to hide some of your resources when the village is attacked. 
         }
         ?>
         
-        </b> Units</td>
+        </b> unidades</td>
         <?php
             }
             ?>

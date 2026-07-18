@@ -2,22 +2,22 @@
 <div id="build" class="gid26">
 <div class="build_desc">
 	<a href="#" onClick="return Travian.Game.iPopup(26,4, 'gid');" class="build_logo"> 
-    <img class="building big white g26" src="img/x.gif" alt="Palota" title="Palota" /> </a>
-	The king of the nation lives in the palace. The higher the level, the more difficult it is for enemies to conquer the village. Only a palace may be used to set a village as the capital. A palace and residence may not be built in the same village. Only one palace is allowed per account.</div>
+    <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
+	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta.</div>
 
 <?php 
 include("upgrade.tpl");
 include("26_menu.tpl"); 
 ?>
-<h4>Expansions</h4>
+<h4>Expansiones</h4>
 <table cellpadding="1" cellspacing="1" id="expansion">
 <thead>
 <tr>
-	<td colspan="2">Village</td>
-	<td>Player</td>
-	<td>Population</td>
-	<td>Coordinates</td>
-	<td>Date</td>
+	<td colspan="2">Aldea</td>
+	<td>Jugador</td>
+	<td>Población</td>
+	<td>Coordenadas</td>
+	<td>Fecha</td>
 </tr></thead>
 <tbody>
 <?php
@@ -47,7 +47,7 @@ echo '
 	}
 }
 else{
-echo '<tr><td colspan="6" class="none">This village has not established any new villages.</td></tr>';
+echo '<tr><td colspan="6" class="none">Esta aldea todavía no fundó nuevas aldeas.</td></tr>';
 }
 ?>
 </tbody></table></div>

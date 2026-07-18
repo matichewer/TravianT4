@@ -43,8 +43,8 @@ if($_POST AND $_GET['action'] == 'change_capital') {
 <div id="build" class="gid26">
 <div class="build_desc">
 	<a href="#" onClick="return Travian.Game.iPopup(26,4, 'gid');" class="build_logo"> 
-    <img class="building big white g26" src="img/x.gif" alt="Palota" title="Palota" /> </a>
-	The king of the nation lives in the palace. The higher the level, the more difficult it is for enemies to conquer the village. Only a palace may be used to set a village as the capital. A palace and residence may not be built in the same village. Only one palace is allowed per account. </div>
+    <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
+	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta. </div>
 <?php 
 if ($building->getTypeLevel(26) > 0) {
 include("upgrade.tpl");
@@ -66,13 +66,13 @@ $query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' .
 $data = mysql_fetch_assoc($query);
 if($data['wref'] == $village->wid) {
 ?>
-<p class="none">This Village is the Capital</p>
+<p class="none">Esta aldea es la capital</p>
 <?php 
 } else {
   if($_GET['confirm'] == '') {
-    print '<p><a class="arrow" href="?id=' . $building->getTypeField(26) . '&confirm=yes">Make this Village Capital</a></p>';
+    print '<p><a class="arrow" href="?id=' . $building->getTypeField(26) . '&confirm=yes">Convertir esta aldea en capital</a></p>';
   } else {
-    print '<p>Please enter your password to make this village capital<br />
+    print '<p>Introduce tu contraseña para convertir esta aldea en capital<br />
     <form method="post" action="build.php?id=' . $building->getTypeField(26) . '&action=change_capital">
      
      Jelszó: <input type="password" name="pass" />' . $_SESSION['error_p'] . '<br />
@@ -84,7 +84,7 @@ if($data['wref'] == $village->wid) {
   }
 }
 } else {
-	echo "<b>Palace is being upgraded</b>";
+	echo "<b>El palacio está siendo mejorado</b>";
 }
 
 ?>

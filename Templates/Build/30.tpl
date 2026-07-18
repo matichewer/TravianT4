@@ -2,7 +2,7 @@
 <div id="build" class="gid30">
 <p class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(30,4);" class="build_logo">
-<img class="building big white g30" src="img/x.gif" alt="Nagy Istálló" title="Nagy Istálló" /> </a>
+<img class="building big white g30" src="img/x.gif" alt="Gran establo" title="Gran establo" /> </a>
 The great stable allows the training of additional cavalry. These troops cost three times as much, however. <br /></p>
 <?php 
 include("upgrade.tpl");
@@ -19,11 +19,11 @@ include("upgrade.tpl");
                 </div>
             <div class="clear"></div>
                     <button type="submit" value="ok" name="s1" id="btn_train" value="ok" class="startTraining">
-                    <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Train</div></div>
+                    <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Entrenar</div></div>
                     </button>
     <?php
     } else {
-        echo "<b>Training can commence when great stables are completed.</b><br>\n";
+        echo "<b>El entrenamiento puede comenzar cuando el gran establo esté terminado.</b><br>\n";
     }
     $trainlist = $technology->getTrainingList(6);
     if(count($trainlist) > 0) {
@@ -31,9 +31,9 @@ include("upgrade.tpl");
         <h4 class=\"round spacer\">Train</h4>
     <table cellpadding=\"1\" cellspacing=\"1\" class=\"under_progress\">
         <thead><tr>
-            <td>Unti</td>
-            <td>Duration</td>
-            <td>Finish</td>
+            <td>Unidad</td>
+            <td>Duración</td>
+            <td>Finaliza</td>
         </tr></thead>
         <tbody>";
         $TrainCount = 0;
@@ -52,7 +52,7 @@ include("upgrade.tpl");
             $time = $generator->procMTime($train['commence']+($train['eachtime']*$train['amt']));
             echo " ".$time[1]." óra";
         } ?>
-		</tr><tr class="next"><td colspan="3">The next unti is ready in <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
+		</tr><tr class="next"><td colspan="3">La próxima unidad estará lista en <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
         </tbody></table>
     <?php } ?>
 </p></div>

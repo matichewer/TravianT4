@@ -2,21 +2,21 @@
 <div id="build" class="gid7">
 <div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(7,4);" class="build_logo">
-	<img class="building big white g7" src="img/x.gif" alt="Iron Foundry" title="Iron Foundry" />
+	<img class="building big white g7" src="img/x.gif" alt="Fundición de hierro" title="Fundición de hierro" />
 </a>
-Iron is smelted in the iron foundry. Based on its level your Iron Foundry can increase your iron production up to 25 percent.</div>
+El hierro se funde en la fundición de hierro. Según su nivel, puede aumentar tu producción de hierro hasta un 25 por ciento.</div>
 
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 		<tr>
-			<th>Current increase in production:</th>
+			<th>Aumento de producción actual:</th>
 			<td><b><?php echo $bid7[$village->resarray['f'.$id]]['attri']; ?></b>%</td>
 		</tr>
 		<tr>
 		<?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-			<th>Increase in production at level<?php echo $village->resarray['f'.$id]+1; ?> </th>
+			<th>Aumento de producción en el nivel<?php echo $village->resarray['f'.$id]+1; ?> </th>
 			<td><b><?php echo $bid7[$village->resarray['f'.$id]+1]['attri']; ?></b>%</td>
             <?php
             }

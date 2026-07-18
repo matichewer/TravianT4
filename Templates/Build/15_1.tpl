@@ -16,7 +16,7 @@ if(!empty($_REQUEST["demolish"]) && $_REQUEST["c"] == $session->mchecker) {
 }
 
 if($village->resarray['f'.$id] >= DEMOLISH_LEVEL_REQ) {
-	echo "<h4>Demolish building:</h4><p>Your architects can demolish buildings you no longer need:</p>";
+	echo "<h4>Demoler edificio:</h4><p>Tus arquitectos pueden demoler los edificios que ya no necesites:</p>";
 	$VillageResourceLevels = $database->getResourceLevel($village->wid);
 	$DemolitionProgress = $database->getDemolition($village->wid);
 	if (!empty($DemolitionProgress)) {
@@ -35,7 +35,7 @@ if($village->resarray['f'.$id] >= DEMOLISH_LEVEL_REQ) {
 			}
 		}
 		echo "</select>
-        <button type=\"submit\" value=\"Lebontás\" id=\"btn_demolish\"><div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div><div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div></div><div class=\"button-contents\">Demolish</div></div></button></form>";
+        <button type=\"submit\" value=\"Lebontás\" id=\"btn_demolish\"><div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div><div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div></div><div class=\"button-contents\">Demoler</div></div></button></form>";
 	}
 }
 ?>

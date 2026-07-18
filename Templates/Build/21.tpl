@@ -1,8 +1,8 @@
 ﻿<h1 class="titleInHeader">Taller <span class="level"> Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
 <div id="build" class="gid21"><div class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(21,4, 'gid');" class="build_logo"> 
-<img class="building big white g21" src="img/x.gif" alt="Műhely" title="Műhely" /> </a>
-In the workshop siege engines like catapults and rams can be built. The higher its level the faster units are produced.</div>
+<img class="building big white g21" src="img/x.gif" alt="Taller" title="Taller" /> </a>
+En el taller se construyen armas de asedio como catapultas y arietes. Cuanto mayor sea su nivel, más rápido se producen las unidades.</div>
 <?php
 include("upgrade.tpl");
 if ($building->getTypeLevel(21) > 0) { ?>
@@ -33,25 +33,25 @@ if ($building->getTypeLevel(21) > 0) { ?>
 							<img class=\"unitSection u".$i."Section\" src=\"img/x.gif\" alt=\"".$technology->getUnitName($i)."\">
 						</a>
 						<a href=\"#\" class=\"zoom\" onclick=\"return Travian.Game.unitZoom($i);\">
-							<img class=\"zoom\" src=\"img/x.gif\" alt=\"zoom in\">
+							<img class=\"zoom\" src=\"img/x.gif\" alt=\"ampliar\">
 						</a>
 					</div>
 					<div class=\"details\">
 						<div class=\"tit\">
 							<a href=\"#\" onclick=\"return Travian.Game.iPopup($i,1);\"><img class=\"unit u$i\" src=\"img/x.gif\" alt=\"Paladin\"></a>
 							<a href=\"#\" onclick=\"return Travian.Game.iPopup($i,1);\">".$technology->getUnitName($i)."</a>
-							<span class=\"furtherInfo\">(Avalaible: ".$village->unitarray['u'.$i].")</span>
+							<span class=\"furtherInfo\">(Disponibles: ".$village->unitarray['u'.$i].")</span>
 						</div>
                         <div class=\"showCosts\">
                         <span class=\"resources r1\"><img class=\"r1\" src=\"img/x.gif\" alt=\"Madera\">".${'u'.$i}['wood']."</span>
                         <span class=\"resources r2\"><img class=\"r2\" src=\"img/x.gif\" alt=\"Barro\">".${'u'.$i}['clay']."</span>
                         <span class=\"resources r3\"><img class=\"r3\" src=\"img/x.gif\" alt=\"Hierro\">".${'u'.$i}['iron']."</span>
                         <span class=\"resources r4\"><img class=\"r4\" src=\"img/x.gif\" alt=\"Cereal\">".${'u'.$i}['crop']."</span>
-                        <span class=\"resources r5\"><img class=\"r5\" src=\"img/x.gif\" alt=\"Búzafogyasztás\">".${'u'.$i}['pop']."</span>
+                        <span class=\"resources r5\"><img class=\"r5\" src=\"img/x.gif\" alt=\"Consumo de cereal\">".${'u'.$i}['pop']."</span>
                         <div class=\"clear\"></div>
                         <span class=\"clocks\"><img class=\"clock\" src=\"img/x.gif\" alt=\"duración\">";
                         echo $generator->getTimeFormat(round(${'u'.$i}['time'] * ($bid21[$village->resarray['f'.$id]]['attri'] / 100) / SPEED));
-						echo "</span><div class=\"clear\"></div></div><span class=\"value\">Összesen</span>
+						echo "</span><div class=\"clear\"></div></div><span class=\"value\">Total</span>
 						<input type=\"text\" class=\"text\" name=\"t$i\" value=\"0\" maxlength=\"4\">
                         <span class=\"value\"> / </span>
 						<a href=\"#\" onClick=\"document.snd.t$i.value=".$technology->maxUnit($i)."; return false;\">".$technology->maxUnit($i)."</a>
@@ -61,15 +61,15 @@ if ($building->getTypeLevel(21) > 0) { ?>
                 }
             }
             if($success == 0) {
-	echo "<tr><td colspan=\"3\"><div class=\"none\"><center>Units need to be researched</center></div></td></tr>";
+	echo "<tr><td colspan=\"3\"><div class=\"none\"><center>Hay que investigar las unidades primero</center></div></td></tr>";
             }
             ?>
 </div><div class="clear"></div>
-			<button type="submit" value="ok" name="s1" id="btn_train" value="ok" class="startTraining"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Train</div></div></button>
+			<button type="submit" value="ok" name="s1" id="btn_train" value="ok" class="startTraining"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Entrenar</div></div></button>
 		</form>
 <?php
 	    } else {
-			echo "<b>Units need to be researched</b><br>\n";
+			echo "<b>Hay que investigar las unidades primero</b><br>\n";
 		}
 
     $trainlist = $technology->getTrainingList(3);
@@ -78,9 +78,9 @@ if ($building->getTypeLevel(21) > 0) { ?>
     	echo "
     <table cellpadding=\"1\" cellspacing=\"1\" class=\"under_progress\">
 		<thead><tr>
-			<td>Unit alatt</td>
-			<td>Duration</td>
-			<td>Finish</td>
+			<td>Unidad</td>
+			<td>Duración</td>
+			<td>Finaliza</td>
 		</tr></thead>
 		<tbody>";
         $TrainCount = 0;
@@ -98,11 +98,11 @@ if ($building->getTypeLevel(21) > 0) { ?>
 		echo "</td><td class=\"fin\">";
 		$time = $generator->procMTime($train['timestamp']);
 		if($time[0] != "today") {
-			echo "on ".$time[0]." at ";
+			echo "el ".$time[0]." a las ";
             	}
 		echo $time[1];
 		} ?>
-		</tr><tr class="next"><td colspan="3">Next Unit finished in <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
+		</tr><tr class="next"><td colspan="3">La próxima unidad estará lista en <span id="timer2"><?php echo $NextFinished; ?></span> </td></tr>
         </tbody></table>
     <?php }
 ?>  

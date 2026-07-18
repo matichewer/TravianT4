@@ -3,10 +3,10 @@
     $artefact = $database->getArtefactDetails($_GET['show']);
                     if($artefact['size'] == 1){
                        $reqlvl = 10;
-                       $effect = "Village containing inscriptions";
+                       $effect = "Aldea con inscripciones";
                    }elseif($artefact['size'] == 2 OR $artefact['size'] == 3){
                        $reqlvl = 20;
-                       $effect = "All villages";
+                       $effect = "Todas las aldeas";
                    }  
                    if ($artefact['conquered'] >= (time()-86400)){
                    $active = "Inactive"; 
@@ -27,23 +27,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>The Artefact</th>
+                        <th>El artefacto</th>
                         <td>
                             <a href="spieler.php?uid=<?php echo $artefact['owner'];?>"><?php echo $database->getUserField($artefact['owner'],"username",0);?></a>
                         </td>
                     </tr>
                     <tr>
-                        <th>Village containing inscriptions</th>
+                        <th>Aldea con inscripciones</th>
                         <td>
                             <a href="karte.php?d=<?php echo $artefact['vref'];?>&c=<?php echo $generator->getMapCheck($artefact['vref']);?>"><?php echo $database->getVillageField($artefact['vref'], "name");?> </a>
                         </td>
                     </tr>                                  
                     <tr>
-                        <th>Klán</th>
+                        <th>Alianza</th>
                         <td><a href="allianz.php?aid=<?php echo $database->getUserField($artefact['owner'],"alliance",0);?>"><?php echo $database->getAllianceName($database->getUserField($artefact['owner'],"alliance",0)); ?></a></td>
                     </tr> 
                     <tr>
-                        <th>Effect</th>
+                        <th>Efecto</th>
                         <td><?php echo $effect; ?></td>
                     </tr>
         
@@ -54,34 +54,34 @@
                
             <tr>
                 <th>Treasure Chamber</th>
-                <td>A kincstár <b><?php echo $reqlvl; ?></b></td>
+                <td>La tesorería <b><?php echo $reqlvl; ?></b></td>
             </tr>
         
                 <tr>
-                    <th>Date</th>
+                    <th>Fecha</th>
                     <td><?php echo date("Y.m.d. H:i",$artefact['conquered']);?></td>
                 </tr>
             
                 <tr>
-                    <th>Activity</th>
+                    <th>Actividad</th>
                     <td><?php echo $active;?></td>
                 </tr>
             </tbody></table><br />
-            <h4>Artefacts</h4>
+            <h4>Artefactos</h4>
                 <table class="art_details" cellpadding="1" cellspacing="1">
                     <thead>
                         <tr>
-                            <td>Player</td>
-                            <td>Village containing inscriptions</td>
-                            <td>Capture History</td>
+                            <td>Jugador</td>
+                            <td>Aldea con inscripciones</td>
+                            <td>Historial de capturas</td>
                         </tr>
                     </thead>
                     <tbody>
             
                     <tr>
-                        <td><span class="none">No User</span></td>
+                        <td><span class="none">Sin jugador</span></td>
                         <td><span class="none">[?]</span></td>
-                        <td><span class="none">Yet To Be Conquered</span></td> 
+                        <td><span class="none">Aún sin conquistar</span></td> 
                         
                     </tr>
                    

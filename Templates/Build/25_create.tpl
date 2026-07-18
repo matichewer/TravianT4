@@ -5,9 +5,9 @@
 			<table cellpadding="1" cellspacing="1" class="build_details">
 				<thead>
 					<tr>
-						<td>Név</td>
-						<td>Szám</td>
-						<td>Maximum</td>
+						<td>Nombre</td>
+						<td>Cantidad</td>
+						<td>Máximo</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -16,12 +16,12 @@ $i = 20;
                echo "<tr><td class=\"desc\">
 					<div class=\"tit\">
 						<img class=\"unit u".$i."\" src=\"img/x.gif\" alt=\"".$technology->getUnitName($i)."\" title=\"".$technology->getUnitName($i)."\" />
-						<a href=\"#\" onClick=\"return Popup(".$i.",1);\">".$technology->getUnitName($i)."</a>  <span class=\"info\">(Available: ".$village->unitarray['u'.$i].")</span>
+						<a href=\"#\" onClick=\"return Popup(".$i.",1);\">".$technology->getUnitName($i)."</a>  <span class=\"info\">(Disponibles: ".$village->unitarray['u'.$i].")</span>
 					</div>
-					<div class=\"details\"><img class=\"r1\" src=\"img/x.gif\" alt=\"Madera\" title=\"Madera\" />".${'u'.$i}['wood']."|<img class=\"r2\" src=\"img/x.gif\" alt=\"Barro\" title=\"Barro\" />".${'u'.$i}['clay']."|<img class=\"r3\" src=\"img/x.gif\" alt=\"Hierro\" title=\"Hierro\" />".${'u'.$i}['iron']."|<img class=\"r4\" src=\"img/x.gif\" alt=\"Cereal\" title=\"Cereal\" />".${'u'.$i}['crop']."|<img class=\"clock\" src=\"img/x.gif\" alt=\"Időtartam\" title=\"Időtartam\" />";
+					<div class=\"details\"><img class=\"r1\" src=\"img/x.gif\" alt=\"Madera\" title=\"Madera\" />".${'u'.$i}['wood']."|<img class=\"r2\" src=\"img/x.gif\" alt=\"Barro\" title=\"Barro\" />".${'u'.$i}['clay']."|<img class=\"r3\" src=\"img/x.gif\" alt=\"Hierro\" title=\"Hierro\" />".${'u'.$i}['iron']."|<img class=\"r4\" src=\"img/x.gif\" alt=\"Cereal\" title=\"Cereal\" />".${'u'.$i}['crop']."|<img class=\"clock\" src=\"img/x.gif\" alt=\"Duración\" title=\"Duración\" />";
                     echo $generator->getTimeFormat(round(${'u'.$i}['time']/SPEED));
                     //if($session->userinfo['gold'] >= 3 && $building->getTypeLevel(17) > 1) {
-                   //echo "|<a href=\"build.php?gid=17&t=3&r1=".${'r'.$i}['wood']."&r2=".${'r'.$i}['clay']."&r3=".${'r'.$i}['iron']."&r4=".${'r'.$i}['crop']."\" title=\"NPC trade\"><img class=\"npc\" src=\"img/x.gif\" alt=\"NPC trade\" title=\"NPC trade\" /></a>";
+                   //echo "|<a href=\"build.php?gid=17&t=3&r1=".${'r'.$i}['wood']."&r2=".${'r'.$i}['clay']."&r3=".${'r'.$i}['iron']."&r4=".${'r'.$i}['crop']."\" title=\"Intercambio NPC\"><img class=\"npc\" src=\"img/x.gif\" alt=\"Intercambio NPC\" title=\"Intercambio NPC\" /></a>";
                    //}
                    echo "
 				<td class=\"val\"><input type=\"text\" class=\"text\" name=\"t".$i."\" value=\"0\" maxlength=\"4\"></td>
@@ -42,9 +42,9 @@ $i = 20;
     	echo "
     <table cellpadding=\"1\" cellspacing=\"1\" class=\"under_progress\">
 		<thead><tr>
-			<td>Képzés</td>
+			<td>Entrenamiento</td>
 			<td>Időtartam</td>
-			<td>Kész</td>
+			<td>Finaliza</td>
 		</tr></thead>
 		<tbody>";
         foreach($trainlist as $train) {
@@ -55,8 +55,8 @@ $i = 20;
         if($time[0] != "today") {
             echo $time[0];
             }
-            echo $time[1]."</span><span> Time</td>
-		</tr><tr class=\"next\"><td colspan=\"3\">Next Unit <span id=timer".$timer.">".$generator->getTimeFormat(($train['commence']+$train['eachtime'])-time())."</span></td></tr>";
+            echo $time[1]."</span><span></td>
+		</tr><tr class=\"next\"><td colspan=\"3\">Próxima unidad <span id=timer".$timer.">".$generator->getTimeFormat(($train['commence']+$train['eachtime'])-time())."</span></td></tr>";
         }
         echo "</tbody></table>";
     }
