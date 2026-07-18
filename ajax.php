@@ -41,6 +41,41 @@ if($_GET){
 				
 				include("Templates/Ajax/mapscroll.tpl");
 			break;
+
+			case 'viewTileDetails':
+				include_once("GameEngine/Village.php");
+
+				if(!isset($_POST['x'], $_POST['y']) || !is_numeric($_POST['x']) || !is_numeric($_POST['y'])) {
+					header("Content-Type: application/json; charset=UTF-8");
+					echo json_encode(array('error' => true, 'errorMsg' => 'Coordenadas inválidas.'));
+					exit;
+				}
+
+				$x = (int) $_POST['x'];
+				$y = (int) $_POST['y'];
+				if(abs($x) > WORLD_MAX || abs($y) > WORLD_MAX) {
+					header("Content-Type: application/json; charset=UTF-8");
+					echo json_encode(array('error' => true, 'errorMsg' => 'Coordenadas fuera del mapa.'));
+					exit;
+				}
+
+				$_GET['x'] = $x;
+				$_GET['y'] = $y;
+
+				ob_start();
+				include("Templates/Map/vilview.tpl");
+				$html = ob_get_clean();
+
+				header("Content-Type: application/json; charset=UTF-8");
+				echo json_encode(array(
+					'error' => false,
+					'data' => array(
+						'html' => $html,
+						'title' => 'Detalles de la casilla ('.$x.'|'.$y.')'
+					)
+				));
+				exit;
+			break;
 		}
 	}
 

@@ -213,7 +213,7 @@ break;
     if(!$maparray[$index]['fieldtype'] && $maparray[$index]['oasistype'] && $maparray[$index]['occupied']){
     	$occupied = "-s";
     }else{ $occupied = ""; }
-    echo "<a href=\"karte.php?d=".$maparray[$index]['id']."&c=".$generator->getMapCheck($maparray[$index]['id'])."\" style=\"cursor:default;\"><div class=\"tile tile-".$i."-row".$row1." ".$image."".$occupied."\" title=\"".$targettitle."\">";
+    echo "<a class=\"mapTileLink\" data-x=\"".$maparray[$index]['x']."\" data-y=\"".$maparray[$index]['y']."\" href=\"position_details.php?x=".$maparray[$index]['x']."&y=".$maparray[$index]['y']."\" style=\"cursor:default;\"><div class=\"tile tile-".$i."-row".$row1." ".$image."".$occupied."\" title=\"".$targettitle."\">";
     if($session->plus) {
     echo $att;
     }
@@ -291,7 +291,7 @@ body.map{background:#c8dd9b;}
 </style>
 <script type="text/javascript">
 /* Click-and-drag panning (mouse + touch) for the fullscreen map: grab, release
-   to re-center. Barely-moving pointers fall through to the plain tile links. */
+   to re-center. A click without movement opens the selected tile details. */
 (function(){
 	var TILE=<?php echo (int)$TILE; ?>, THRESHOLD=6, WORLD=<?php echo (int)WORLD_MAX; ?>, PERIOD=2*WORLD+1;
 	var curX=<?php echo (int)$x; ?>, curY=<?php echo (int)$y; ?>;
@@ -300,7 +300,31 @@ body.map{background:#c8dd9b;}
 		var container=document.getElementById('mapContainer');
 		var data=document.getElementById('mapData');
 		if(!container||!data) return;
-		var dragging=false, moved=false, sx=0, sy=0, dx=0, dy=0;
+		var dragging=false, moved=false, dialogOpen=false, sx=0, sy=0, dx=0, dy=0;
+		data.addEventListener('click', function(e){
+			var link=e.target;
+			while(link&&link!==data&&!link.classList.contains('mapTileLink')) link=link.parentNode;
+			if(!link||link===data) return;
+			e.preventDefault();
+			if(dialogOpen) return;
+			dialogOpen=true;
+			new Travian.Dialog.Ajax({
+				buttonOk:false,
+				data:{
+					cmd:'viewTileDetails',
+					x:parseInt(link.getAttribute('data-x'),10),
+					y:parseInt(link.getAttribute('data-y'),10)
+				},
+				onOpen:function(dialog,content){
+					$(content).getElements('a[href^="karte.php"]').addEvent('click',function(event){
+						event.stop();
+						var url=new URI(this.href);
+						window.location.href='karte2.php?x='+parseInt(url.getData('x'),10)+'&y='+parseInt(url.getData('y'),10);
+					});
+				},
+				onClose:function(){ dialogOpen=false; }
+			});
+		});
 		data.addEventListener('dragstart', function(e){ e.preventDefault(); });
 		data.addEventListener('pointerdown', function(e){
 			if(e.button!==0) return;               /* primary mouse button / touch / pen */
