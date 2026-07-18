@@ -345,14 +345,17 @@ break;
 			dragging=false;
 			if(!moved) return; /* a click: let the tile <a href> do its thing */
 			container.classList.remove('dragPanning');
-			data.style.transform='';
 			/* swallow the click that fires right after a drag */
 			var kill=function(ev){ ev.preventDefault(); ev.stopPropagation(); document.removeEventListener('click',kill,true); };
 			document.addEventListener('click',kill,true);
 			setTimeout(function(){ document.removeEventListener('click',kill,true); },50);
 			var tdx=Math.round(dx/TILE); /* drag right -> reveal west -> x decreases */
 			var tdy=Math.round(dy/TILE); /* drag down  -> reveal north -> y increases */
-			if(tdx===0 && tdy===0) return;
+			if(tdx===0 && tdy===0){ data.style.transform=''; return; } /* sub-tile drag: snap back, no reload */
+			/* Freeze the map snapped to the new centre (whole tiles) instead of
+			   resetting it, so it doesn't flash back to the old position while the
+			   reload renders. The snap lines up with what the reload will show. */
+			data.style.transform='translate('+(tdx*TILE)+'px,'+(tdy*TILE)+'px)';
 			var nx=curX-tdx, ny=curY+tdy;
 			if(nx>WORLD) nx-=PERIOD; if(nx<-WORLD) nx+=PERIOD;
 			if(ny>WORLD) ny-=PERIOD; if(ny<-WORLD) ny+=PERIOD;
