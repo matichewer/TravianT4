@@ -279,7 +279,7 @@ define("WE_LOOKED","Buscamos 404 veces pero no encontramos nada");
 
 //TIME RELATED
 define("CALCULATED","Calculado en");
-define("SERVER_TIME","Tiempo funcionando:");
+define("SERVER_TIME","Hora del servidor:");
 
 //MASSMESSAGE.php
 define("MASS","Contenido del mensaje");

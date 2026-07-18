@@ -12,7 +12,7 @@ echo '<pre>';
 echo '</pre>';
 ?>
 
-<h1>Found new village</h1>
+<h1>Fundar nueva aldea</h1>
 <!--<p>De kolonisten kunnen nog niet vertrekken.<br> Voor het stichten van een nieuw dorp is er nog 750 grondstoffen hout, klei, ijzer en graan nodig.</p>-->
 				<form method="POST" action="build.php">
 				<input type="hidden" name="a" value="new" />
@@ -23,7 +23,7 @@ echo '</pre>';
 		<table class="troop_details" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $database->getUserField($session->uid,'username',0); ?></a></td><td colspan="10"><a href="karte.php?d=<?php echo $newvillage['id']; ?>&c=<?php echo $generator->getMapCheck($newvillage['0']) ?>">New village (<?php echo $newvillage['x']; ?>|<?php echo $newvillage['y']; ?>)</a></td>
+			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $database->getUserField($session->uid,'username',0); ?></a></td><td colspan="10"><a href="karte.php?d=<?php echo $newvillage['id']; ?>&c=<?php echo $generator->getMapCheck($newvillage['0']) ?>">Nueva aldea (<?php echo $newvillage['x']; ?>|<?php echo $newvillage['y']; ?>)</a></td>
 		</tr>
 	</thead>
 	<tbody class="units">
@@ -34,7 +34,7 @@ echo '</pre>';
 				} ?>
 		</tr>
 		<tr>
-			<th>Troops</th>
+			<th>Tropas</th>
 				<?php for($i=1;$i<=9;$i++) {
 					echo "<td class=\"none\">0</td>";
 				} ?>
@@ -43,18 +43,18 @@ echo '</pre>';
 	</tbody>
 	<tbody class="infos">
 		<tr>
-			<th>Duration</th>
-				<td colspan="10"><img class="clock" src="img/x.gif" alt="duration" title="duration" /> <?php echo $generator->getTimeFormat($time); ?></td>
+			<th>Duración</th>
+				<td colspan="10"><img class="clock" src="img/x.gif" alt="duración" title="duración" /> <?php echo $generator->getTimeFormat($time); ?></td>
 		</tr>
 	</tbody>
 	<tbody class="infos">
 		<tr>
-			<th>Resources</th>
+			<th>Recursos</th>
 				<td colspan="10">
-				<img class="r1" src="img/x.gif" alt="Wood" title="Wood" /> 750 | 
-				<img class="r2" src="img/x.gif" alt="Clay" title="Clay" /> 750 | 
-				<img class="r3" src="img/x.gif" alt="Iron" title="Iron" /> 750 | 
-				<img class="r4" src="img/x.gif" alt="Crop" title="Crop" /> 750 </td>
+				<img class="r1" src="img/x.gif" alt="Madera" title="Madera" /> 750 | 
+				<img class="r2" src="img/x.gif" alt="Barro" title="Barro" /> 750 | 
+				<img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" /> 750 | 
+				<img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" /> 750 </td>
 		</tr>
 	</tbody>
 </table>
@@ -73,13 +73,13 @@ if($cps >= $need_cps) {
 	if($wood>=750 && $clay>=750 && $iron>=750 && $crop>=750){
 ?>
 
-<button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Found new village</div></div></button>
+<button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Fundar nueva aldea</div></div></button>
 <?php
 	}else {
-		echo "<span class=\"none\">There are not enough resources to found new village!</span>";
+		echo "<span class=\"none\">No hay suficientes recursos para fundar una nueva aldea.</span>";
 	}
 } else {
-  print "<span class=\"none\">$cps/$need_cps culture points</span>";
+  print "<span class=\"none\">$cps/$need_cps puntos de cultura</span>";
 }
 ?>
 </form>

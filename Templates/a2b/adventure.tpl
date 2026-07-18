@@ -9,7 +9,7 @@ $time = $generator->procDistanceTime($from,$to,$speed,1);
 $founder = $database->getVillage($village->wid);
 ?>
 
-<h1>Adventure</h1>
+<h1>Aventura</h1>
 				<form method="POST" action="build.php">
 				<input type="hidden" name="a" value="adventure" />
 				<input type="hidden" name="c" value="5" />
@@ -19,7 +19,7 @@ $founder = $database->getVillage($village->wid);
 		<table class="troop_details" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $village->vname; ?></a></td><td colspan="11">Adventure (<?php echo $adventure['x']; ?>|<?php echo $adventure['y']; ?>)</td>
+			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $village->vname; ?></a></td><td colspan="11">Aventura (<?php echo $adventure['x']; ?>|<?php echo $adventure['y']; ?>)</td>
 		</tr>
 	</thead>
 	<tbody class="units">
@@ -32,7 +32,7 @@ $founder = $database->getVillage($village->wid);
                 ?>
 		</tr>
 		<tr>
-			<th>Units</th>
+			<th>Unidades</th>
 				<?php for($i=1;$i<=10;$i++) {
 					echo "<td class=\"none\">0</td>";
 				} ?>
@@ -41,8 +41,8 @@ $founder = $database->getVillage($village->wid);
 	</tbody>
 	<tbody class="infos">
 		<tr>
-			<th>Arrival</th>
-				<td colspan="11"><img class="clock" src="img/x.gif" alt="Duration" title="Duration" /> <?php echo $generator->getTimeFormat($time); ?></td>
+			<th>Llegada</th>
+				<td colspan="11"><img class="clock" src="img/x.gif" alt="Duración" title="Duración" /> <?php echo $generator->getTimeFormat($time); ?></td>
 		</tr>
 	</tbody>
 </table>
@@ -52,17 +52,17 @@ if($herodetail['dead']==0){
 	if($database->getHUnit($village->wid)){
 ?>
 	<p class="button">
-		<button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Start Adventure</div></div></button>
+		<button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Comenzar aventura</div></div></button>
 	</p>
 <?php }else{ ?>
-<button type="button" title="Your hero is not in this village yet." value="Kalandra fel!" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Start Adventure</div></div></button>
+<button type="button" title="Tu héroe todavía no está en esta aldea." value="Comenzar aventura" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Comenzar aventura</div></div></button>
 <?php } ?>
 <?php }else{ ?>
-<button type="button" title="Your hero is dead." value="Kalandra fel" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Start Adventure</div></div></button>
+<button type="button" title="Tu héroe está muerto." value="Comenzar aventura" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Comenzar aventura</div></div></button>
 <?php 
 }
 }else{ 
 ?>
-<button type="button" title="You need to build rally point." value="Kalandra fel" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Start Adventure</div></div></button>
+<button type="button" title="Necesitas construir la plaza de reuniones." value="Comenzar aventura" class="disabled"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Comenzar aventura</div></div></button>
 <?php } ?>
 </form>

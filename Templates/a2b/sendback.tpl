@@ -16,7 +16,7 @@ if ($enforce['hero']>0){ $colspan = 11; }else{ $colspan = 10; }
 	<thead>
 		<tr>
 			<td class="role"><a href="karte.php?d=<?php echo $generator->getBaseID($fromcoor['x'],$fromcoor['y']); ?>&amp;c=<?php echo $generator->getMapCheck($generator->getBaseID($fromcoor['x'],$fromcoor['y'])); ?>"><?php echo $to['name']; ?></a></td>
-            <td colspan="<?php echo $colspan; ?>"><a href="spieler.php?uid=<?php echo $to['owner']; ?>">Send these troops back</a></td>
+            <td colspan="<?php echo $colspan; ?>"><a href="spieler.php?uid=<?php echo $to['owner']; ?>">Enviar estas tropas de vuelta</a></td>
         </tr>
     </thead>
     <tbody class="units">
@@ -32,7 +32,7 @@ if ($enforce['hero']>0){ $colspan = 11; }else{ $colspan = 10; }
         ?>
         </tr>
         <tr>
-        <th>Units</th>
+        <th>Unidades</th>
         <?php
         $t = 1;
         for($i=$start;$i<=$end;$i++) {
@@ -76,11 +76,11 @@ if ($enforce['hero']>0){ $colspan = 11; }else{ $colspan = 10; }
 			?>
    <tbody class="infos">
 		<tr>
-			<th>Arrival</th>
+			<th>Llegada</th>
             
             <td colspan="<?php echo $colspan; ?>">
-			<div class="in">Travel Time <?php echo $generator->getTimeFormat($time); ?> Hours</div>
-			<div class="at"><span id="tp2"><?php echo date("H:i:s",time()+$time)?></span><span> Time</span></div>
+			<div class="in">Tiempo de viaje <?php echo $generator->getTimeFormat($time); ?> horas</div>
+			<div class="at"><span id="tp2"><?php echo date("H:i:s",time()+$time)?></span><span> Hora</span></div>
 			<div class="clear"></div>
 			</td>
 		</tr>
@@ -92,6 +92,6 @@ if ($enforce['hero']>0){ $colspan = 11; }else{ $colspan = 10; }
 <input name="c" value="8" type="hidden">
 
 		<p class="button">
-			<button type="submit" value="ok" name="s1" id="btn_ok" onclick="if (this.disabled==false) {document.getElementsByTagName('form')[0].submit();} this.disabled=true;"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">confirm</div></div></button>
+			<button type="submit" value="ok" name="s1" id="btn_ok" onclick="if (this.disabled==false) {document.getElementsByTagName('form')[0].submit();} this.disabled=true;"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">confirmar</div></div></button>
             </p>
 </form>

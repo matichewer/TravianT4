@@ -138,7 +138,7 @@ $paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last d
 $outputList = '';
 $name = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"4\" class=\"none\">There are no messages available in the archive.</td>";
+    $outputList .= "<td colspan=\"4\" class=\"none\">No hay mensajes disponibles en el archivo.</td>";
 }else{
 while($row = mysql_fetch_array($sql2)){
     $id = $row["id"];
@@ -176,9 +176,9 @@ while($row = mysql_fetch_array($sql2)){
 <table cellpadding="1" cellspacing="1" id="overview" class="inbox">
 		<thead>
 			<tr>
-				<th colspan="2">Subject</th>
-				<th class="send">Sender</th>
-				<th class="dat"><b>Sent</b></th>
+				<th colspan="2">Asunto</th>
+				<th class="send">Remitente</th>
+				<th class="dat"><b>Enviado</b></th>
 			</tr>
 		</thead>
 <tbody>
@@ -209,7 +209,7 @@ while($row = mysql_fetch_array($sql2)){
 					element.checked = this.checked;
 				}, this);
 			">
-			<span><label for="sAll">Check All</label></span>
+			<span><label for="sAll">Marcar todos</label></span>
             </div>
 <?php } ?>
 
@@ -219,12 +219,12 @@ while($row = mysql_fetch_array($sql2)){
     <div class="clear"></div>
 </div><p>
 <button name="delmsg" type="submit" value="delmsg" id="del" class="delete">
-<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Delete</div></div>
+<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Eliminar</div></div>
 </button>
 
 <?php if($session->plus) { ?>
 <button name="start" type="submit" value="start" id="start" class="delete">
-<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">UnArchive</div></div>
+<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Desarchivar</div></div>
 </button>
 <?php } ?>
 

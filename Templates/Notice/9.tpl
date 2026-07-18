@@ -70,13 +70,13 @@ for($i=$start;$i<=$end;$i++) {
 }
 ?>
 						<td class="unit last">
-				<img title="Hero" class="unit uhero" src="img/x.gif">
+				<img title="Héroe" class="unit uhero" src="img/x.gif">
 			</td>
 		</tr>
 	</tbody>
 	<tbody class="units last">
 		<tr>
-			<th>Troops</th>
+			<th>Tropas</th>
 	<?php
 	for($i=1;$i<=6;$i++){
 	if($dataarray[2] == $i){
@@ -96,12 +96,12 @@ for($i=$start;$i<=$end;$i++) {
 	<tbody class="infos">
 		<tr><td class="empty" colspan="12"></td></tr>
 		<tr>
-			<th>Information</th>
+			<th>Información</th>
 			<td class="dropItems" colspan="11">
             <?php if($dataarray[1]!='dead'){ ?>
-				<img src="img/x.gif" class="iExperience" title="Experience:">
+				<img src="img/x.gif" class="iExperience" title="Experiencia:">
 				+<?php echo $dataarray[5]; ?>
-				<img src="img/x.gif" class="injury" title="Injury:">
+				<img src="img/x.gif" class="injury" title="Lesión:">
 				-<?php echo round($dataarray[4]); ?>%
             <?php }else{
             		echo '<img src="img/x.gif" class="adventureDifficulty0" title="Your hero is dead">'.$dataarray[2];
@@ -115,7 +115,7 @@ for($i=$start;$i<=$end;$i++) {
 	<tbody class="goods">
 		<tr><td class="empty" colspan="12"></td></tr>
 		<tr>
-			<th>Bounty</th>
+			<th>Botín</th>
 			<td colspan="11">
             <?php
            	if($dataarray[1]){
@@ -137,7 +137,7 @@ for($i=$start;$i<=$end;$i++) {
 							$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$technology->getUnitName($utype)." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"unit u".$utype."\"\"></div>";
 				}else{
 				echo '<img src="img/x.gif" class="silver" title="silver">';
-				echo ' Silver ('.$dataarray[3].'x)';
+				echo ' Plata ('.$dataarray[3].'x)';
 				}
             }else{
             	echo $dataarray[2];

@@ -4,16 +4,16 @@ $start=41;
 <table cellpadding="0" cellspacing="0">
 	<thead>
 		<tr>
-			<td class="role"><div class="boxes boxesColor green"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents"><div class="role">Defender</div>	</div></div></td>
+			<td class="role"><div class="boxes boxesColor green"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents"><div class="role">Defensor</div>	</div></div></td>
             <td class="troopHeadline" colspan="<?php if($dataarray[139]){ echo'11'; }else{ echo'10'; } ?>">
             <?php
             if($targettribe=='5'){
             echo '<a href="spieler.php?uid='.$database->getUserField($dataarray[30],"id",0).'">';
             echo "Natar";
-            echo '</a> Village <a href="karte.php?d='.$dataarray[31].'&amp;c='.$generator->getMapCheck($dataarray[31]).'">
+            echo '</a> aldea <a href="karte.php?d='.$dataarray[31].'&amp;c='.$generator->getMapCheck($dataarray[31]).'">
             '.stripslashes($dataarray[32]).'</a>';
             } else {
-            echo "REPORT_REINF";
+            echo REPORT_REINF;
             }
             ?>
             </td>
@@ -31,7 +31,7 @@ for($i=$start;$i<=($start+9);$i++) {
 if($dataarray[139]){
 	echo "<td class=\"uniticon last\"><img src=\"img/x.gif\" class=\"unit uhero\" title=\"".$technology->getUnitName(51)."\" alt=\"".$technology->getUnitName(51)."\" /></td>";
 }
-echo "</tr></tbody><tbody class=\"units\"><tr><th>Troops</th>";
+echo "</tr></tbody><tbody class=\"units\"><tr><th>Tropas</th>";
 for($i=129;$i<=138;$i++) {
 	if($i==138 && !$dataarray[139]){ $last = ' last'; }else{ $last = ''; }
 	if($dataarray[$i] == 0) {
@@ -45,7 +45,7 @@ for($i=129;$i<=138;$i++) {
     }
 echo "</tr></tbody>";
 
-echo "<tbody class=\"units last\"><th>Casualties</th>";
+echo "<tbody class=\"units last\"><th>Bajas</th>";
 for($i=140;$i<=149;$i++) {
 	if($i==149 && !$dataarray[139]){ $last2 = ' last'; }else{ $last2 = ''; }
 	if($dataarray[$i] == 0) {

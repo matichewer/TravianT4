@@ -1,6 +1,6 @@
 ﻿<div id="messageNavigation">
 	<div id="backToInbox">
-		<a href="nachrichten.php">Return to inbox</a>
+		<a href="nachrichten.php">Volver a la bandeja de entrada</a>
 	</div>
 	<div class="clear"></div>
 </div>
@@ -17,22 +17,22 @@
 		</div>
 		<div class="paperContent">
 			<div id="recipient">
-				<div class="header label">Recipient:</div>
+				<div class="header label">Destinatario:</div>
 				<div class="header text">
 <input tabindex="1" class="text" type="text" name="an" id="receiver" value="<?php if(isset($id)) { echo $database->getUserField($id,'username',0); } ?>" maxlength="50" onkeyup="copyElement('receiver')" >
 
-<button title="Address Book" type="button" value="adbook" id="adbook" class="icon" onclick="Travian.Game.Messages.Write.showAddressBook('adressbook');" tabindex="5">
+<button title="Libreta de direcciones" type="button" value="adbook" id="adbook" class="icon" onclick="Travian.Game.Messages.Write.showAddressBook('adressbook');" tabindex="5">
 <img src="img/x.gif" class="adbook" alt="adbook"></button>
 <script>
 </script>
-<button title="Ally" type="button" value="ally" id="ally" class="icon" tabindex="6" onclick="this.form.receiver.value='[ally]';">
+<button title="Alianza" type="button" value="ally" id="ally" class="icon" tabindex="6" onclick="this.form.receiver.value='[ally]';">
 <img src="img/x.gif" class="ally" alt="ally"></button>
 </div>
 
 				<div class="clear"></div>
 			</div>
 			<div id="subject">
-				<div class="header label">Suject</div>
+				<div class="header label">Asunto</div>
 				<div class="header text"><input tabindex="2" class="text" name="be" id="subject" type="text" value="<?php if(isset($message->reply['topic']))
 {
    if (preg_match("/re([0-9]+)/i",$message->reply['topic'],$c))
@@ -74,7 +74,7 @@ Reply:
 			</script>
 						</div>
                         			<div id="send">
-				<button type="submit" value="Elküld" name="s1" id="s1" tabindex="4"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Send</div></div></button>
+				<button type="submit" value="Elküld" name="s1" id="s1" tabindex="4"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Enviar</div></div></button>
                 <input type="hidden" name="ft" value="m2" />
 							</div>
 
@@ -167,4 +167,4 @@ if(!is_int($i/2)){ echo "</tr>"; }else{ echo "<td></td>";}
 		'allgemein.save': 'save'
 	});
 </script>
-<span style="color: #DD0000"><b>Warning:</b> you can't use the values <b>[message]</b> or <b>[/message]</b> in your message because it can cause problem with bbcode system.</span>
+<span style="color: #DD0000"><b>Advertencia:</b> no puedes usar los valores <b>[message]</b> o <b>[/message]</b> en tu mensaje porque puede causar problemas con el sistema de bbcode.</span>

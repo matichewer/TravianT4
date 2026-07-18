@@ -3,7 +3,7 @@
 				<tbody>
 					<tr>
 						<td>
-							<span>Village:</span>
+							<span>Aldea:</span>
 						</td>
 						<td class="compactInput">
                         <input class="text" id="enterVillageName" class="text village" name="dname" value="" maxlength="20" type="text" >
@@ -16,7 +16,7 @@
 				<tbody>
 					<tr>
 						<td>
-							<span class="or">Coordinations</span>
+							<span class="or">Coordenadas</span>
 <?php
 if(isset($_GET['z'])){
 $coor = $database->getCoor($_GET['z']);
@@ -56,21 +56,21 @@ $coor['y'] = "";
                 <div class="option">
 		<label>
 			<input class="radio" name="c" <?php if (!$checked) {?> checked=checked <?php }?>value="2" type="radio" <?php echo $disabledr; ?>>
-			Reinforcement		</label>
+			Refuerzo		</label>
 		<br>
 
 		<label>
 			<input class="radio" name="c" value="3" type="radio" <?php echo $disabled ?>>
-			Normal attack		</label>
+			Ataque normal		</label>
 		<br>
 
 		<label>
 			<input class="radio" name="c" <?php echo $checked ?> value="4" type="radio">
-			Raid		</label>
+			Saqueo		</label>
 
 	</div>
     <div class="clear"></div>
-    <button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Confirm</div></div></button></form>
+    <button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Confirmar</div></div></button></form>
     
     <p class="error"><?php echo $form->getError("error"); ?></p>
     <div class="clear">&nbsp;</div>

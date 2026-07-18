@@ -1,6 +1,6 @@
 ﻿
 <?php
-$noticeClass = array("Scout Report","Won as attacker without losses","Won as attacker with losses","Lost as attacker with losses","Won as defender without losses","Won as defender with losses","Lost as defender with losses","Lost as defender without losses","Reinforcement arrived","","Wood Delivered","Clay Delivered","Iron Delivered","Crop Delivered","","Won as defender without losses","Won as defender with losses","Lost as defender with losses","Won scouting as attacker","Lost scouting as attacker","Won scouting as defender","Lost scouting as defender","Scout Report");
+$noticeClass = array("Informe de exploración","Victoria como atacante sin bajas","Victoria como atacante con bajas","Derrota como atacante con bajas","Victoria como defensor sin bajas","Victoria como defensor con bajas","Derrota como defensor con bajas","Derrota como defensor sin bajas","Refuerzo llegado","","Madera entregada","Barro entregado","Hierro entregado","Cereal entregado","","Victoria como defensor sin bajas","Victoria como defensor con bajas","Derrota como defensor con bajas","Victoria explorando como atacante","Derrota explorando como atacante","Victoria explorando como defensor","Derrota explorando como defensor","Informe de exploración");
 $prefix = "".TB_PREFIX."ndata";
 $limit2 = "and (ntype = 10 or ntype = 11 or ntype = 12 or ntype = 13)";
 $sql = mysql_query("SELECT * FROM $prefix WHERE uid = $session->uid and archive = 0 $limit2 and del = 0 ORDER BY time DESC");
@@ -103,46 +103,46 @@ $nextPage = $_GET['page'] + 1;
 $previous = $_GET['page'] - 1;
 
 if ($page == "1" && $lastPage == "1"){
-$paginationDisplay .=  '<img alt="Első" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última" src="img/x.gif" class="last disabled">';
 
 }elseif ($lastPage == 0){
-$paginationDisplay .=  '<img alt="Első" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última" src="img/x.gif" class="last disabled">';
 
 }elseif ($page == "1" && $lastPage != "1"){
-$paginationDisplay .=  '<img alt="Első" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=2"><img alt="Következő" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=3"><img alt="Utolsó" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=2"><img alt="Siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=3"><img alt="Última" src="img/x.gif"></a>';
 
 }elseif ($page != "1" && $page != $lastPage){
-$paginationDisplay .=  '<a class="first" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=1"><img alt="Első" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $previous . '"><img alt="Előző" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=1"><img alt="Primera" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $previous . '"><img alt="Anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $nextPage . '"><img alt="Következő" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $lastPage . '"><img alt="Utolsó" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $nextPage . '"><img alt="Siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $lastPage . '"><img alt="Última" src="img/x.gif"></a>';
 
 }elseif ($page == $lastPage){
-$paginationDisplay .=  '<a class="first" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=1"><img alt="Első" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $previous . '"><img alt="Előző" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=1"><img alt="Primera" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="' . $_SERVER['PHP_SELF'] . '?t=' . $_GET['t'] . '&page=' . $previous . '"><img alt="Anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última" src="img/x.gif" class="last disabled">';
 }
 
 
 $outputList = '';
 $name = 1;
 if($query == 0) {        
-    $outputList .= "<td colspan=\"4\" class=\"none\">There are no reports available.</td>";
+    $outputList .= "<td colspan=\"4\" class=\"none\">No hay informes disponibles.</td>";
 }else{
 while($row = mysql_fetch_array($sql2)){ 
     $id = $row["id"];
@@ -188,7 +188,7 @@ if($dataarray[1]){
     }
 }
     $outputList .= "<a href=\"berichte.php?id=".$id."\">".$topic." </a> ";
-    if($viewed == 0) { $outputList .= "(New)"; }
+    if($viewed == 0) { $outputList .= "(Nuevo)"; }
     $date = $generator->procMtime($time);
     $outputList .= "</div><div class=\"clear\"></div></td>
 			<td class=\"dat\">".$date[0]." ".date('H:i',$time)."</td></tr>";
@@ -201,7 +201,7 @@ if($dataarray[1]){
 <form method="post" action="berichte.php" name="msg">
 <input type="hidden" name="t" id="t" value="<?php echo $_GET['t']; ?>">
 	<table cellpadding="1" cellspacing="1" id="overview" class="row_table_data">
-		<thead><tr><th colspan="2">Subject:</th><th class="sent">Sent</th></tr></thead>
+		<thead><tr><th colspan="2">Asunto:</th><th class="sent">Enviado</th></tr></thead>
         <tbody>
    <?php 
 
@@ -230,7 +230,7 @@ if($dataarray[1]){
 					element.checked = this.checked;
 				}, this);
 			">
-			<span><label for="sAll">Check all</label></span>
+			<span><label for="sAll">Marcar todos</label></span>
 		</div>
 <?php } ?>
 
@@ -241,12 +241,12 @@ if($dataarray[1]){
     <div class="clear"></div>
 </div>
 <button name="delntc" type="submit" value="del" id="del" class="delete">
-<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Delete</div></div>
+<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Eliminar</div></div>
 </button>
                     
 <?php if($session->plus) { ?>
 <button name="archive" type="submit" value="archive" id="archive" class="delete">
-<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Archive</div></div>
+<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Archivar</div></div>
 </button>
 <?php } ?>
 </form>

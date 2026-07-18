@@ -30,7 +30,7 @@ include "Templates/html.tpl";
 </div> 
 </div>
 					<div id="mid">
-<a id="ingameManual" href="help.php"><img class="question" alt="Help" src="img/x.gif"></a>
+<a id="ingameManual" href="help.php"><img class="question" alt="Ayuda" src="img/x.gif"></a>
 												<div class="clear"></div> 
 
 
@@ -38,39 +38,39 @@ include "Templates/html.tpl";
 <div class="contentTitle">&nbsp;</div>
 <div class="contentContainer">
 <div id="content" class="reports">
-<h1 class="titleInHeader">Reports</h1>
+<h1 class="titleInHeader">Informes</h1>
 <div class="contentNavi subNavi">
 				<div title="" class="container <?php if (!isset($_GET['t'])) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php"><span class="tabItem">All</span></a></div>
+					<div class="content"><a href="berichte.php"><span class="tabItem">Todos</span></a></div>
 				</div>
 				<div title="" class="container <?php if (isset($_GET['t']) && $_GET['t'] == 1) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php?t=1"><span class="tabItem">Attack</span></a></div>
+					<div class="content"><a href="berichte.php?t=1"><span class="tabItem">Ataque</span></a></div>
 				</div>
 				<div title="" class="container <?php if (isset($_GET['t']) && $_GET['t'] == 5) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php?t=5"><span class="tabItem">Reinforcement</span></a></div>
+					<div class="content"><a href="berichte.php?t=5"><span class="tabItem">Refuerzo</span></a></div>
 				</div>
 				<div title="" class="container <?php if (isset($_GET['t']) && $_GET['t'] == 3) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php?t=3"><span class="tabItem">Miscellaneous</span></a></div>
+					<div class="content"><a href="berichte.php?t=3"><span class="tabItem">Varios</span></a></div>
 				</div>
 				<div title="" class="container <?php if (isset($_GET['t']) && $_GET['t'] == 2) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php?t=2"><span class="tabItem">Trade</span></a></div>
+					<div class="content"><a href="berichte.php?t=2"><span class="tabItem">Comercio</span></a></div>
 
 				</div>
                 <?php if($session->plus) { ?>
 				<div title="" class="container <?php if (isset($_GET['t']) && $_GET['t'] == 4) { echo "active"; }else{ echo "normal"; } ?>">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="berichte.php?t=4"><span class="tabItem">Archive</span></a></div>
+					<div class="content"><a href="berichte.php?t=4"><span class="tabItem">Archivo</span></a></div>
 				</div> <?php } ?>
 <div class="clear"></div>
 </div>
