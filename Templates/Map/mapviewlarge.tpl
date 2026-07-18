@@ -61,6 +61,7 @@ foreach ($yfull as $yy) {
     }
 }
 echo "<h1 dir=\"rtl\">Map (<span id=\"x\">".$x."</span>|<span id=\"y\">".$y."</span>)</h1>";
+echo "<div class=\"mapTopBar\"><a href=\"dorf1.php\">&laquo; Village</a><a href=\"karte.php?x=".$x."&y=".$y."\">Normal map</a></div>";
 $row = 0;
 $coorindex = 0;
 ?>
@@ -280,6 +281,9 @@ break;
 </div>
 <style type="text/css">
 body.map{background:#c8dd9b;}
+.mapTopBar{position:fixed;top:12px;right:20px;z-index:1000;}
+.mapTopBar a{display:inline-block;margin-left:8px;padding:7px 15px;background:#6b8e23;color:#fff;text-decoration:none;border-radius:4px;font-size:13px;font-weight:bold;border:1px solid #4d6619;box-shadow:0 1px 2px rgba(0,0,0,.3);}
+.mapTopBar a:hover{background:#7ba428;}
 #mapContainer.lowRes #mapData{cursor:grab;cursor:-webkit-grab;touch-action:none;user-select:none;-webkit-user-select:none;}
 #mapContainer.lowRes.dragPanning #mapData{cursor:grabbing;cursor:-webkit-grabbing;}
 #mapContainer.lowRes #mapData a,#mapContainer.lowRes #mapData img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;}
