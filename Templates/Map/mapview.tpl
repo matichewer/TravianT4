@@ -315,4 +315,57 @@ break;
 				y:	<?php echo $y; ?>			}
 		}));
 	});
+</script>
+<style type="text/css">
+#mapContainer.lowRes #mapData{cursor:grab;cursor:-webkit-grab;}
+#mapContainer.lowRes.dragPanning{overflow:hidden;}
+#mapContainer.lowRes.dragPanning #mapData{cursor:grabbing;cursor:-webkit-grabbing;}
+#mapContainer.lowRes #mapData a,#mapContainer.lowRes #mapData img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;}
+</style>
+<script type="text/javascript">
+/* Click-and-drag panning: grab the map, release to re-center. Falls back to
+   the plain tile links when the pointer barely moves (a real click). */
+(function(){
+	var TILE=60, THRESHOLD=6, WORLD=<?php echo (int)WORLD_MAX; ?>, PERIOD=2*WORLD+1;
+	var curX=<?php echo (int)$x; ?>, curY=<?php echo (int)$y; ?>;
+	function ready(fn){ if(document.readyState!='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
+	ready(function(){
+		var container=document.getElementById('mapContainer');
+		var data=document.getElementById('mapData');
+		if(!container||!data) return;
+		var dragging=false, moved=false, sx=0, sy=0, dx=0, dy=0;
+		data.addEventListener('dragstart', function(e){ e.preventDefault(); });
+		data.addEventListener('mousedown', function(e){
+			if(e.button!==0) return;
+			dragging=true; moved=false; sx=e.clientX; sy=e.clientY; dx=0; dy=0;
+			e.preventDefault();
+		});
+		document.addEventListener('mousemove', function(e){
+			if(!dragging) return;
+			dx=e.clientX-sx; dy=e.clientY-sy;
+			if(!moved && (Math.abs(dx)>THRESHOLD||Math.abs(dy)>THRESHOLD)){
+				moved=true; container.classList.add('dragPanning');
+			}
+			if(moved){ data.style.transform='translate('+dx+'px,'+dy+'px)'; }
+		});
+		document.addEventListener('mouseup', function(){
+			if(!dragging) return;
+			dragging=false;
+			if(!moved) return; /* a click: let the tile <a href> do its thing */
+			container.classList.remove('dragPanning');
+			data.style.transform='';
+			/* swallow the click that fires right after a drag */
+			var kill=function(ev){ ev.preventDefault(); ev.stopPropagation(); document.removeEventListener('click',kill,true); };
+			document.addEventListener('click',kill,true);
+			setTimeout(function(){ document.removeEventListener('click',kill,true); },50);
+			var tdx=Math.round(dx/TILE); /* drag right -> reveal west -> x decreases */
+			var tdy=Math.round(dy/TILE); /* drag down  -> reveal north -> y increases */
+			if(tdx===0 && tdy===0) return;
+			var nx=curX-tdx, ny=curY+tdy;
+			if(nx>WORLD) nx-=PERIOD; if(nx<-WORLD) nx+=PERIOD;
+			if(ny>WORLD) ny-=PERIOD; if(ny<-WORLD) ny+=PERIOD;
+			window.location.href='karte.php?x='+nx+'&y='+ny;
+		});
+	});
+})();
 </script></div>
