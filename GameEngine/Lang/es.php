@@ -71,7 +71,7 @@ define("NEXT_PROD","Producci&oacute;n al nivel ");
 define("B1","Le&ntilde;ador");
 define("B1_DESC","El le&ntilde;ador tala &aacute;rboles para producir madera. Cuanto m&aacute;s se aumenta su nivel produce m&aacute;s madera.");
 define("B2","Barrera");
-define("B2_DESC","La arcilla se produce aqu&iacute;. Al incrementar el nivel aumentar&aacute; la producci&oacute;n de arcilla.");
+define("B2_DESC","El barro se produce aqu&iacute;. Al incrementar el nivel aumentar&aacute; la producci&oacute;n de barro.");
 define("B3","Mina de Hierro");
 define("B3_DESC","Aqu&iacute; los mineros producen produce el valioso hierro. Cuanto m&aacutes se ampl&iacute;en las minas, m&aacute;s hierro se produce.");
 define("B4","Granja");
@@ -79,17 +79,17 @@ define("B4_DESC","La comida de tu pobleci&oacute;n se produce aqu&iacute;. Incre
 
 //DORF1
 define("WOOD","Madera");
-define("CLAY","Arcilla");
+define("CLAY","Barro");
 define("IRON","Hierro");
 define("CROP","Grano");
 define("LEVEL","Nivel");
 define("CROP_COM",CROP." consumido");
 define("PER_HR","por hora");
 define("PROD_HEADER","Producci&oacute;n");
-define("MULTI_V_HEADER","Villas");
+define("MULTI_V_HEADER","Aldeas");
 define("ANNOUNCEMENT","Anuncio");
-define("GO2MY_VILLAGE","Ir a mi villa");
-define("VILLAGE_CENTER","Centro de la Villa");
+define("GO2MY_VILLAGE","Ir a mi aldea");
+define("VILLAGE_CENTER","Centro de la aldea");
 define("FINISH_GOLD","&iquest;Terminar todas las construcciones e investigaciones en esta aldea por 2 oros?");
 define("WAITING_LOOP","(lazo de espera)");
 define("HRS","(hrs.)");
@@ -482,5 +482,19 @@ define("WARSIM_TYPE","Tipo de ataque");
 define("WARSIM_WALL1","Muralla");
 define("WARSIM_WALL2","Muralla");
 define("WARSIM_WALL3","Muralla");
+
+$lang['HELP1']['TITRE'] = "Ayuda del sistema";
+$lang['HELP1']['Partie_1'] = "Preguntas frecuentes - Respuestas";
+$lang['HELP1']['Text_1'] = "Aquí encontrarás la respuesta a tu pregunta sobre Travian. Si no te satisface, parece incompleta o todavía te faltan datos, puedes contactar con el soporte del juego.";
+$lang['HELP1']['Partie_2'] = "Reglas del juego";
+$lang['HELP1']['Text_2'] = "Reglas del juego.";
+$lang['HELP1']['Partie_3'] = "Contactar con el soporte del juego";
+$lang['HELP1']['Text_3'] = "Si no has encontrado tu respuesta: contacta aquí con el soporte del juego.";
+$lang['HELP1']['Partie_4'] = "Más preguntas";
+$lang['HELP1']['Text_4'] = "Aquí puedes hacer tu pregunta sobre las opciones o los sistemas de pago.";
+$lang['HELP1']['Partie_5'] = "Foro";
+$lang['HELP1']['Text_5'] = "En el foro puedes charlar con otros jugadores.";
+$lang['HELP1']['Partie_6'] = "Información rápida";
+$lang['HELP1']['Text_6'] = "Aquí puedes encontrar información breve y rápida sobre las tropas y los edificios de Travian.";
 
 ?>
