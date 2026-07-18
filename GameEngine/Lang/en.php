@@ -68,6 +68,7 @@ define("LOGIN_WELCOME","Welcome to server");
 define("LOGIN_USERNAME","Username");
 define("LOGIN_PASSWORD","Password");
 define("LOGIN_LOWRES_DESC","Low resolution");
+define("LOGIN_NO_JAVASCRIPT","JavaScript is disabled in your browser. Enable it to play properly.");
 define("LOGIN_LOWRES_OPTION","");
 define("LOGIN_LOWRES_NOTICE","");
 define("LOGIN_PW_FORGOTTEN","Password Forgotten");

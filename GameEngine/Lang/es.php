@@ -298,4 +298,188 @@ define("MASS_SENT","El mensaje en masa fue enviado");
 define("ACADEMY_NAME","Academia");
 define("BARRACK_NAME","Barraca");
 
+//COMPLETADO (constantes que faltaban respecto a en.php)
+
+//PORTADA / GENERAL
+define("ABOUT","Acerca del juego");
+define("ABOUT1","Comenzarás como jefe de una pequeña aldea y te embarcarás en una aventura apasionante.");
+define("ABOUT2","Construye aldeas, libra guerras o establece rutas comerciales con tus vecinos.");
+define("ABOUT3","Juega con y contra miles de jugadores reales y conquista el mundo de ".SERVER_NAME.".");
+define("ACTIVE","Activo");
+define("AGB","Condiciones");
+define("CHOOSE_WORLD","Elige tu mundo");
+define("CLICK_HERE","Haz clic aquí para jugar ".SERVER_NAME);
+define("FAQ","Preguntas frecuentes");
+define("FORUM_LINK","http://forum.travian.com");
+define("GAME_DESCRIPTION",SERVER_NAME." es un <b>juego de navegador</b> ambientado en un fascinante mundo antiguo con miles de jugadores reales.</p><p>Es <strong>gratis</strong> y <strong>no requiere descargas</strong>.");
+define("GAME_TOUR","Tour del juego");
+define("HELP","Ayuda");
+define("INSTRUCTIONS","Instrucciones");
+define("LINKS","Enlaces");
+define("MANUAL","Manual");
+define("MORE_GAMES","Más juegos");
+define("MULTIHUNTER_PANEL","Panel del Multihunter");
+define("PLAYERS_ACTIVE","Jugadores activos");
+define("PLAYERS_ONLINE","Jugadores en línea");
+define("SPIELREGELN","Reglas del juego");
+define("UPDATE_TOP_TEN","Actualizar Top 10");
+define("WELCOME","Bienvenido a ".SERVER_NAME);
+
+//CABECERA
+define("HEADER_ADMIN","Admin");
+define("HEADER_DAY","Día");
+define("HEADER_DORF1","Recursos");
+define("HEADER_DORF2","Centro de la aldea");
+define("HEADER_GOLD","Oro");
+define("HEADER_MAP","Mapa");
+define("HEADER_MESSAGES","Mensajes");
+define("HEADER_MESSAGES_NEW","Mensajes nuevos");
+define("HEADER_NIGHT","Noche");
+define("HEADER_NOTICES","Informes");
+define("HEADER_NOTICES_NEW","Informe nuevo");
+define("HEADER_PLUS","Plus");
+define("HEADER_PLUSMENU","Menú Plus");
+define("HEADER_SILVER","Plata");
+define("HEADER_STATS","Estadísticas");
+define("SEVER_TIME","Hora del servidor:");
+
+//LOGIN / LOGOUT
+define("LOGIN_LOWRES_DESC","Resolución baja");
+define("LOGIN_NO_JAVASCRIPT","JavaScript está desactivado en tu navegador. Actívalo para poder jugar correctamente.");
+define("LOGIN_LOWRES_NOTICE","");
+define("LOGIN_LOWRES_OPTION","");
+define("LOGIN_PASSWORD","Contraseña");
+define("LOGIN_PW_BTN","Ir");
+define("LOGIN_PW_EMAIL","Email");
+define("LOGIN_PW_FORGOTTEN","¿Olvidaste tu contraseña?");
+define("LOGIN_PW_REQUEST","Solicitar contraseña");
+define("LOGIN_SERVER_START","El servidor comenzará en:");
+define("LOGIN_USERNAME","Nombre de usuario");
+define("LOGIN_WELCOME","Bienvenido al servidor");
+define("LOGOUT_DESC","Si varias personas usan esta PC, por seguridad deberías borrar la cookie con tu nombre de usuario y contraseña");
+define("LOGOUT_H4","Gracias por tu visita");
+define("LOGOUT_LINK","Borrar cookies");
+define("LOGOUT_TITLE","¡Sesión cerrada!");
+define("EMAIL_NOTEXIST","No se pudo encontrar la dirección de email");
+define("EMAIL_SHORT","Lo sentimos, esta dirección de email parece demasiado corta. Debe contener al menos 5 caracteres.");
+define("NAME_NO_EXIST","No se encontró al jugador");
+
+//REGISTRO
+define("REGISTER","Registrarse");
+define("REGISTER_CLOSED","El registro está cerrado. No puedes registrarte en este servidor.");
+define("REGISTER_EMAIL","Email");
+define("REGISTER_LOCATION","Ubicación");
+define("REGISTER_MOREINFO","Términos");
+define("REGISTER_NE","Noreste");
+define("REGISTER_NW","Noroeste");
+define("REGISTER_PASSWORD","Contraseña");
+define("REGISTER_RANDOM","Aleatoria");
+define("REGISTER_SE","Sudeste");
+define("REGISTER_SELECT_TRIBE","Elige tu pueblo");
+define("REGISTER_STARTER","");
+define("REGISTER_SW","Sudoeste");
+define("REGISTER_USERINFO","Registro");
+define("REGISTER_USERNAME","Nombre");
+
+//INFORMES
+define("REPORT_AT","En");
+define("REPORT_ATK_AGAIN","repetir el ataque");
+define("REPORT_ATTACKER","Atacante");
+define("REPORT_BOUNTY","Botín");
+define("REPORT_CASUALTIES","Bajas");
+define("REPORT_CLOCK","Hora");
+define("REPORT_DEFENDER","Defensor");
+define("REPORT_DEL_BTN","eliminar informe");
+define("REPORT_DEL_QST","¿Seguro que quieres eliminar el informe?");
+define("REPORT_FROM_ALLY","de la alianza");
+define("REPORT_FROM_VIL","de la aldea");
+define("REPORT_INFORMATION","información");
+define("REPORT_PER_HOURS","por hora");
+define("REPORT_PRISONERS","Prisioneros");
+define("REPORT_RECEIVER","Destinatario");
+define("REPORT_REINF","Refuerzo");
+define("REPORT_RESOURCES","Recursos");
+define("REPORT_SENDER","Remitente");
+define("REPORT_SEND_REINF_TO","enviar refuerzos a la aldea");
+define("REPORT_SEND_RES","enviar recursos");
+define("REPORT_SENT","Enviado el:");
+define("REPORT_SUBJECT","Asunto:");
+define("REPORT_TO","A");
+define("REPORT_TROOPS","Tropas");
+define("REPORT_UPKEEP","Manutención");
+define("REPORT_WARSIM","simulador de combate");
+define("ARRIVING_ATTACKING_TROOPS","Tropas atacantes en camino");
+define("CALCULATED_IN","Calculado en");
+
+//CAPTURAS DE PANTALLA (portada)
+define("SCREENSHOTS_T4_DESC1","Tu aldea podría lucir así algún día y convertirse en el punto de partida de tu vasto imperio.");
+define("SCREENSHOTS_T4_DESC2","Madera, barro, hierro y cereal son los recursos vitales que impulsarán la economía de tu aldea y alimentarán a tu gente; te darán los materiales necesarios para la construcción y la guerra. Con estos valiosos recursos podrás entrenar un poderoso ejército conquistador.");
+define("SCREENSHOTS_T4_DESC3","Puedes enviar a tu héroe a aventuras, donde deberá enfrentar grandes peligros y superar difíciles desafíos. Si tiene éxito, es posible que regrese a casa con algo valioso.");
+define("SCREENSHOTS_T4_DESC4","Para volverse poderosa y productiva, tu aldea necesitará una gran cantidad de edificios. Al principio, elige bien qué construir primero, ya que los recursos son escasos.");
+define("SCREENSHOTS_T4_DESC5","Explora los territorios que te rodean para conocer a tus vecinos; puedes optar por un camino de paz, creando alianzas y confederaciones, o librar guerras y conquistar las tierras vecinas. Puede haber ricos oasis en tu cercanía; conquístalos para obtener valiosos bonus, pero cuidado con los peligrosos animales salvajes que los habitan.");
+define("SCREENSHOTS_T4_DESC6","Es prudente entrenar a tu ejército desde temprano, para poder defenderte y atacar a otros. Así podrás saquear más recursos y hacer crecer tu imperio más rápido.");
+define("SCREENSHOTS_T4_DESC7","Al final de cada semana se elegirán los 10 mejores jugadores y alianzas en distintas categorías; como recompensa recibirán medallas que celebran sus logros.");
+define("SCREENSHOTS_T4_DESC8","Para ayudarte cuando empieces a administrar tu imperio, te hemos enviado al Capataz; te guiará con consejos para ayudarte a desarrollar tu aldea. Solo haz clic en la imagen del Capataz a tu izquierda para activarlo.");
+define("SCREENSHOTS_T4_TITLE1","Centro de la aldea");
+define("SCREENSHOTS_T4_TITLE2","Vista general de la aldea");
+define("SCREENSHOTS_T4_TITLE3","El héroe");
+define("SCREENSHOTS_T4_TITLE4","Información de edificios");
+define("SCREENSHOTS_T4_TITLE5","Territorios circundantes");
+define("SCREENSHOTS_T4_TITLE6","Informe de batalla");
+define("SCREENSHOTS_T4_TITLE7","Sistema de medallas");
+define("SCREENSHOTS_T4_TITLE8","Sistema de tareas");
+
+//BARRA LATERAL
+define("SIDEINFO_ADVENTURES","Aventura");
+define("SIDEINFO_ALLIANCE","Alianza");
+define("SIDEINFO_ALLY_FORUM","Foro de la alianza");
+define("SIDEINFO_AUCTIONS","Subasta");
+define("SIDEINFO_CHANGE_TITLE","Doble clic para renombrar la aldea");
+define("SIDEINFO_CHANGEVIL_BTN","Aceptar");
+define("SIDEINFO_CHANGEVIL_LABEL","Nuevo nombre de la aldea");
+define("SIDEINFO_CHANGEVIL_TITLE","Cambio de nombre de la aldea");
+define("SIDEINFO_PROFILE","Perfil");
+define("LOYALTY","Lealtad:");
+define("FOUND_NEW_VILLAGE","Fundar nueva aldea");
+define("FOUND_NEW_VILLAGE_SHORT","Nueva aldea");
+
+//PUEBLOS Y UNIDADES
+define("TRIBE1","Romanos");
+define("TRIBE2","Germanos");
+define("TRIBE3","Galos");
+define("TRIBE4","Naturaleza");
+define("TRIBE5","Natares");
+define("TRIBE6","Monstruos");
+define("U0","Héroe");
+define("U50","Colono natar");
+define("U51","Peón monstruo");
+define("U52","Cazador monstruo");
+define("U53","Guerrero monstruo");
+define("U54","Fantasma");
+define("U55","Corcel monstruo");
+define("U56","Corcel de guerra monstruo");
+define("U57","Ariete monstruo");
+define("U58","Catapulta monstruo");
+define("U59","Jefe monstruo");
+define("U60","Colono monstruo");
+
+//SIMULADOR DE COMBATE
+define("WARSIM","Simulador de combate");
+define("WARSIM_ATTACKER","Atacante");
+define("WARSIM_DEFENDER","Defensor");
+define("WARSIM_ETC","Otro");
+define("WARSIM_HEROPOWER","Héroe (bonus ofensivo) ");
+define("WARSIM_KATA","Nivel del objetivo de la catapulta");
+define("WARSIM_NORMAL","Normal");
+define("WARSIM_PALACE","Palacio");
+define("WARSIM_POP","Población");
+define("WARSIM_RAID","Saqueo");
+define("WARSIM_SIMULATE","Simular ataque");
+define("WARSIM_STONEMASON","Cabaña del picapedrero");
+define("WARSIM_TROOPS","Tropas");
+define("WARSIM_TYPE","Tipo de ataque");
+define("WARSIM_WALL1","Muralla");
+define("WARSIM_WALL2","Muralla");
+define("WARSIM_WALL3","Muralla");
+
 ?>
