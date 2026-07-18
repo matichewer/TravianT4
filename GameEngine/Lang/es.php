@@ -484,19 +484,8 @@ define("WARSIM_WALL2","Muralla");
 define("WARSIM_WALL3","Muralla");
 
 $lang['HELP1']['TITRE'] = "Ayuda del sistema";
-$lang['HELP1']['Partie_1'] = "Preguntas frecuentes - Respuestas";
-$lang['HELP1']['Text_1'] = "Aquí encontrarás la respuesta a tu pregunta sobre Travian. Si no te satisface, parece incompleta o todavía te faltan datos, puedes contactar con el soporte del juego.";
-$lang['HELP1']['Partie_2'] = "Reglas del juego";
-$lang['HELP1']['Text_2'] = "Reglas del juego.";
-$lang['HELP1']['Partie_3'] = "Contactar con el soporte del juego";
-$lang['HELP1']['Text_3'] = "Si no has encontrado tu respuesta: contacta aquí con el soporte del juego.";
-$lang['HELP1']['Partie_4'] = "Más preguntas";
-$lang['HELP1']['Text_4'] = "Aquí puedes hacer tu pregunta sobre las opciones o los sistemas de pago.";
-$lang['HELP1']['Partie_5'] = "Foro";
-$lang['HELP1']['Text_5'] = "En el foro puedes charlar con otros jugadores.";
-$lang['HELP1']['Partie_6'] = "Información rápida";
-$lang['HELP1']['Text_6'] = "Aquí puedes encontrar información breve y rápida sobre las tropas y los edificios de Travian.";
 $lang['HELP1']['Partie_7'] = "Agradecimientos";
-$lang['HELP1']['Text_7'] = "Testers: MBeluS, PandaFoss y Fedro. Desarrollador: Chewer.";
+$lang['HELP1']['Testers_7'] = "Testers: MBeluS, PandaFoss y Fedro.";
+$lang['HELP1']['Developer_7'] = "Desarrollador: Chewer.";
 
 ?>

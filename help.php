@@ -33,7 +33,10 @@ include "Templates/html.tpl";
 
 <div class="helpInfoBlock helpInfoLinkLess">
 	<div class="helpHeadLine"><?php echo $lang['HELP1']['Partie_7']; ?></div>
-	<div class="helpText"><?php echo $lang['HELP1']['Text_7']; ?></div>
+	<div class="helpText" style="font-size: 16px; line-height: 24px;">
+		<div><?php echo $lang['HELP1']['Testers_7']; ?></div>
+		<div><?php echo $lang['HELP1']['Developer_7']; ?></div>
+	</div>
 </div>
 <div class="clear"></div>
 </div></div>

@@ -541,20 +541,9 @@ define("REPORT_SEND_REINF_TO","send reinforcement to village");
 
 //Help.php
 $lang['HELP1']['TITRE'] = "system help";
-$lang['HELP1']['Partie_1'] = "FAQ - Answers";
-$lang['HELP1']['Text_1'] = "Here you will find the answer to your question about Travian. If that does not satisfy you or seems incomplete or if you still missing elements, you can contact support game.";
-$lang['HELP1']['Partie_2'] = "Rules of the game";
-$lang['HELP1']['Text_2'] = "Rules of the game.";
-$lang['HELP1']['Partie_3'] = "Contact the game medium";
-$lang['HELP1']['Text_3'] = "If you have not found your answer: contact support play here.";
-$lang['HELP1']['Partie_4'] = "More Questions";
-$lang['HELP1']['Text_4'] ="Here you can ask your question about options or more payment systems.";
-$lang['HELP1']['Partie_5'] = "Forum";
-$lang['HELP1']['Text_5'] ="On the forum, chat with other players.";
-$lang['HELP1']['Partie_6'] = "Quick information";
-$lang['HELP1']['Text_6'] ="Here you can find short and quick information about the troops and buildings Travian";
 $lang['HELP1']['Partie_7'] = "Acknowledgements";
-$lang['HELP1']['Text_7'] = "Testers: MBeluS, PandaFoss and Fedro. Developer: Chewer.";
+$lang['HELP1']['Testers_7'] = "Testers: MBeluS, PandaFoss and Fedro.";
+$lang['HELP1']['Developer_7'] = "Developer: Chewer.";
 
 
 //warsim
