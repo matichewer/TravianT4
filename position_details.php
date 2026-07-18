@@ -15,6 +15,28 @@ if(isset($_GET['newdid'])) {
 else {
 	$building->procBuild($_GET);
 }
+
+	if(isset($_GET['popup'])) {
+		if(!isset($_GET['x'], $_GET['y']) || !is_numeric($_GET['x']) || !is_numeric($_GET['y'])) {
+			http_response_code(400);
+			exit('Coordenadas inválidas.');
+		}
+
+		$x = (int) $_GET['x'];
+		$y = (int) $_GET['y'];
+		if(abs($x) > WORLD_MAX || abs($y) > WORLD_MAX) {
+			http_response_code(400);
+			exit('Coordenadas fuera del mapa.');
+		}
+
+		$_GET['x'] = $x;
+		$_GET['y'] = $y;
+		$tileDetailsPopup = true;
+		header('Content-Type: text/html; charset=UTF-8');
+		include("Templates/Map/vilview.tpl");
+		exit;
+	}
+
 	if(!isset($_GET['x']) && !isset($_GET['y']) && !$havecoor) {
 	header("Location: ".$_SERVER['PHP_SELF']."?x=".$village->coor['x']."&y=".$village->coor['y']);
 	}

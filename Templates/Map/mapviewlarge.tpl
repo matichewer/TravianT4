@@ -316,15 +316,19 @@ body.map{background:#c8dd9b;}
 			popup.setContent('<p>No se pudo cargar la información de esta casilla.</p>');
 			return false;
 		};
-		Travian.ajax({
-			data:{cmd:'viewTileDetails',x:x,y:y},
-			onSuccess:function(response){
-				popup.setTitle(response.title).setContent(response.html);
+		new Request.HTML({
+			url:'position_details.php?popup=1&x='+encodeURIComponent(x)+'&y='+encodeURIComponent(y),
+			method:'get',
+			evalScripts:false,
+			onSuccess:function(tree,elements,responseHTML){
+				popup.setContent(responseHTML);
+				var popupTitle=$(popup.content).getElement('#tileDetailsPopupTitle');
+				if(popupTitle){ popup.setTitle(popupTitle.get('html')); popupTitle.destroy(); }
 				bindMapLinks(popup.content);
 			},
 			onFailure:showError,
 			onException:showError
-		});
+		}).send();
 		return false;
 	};
 	function ready(fn){ if(document.readyState!='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
