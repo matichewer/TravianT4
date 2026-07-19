@@ -234,7 +234,7 @@
        			$database->updateUserField($database->RemoveXSS($session->uid), "alliance", $database->RemoveXSS($aid), 1);
 				$database->procAllyPop($aid);
        			// Asign Permissions
-       			$database->createAlliPermissions($database->RemoveXSS($session->uid), $database->RemoveXSS($aid), 'Alliance Founder', '1', '1', '1', '1', '1', '1', '1', '1');
+       			$database->createAlliPermissions($database->RemoveXSS($session->uid), $database->RemoveXSS($aid), 'Fundador de la alianza', '1', '1', '1', '1', '1', '1', '1', '1');
        			// log the notice
        			$database->insertAlliNotice($session->alliance, 'La alianza fue fundada por <a href="spieler.php?uid=' . $session->uid . '">' . addslashes($session->username) . '</a>.');
        			header("Location: build.php?id=" . $post['id']);

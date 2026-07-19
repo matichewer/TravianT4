@@ -2638,15 +2638,15 @@ class Automation {
                             for ($j = 19; $j <= 40; $j++) {
                                 if($resarray['f'.$j.'t'] == 25) {
                                     $rplevel = $database->getFieldLevel($basearray['wref'], $j);
-                                    $rptitle = 'Residence';
+                                    $rptitle = 'Residencia';
                                     $rpid = 25;
                                 } elseif($resarray['f'.$j.'t'] == 26) {
                                     $rplevel = $database->getFieldLevel($basearray['wref'], $j);
-                                    $rptitle = 'Palace';
+                                    $rptitle = 'Palacio';
                                     $rpid = 26;
                                 } else {
                                     $rplevel = 0;
-                                    $rptitle = 'Palace/Residence';
+                                    $rptitle = 'Palacio/Residencia';
                                     $rpid = 25; //Use icon for Residence
                                 }
                             }

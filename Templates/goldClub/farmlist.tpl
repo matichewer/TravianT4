@@ -37,7 +37,7 @@ while($row = mysql_fetch_array($sql)){
 								event.stop();
 							">
 							<?php echo $lvname; ?> - <?php echo $lname; ?>
-                            <img alt="Loading..." class="loading hide" src="img/x.gif" align="absmiddle">
+                            <img alt="Cargando..." class="loading hide" src="img/x.gif" align="absmiddle">
 						</div>
 						<div class="openedClosedSwitch switchOpened">
 							Detalles						</div>
@@ -287,9 +287,9 @@ for($i=$start;$i<=$end;$i++){
 								event.stop();
 							">
 							<?php echo $lvname; ?> - <?php echo $lname; ?>
-                            <img alt="Loading..." class="loading hide" src="img/x.gif" align="absmiddle">
+                            <img alt="Cargando..." class="loading hide" src="img/x.gif" align="absmiddle">
 						</div>
-						<div class="openedClosedSwitch switchClosed">Details</div>
+						<div class="openedClosedSwitch switchClosed">Detalles</div>
 						<div class="clear"></div>
 					</div>
 					<div class="listContent hide">

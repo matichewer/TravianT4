@@ -269,7 +269,7 @@ include "Templates/Auction/alt.tpl";
 <table cellspacing="1" cellpadding="1">
 	<thead>
 		<tr>
-			<th class="name" colspan="2">Description</th>
+			<th class="name" colspan="2">Descripción</th>
 			<th class="bids"><img title="Ofertas" class="bids" src="img/x.gif"></th>
 			<th class="silver"><img title="Plata" class="silver" src="img/x.gif"></th>
 			<th class="time"><img title="Tiempo" class="clock" src="img/x.gif"></th>

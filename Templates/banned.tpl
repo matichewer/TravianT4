@@ -12,27 +12,27 @@ $ban1 = mysql_fetch_array($ban);
 ?>
 
 <p>
-Hello <?php echo $ban1['name']; ?>!
-You have been banned due to a violation of the rules.
+Hola <?php echo $ban1['name']; ?>!
+Has sido baneado por infringir las reglas.
 </br>
-Your banning reason is <?php echo $ban1['reason']; ?>.
+El motivo de tu baneo es <?php echo $ban1['reason']; ?>.
 </br>
 
-</br></br> To ensure that you won't get banned again in the future, you shuold read the rules carefully:
-</br></br><center> <?php echo "<a class=\"rules\" href=\"rules.php\">» Game rules</a>"; ?> </center>
+</br></br> Para evitar que te vuelvan a banear en el futuro, deberías leer las reglas con atención:
+</br></br><center> <?php echo "<a class=\"rules\" href=\"rules.php\">» Reglas del juego</a>"; ?> </center>
 </br></br></br>
-To continue playing contact the Multihunter and put things straight with him/her
-</br></br><center> <?php echo "<a class=\"rules\" href=\"nachrichten.php?t=1&id=4\">» Write Message</a>"; ?> </center>
+Para seguir jugando, contacta al Multihunter y aclara la situación con él/ella
+</br></br><center> <?php echo "<a class=\"rules\" href=\"nachrichten.php?t=1&id=4\">» Escribir mensaje</a>"; ?> </center>
 </br></br>
-Heed the following advice when writing your message:
+Ten en cuenta los siguientes consejos al escribir tu mensaje:
 </br></br>
-● There is always a reason for a ban. <u>Try to think about possible reasons for this ban</u> and put things straight with the Multihunter.
+● Siempre hay un motivo para un baneo. <u>Trata de pensar en las posibles razones de este baneo</u> y aclara la situación con el Multihunter.
 </br>
-● Multihunters can review enormous amounts of information about accounts. <u>Stick to the truth</u> and do not make excuses to justify your violation of the rules.
+● Los Multihunter pueden revisar enormes cantidades de información sobre las cuentas. <u>Ciñete a la verdad</u> y no busques excusas para justificar tu infracción de las reglas.
 </br>
-● Be cooperative and insightful, this might reduce the punishment.
+● Sé colaborativo y perspicaz, esto podría reducir el castigo.
 </br>
-● If the Multihunter does not answer immediately, then he/she is probably not online. The issue will not be resolved any faster by sending multiple messages, especially if he/she did not even read the first one yet.
+● Si el Multihunter no responde de inmediato, probablemente no esté en línea. El problema no se resolverá más rápido enviando varios mensajes, sobre todo si ni siquiera leyó el primero.
 </br>
-● If you have really been banned unjustly, try to stay <u>calm and polite</u> while talking to the Multihunter and telling him/her about your point of view.
+● Si realmente has sido baneado injustamente, trata de mantener la <u>calma y la cortesía</u> mientras hablas con el Multihunter y le explicas tu punto de vista.
 </p>

@@ -9,14 +9,14 @@
    }
 
 ?>
-<h1 class="titleInHeader">15-9 Crop Finder</h1>
+<h1 class="titleInHeader">Buscador de oasis 15-9</h1>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?s" id="cropfinder_form">
 <div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
     <table class="transparent">
 		<tbody>
 			<tr>
 				<td>
-					<span class="coordInputLabel">Coordinates</span>
+					<span class="coordInputLabel">Coordenadas</span>
 
 			<div class="coordinatesInput">
 				<div class="xCoord">
@@ -35,11 +35,11 @@
 			<tr>
 				<td>
 										<span class="type">
-						<input type="radio" class="radio" name="type" value="15" <?php if($_GET['s'] == 1) { print 'checked="checked"'; } ?> />15 Cropper					</span>
+						<input type="radio" class="radio" name="type" value="15" <?php if($_GET['s'] == 1) { print 'checked="checked"'; } ?> />15 de cereal					</span>
 					<span class="type">
-		    			<input type="radio" class="radio" name="type" value="9" <?php if($_GET['s'] == 2) { print 'checked="checked"'; } ?> />9 Cropper		    		</span>
+		    			<input type="radio" class="radio" name="type" value="9" <?php if($_GET['s'] == 2) { print 'checked="checked"'; } ?> />9 de cereal		    		</span>
 		    		<span class="type">
-		    			<input type="radio" class="radio" name="type" value="both" <?php if($_GET['s'] == 3) { print 'checked="checked"'; } ?> /> Both		    		</span>
+		    			<input type="radio" class="radio" name="type" value="both" <?php if($_GET['s'] == 3) { print 'checked="checked"'; } ?> /> Ambos		    		</span>
 				</td>
 			</tr>
 		</tbody>
@@ -77,15 +77,15 @@
 
 ?>
 <div class="spacer"></div>
-<h4 class="round">Croppers</h4>
+<h4 class="round">Oasis de cereal</h4>
 <table cellpadding="1" cellspacing="1" id="croplist">
 <thead>
 				<tr>
-					<th>Distance</th>
-					<th>Coordinates</th>
-					<th>Type</th>
+					<th>Distancia</th>
+					<th>Coordenadas</th>
+					<th>Tipo</th>
 					<th>Oasis</th>
-					<th>Occupied by</th>
+					<th>Ocupado por</th>
 				</tr>
 </thead>
 
@@ -103,12 +103,12 @@ foreach($rows as $dist => $row) {
 echo "<tr>";
 echo "<td class=\"dist\">".getDistance($coor['x'], $coor['y'], $row['x'], $row['y'])."</td>";
 echo "<td class=\"coords\"><a href=\"karte.php?x=".$row['x']."&y=".$row['y']."\">(".$row['x']."|".$row['y'].")</a></td>";
-echo "<td class=\"typ\">15 Cropper</td>";
+echo "<td class=\"typ\">15 de cereal</td>";
 if($row['occupied'] == 0) {
 echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"green\">Oasis</font></b></td>";
 echo "<td class=\"owned\"><a href=\"karte.php?d=".$row['id']."\">----</a></td>";
 } else {
-echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Occupied</font></b></td>";
+echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Ocupado</font></b></td>";
 echo "<td class=\"owned\"><a href=\"spieler.php?uid=".$database->getVillageField($row['id'], "owner")."\">".$database->getUserField($database->getVillageField($row['id'], "owner"), "username", 0)."</a></td>";
 
 }
@@ -126,15 +126,15 @@ echo "</tr>";
 
 ?>
 <div class="spacer"></div>
-<h4 class="round">Croppers</h4>
+<h4 class="round">Oasis de cereal</h4>
 <table cellpadding="1" cellspacing="1" id="croplist">
 <thead>
 				<tr>
-					<th>Distance</th>
-					<th>Coordinates</th>
-					<th>Type</th>
+					<th>Distancia</th>
+					<th>Coordenadas</th>
+					<th>Tipo</th>
 					<th>Oasis</th>
-					<th>Occupied by</th>
+					<th>Ocupado por</th>
 				</tr>
 </thead>
 <?php
@@ -153,12 +153,12 @@ echo "</tr>";
 echo "<tr>";
 echo "<td class=\"dist\">".getDistance($coor['x'], $coor['y'], $row['x'], $row['y'])."</td>";
 echo "<td class=\"coords\"><a href=\"karte.php?x=".$row['x']."&y=".$row['y']."\">(".$row['x']."|".$row['y'].")</a></td>";
-echo "<td class=\"typ\">9 Cropper</td>";
+echo "<td class=\"typ\">9 de cereal</td>";
 if($row['occupied'] == 0) {
 echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"green\">Oasis</font></b></td>";
 echo "<td class=\"owned\"><a href=\"karte.php?d=".$row['id']."\">----</a></td>";
 } else {
-echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Occupied</font></b></td>";
+echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Ocupado</font></b></td>";
 echo "<td class=\"owned\"><a href=\"spieler.php?uid=".$database->getVillageField($row['id'], "owner")."\">".$database->getUserField($database->getVillageField($row['id'], "owner"), "username", 0)."</a></td>";
 
 }
@@ -175,15 +175,15 @@ echo "</tr>";
 
 ?>
 <div class="spacer"></div>
-<h4 class="round">Croppers</h4>
+<h4 class="round">Oasis de cereal</h4>
 <table cellpadding="1" cellspacing="1" id="croplist">
 <thead>
 				<tr>
-					<th>Distance</th>
-					<th>Coordinates</th>
-					<th>Type</th>
+					<th>Distancia</th>
+					<th>Coordenadas</th>
+					<th>Tipo</th>
 					<th>Oasis</th>
-					<th>Occupied by</th>
+					<th>Ocupado por</th>
 				</tr>
 </thead>
 
@@ -200,9 +200,9 @@ echo "</tr>";
    foreach($rows as $dist => $row) {
 
        if($row['fieldtype'] == 1) {
-           $field = '9 Cropper';
+           $field = '9 de cereal';
        } elseif($row['fieldtype'] == 6) {
-           $field = '15 Cropper';
+           $field = '15 de cereal';
        }
 
 echo "<tr>";
@@ -213,7 +213,7 @@ if($row['occupied'] == 0) {
 echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"green\">Oasis</font></b></td>";
 echo "<td class=\"owned\"><a href=\"karte.php?d=".$row['id']."\">----</a></td>";
 } else {
-echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Occupied by</font></b></td>";
+echo "<td class=\"oase\"><img src=\"img/x.gif\" class=\"r4\"> <b><font color=\"red\">Ocupado</font></b></td>";
 echo "<td class=\"owned\"><a href=\"spieler.php?uid=".$database->getVillageField($row['id'], "owner")."\">".$database->getUserField($database->getVillageField($row['id'], "owner"), "username", 0)."</a></td>";
 
 }
