@@ -66,10 +66,17 @@ if (!isset($SAJAX_INCLUDED)) {
 
 	function sajax_handle_client_request() {
 		global $sajax_export_list;
-		
+
+		if (isset($_GET["rs"])) {
+			file_put_contents("/tmp/chat_debug.log", date("H:i:s")
+				." RAW query_string=[".($_SERVER['QUERY_STRING'] ?? '')."]"
+				." raw_get=".var_export($_GET,true)
+				."\n", FILE_APPEND);
+		}
+
 		$mode = "";
-		
-		if (! empty($_GET["rs"])) 
+
+		if (! empty($_GET["rs"]))
 			$mode = "get";
 		
 		if (!empty($_POST["rs"]))
