@@ -109,7 +109,7 @@ if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"></td>
     <input class="text" type="text" name="addfriends<?php echo $i; ?>" value="" maxlength="20" />
   </td>
   <td class="on"></td><?php if(!is_int($i/2)){ echo "</tr>"; }else{ echo "<td></td>";}}else if($user['friend'.$i.'wait'] == 0){
-if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="delete" title="delete"></td>
+if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></td>
   <td class="pla">
   <?php echo "<a href=\"nachrichten.php?t=1&id=".$user['friend'.$i]."\">".$database->getUserField($user['friend'.$i],"username",0)."</a>"; ?>
   </td>
@@ -137,15 +137,15 @@ $friendwait = $friend['id'];
 }
 }
 if($wait == 0){
-if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="delete" title="delete"></td>
+if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></td>
   <td class="pla">
-  <?php echo "<img src=\"../../".GP_LOCATE."img/a/clock-inactive.gif\" alt=\"wait for confirm\" title=\"wait for confirm\"><a href=\"nachrichten.php?t=1&id=".$user['friend'.$i]."\"> ".$database->getUserField($user['friend'.$i],"username",0)."</a>"; ?>
+  <?php echo "<img src=\"../../".GP_LOCATE."img/a/clock-inactive.gif\" alt=\"esperando confirmación\" title=\"esperando confirmación\"><a href=\"nachrichten.php?t=1&id=".$user['friend'.$i]."\"> ".$database->getUserField($user['friend'.$i],"username",0)."</a>"; ?>
   </td>
 		<?php
             echo "<td class=on></td>";
 if(!is_int($i/2)){ echo "</tr>"; }else{ echo "<td></td>";}
 }else{
-if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="delete" title="delete"></td>
+if(is_int($i/2)){ echo "<tr>"; } ?><td class="end"><a href="nachrichten.php?delfriend=<?php echo $i; ?>"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></td>
   <td class="pla">
   <?php echo "<a href=\"nachrichten.php?t=1&id=".$friendwait."\">".$database->getUserField($friendwait,"username",0)."</a>"; ?>
   </td>

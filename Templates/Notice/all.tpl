@@ -183,7 +183,7 @@ $btype = $dataarray[1];
 
 if ($btype == 'dead')
 {
-	$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Your hero is dead\"></div>";
+	$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Tu héroe ha muerto\"></div>";
 }
 else if (is_numeric($btype))
 {

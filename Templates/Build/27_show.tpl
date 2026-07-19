@@ -53,7 +53,7 @@
                 </tr>
                
             <tr>
-                <th>Treasure Chamber</th>
+                <th>Tesorería</th>
                 <td>La tesorería <b><?php echo $reqlvl; ?></b></td>
             </tr>
         

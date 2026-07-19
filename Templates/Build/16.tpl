@@ -88,7 +88,7 @@ if($units_walking >= 1){
 	<thead>
 		<tr>
 			<td class="role"><a href="karte.php?d=<?php echo $village->wid."&c=".$generator->getMapCheck($village->wid); ?>"><?php echo $village->vname; ?></a></td><td colspan="11">
-            <a href="spieler.php?uid=<?php echo $session->uid; ?>">Units in</a></td></tr></thead>
+            <a href="spieler.php?uid=<?php echo $session->uid; ?>">Unidades en</a></td></tr></thead>
             <tbody class="units">
            <?php include("16_troops.tpl"); 
           

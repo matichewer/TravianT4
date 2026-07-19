@@ -191,7 +191,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 			$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$name." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"reportInfo itemCategory itemCategory_".$typeArray[$dataarray[1]]."\"></div>";
         }
     }else{
-		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Your hero is dead\"></div>";
+		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Tu héroe ha muerto\"></div>";
 	}
 }else if($btype == 16){
 	if($dataarray[1]!='dead'){
@@ -199,7 +199,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 			$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$technology->getUnitName($type)." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"unit u".$type."\"\"></div>";
         }
     }else{
-		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Your hero is dead\"></div>";
+		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Tu héroe ha muerto\"></div>";
 	}
 }else{
 	if($dataarray[1]!='dead'){
@@ -207,7 +207,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 			$outputList .= "<div class=\"reportInfoIcon\"><img title=\"silver (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"silver\"\"></div>";
         }
     }else{
-		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Your hero is dead\"></div>";
+		$outputList .= "<div class=\"reportInfoIcon\"><img src=\"img/x.gif\" class=\"reportInfo adventureDifficulty0\" title=\"Tu héroe ha muerto\"></div>";
 	}
 }
 }
