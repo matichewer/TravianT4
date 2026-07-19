@@ -4,7 +4,7 @@
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(37,4);" class="build_logo">
         <img class="building big white g37" src="img/x.gif" alt="Mansión del héroe" title="Mansión del héroe"></a>
-        In the Hero's Mansion, you can get an overview of surrounding oases. Starting with building level 10, you can occupy an oasis with your hero and increase the resource production of your village..</div>
+        En la Mansión del héroe puedes obtener un resumen de los oasis cercanos. A partir del nivel 10 del edificio, puedes ocupar un oasis con tu héroe y aumentar la producción de recursos de tu aldea.</div>
         
        <?php           
             include ("upgrade.tpl");             

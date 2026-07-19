@@ -41,7 +41,7 @@
 
         // Add residence and treasury 
         // Residence  =  25 (Level 20) 
-        mysql_query("UPDATE `".TB_PREFIX."fdata` SET `f28` = '20', `f28t` = '25', `f99t` = '40', `f99` = '1', `wwname` = 'World Wonder' WHERE `vref` = $wid") or die(mysql_error()); 
+        mysql_query("UPDATE `".TB_PREFIX."fdata` SET `f28` = '20', `f28t` = '25', `f99t` = '40', `f99` = '1', `wwname` = 'Maravilla del mundo' WHERE `vref` = $wid") or die(mysql_error()); 
 
         $database->addUnits($wid); 
         $database->addTech($wid); 

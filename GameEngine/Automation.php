@@ -2666,29 +2666,29 @@ class Automation {
                             $rplevel = 0;
                         }
                         if($tribe == 1) {
-                            $walltitle = 'City Wall';
+                            $walltitle = 'Muralla';
                             $iconClass = 'gebIcon g3'.$tribe.'Icon';
                         } elseif($tribe == 2) {
-                            $walltitle = 'Earth Wall';
+                            $walltitle = 'Muro de tierra';
                             $iconClass = 'gebIcon g3'.$tribe.'Icon';
                         } elseif($tribe == 3) {
-                            $walltitle = 'Palisade';
+                            $walltitle = 'Empalizada';
                             $iconClass = 'gebIcon g3'.$tribe.'Icon';
                         } else {
                             /**
                              * @todo Not sure what Natar Wall should be called, also using City Wall for the icon for now
                              */
-                            $walltitle = "Natar Wall";
+                            $walltitle = "Muralla natar";
                             $iconClass = 'gebIcon g31Icon';
                         }
 
                         $info_spy = "".$spy_pic.",
 <tbody><tr><td class=\"empty\" colspan=\"12\"></td></tr></tbody>
 <tbody class=\"goods\">
-	<tr><th>Defences</th><td colspan=\"11\"><div class=\"res\">
+	<tr><th>Defensas</th><td colspan=\"11\"><div class=\"res\">
 <div class=\"rArea\">
-<img class=\"gebIcon g".$rpid."Icon\" src=\"img/x.gif\" title=\"".$rptitle."\">".$rptitle." <b> Level ".$rplevel."</b><Br>
-<img class=\"".$iconClass."\" src=\"img/x.gif\" title=\"".$walltitle."\">".$walltitle." <b>Level ".$walllevel."</b>
+<img class=\"gebIcon g".$rpid."Icon\" src=\"img/x.gif\" title=\"".$rptitle."\">".$rptitle." <b> Nivel ".$rplevel."</b><Br>
+<img class=\"".$iconClass."\" src=\"img/x.gif\" title=\"".$walltitle."\">".$walltitle." <b>Nivel ".$walllevel."</b>
 </div>
 </div></td></tr></tbody>";
 

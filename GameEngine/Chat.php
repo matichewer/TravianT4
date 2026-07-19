@@ -259,6 +259,7 @@ if (!isset($SAJAX_INCLUDED)) {
 								}
 								callback(eval(data), extra_data);
 							} catch (e) {
+								console.error("sajax callback error", e, "raw data:", data);
 								sajax_debug("Caught error " + e + ": Could not eval " + data );
 							}
 						}

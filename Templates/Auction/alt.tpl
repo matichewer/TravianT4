@@ -233,17 +233,17 @@
         }
         if($type==79){
         	$name = "Cuerno pequeño del natariano";
-			$title = "+20% fuerza de lucha contra los Natars";
+			$title = "+20% fuerza de lucha contra los Natares";
             $item = "79";
             $effect = "20";
 		}elseif($type==80){
         	$name = "Cuerno del natariano";
-			$title = "+25% fuerza de lucha contra los Natars";
+			$title = "+25% fuerza de lucha contra los Natares";
             $item = "80";
             $effect = "25";
 		}elseif($type==81){
         	$name = "Cuerno grande del natariano";
-			$title = "+30% fuerza de lucha contra los Natars";
+			$title = "+30% fuerza de lucha contra los Natares";
             $item = "81";
             $effect = "30";
 		}
