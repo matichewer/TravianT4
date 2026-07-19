@@ -87,23 +87,23 @@ foreach($forum_data as $cats) {
 <input type="hidden" name="s" value="2">
 <input type="hidden" name="fid" value="<?php echo $_GET['idf']; ?>">
 <input type="hidden" name="editforum" value="1">
-<h4 class="round">Edit forum</h4>
+<h4 class="round">Editar foro</h4>
 <table cellpadding="1" cellspacing="1" id="edit_forum"><tbody>
 	<tr>
-		<th>Forum name</th>
+		<th>Nombre del foro</th>
 
 		<td><input class="text" type="text" name="u1" value="<?php echo $cat_name; ?>" maxlength="30"></td>
 	</tr>
 
 	<tr>
-		<th>Description</th>
+		<th>Descripción</th>
 		<td><input class="text" type="text" name="u2" value="<?php echo $cat_des; ?>" maxlength="38"></td>
 	</tr>
 </table><p class="btn">
 <button type="submit" value="????? ????" class="build">
 <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div>
 <div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div>
-</div><div class="button-contents">OK</div></div></button>
+</div><div class="button-contents">Aceptar</div></div></button>
 </form></p>
 <?php }else{
 header("Location: banned.php");

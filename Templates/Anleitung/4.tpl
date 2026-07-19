@@ -1,23 +1,23 @@
 
-<p class="question">How can I found a new village?</p>
+<p class="question">¿Cómo puedo fundar una nueva aldea?</p>
 
-<p class="answer">In order to found a new village you need 3 settlers, an empty spot on the map and enough culture points. You do not have to research settlers as you can directly build them with a palace level 10, 15 or 20 or a residence level 10 or 20. To build the palace you need a main building level 5 and an embassy. To build the residence you only need a level 5 main building. After training the 3 settlers you can choose an empty spot on the map and click "Found new village" (Hint: you need 750 units of each resource!) then your settlers will leave their home village and found the new village for you. </p>
+<p class="answer">Para fundar una nueva aldea necesitas 3 colonos, un lugar vacío en el mapa y suficientes puntos de cultura. No es necesario investigar a los colonos, ya que puedes entrenarlos directamente con un palacio de nivel 10, 15 o 20, o una residencia de nivel 10 o 20. Para construir el palacio necesitas un edificio principal de nivel 5 y una embajada. Para construir la residencia solo necesitas un edificio principal de nivel 5. Después de entrenar a los 3 colonos, puedes elegir un lugar vacío en el mapa y hacer clic en "Fundar nueva aldea" (Consejo: ¡necesitas 750 unidades de cada recurso!), entonces tus colonos dejarán su aldea de origen y fundarán la nueva aldea por ti. </p>
 
 
 
-<p class="question">How can I conquer a village?</p>
+<p class="question">¿Cómo puedo conquistar una aldea?</p>
 
-<p class="answer">For this, too, one needs at least a residence/palace level 10 as well as an enemy village one can conquer. Additionally enough culture points are needed - like for founding a new village. One cannot conquer the last of a player's villages and neither their capital.
+<p class="answer">Para esto también se necesita al menos una residencia/palacio de nivel 10, así como una aldea enemiga que se pueda conquistar. Además se necesitan suficientes puntos de cultura, igual que para fundar una nueva aldea. No se puede conquistar la última aldea de un jugador ni tampoco su capital.
 
 <br><br>
 
-As soon as the steward of a town (senator, chief, chieftain) as been researched in the academy one can train him in the residence/palace like a settler. However, one may not have already trained settlers in order to be able to train a steward. To conquer a village the steward needs to attack the desired village a couple of times after the enemy residence/palace has been demolished. Once the village's loyalty reached zero the village will become one's own. Once this happened one should build a palace or a residence to raise the loyalty again.</p>
+En cuanto el administrador de una ciudad (senador, jefe teutón, jefe galo) haya sido investigado en la academia, se lo puede entrenar en la residencia/palacio como a un colono. Sin embargo, no se pueden haber entrenado colonos previamente para poder entrenar a un administrador. Para conquistar una aldea, el administrador debe atacar la aldea deseada varias veces después de que la residencia/palacio enemigo haya sido demolido. Una vez que la lealtad de la aldea llegue a cero, la aldea pasará a ser propia. Una vez que esto suceda, se debería construir un palacio o una residencia para volver a aumentar la lealtad.</p>
 
 
 
-<p class="question">How do I get culture points?</p>
+<p class="question">¿Cómo consigo puntos de cultura?</p>
 
-<p class="answer">One gets culture points (CPs) by constructing and extending buildings. Already produced culture points can be seen in the residence and palace. Additionally information about the required culture points for additional villages is displayed there.</p><br/>
+<p class="answer">Se obtienen puntos de cultura (PC) construyendo y ampliando edificios. Los puntos de cultura ya producidos se pueden ver en la residencia y el palacio. Además, allí se muestra información sobre los puntos de cultura necesarios para aldeas adicionales.</p><br/>
 
 <table cellspacing="1" cellpadding="2" class="culture_points table_data">
 
@@ -27,7 +27,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <td colspan="21">
 
-            <h3>Culture points</h3>
+            <h3>Puntos de cultura</h3>
 
         </td>
 
@@ -37,11 +37,11 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th rowspan="2">
 
-            Buildings        </th>
+            Edificios        </th>
 
         <th colspan="20">
 
-            Level        </th>
+            Nivel        </th>
 
     </tr>
 
@@ -141,7 +141,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Woodcutter        </th>
+            Leñador        </th>
 
                 <td>
 
@@ -249,7 +249,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Clay Pit        </th>
+            Barrera        </th>
 
                 <td>
 
@@ -357,7 +357,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Iron Mine        </th>
+            Mina de hierro        </th>
 
                 <td>
 
@@ -465,7 +465,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Cropland        </th>
+            Granja        </th>
 
                 <td>
 
@@ -573,7 +573,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Sawmill        </th>
+            Aserradero        </th>
 
                 <td>
 
@@ -691,7 +691,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Brickyard        </th>
+            Fábrica de ladrillos        </th>
 
                 <td>
 
@@ -809,7 +809,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Iron Foundry        </th>
+            Fundición de hierro        </th>
 
                 <td>
 
@@ -927,7 +927,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Grain Mill        </th>
+            Molino        </th>
 
                 <td>
 
@@ -1045,7 +1045,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Bakery        </th>
+            Panadería        </th>
 
                 <td>
 
@@ -1163,95 +1163,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Warehouse        </th>
-
-                <td>
-
-            1        </td>
-
-                <td>
-
-            1        </td>
-
-                <td>
-
-            2        </td>
-
-                <td>
-
-            2        </td>
-
-                <td>
-
-            2        </td>
-
-                <td>
-
-            3        </td>
-
-                <td>
-
-            4        </td>
-
-                <td>
-
-            4        </td>
-
-                <td>
-
-            5        </td>
-
-                <td>
-
-            6        </td>
-
-                <td>
-
-            7        </td>
-
-                <td>
-
-            9        </td>
-
-                <td>
-
-            11        </td>
-
-                <td>
-
-            13        </td>
-
-                <td>
-
-            15        </td>
-
-                <td>
-
-            18        </td>
-
-                <td>
-
-            22        </td>
-
-                <td>
-
-            27        </td>
-
-                <td>
-
-            32        </td>
-
-                <td>
-
-            38        </td>
-
-            </tr>
-
-        <tr>
-
-        <th class="text">
-
-            Granary        </th>
+            Almacén        </th>
 
                 <td>
 
@@ -1339,7 +1251,95 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Blacksmith        </th>
+            Granero        </th>
+
+                <td>
+
+            1        </td>
+
+                <td>
+
+            1        </td>
+
+                <td>
+
+            2        </td>
+
+                <td>
+
+            2        </td>
+
+                <td>
+
+            2        </td>
+
+                <td>
+
+            3        </td>
+
+                <td>
+
+            4        </td>
+
+                <td>
+
+            4        </td>
+
+                <td>
+
+            5        </td>
+
+                <td>
+
+            6        </td>
+
+                <td>
+
+            7        </td>
+
+                <td>
+
+            9        </td>
+
+                <td>
+
+            11        </td>
+
+                <td>
+
+            13        </td>
+
+                <td>
+
+            15        </td>
+
+                <td>
+
+            18        </td>
+
+                <td>
+
+            22        </td>
+
+                <td>
+
+            27        </td>
+
+                <td>
+
+            32        </td>
+
+                <td>
+
+            38        </td>
+
+            </tr>
+
+        <tr>
+
+        <th class="text">
+
+            Herrería        </th>
 
                 <td>
 
@@ -1427,7 +1427,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Armoury        </th>
+            Armería        </th>
 
                 <td>
 
@@ -1515,7 +1515,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Tournament Square        </th>
+            Plaza de torneos        </th>
 
                 <td>
 
@@ -1603,7 +1603,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Main Building        </th>
+            Edificio principal        </th>
 
                 <td>
 
@@ -1691,7 +1691,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Rally Point        </th>
+            Plaza de reuniones        </th>
 
                 <td>
 
@@ -1779,7 +1779,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Marketplace        </th>
+            Mercado        </th>
 
                 <td>
 
@@ -1867,7 +1867,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Embassy        </th>
+            Embajada        </th>
 
                 <td>
 
@@ -1955,7 +1955,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Barracks        </th>
+            Cuartel        </th>
 
                 <td>
 
@@ -2043,7 +2043,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Stable        </th>
+            Establo        </th>
 
                 <td>
 
@@ -2131,7 +2131,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Workshop        </th>
+            Taller        </th>
 
                 <td>
 
@@ -2219,7 +2219,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Academy        </th>
+            Academia        </th>
 
                 <td>
 
@@ -2307,7 +2307,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Cranny        </th>
+            Escondite        </th>
 
                 <td>
 
@@ -2415,7 +2415,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Town Hall        </th>
+            Ayuntamiento        </th>
 
                 <td>
 
@@ -2503,7 +2503,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Residence        </th>
+            Residencia        </th>
 
                 <td>
 
@@ -2591,7 +2591,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Palace        </th>
+            Palacio        </th>
 
                 <td>
 
@@ -2679,7 +2679,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Treasury        </th>
+            Tesorería        </th>
 
                 <td>
 
@@ -2787,7 +2787,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Trade Office        </th>
+            Oficina de comercio        </th>
 
                 <td>
 
@@ -2875,7 +2875,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Great Barracks        </th>
+            Gran cuartel        </th>
 
                 <td>
 
@@ -2963,7 +2963,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Great Stable        </th>
+            Gran establo        </th>
 
                 <td>
 
@@ -3051,7 +3051,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Stonemason's Lodge        </th>
+            Cabaña del picapedrero        </th>
 
                 <td>
 
@@ -3139,7 +3139,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <th class="text">
 
-            Hero's Mansion        </th>
+            Mansión del héroe        </th>
 
                 <td>
 
@@ -3237,7 +3237,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
         <td colspan="10">
 
-            <h3>Culture points needed for additional villages</h3>
+            <h3>Puntos de cultura necesarios para aldeas adicionales</h3>
 
         </td>
 
@@ -3341,7 +3341,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 
 </table>
 
-<p>The more villages one has, the more culture points are necessary to found or conquer additional villages. One cannot lose culture points, however, one needs more for additional villages.</p>
+<p>Cuantas más aldeas se tienen, más puntos de cultura son necesarios para fundar o conquistar aldeas adicionales. No se pueden perder los puntos de cultura, sin embargo, se necesitan más para aldeas adicionales.</p>
 
 	</div> 
 	<div class="clear"></div> 

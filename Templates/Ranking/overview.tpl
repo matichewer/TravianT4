@@ -5,17 +5,17 @@
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=1"><span class="tabItem">Overview</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=1"><span class="tabItem">Resumen</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=31"><span class="tabItem">Attackers</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=31"><span class="tabItem">Atacantes</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=32"><span class="tabItem">Defenders</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=32"><span class="tabItem">Defensores</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
@@ -23,10 +23,10 @@
 					<div class="content"><a href="statistiken.php?tid=7"><span class="tabItem">Top 10</span></a></div>
 				</div><div class="clear"></div>
 </div>
-<h4 class="round">Biggest Players</h4>
+<h4 class="round">Jugadores más grandes</h4>
 <table cellpadding="1" cellspacing="1" id="player" class="row_table_data">
 	<thead>
-		<tr><td></td><td>Player</td><td>Alliance</td><td>Population</td><td>Villages</td></tr>
+		<tr><td></td><td>Jugador</td><td>Alianza</td><td>Población</td><td>Aldeas</td></tr>
 	</thead>
 	<tbody>
 <?php
@@ -141,39 +141,39 @@ $nextPage = $_GET['page'] + 1;
 $previous = $_GET['page'] - 1;
 
 if ($page == "1" && $lastPage == "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($lastPage == 0){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($page == "1" && $lastPage != "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page != "1" && $page != $lastPage){
-$paginationDisplay .=  '<a class="first" href="?page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page == $lastPage){
-$paginationDisplay .=  '<a class="first" href="?page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 }
 
 	$limit = 'LIMIT ' .($page - 1) * $itemsPerPage .',' .$itemsPerPage; 
@@ -215,15 +215,15 @@ if(!isset($_GET['tid'])){ $_GET['tid']='1'; }
             <table class="transparent">
                 <tbody><tr>
                     <td>
-                        <span>rank <input type="text" class="text ra" maxlength="5" name="rank" value="" /></span>
+                        <span>rango <input type="text" class="text ra" maxlength="5" name="rank" value="" /></span>
                     </td>
                     <td>
-                        <span>name <input type="text" class="text name" maxlength="20" name="name" value="<?php if(!is_numeric($search)) {echo $search; } ?>" /></span>
+                        <span>nombre <input type="text" class="text name" maxlength="20" name="name" value="<?php if(!is_numeric($search)) {echo $search; } ?>" /></span>
                     </td>
                     <td>
                         <input type="hidden" name="ft" value="r<?php echo isset($_GET['tid'])? $_GET['tid'] : 1; ?>" />
                         <button type="submit" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="img/x.gif">
-            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">OK</div></div></button>
+            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Aceptar</div></div></button>
                     </td>
                 </tr>
                 </tbody>

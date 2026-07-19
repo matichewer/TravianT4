@@ -5,20 +5,20 @@
    $tribes = array(mysql_num_rows($tribe1), mysql_num_rows($tribe2), mysql_num_rows($tribe3));
    $users = mysql_num_rows(mysql_query("SELECT SQL_CACHE * FROM ".TB_PREFIX."users WHERE id>4")); ?>
 
-<h4 class="round">Stats</h4>
+<h4 class="round">Estadísticas</h4>
 <table cellpadding="1" cellspacing="1" id="world_player" class="transparent">
      <tbody>
      <tr>
-      <th>Registered players</th>
+      <th>Jugadores registrados</th>
       <td><?php echo $users; ?></td>
      </tr>
      <tr>
-      <th>Active players</th>
+      <th>Jugadores activos</th>
       <td><?php
                    $active = mysql_num_rows(mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE ".time()."-timestamp < (3600*24)"));
                    echo $active; ?></td>
      </tr>     <tr>
-      <th>Players online</th>
+      <th>Jugadores en línea</th>
       <td><?php
 				$result = mysql_query("SELECT * FROM ".TB_PREFIX."online");
 				$num_rows = mysql_num_rows($result);
@@ -27,18 +27,18 @@
      </tr>
     </tbody>
    </table>
-<h4 class="round spacer">Tribes</h4>
+<h4 class="round spacer">Tribus</h4>
 <table cellpadding="1" cellspacing="1" id="world_tribes" class="world">
     <thead>
      <tr class="hover">
-      <td>Tribe</td>
-      <td>Registered</td>
-      <td>Percent</td>
+      <td>Tribu</td>
+      <td>Registrados</td>
+      <td>Porcentaje</td>
      </tr>
      </thead>
      <tbody>
      <tr class="hover">
-      <td>Romans</td>
+      <td>Romanos</td>
       <td><?php echo $tribes[0]; ?></td>
       <td><?php
 $percents = 100*($tribes[0] / $users);
@@ -46,7 +46,7 @@ echo $percents = intval ($percents);
 echo "%"; ?></td>
      </tr>
      <tr class="hover">
-      <td>Teutons</td>
+      <td>Teutones</td>
       <td><?php echo $tribes[1]; ?></td>
       <td><?php
 $percents = 100*($tribes[1] / $users);
@@ -54,7 +54,7 @@ echo $percents = intval ($percents);
 echo "%"; ?></td>
      </tr>
      <tr class="hover">
-      <td>Gauls</td>
+      <td>Galos</td>
       <td><?php echo $tribes[2]; ?></td>
       <td><?php
 $percents = 100*($tribes[2] / $users);
@@ -64,13 +64,13 @@ echo "%"; ?></td>
     </tbody>
    </table>
 
-   <h4 class="round spacer">Miscellaneous</h4>
+   <h4 class="round spacer">Varios</h4>
     <table cellpadding="1" cellspacing="1" id="world_tribes" class="world">
     <thead>
      <tr class="hover">
-      <td>Attacks</td>
-      <td>Casualties</td>
-      <td>Date</td>
+      <td>Ataques</td>
+      <td>Bajas</td>
+      <td>Fecha</td>
      </tr>
      </thead>
         <tbody>

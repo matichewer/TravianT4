@@ -7,33 +7,33 @@
 <div class="silver"><img title="Plata de Travian" class="silver" src="img/x.gif"> <?php $now = $database->getAuctionSilver($session->uid); echo ($session->silver - $now['silver']); ?> / <?php echo $session->silver; ?></div>
 
 <div class="filterContainer">
-<button title="Filter for Helmets" type="button" value="itemCategory itemCategory_helmet" <?php if(isset($_GET['filter']) && $_GET['filter'] == 1) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=1'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_helmet" alt="itemCategory itemCategory_helmet"></button>
+<button title="Filtrar por cascos" type="button" value="itemCategory itemCategory_helmet" <?php if(isset($_GET['filter']) && $_GET['filter'] == 1) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=1'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_helmet" alt="itemCategory itemCategory_helmet"></button>
 
-<button title="Filter for Body Items" type="button" value="itemCategory itemCategory_body" <?php if(isset($_GET['filter']) && $_GET['filter'] == 2) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=2'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_body" alt="itemCategory itemCategory_body"></button>
+<button title="Filtrar por armaduras" type="button" value="itemCategory itemCategory_body" <?php if(isset($_GET['filter']) && $_GET['filter'] == 2) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=2'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_body" alt="itemCategory itemCategory_body"></button>
 
-<button title="Filter for Left-Hand Items" type="button" value="itemCategory itemCategory_leftHand" <?php if(isset($_GET['filter']) && $_GET['filter'] == 3) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=3'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_leftHand" alt="itemCategory itemCategory_leftHand"></button>
+<button title="Filtrar por objetos de mano izquierda" type="button" value="itemCategory itemCategory_leftHand" <?php if(isset($_GET['filter']) && $_GET['filter'] == 3) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=3'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_leftHand" alt="itemCategory itemCategory_leftHand"></button>
 
-<button title="Filter for Right-Hand Items" type="button" value="itemCategory itemCategory_rightHand" <?php if(isset($_GET['filter']) && $_GET['filter'] == 4) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=4'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_rightHand" alt="itemCategory itemCategory_rightHand"></button>
+<button title="Filtrar por objetos de mano derecha" type="button" value="itemCategory itemCategory_rightHand" <?php if(isset($_GET['filter']) && $_GET['filter'] == 4) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=4'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_rightHand" alt="itemCategory itemCategory_rightHand"></button>
 
-<button title="Filter for Shoes" type="button" value="itemCategory itemCategory_shoes" <?php if(isset($_GET['filter']) && $_GET['filter'] == 5) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=5'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_shoes" alt="itemCategory itemCategory_shoes"></button>
+<button title="Filtrar por calzado" type="button" value="itemCategory itemCategory_shoes" <?php if(isset($_GET['filter']) && $_GET['filter'] == 5) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=5'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_shoes" alt="itemCategory itemCategory_shoes"></button>
 
-<button title="Filter for Horses" type="button" value="itemCategory itemCategory_horse" <?php if(isset($_GET['filter']) && $_GET['filter'] == 6) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=6'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_horse" alt="itemCategory itemCategory_horse"></button>
+<button title="Filtrar por caballos" type="button" value="itemCategory itemCategory_horse" <?php if(isset($_GET['filter']) && $_GET['filter'] == 6) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=6'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_horse" alt="itemCategory itemCategory_horse"></button>
 
-<button title="Filter for small Bandages" type="button" value="itemCategory itemCategory_bandage25" <?php if(isset($_GET['filter']) && $_GET['filter'] == 7) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=7'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bandage25" alt="itemCategory itemCategory_bandage25"></button>
+<button title="Filtrar por vendas pequeñas" type="button" value="itemCategory itemCategory_bandage25" <?php if(isset($_GET['filter']) && $_GET['filter'] == 7) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=7'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bandage25" alt="itemCategory itemCategory_bandage25"></button>
 
-<button title="Filter for Bandages" type="button" value="itemCategory itemCategory_bandage33" <?php if(isset($_GET['filter']) && $_GET['filter'] == 8) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=8'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bandage33" alt="itemCategory itemCategory_bandage33"></button>
+<button title="Filtrar por vendas" type="button" value="itemCategory itemCategory_bandage33" <?php if(isset($_GET['filter']) && $_GET['filter'] == 8) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=8'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bandage33" alt="itemCategory itemCategory_bandage33"></button>
 
-<button title="Filter for Cages" type="button" value="itemCategory itemCategory_cage" <?php if(isset($_GET['filter']) && $_GET['filter'] == 9) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=9'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_cage" alt="itemCategory itemCategory_cage"></button>
+<button title="Filtrar por jaulas" type="button" value="itemCategory itemCategory_cage" <?php if(isset($_GET['filter']) && $_GET['filter'] == 9) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=9'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_cage" alt="itemCategory itemCategory_cage"></button>
 
-<button title="Filter for Scrolls" type="button" value="itemCategory itemCategory_scroll" <?php if(isset($_GET['filter']) && $_GET['filter'] == 10) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=10'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_scroll" alt="itemCategory itemCategory_scroll"></button>
+<button title="Filtrar por pergaminos" type="button" value="itemCategory itemCategory_scroll" <?php if(isset($_GET['filter']) && $_GET['filter'] == 10) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=10'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_scroll" alt="itemCategory itemCategory_scroll"></button>
 
-<button title="Filter for Ointments" type="button" value="itemCategory itemCategory_ointment" <?php if(isset($_GET['filter']) && $_GET['filter'] == 11) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=11'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_ointment" alt="itemCategory itemCategory_ointment"></button>
+<button title="Filtrar por ungüentos" type="button" value="itemCategory itemCategory_ointment" <?php if(isset($_GET['filter']) && $_GET['filter'] == 11) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=11'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_ointment" alt="itemCategory itemCategory_ointment"></button>
 
-<button title="Filter for Buckets" type="button" value="itemCategory itemCategory_bucketOfWater" <?php if(isset($_GET['filter']) && $_GET['filter'] == 12) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=12'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bucketOfWater" alt="itemCategory itemCategory_bucketOfWater"></button>
+<button title="Filtrar por baldes de agua" type="button" value="itemCategory itemCategory_bucketOfWater" <?php if(isset($_GET['filter']) && $_GET['filter'] == 12) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=12'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bucketOfWater" alt="itemCategory itemCategory_bucketOfWater"></button>
 
-<button title="Filter for Book of Wisdom" type="button" value="itemCategory itemCategory_bookOfWisdom" <?php if(isset($_GET['filter']) && $_GET['filter'] == 13) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=13'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bookOfWisdom" alt="itemCategory itemCategory_bookOfWisdom"></button>
+<button title="Filtrar por Libro de la Sabiduría" type="button" value="itemCategory itemCategory_bookOfWisdom" <?php if(isset($_GET['filter']) && $_GET['filter'] == 13) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=13'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_bookOfWisdom" alt="itemCategory itemCategory_bookOfWisdom"></button>
 
-<button title="Filter for Tablets of Law" type="button" value="itemCategory itemCategory_lawTables" <?php if(isset($_GET['filter']) && $_GET['filter'] == 14) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=14'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_lawTables" alt="itemCategory itemCategory_lawTables"></button>
+<button title="Filtrar por Tablas de la Ley" type="button" value="itemCategory itemCategory_lawTables" <?php if(isset($_GET['filter']) && $_GET['filter'] == 14) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=14'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_lawTables" alt="itemCategory itemCategory_lawTables"></button>
 
 <button title="Filtrar por obras de arte" type="button" value="itemCategory itemCategory_artWork" <?php if(isset($_GET['filter']) && $_GET['filter'] == 15) { echo "class=\"iconFilter iconFilterActive\""; } else { echo "class=\"iconFilter\""; } ?> onclick="window.location.href = '?action=bids&amp;filter=15'; return false;"><img src="img/x.gif" class="itemCategory itemCategory_artWork" alt="Obras de arte"></button>
 </div>
@@ -55,7 +55,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 $outputList = '';
 $timer = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"7\" class=\"none\"><center>Items not found.</center></td>";
+    $outputList .= "<td colspan=\"7\" class=\"none\"><center>No se encontraron objetos.</center></td>";
 }else{
 while($row = mysql_fetch_array($sql2)){
 $id = $row["id"];$owner = $row["owner"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$uid = $row["uid"];$bids = $row["bids"];$silver = $row["silver"];$time = $row["time"];
@@ -90,7 +90,7 @@ include "Templates/Auction/alt.tpl";
 
     	$outputList .= "<td class=\"bid".$sStyle."\"><a class=\"bidButton openedClosedSwitch switch".$switchStyle."\" href=\"?action=bids".$pURL."".$fURL."&a=".$id."\">".$bidd."</a></td>";
     }else{
-    	$outputList .= "<td class=\"notEnoughSilver".$sStyle."\">Silver Shortage</td>";
+    	$outputList .= "<td class=\"notEnoughSilver".$sStyle."\">Plata insuficiente</td>";
     }
 	$outputList .= "</tr>";
 
@@ -121,11 +121,11 @@ include "Templates/Auction/alt.tpl";
 <table class="currentBid" cellspacing="1" cellpadding="1">
 	<thead>
 		<tr>
-            <th class="name" colspan="3">Description</th>
-            <th class="bids"><img title="Bids" alt="Bids" class="bids" src="img/x.gif"></th>
-            <th class="silver"><img title="Silver" alt="Silver" class="silver" src="img/x.gif"></th>
-            <th class="time"><img title="Time" alt="Time" class="clock" src="img/x.gif"></th>
-            <th class="bid">Auctions</th>
+            <th class="name" colspan="3">Descripción</th>
+            <th class="bids"><img title="Ofertas" alt="Ofertas" class="bids" src="img/x.gif"></th>
+            <th class="silver"><img title="Plata" alt="Plata" class="silver" src="img/x.gif"></th>
+            <th class="time"><img title="Tiempo" alt="Tiempo" class="clock" src="img/x.gif"></th>
+            <th class="bid">Subastas</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -274,7 +274,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 $outputList = '';
 $idd = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"7\" class=\"none\"><center>No Bids Found.</center></td>";
+    $outputList .= "<td colspan=\"7\" class=\"none\"><center>No se encontraron ofertas.</center></td>";
 }else{
 while($row = mysql_fetch_array($sql2)){
 $id = $row["id"];$owner = $row["owner"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$uid = $row["uid"];$bids = $row["bids"];$silver = $row["silver"];$time = $row["time"];
@@ -286,8 +286,8 @@ include "Templates/Auction/alt.tpl";
 	$outputList .= "<td class=\"name\">".$num." x ".$name."</td>";
 	$outputList .= "<td class=\"bids\">".$bids."</td>";
 	$outputList .= "<td class=\"silver win\">".$silver."</td>";
-	$outputList .= "<td class=\"time\">Time</td>";
-	$outputList .= "<td class=\"bid win\">Won</td></tr>";
+	$outputList .= "<td class=\"time\">Tiempo</td>";
+	$outputList .= "<td class=\"bid win\">Ganada</td></tr>";
     $idd++;
 }
  }
@@ -295,15 +295,15 @@ include "Templates/Auction/alt.tpl";
 
 ?>
 <form method="post" action="hero_auction.php">
-	<h4 class="auctionEnded">Finished auctions</h4>
+	<h4 class="auctionEnded">Subastas finalizadas</h4>
 	<table cellspacing="1" cellpadding="1">
 		<thead>
             <tr>
-                <th class="name" colspan="3">Description</th>
-                <th class="bids"><img title="Bids" alt="Bids" class="bids" src="img/x.gif"></th>
-                <th class="silver"><img title="Silver" alt="Silver" class="silver" src="img/x.gif"></th>
-                <th class="time"><img title="Time" alt="Time" class="clock" src="img/x.gif"></th>
-                <th class="bid">Auctions</th>
+                <th class="name" colspan="3">Descripción</th>
+                <th class="bids"><img title="Ofertas" alt="Ofertas" class="bids" src="img/x.gif"></th>
+                <th class="silver"><img title="Plata" alt="Plata" class="silver" src="img/x.gif"></th>
+                <th class="time"><img title="Tiempo" alt="Tiempo" class="clock" src="img/x.gif"></th>
+                <th class="bid">Subastas</th>
             </tr>
 		</thead>
 		<tbody>
@@ -321,13 +321,13 @@ include "Templates/Auction/alt.tpl";
 					element.checked = this.checked;
 				}, this);
 			">
-			<span><label for="sAll">Select all</label></span>
+			<span><label for="sAll">Seleccionar todo</label></span>
 		</div>
 		<div class="paginator"><?php echo $paginationDisplay; ?></div>		<div class="clear"></div>
 	</div>
 
 	<div>
-		<button type="submit" value="Eliminar" name="del" id="del"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Del</div></div></button>
+		<button type="submit" value="Eliminar" name="del" id="del"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Eliminar</div></div></button>
         <input type="hidden" name="action" value="bids">
 		<input type="hidden" name="page" value="<?php echo $_GET['page']; ?>">
 		<input type="hidden" name="filter" value="<?php echo $_GET['filter']; ?>">

@@ -22,11 +22,11 @@ $uid = $session->uid;
 
 <div id="silverExchange">
 
-	<h3>Exchange Office</h3>
-	<p>Enter the amount of Gold or Silver you want to exchange.</p>
+	<h3>Casa de cambio</h3>
+	<p>Ingresa la cantidad de oro o plata que quieres intercambiar.</p>
 
-	<h4>Exchange rates</h4>
-	<p>1 Gold : 100 Silver<br>200 Silver : 1 Gold</p>
+	<h4>Tasas de cambio</h4>
+	<p>1 oro : 100 plata<br>200 plata : 1 oro</p>
 <?php $id = $_SESSION['id']; ?>
 <form action="plus.php?id=6" method="post">
 <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
@@ -59,7 +59,7 @@ $uid = $session->uid;
 			<input type="hidden" name="a" value="84">
 			<input type="hidden" name="c" value="18a">
 
-			<button type="submit" value="exchange"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">exchange</div></div></button>
+			<button type="submit" value="exchange"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Intercambiar</div></div></button>
 
             </p>
 

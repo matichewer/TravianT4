@@ -3,36 +3,36 @@
                <tr>
 
                   <td class="role">
-                     Defender
+                     Defensor
                   </td><td>
-                        <img src="img/x.gif" class="unit u31" title="Rat" alt="Rat" />
+                        <img src="img/x.gif" class="unit u31" title="Rata" alt="Rata" />
                      </td><td>
 
-                        <img src="img/x.gif" class="unit u32" title="Spider" alt="Spider" />
+                        <img src="img/x.gif" class="unit u32" title="Araña" alt="Araña" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u33" title="Snake" alt="Snake" />
+                        <img src="img/x.gif" class="unit u33" title="Serpiente" alt="Serpiente" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u34" title="Bat" alt="Bat" />
+                        <img src="img/x.gif" class="unit u34" title="Murciélago" alt="Murciélago" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u35" title="Wild Boar" alt="Wild Boar" />
+                        <img src="img/x.gif" class="unit u35" title="Jabalí" alt="Jabalí" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u36" title="Wolf" alt="Wolf" />
+                        <img src="img/x.gif" class="unit u36" title="Lobo" alt="Lobo" />
 
                      </td><td>
-                        <img src="img/x.gif" class="unit u37" title="Bear" alt="Bear" />
+                        <img src="img/x.gif" class="unit u37" title="Oso" alt="Oso" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u38" title="Crocodile" alt="Crocodile" />
+                        <img src="img/x.gif" class="unit u38" title="Cocodrilo" alt="Cocodrilo" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u39" title="Tiger" alt="Tiger" />
+                        <img src="img/x.gif" class="unit u39" title="Tigre" alt="Tigre" />
                      </td><td>
-                        <img src="img/x.gif" class="unit u40" title="Elephant" alt="Elephant" />
+                        <img src="img/x.gif" class="unit u40" title="Elefante" alt="Elefante" />
                      </td></tr>
             </thead>
             <tbody>
                <tr>
                   <th>
 
-                     Troops
+                     Tropas
 						</th><td class="none">
 									0
 								</td><td class="none">
@@ -58,7 +58,7 @@
 					<tr>
 
 						<th>
-							Casualties
+							Bajas
 						</th><td class="none">
 									0
 								</td><td class="none">

@@ -3,20 +3,20 @@
 	color: #808080;
 }
 </style>
-<h1>Gold club</h1>
-You will only be charged once for entry into Gold   club. Afterwards you have access to various exclusive features. Some of   the exclusive features are free, others cost a defined amount of gold   per use.<br />
+<h1>Club Gold</h1>
+Solo se te cobrará una vez por ingresar al Club   Gold. Después tendrás acceso a varias funciones exclusivas. Algunas de   ellas son gratuitas y otras cuestan una cantidad determinada de Gold   por uso.<br />
 <br />
-<strong>Free Gold club features:</strong>
+<strong>Funciones gratuitas del Club Gold:</strong>
 <ul>
-  <li>Raid   list</li>
-  <li>Raid statistics</li>
-  <li>Let merchants go thrice</li>
-  <li>Search   for 9 and 15 croppers including oases</li>
+  <li>Lista de   saqueos</li>
+  <li>Estadísticas de saqueos</li>
+  <li>Enviar a los mercaderes tres veces</li>
+  <li>Buscar   aldeas de 9 y 15 campos de cereal, incluidos los oasis</li>
 </ul>
-<strong>Priced Gold club   features:</strong>
+<strong>Funciones de pago del Club   Gold:</strong>
 <ul>
-  <li>Assign master builder up to 3   construction orders</li>
-  <li>Automated trade routes between your own   villages</li>
-  <li>Hide troops from attacks in the forest<br />
-    <span class="hall">(only possible if in the last <strong>10</strong> seconds no troops   came home)</span></li>
+  <li>Asignar hasta 3   órdenes de construcción al constructor maestro</li>
+  <li>Rutas comerciales automatizadas entre tus propias   aldeas</li>
+  <li>Ocultar las tropas de los ataques en el bosque<br />
+    <span class="hall">(solo es posible si ninguna tropa   regresó a casa en los últimos <strong>10</strong> segundos)</span></li>
 </ul>

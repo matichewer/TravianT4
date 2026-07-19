@@ -27,7 +27,7 @@ while($row = mysql_fetch_array($sql)){
 				<div class="round spacer listTitle" onclick="Travian.Game.RaidList.toggleList(<?php echo $lid; ?>);">
 						<div class="listTitleText">
 							<img alt="del" class="del" src="img/x.gif" onclick="
-								'are you sure that you want to delete this list?'.dialog(
+								'¿estás seguro de que quieres eliminar esta lista?'.dialog(
 								{
 									onOkay: function(dialog, contentElement)
 									{
@@ -40,7 +40,7 @@ while($row = mysql_fetch_array($sql)){
                             <img alt="Loading..." class="loading hide" src="img/x.gif" align="absmiddle">
 						</div>
 						<div class="openedClosedSwitch switchOpened">
-							Details						</div>
+							Detalles						</div>
 						<div class="clear"></div>
 					</div>
 					<div class="listContent ">
@@ -49,11 +49,11 @@ while($row = mysql_fetch_array($sql)){
 		<thead>
 			<tr>
 				<td class="checkbox edit"></td>
-				<td class="village sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'village');">Village</td>
-				<td class="ew sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'ew');">Ew</td>
-                <td class="distance sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'distance');">Distance</td>
-                <td class="troops sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'troops');">Troops</td>
-                <td class="lastRaid sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'lastRaid');">LastRaid</td>
+				<td class="village sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'village');">Aldea</td>
+				<td class="ew sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'ew');">Hab.</td>
+                <td class="distance sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'distance');">Distancia</td>
+                <td class="troops sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'troops');">Tropas</td>
+                <td class="lastRaid sortable" onclick="Travian.Game.RaidList.sort(<?php echo $lid; ?>, 'lastRaid');">Último saqueo</td>
 				<td class="action"></td>
 			</tr>
 		</thead>
@@ -63,7 +63,7 @@ while($row = mysql_fetch_array($sql)){
 $sql2 = mysql_query("SELECT * FROM ".TB_PREFIX."raidlist WHERE lid = $lid ORDER BY distance ASC");
 $query2 = mysql_num_rows($sql2);
 if($query2 == 0) {
-    echo '<td class="noData" colspan="7">There is no any raid list.</td>';
+    echo '<td class="noData" colspan="7">No hay listas de saqueo.</td>';
 }else{
 while($row = mysql_fetch_array($sql2)){
 $id= $row['id'];$lid = $row['lid'];$towref = $row['towref'];$x = $row['x'];$y = $row['y'];
@@ -98,7 +98,7 @@ $vdata = $database->getVillage($towref);
 					$inc_atts -= 1;
 				}
 			if($inc_atts > 0) {
-                echo '<img class="att2" src="img/x.gif" title="Incoming Attacker" />';
+                echo '<img class="att2" src="img/x.gif" title="Ataque entrante" />';
 			}
 		}
         ?>
@@ -200,7 +200,7 @@ $vdata = $database->getVillage($towref);
             </td>
 			<td class="lastRaid">
 <?php
-$noticeClass = array("Scout Report","Won as attacker without losses","Won as attacker with losses","Lost as attacker with losses","Won as defender without losses","Won as defender with losses","Lost as defender with losses","Lost as defender without losses","Reinforcement arrived","","Wood Delivered","Clay Delivered","Iron Delivered","Crop Delivered","","Won as defender without losses","Won as defender with losses","Lost as defender with losses","Won scouting as attacker","Lost scouting as attacker","Won scouting as defender","Lost scouting as defender");
+$noticeClass = array("Informe de exploración","Victoria como atacante sin bajas","Victoria como atacante con bajas","Derrota como atacante con bajas","Victoria como defensor sin bajas","Victoria como defensor con bajas","Derrota como defensor con bajas","Derrota como defensor sin bajas","Refuerzo llegado","","Madera entregada","Barro entregado","Hierro entregado","Cereal entregado","","Victoria como defensor sin bajas","Victoria como defensor con bajas","Derrota como defensor con bajas","Victoria explorando como atacante","Derrota explorando como atacante","Victoria explorando como defensor","Derrota explorando como defensor");
 $limits = "ntype!=4 and ntype!=5 and ntype!=6 and ntype!=7";
 $getnotice = mysql_query("SELECT * FROM ".TB_PREFIX."ndata WHERE $limits AND toWref = ".$towref." AND uid = ".$session->uid." ORDER BY time DESC Limit 1");
 
@@ -213,13 +213,13 @@ while($row2 = mysql_fetch_array($getnotice)){
     $carry = $dataarray[29];
 
     if ($dataarray[25]+$dataarray[26]+$dataarray[27]+$dataarray[28] == 0) {
-    echo "<img title=\"bounty: ".$allres." resouces max carry: ".$carry." resouces.\" src=\"img/x.gif\" class=\"carry empty\">";
+    echo "<img title=\"botín: ".$allres." recursos. capacidad máxima: ".$carry." recursos.\" src=\"img/x.gif\" class=\"carry empty\">";
 
     } elseif ($dataarray[25]+$dataarray[26]+$dataarray[27]+$dataarray[28] != $dataarray[29]) {
-    echo "<img title=\"bounty: ".$allres." resouces. max carry: ".$carry." resouces.\" src=\"img/x.gif\" class=\"carry half\">";
+    echo "<img title=\"botín: ".$allres." recursos. capacidad máxima: ".$carry." recursos.\" src=\"img/x.gif\" class=\"carry half\">";
 
     } else {
-    echo "<img title=\"bounty: ".$allres." resouces. max carry: ".$carry." resouces.\" src=\"img/x.gif\" class=\"carry full\">";
+    echo "<img title=\"botín: ".$allres." recursos. capacidad máxima: ".$carry." recursos.\" src=\"img/x.gif\" class=\"carry full\">";
     }
 
     $date = $generator->procMtime($row2['time']);
@@ -229,7 +229,7 @@ while($row2 = mysql_fetch_array($getnotice)){
 				<div class="clear"></div>
 			</td>
 			<td class="action">
-				<a class="arrow" href="#" onclick="Travian.Game.RaidList.editSlot(<?php echo $lid; ?>, <?php echo $id; ?>); return false;">edit</a>
+				<a class="arrow" href="#" onclick="Travian.Game.RaidList.editSlot(<?php echo $lid; ?>, <?php echo $id; ?>); return false;">editar</a>
 			</td>
             </tr>
 <?php
@@ -245,7 +245,7 @@ while($row2 = mysql_fetch_array($getnotice)){
 		<?php }else{ ?>
         <input type="checkbox" id="raidListMarkAll<?php echo $lid; ?>" class="markAll" onclick="window.location.href = '?gid=16&t=99';" checked>
 		<?php } ?>
-        <label for="raidListMarkAll<?php echo $lid; ?>">Select All</label>
+        <label for="raidListMarkAll<?php echo $lid; ?>">Seleccionar todo</label>
     </div>
 
 	<div class="addSlot">
@@ -277,7 +277,7 @@ for($i=$start;$i<=$end;$i++){
 <div class="round spacer listTitle" onclick="Travian.Game.RaidList.toggleList(<?php echo $lid; ?>);">
 						<div class="listTitleText">
 							<img alt="del" class="del" src="img/x.gif" onclick="
-								'are you sure that you want to delete this list?'.dialog(
+								'¿estás seguro de que quieres eliminar esta lista?'.dialog(
 								{
 									onOkay: function(dialog, contentElement)
 									{
@@ -297,7 +297,7 @@ for($i=$start;$i<=$end;$i++){
 			</div>
 <?php } }?>
 <div class="options">
-	<a class="arrow" href="build.php?gid=16&t=99&action=addList">Create a new list</a>
+	<a class="arrow" href="build.php?gid=16&t=99&action=addList">Crear una nueva lista</a>
 </div>
 <?php
 }

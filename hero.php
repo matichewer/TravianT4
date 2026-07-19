@@ -22,34 +22,34 @@ include "Templates/html.tpl";
 </div> 
 </div>
 					<div id="mid">
-<a id="ingameManual" href="help.php"><img class="question" alt="Help" src="img/x.gif"></a>
+<a id="ingameManual" href="help.php"><img class="question" alt="Ayuda" src="img/x.gif"></a>
 												<div class="clear"></div> 
 						<div id="contentOuterContainer"> 
 							<div class="contentTitle">&nbsp;</div> 
 
 <div class="contentContainer">
-								<div id="content" class="hero_editor"><h1 class="titleInHeader">Hero</h1>
+								<div id="content" class="hero_editor"><h1 class="titleInHeader">Héroe</h1>
 
 <div class="contentNavi subNavi">
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Attributes</span></a></div>
+					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Atributos</span></a></div>
 				</div>
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero.php"><span class="tabItem">Appearance</span></a></div>
+					<div class="content"><a href="hero.php"><span class="tabItem">Apariencia</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Adventure</span></a></div>
+					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Aventura</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_auction.php"><span class="tabItem">Auction</span></a></div>
+					<div class="content"><a href="hero_auction.php"><span class="tabItem">Subasta</span></a></div>
 				</div><div class="clear"></div>
 		</div><script type="text/javascript">
 					window.addEvent('domready', function()
@@ -104,7 +104,7 @@ if($herodetail['color']==4){
         <div class="container">
 			<div class="info" id="headProfile">
 				<div class="headline switchClosed">
-					<div class="title">Head</div>
+					<div class="title">Cara</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -118,7 +118,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="hairColor">
 				<div class="headline switchClosed">
-					<div class="title">Hair Color</div>
+					<div class="title">Color de pelo</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -132,7 +132,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="hairStyle">
 				<div class="headline switchClosed">
-					<div class="title">Hair Style</div>
+					<div class="title">Estilo de pelo</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -148,7 +148,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="ears">
 				<div class="headline switchClosed">
-					<div class="title">Ears</div>
+					<div class="title">Orejas</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -163,7 +163,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="eyebrow">
 				<div class="headline switchClosed">
-					<div class="title">Eyebrows</div>
+					<div class="title">Cejas</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -178,7 +178,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="eyes">
 				<div class="headline switchClosed">
-					<div class="title">Eyes</div>
+					<div class="title">Ojos</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -193,7 +193,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="nose">
 				<div class="headline switchClosed">
-					<div class="title">Nose</div>
+					<div class="title">Nariz</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -208,7 +208,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="mouth">
 				<div class="headline switchClosed">
-					<div class="title">Mouth</div>
+					<div class="title">Boca</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -222,7 +222,7 @@ if($herodetail['color']==4){
 			</div>
 					<div class="info" id="beard">
 				<div class="headline switchClosed">
-					<div class="title">Beard</div>
+					<div class="title">Barba</div>
 					<div class="clear"></div>
 				</div>
 				<div class="details" style="display: none; ">
@@ -243,11 +243,11 @@ if($herodetail['color']==4){
 		<form id="HeroEditorForm" method="post">
 		<button type="submit" value="save" name="save" id="btn_login" onClick="document.snd.attributes.value=screen.width+':'+screen.height;">
         <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div>
-        <div class="button-contents">Save</div></div>
+        <div class="button-contents">Guardar</div></div>
         </button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<button type="submit" value="random" name="random" id="btn_login" onClick="document.snd.attributes.value=screen.width+':'+screen.height;">
         <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div>
-        <div class="button-contents">Random</div></div>
+        <div class="button-contents">Aleatorio</div></div>
         </button>
 		<input type="hidden" name="uid" value="<?php echo $session->uid; ?>" /><input type="hidden" name="HeroFace" value="<?php echo $herodetail['face']; ?>" /><input type="hidden" name="color" value="<?php echo $herodetail['color']; ?>" /><input type="hidden" name="HeroHair" value="<?php echo $herodetail['hair']; ?>" /><input type="hidden" name="HeroEar" value="<?php echo $herodetail['ear']; ?>" /><input type="hidden" name="HeroEyebrow" value="<?php echo $herodetail['eyebrow']; ?>" /><input type="hidden" name="HeroEye" value="<?php echo $herodetail['eye']; ?>" /><input type="hidden" name="HeroNose" value="<?php echo $herodetail['nose']; ?>" /><input type="hidden" name="HeroMouth" value="<?php echo $herodetail['mouth']; ?>" /><input type="hidden" name="HeroBeard" value="<?php echo $herodetail['beard']; ?>" />
         </form>

@@ -16,9 +16,9 @@
 ##                                                                             ##
 #################################################################################
 ?>
-<h3 class="pop popgreen bold">Game Tour</h3>
+<h3 class="pop popgreen bold">Recorrido por el juego</h3>
 <div id="gtour">
-    <h3 class="gt bold">2. Resources</h3>
+    <h3 class="gt bold">2. Recursos</h3>
     <div class="col2row">
         <div class="col1"><img src="img/x.gif" class="slide slide2_1" alt="" border="0" /></div>
         <div class="col2"><img src="img/x.gif" class="slide slide2_2" alt="" border="0" /></div>
@@ -27,28 +27,28 @@
         <div class="col1round">
             <div class="grlt"></div>
             <div class="grrt"></div>
-            1. Choose a resource field
+            1. Elige un campo de recursos
             <div class="grlb"></div>
             <div class="grrb"></div>
         </div>
         <div class="col2round">
             <div class="grlt"></div>
             <div class="grrt"></div>
-            2. Extend the resource field
+            2. Amplía el campo de recursos
             <div class="grlb"></div>
             <div class="grrb"></div>
         </div>
     </div>
     <div class="col2row-text">
-        There are four different types of resources in Travian: lumber, clay, iron and crop.
+        Hay cuatro tipos de recursos en Travian: madera, barro, hierro y cereal.
         <br /><br />
-        Before you expand your village's buildings, you should develop some resource fields to increase your resource production.
+        Antes de expandir los edificios de tu aldea, deberías mejorar algunos campos de recursos para aumentar tu producción.
     </div>
     <div class="col3row-button">
         <span class="orange">2</span><span class="grey"> / 5</span>
     </div>
     <a class="browse prev" href="tutorial.php?s=1"></a>
-    <a class="browsetxt prevtxt" href="tutorial.php?s=1">back</a>
+    <a class="browsetxt prevtxt" href="tutorial.php?s=1">atrás</a>
     <a class="browse next" href="tutorial.php?s=3"></a>
-    <a class="browsetxt nexttxt" href="tutorial.php?s=3">forward</a>
+    <a class="browsetxt nexttxt" href="tutorial.php?s=3">adelante</a>
 </div>

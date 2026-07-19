@@ -1,10 +1,10 @@
-<h1><img class="unit u8" src="img/x.gif" alt="Fire Catapult" title="Fire Catapult" /> Fire Catapult <span class="tribe">(Romans)</span></h1>
+<h1><img class="unit u8" src="img/x.gif" alt="Catapulta de fuego" title="Catapulta de fuego" /> Catapulta de fuego <span class="tribe">(Romanos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
-	<th><img class="att_all" src="img/x.gif" alt="attack value" title="attack value" /></th>
-	<th><img class="def_i" src="img/x.gif" alt="defence against infantry" title="defence against infantry" /></th>
-	<th><img class="def_c" src="img/x.gif" alt="defence against cavalry" title="defence against cavalry" /></th><th><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" /></th><th><img class="r2" src="img/x.gif" alt="Clay" title="Clay" /></th><th><img class="r3" src="img/x.gif" alt="Iron" title="Iron" /></th><th><img class="r4" src="img/x.gif" alt="Crop" title="Crop" /></th></tr></thead>
+	<th><img class="att_all" src="img/x.gif" alt="valor de ataque" title="valor de ataque" /></th>
+	<th><img class="def_i" src="img/x.gif" alt="defensa contra infantería" title="defensa contra infantería" /></th>
+	<th><img class="def_c" src="img/x.gif" alt="defensa contra caballería" title="defensa contra caballería" /></th><th><img class="r1" src="img/x.gif" alt="Madera" title="Madera" /></th><th><img class="r2" src="img/x.gif" alt="Barro" title="Barro" /></th><th><img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" /></th><th><img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" /></th></tr></thead>
 <tbody><tr>
 	<td>75</td>
 	<td>60</td>
@@ -20,33 +20,33 @@
 <table id="troop_details" cellpadding="1" cellspacing="1">
 <tbody><tr>
 
-	<th>Velocity</th>
-	<td><b>3</b> fields/hour</td>
+	<th>Velocidad</th>
+	<td><b>3</b> casillas/hora</td>
 </tr>
 <tr>
-	<th>Can carry</th>
-	<td><b>0</b> resources</td>
+	<th>Puede transportar</th>
+	<td><b>0</b> recursos</td>
 
 </tr>
 <tr>
-	<th>Upkeep</th>
-	<td><img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" /> 6</td>
+	<th>Manutención</th>
+	<td><img class="r5" src="img/x.gif" alt="Consumo de cereal" title="Consumo de cereal" /> 6</td>
 </tr>
 <tr>
-	<th>Duration of training</th>
-	<td><img class="clock" src="img/x.gif" alt="duration" title="duration" /> 2:30:00</td>
+	<th>Duración del entrenamiento</th>
+	<td><img class="clock" src="img/x.gif" alt="duración" title="duración" /> 2:30:00</td>
 
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u8" src="img/x.gif" alt="Fire Catapult" title="Fire Catapult" /><div id="t_desc">The Catapult is an excellent long-distance weapon; it is used to destroy the fields and buildings of enemy villages. However, without escorting troops it is almost defenceless so don't forget to send some of your troops with it. 
+<img id="big_unit" class="big_u8" src="img/x.gif" alt="Catapulta de fuego" title="Catapulta de fuego" /><div id="t_desc">La Catapulta es un excelente arma de largo alcance; se usa para destruir los campos y edificios de aldeas enemigas. Sin embargo, sin tropas de escolta queda casi indefensa, así que no olvides enviar algunas de tus tropas con ella.
 <br /><br />
-Having a high level rally point makes your catapults more accurate and gives you the option to target additional enemy buildings. With a level 10 rally point each building except for the cranny, stonemason's lodge and trapper can be targeted. 
+Tener una plaza de reuniones de nivel alto hace que tus catapultas sean más precisas y te da la opción de apuntar a edificios enemigos adicionales. Con una plaza de reuniones de nivel 10 se puede apuntar a cualquier edificio excepto el escondite, la logia del picapedrero y la trampa.
 <br />
-HINT: Fire catapults CAN hit the cranny, trappers or stonemason's lodge when they target randomly.</div><div id="prereqs"><b>Prerequisites</b><br /><a href="manual.php?typ=4&amp;gid=21">Workshop</a> Level 10, <a href="manual.php?typ=4&amp;gid=22">Academy</a> Level 15</div><map id="nav" name="nav">
- <area href="manual.php?typ=1&amp;s=7" title="back" coords="0,0,45,18" shape="rect" alt="" />
+CONSEJO: las catapultas de fuego SÍ pueden golpear el escondite, las trampas o la logia del picapedrero cuando apuntan al azar.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=21">Taller</a> Nivel 10, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 15</div><map id="nav" name="nav">
+ <area href="manual.php?typ=1&amp;s=7" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
 
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
- <area href="manual.php?typ=1&amp;s=9" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
+ <area href="manual.php?typ=1&amp;s=9" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

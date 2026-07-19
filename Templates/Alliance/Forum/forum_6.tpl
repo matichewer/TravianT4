@@ -20,11 +20,11 @@ foreach($varray as $vil) {
 $countAu = $database->CountTopic($arr['owner']);
 $displayarray = $database->getUserArray($arr['owner'],1);
 if($displayarray['tribe'] == 1) {
-    $trip = "Romans";
+    $trip = "Romanos";
 }else if($displayarray['tribe'] == 2) {
-	$trip = "Teutons";
+	$trip = "Teutones";
 }else if($displayarray['tribe'] == 3) {
-    $trip = "Gauls";
+    $trip = "Galos";
 }
 $input = $arr['post'];
 $alliance = $arr['alliance0'];
@@ -35,25 +35,25 @@ $bbcoded = $input;
 include("GameEngine/BBCode.php");
 $bbcode_topic = stripslashes(nl2br($bbcoded));
 ?>
-<h4><a href="allianz.php?s=2&pid=<?php echo $arr['alliance']; ?>">Alliance</a> -> <a href="allianz.php?s=2&pid=<?php echo $arr['alliance']; ?>&fid=<?php echo $arr['cat']; ?>"><?php echo $CatName; ?></a></h4><table cellpadding="1" cellspacing="1" id="posts"><thead>
+<h4><a href="allianz.php?s=2&pid=<?php echo $arr['alliance']; ?>">Alianza</a> -> <a href="allianz.php?s=2&pid=<?php echo $arr['alliance']; ?>&fid=<?php echo $arr['cat']; ?>"><?php echo $CatName; ?></a></h4><table cellpadding="1" cellspacing="1" id="posts"><thead>
 <tr>
 	<th colspan="2"><?php echo stripslashes($arr['title']); ?></th>
 
 </tr><tr>
-	<td>Author</td>
-	<td>Message</td>
+	<td>Autor</td>
+	<td>Mensaje</td>
 </tr></thead><tbody>
 	<tr><td class="pinfo"><a class="name" href="spieler.php?uid=<?php echo $arr['owner']; ?>"><?php echo $owner['username']; ?></a><br /><a href="allianz.php?aid=<?php echo $allianceinfo['id']; ?>"><?php echo $allianceinfo['tag']; ?></a><br />
-		Posts: <?php echo $countAu; ?><br />
+		Publicaciones: <?php echo $countAu; ?><br />
 		<br />
-		Pop.: <?php echo $totalpop; ?><br />
-		Villages: <?php echo count($varray);?><br />
+		Pob.: <?php echo $totalpop; ?><br />
+		Aldeas: <?php echo count($varray);?><br />
 		<?php echo $trip; ?>
 		</td>
-		<td class="pcontent"><div class="posted">created: <?php echo $date; ?></div>
+		<td class="pcontent"><div class="posted">creado: <?php echo $date; ?></div>
 <?php
 if($database->CheckEditRes($aid)=="1"){
-	echo '<div class="admin"><a class="edit" href="allianz.php?s=2&pid='.$arr['alliance'].'&idf='.$arr['cat'].'&idt='.$arr['id'].'&admin=editans"><img src="img/x.gif" title="edit" alt="edit" /></a><a class="fdel" href="?s=2&pid='.$arr['alliance'].'&tid='.$arr['id'].'&admin=deltopic" onClick="return confirm(\'confirm delete?\');"><img src="img/x.gif" title="delete" alt="delete" /></a></div><br />';
+	echo '<div class="admin"><a class="edit" href="allianz.php?s=2&pid='.$arr['alliance'].'&idf='.$arr['cat'].'&idt='.$arr['id'].'&admin=editans"><img src="img/x.gif" title="editar" alt="editar" /></a><a class="fdel" href="?s=2&pid='.$arr['alliance'].'&tid='.$arr['id'].'&admin=deltopic" onClick="return confirm(\'¿confirmar eliminación?\');"><img src="img/x.gif" title="eliminar" alt="eliminar" /></a></div><br />';
 }
 ?>
 		<div class="clear dotted"></div><div class="text"><?php echo $bbcode_topic; ?></div></td>
@@ -70,12 +70,12 @@ foreach($posts as $po) {
 	}
 	$displayarray = $database->getUserArray($po['owner'],1);
 	if($displayarray['tribe'] == 1) {
-		$trip = "Roman";
+		$trip = "Romano";
 	}else if($displayarray['tribe'] == 2) {
-		$trip = "Teutons";
+		$trip = "Teutón";
 	}else if($displayarray['tribe'] == 3) {
-		$trip = "Gauls";
-	} 
+		$trip = "Galo";
+	}
 	$owner = $database->getUserArray($po['owner'],1);
 	$allianceinfo = $database->getAlliance($owner['alliance']);
 	$input = $po['post'];
@@ -87,15 +87,15 @@ foreach($posts as $po) {
 	$bbcode_post = stripslashes(nl2br($bbcoded));
 
 echo '<tr><td class="pinfo"><a class="name" href="spieler.php?uid='.$po['owner'].'">'.$owner['username'].'</a><br /><a href="allianz.php?aid='.$allianceinfo['id'].'">'.$allianceinfo['tag'].'</a><br />
-		Posts: '.$countAu.'<br />
+		Publicaciones: '.$countAu.'<br />
 		<br />
-		Inhbs.: '.$totalpop.'<br />
-		Villages: '.count($varray).'<br />
+		Hab.: '.$totalpop.'<br />
+		Aldeas: '.count($varray).'<br />
 		'.$trip.'
 		</td>
-		<td class="pcontent"><div class="posted">created: '.$date.'</div>';
+		<td class="pcontent"><div class="posted">creado: '.$date.'</div>';
 	if($database->CheckEditRes($aid)=="1"){
-		echo '<div class="admin"><a class="edit" href="allianz.php?s=2&pid='.$arr['alliance'].'&idt='.$_GET['tid'].'&pod='.$po['id'].'&admin=editpost"><img src="img/x.gif" title="edit" alt="edit" /></a><a class="fdel" href="?s=2&pid='.$arr['alliance'].'&pod='.$po['id'].'&tid='.$_GET['tid'].'&admin=delpost" onClick="return confirm(\'confirm delete?\');"><img src="img/x.gif" title="delete" alt="delete" /></a></div><br />';
+		echo '<div class="admin"><a class="edit" href="allianz.php?s=2&pid='.$arr['alliance'].'&idt='.$_GET['tid'].'&pod='.$po['id'].'&admin=editpost"><img src="img/x.gif" title="editar" alt="editar" /></a><a class="fdel" href="?s=2&pid='.$arr['alliance'].'&pod='.$po['id'].'&tid='.$_GET['tid'].'&admin=delpost" onClick="return confirm(\'¿confirmar eliminación?\');"><img src="img/x.gif" title="eliminar" alt="eliminar" /></a></div><br />';
 	}
 echo '<div class="clear dotted"></div><div class="text">'.$bbcode_post.'</div></td>
 	</tr>';
@@ -107,13 +107,13 @@ echo '<div class="clear dotted"></div><div class="text">'.$bbcode_post.'</div></
     	echo "<button type=\"button\" value=\"????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&pid=".$arr['alliance']."&tid=".$arr['id']."&ac=newpost'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-</div><div class=\"button-contents\">Reply</div></div></button>";
+</div><div class=\"button-contents\">Responder</div></div></button>";
     	}
 	if($opt['opt5'] == 1){
     	echo "<button type=\"button\" value=\"???????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&pid=".$aid."&tid=".$arr['id']."&admin=switch_admin'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-</div><div class=\"button-contents\">Options</div></div></button>";
+</div><div class=\"button-contents\">Opciones</div></div></button>";
 	}
 	 
 	 echo '</div>';

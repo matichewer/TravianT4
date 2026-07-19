@@ -6,7 +6,7 @@ $query = mysql_num_rows($sql);
 $outputList = '';
 $name = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"4\" class=\"none\">There are no reports available.</td>";
+    $outputList .= "<td colspan=\"4\" class=\"none\">No hay informes disponibles.</td>";
 }else{
 while($row = mysql_fetch_array($sql)){ 
 	$dataarray = explode(",",$row['data']);
@@ -36,7 +36,7 @@ if($ntype==4 || $ntype==5 || $ntype==6 || $ntype==7){
 	}
     $outputList .= "</a>";
     $outputList .= "<div><a href=\"berichte.php?id=".$id."&aid=".$ally."\">";
-    if($ntype==0){ $nn = " scouts "; }else{ $nn = " attacks "; }
+    if($ntype==0){ $nn = " explora "; }else{ $nn = " ataca "; }
 
     $outputList .= $database->getUserField($dataarray[0],username,0);
        
@@ -63,9 +63,9 @@ if($ntype==4 || $ntype==5 || $ntype==6 || $ntype==7){
 <table cellpadding="1" cellspacing="1" id="offs">
 <thead>
 <tr>
-<td>Player</td>
-<td>Alliance</td>
-<td>Date</td>
+<td>Jugador</td>
+<td>Alianza</td>
+<td>Fecha</td>
 </tr>
 </thead>
 

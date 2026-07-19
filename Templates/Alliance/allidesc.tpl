@@ -14,11 +14,11 @@ foreach($memberlist as $member) {
 	$totalpop += $database->getVSumField($member['id'],"pop");
 }
 
-echo "<h1>Alliance - ".$allianceinfo['tag']."</h1>";
+echo "<h1>Alianza - ".$allianceinfo['tag']."</h1>";
 include("alli_menu.tpl");
 
 ?>
-<h4 class="round">Description</h4>
+<h4 class="round">Descripción</h4>
 <form method="post" action="allianz.php">
 <input type="hidden" name="a" value="3">
 <input type="hidden" name="o" value="3">
@@ -41,16 +41,16 @@ include("alli_menu.tpl");
 
 </script>
 				<div class="switchWrap">
-			<div class="openedClosedSwitch switchClosed" id="switchMedals">Medals</div>
+			<div class="openedClosedSwitch switchClosed" id="switchMedals">Medallas</div>
 			<div class="clear"></div>
 		</div>
 <br />
         <table cellpadding="1" cellspacing="1" id="medals" class="hide">
 				<tr>
-					<td>Category</td>
-					<td>Rank</td>
-					<td>Week</td>
-					<td>(BB) Code </td>
+					<td>Categoría</td>
+					<td>Puesto</td>
+					<td>Semana</td>
+					<td>Código (BB) </td>
 				</tr>
                 <?php
 /******************************
@@ -69,43 +69,43 @@ INDELING CATEGORIEEN:
 
 
     foreach($varmedal as $medal) {
-    $titel="Medal";
+    $titel="Medalla";
     switch ($medal['categorie']) {
     case "1":
-        $titel="Attackers of the Week";
+        $titel="Atacante de la semana";
         break;
     case "2":
-        $titel="Defenders of the Week";
+        $titel="Defensor de la semana";
         break;
     case "3":
-        $titel="Climbers of the Week";
+        $titel="Trepador de la semana";
         break;
     case "4":
-        $titel="Raiders of the Week";
+        $titel="Saqueador de la semana";
         break;
     case "5":
-        $titel="Top 10 both attackers and defenders.";
+        $titel="Top 10 en ataque y defensa.";
         break;
     case "6":
-        $titel="Top Attackers of the Week ".$medal['points']." top 3.";
+        $titel="Top atacantes de la semana ".$medal['points']." top 3.";
         break;
     case "7":
-        $titel="Top Defenders of the Week ".$medal['points']." top 3.";
+        $titel="Top defensores de la semana ".$medal['points']." top 3.";
         break;
     case "8":
-        $titel="Top Climbers of the Week ".$medal['points']." top 3.";
+        $titel="Top trepadores de la semana ".$medal['points']." top 3.";
         break;
     case "9":
-        $titel="Top Raiders of the Week  ".$medal['points']." top 3.";
+        $titel="Top saqueadores de la semana  ".$medal['points']." top 3.";
         break;
     case "10":
-        $titel="Is this used anywhere?";
+        $titel="¿Se usa esto en algún lugar?";
         break;
     case "11":
-        $titel="Climbers of the Week".$medal['points']." top 3.";
+        $titel="Trepador de la semana".$medal['points']." top 3.";
         break;
     case "12":
-        $titel="Attackers of the Week ".$medal['points']." top 10.";
+        $titel="Atacante de la semana ".$medal['points']." top 10.";
         break;
     }
                  echo"<tr>

@@ -14,17 +14,17 @@
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=4"><span class="tabItem">Overview</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=4"><span class="tabItem">Resumen</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=41"><span class="tabItem">Attacker</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=41"><span class="tabItem">Atacante</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="statistiken.php?tid=42"><span class="tabItem">Defender</span></a></div>
+					<div class="content"><a href="statistiken.php?tid=42"><span class="tabItem">Defensor</span></a></div>
 				</div>
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
@@ -33,11 +33,11 @@
 				</div><div class="clear"></div>
 </div>
 <div id="statLeft" class="top10Wrapper">
-<h4 class="round small  top10_offs">Top Attackers</h4>
+<h4 class="round small  top10_offs">Los mejores atacantes</h4>
 
 <table cellpadding="1" cellspacing="1" id="top10_offs" class="top10 row_table_data">
 	<thead>
-	<tr><td>Rank</td><td>Alliances</td><td>Points</td></tr>
+	<tr><td>Rango</td><td>Alianzas</td><td>Puntos</td></tr>
 	</thead>
 <tbody>
 <?php
@@ -85,10 +85,10 @@
     $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY dp DESC, id ASC Limit 10");
     $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = '".$session->alliance."' ORDER BY dp DESC, id ASC Limit 1");
 ?>
-<h4 class="round small spacer top10_defs">Top Defenders</h4>
+<h4 class="round small spacer top10_defs">Los mejores defensores</h4>
 <table cellpadding="1" cellspacing="1" id="top10_defs" class="top10 row_table_data">
 	<thead>
-	<tr><td>Rank</td><td>Alliance</td><td>Points</td></tr>
+	<tr><td>Rango</td><td>Alianza</td><td>Puntos</td></tr>
 	</thead>
 <tbody>
 <?php
@@ -141,10 +141,10 @@
     $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY clp DESC, id ASC Limit 10");
     $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = '".$session->alliance."' ORDER BY clp DESC, id ASC Limit 1");
 ?>
-<h4 class="round small  top10_climbers">Top Climbers</h4>
+<h4 class="round small  top10_climbers">Los que más crecen</h4>
 <table cellpadding="1" cellspacing="1" id="top10_climbers" class="top10 row_table_data">
 	<thead>
-	<tr><td>Rank</td><td>Alliances</td><td>Population</td></tr>
+	<tr><td>Rango</td><td>Alianzas</td><td>Población</td></tr>
 	</thead>
 <tbody>
 <?php
@@ -192,11 +192,11 @@
     $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE RR >= 0 ORDER BY RR DESC, id ASC Limit 10");
     $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = '".$session->alliance."' AND RR >= 0 ORDER BY RR DESC, id ASC Limit 1");
 ?>
-<h4 class="round small spacer top10_raiders">Top Raiders</h4>
+<h4 class="round small spacer top10_raiders">Los mejores saqueadores</h4>
 
 <table cellpadding="1" cellspacing="1" id="top10_raiders" class="top10 row_table_data">
 	<thead>
-	<tr><td>Rang</td><td>alliance</td><td>reasources</td></tr>
+	<tr><td>Rango</td><td>Alianza</td><td>Recursos</td></tr>
 	</thead>
 <tbody>
 <?php

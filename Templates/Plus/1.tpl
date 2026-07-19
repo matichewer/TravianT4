@@ -20,7 +20,7 @@ function loadProductGroup(group_id) {
 }
 //-->
 </script>
-<?php echo SERVER_NAME ?> has written the script that this server is using. Script is free at the moment, so keep it that way by donating small anmount!<br/><br/>
+<?php echo SERVER_NAME ?> escribió el script que usa este servidor. Por ahora el script es gratuito, ¡ayudanos a que siga siéndolo con una pequeña donación!<br/><br/>
 
 <center><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -30,7 +30,7 @@ function loadProductGroup(group_id) {
 </form>
 
 
-(paypal check-out)
+(pago con PayPal)
 <br/><br/>
 
 <div id="products">
@@ -38,7 +38,7 @@ function loadProductGroup(group_id) {
 </a>
     </td>
 	<td>
-    Package A
+    Paquete A
     <br /><br />
 <img src="http://content.tg-payment.com/content/img/products/Travian_paket_a.jpg" style="width:"alt="Package A" />
     <br />
@@ -59,7 +59,7 @@ function loadProductGroup(group_id) {
 </a>
     </td>
     <td>
-    Package B
+    Paquete B
     <br /><br />
 <img src="http://content.tg-payment.com/content/img/products/Travian_paket_b.jpg" style="width:"alt="Package B" />
     <br />
@@ -79,7 +79,7 @@ function loadProductGroup(group_id) {
 <img alt="" border="0" src="lrpayment/liberty-reserve.jpg" width="86" height="21">
 </a>
     </td><td>
-    Package C
+    Paquete C
     <br /><br />
 <img src="http://content.tg-payment.com/content/img/products/Travian_paket_c.jpg" style="width:"alt="Package C" />
     <br />
@@ -103,7 +103,7 @@ function loadProductGroup(group_id) {
 <center>
 <table class="product lang_ltr lang_en" cellpadding="1" cellspacing="1" align="center">
 	<td>
-    Golden Package
+    Paquete de oro
     <br /><br />
 <img src="http://content.tg-payment.com/content/img/products/Travian_paket_d.jpg" style="width:"alt="Package D" />
     <br />
@@ -123,7 +123,7 @@ function loadProductGroup(group_id) {
 <img alt="" border="0" src="lrpayment/liberty-reserve.jpg" width="86" height="21">
 </a>
     </td><td>
-    Golden Offer
+    Oferta de oro
     <br /><br />
 <img src="http://content.tg-payment.com/content/img/products/Travian_paket_e.jpg" style="width:"alt="Package E" />
     <br />
@@ -153,7 +153,7 @@ function loadProductGroup(group_id) {
 
 
 <div class="clear"></div>
-<div style="padding: 10px 10px; font-style: italic; font-size: 10px;">All prices listed are final sales amounts.</div>
+<div style="padding: 10px 10px; font-style: italic; font-size: 10px;">Todos los precios indicados son montos de venta finales.</div>
 
 </div>
 </center>

@@ -1,7 +1,7 @@
-﻿<h4 class="round">The Top Heroes</h4>
+﻿<h4 class="round">Los mejores héroes</h4>
 		<table cellpadding="1" cellspacing="1" id="heroes" class="row_table_data">
 			<thead>
-		<tr><td></td><td>Name</td><td>Level</td><td>Experience</td></tr>
+		<tr><td></td><td>Nombre</td><td>Nivel</td><td>Experiencia</td></tr>
 		</thead><tbody>
 <?php
 if($_POST['rank'] > 0){
@@ -115,39 +115,39 @@ $nextPage = $_GET['page'] + 1;
 $previous = $_GET['page'] - 1;
 
 if ($page == "1" && $lastPage == "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($lastPage == 0){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($page == "1" && $lastPage != "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?tid=8&page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?tid=8&page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?tid=8&page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?tid=8&page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page != "1" && $page != $lastPage){
-$paginationDisplay .=  '<a class="first" href="?tid=8&page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?tid=8&page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?tid=8&page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?tid=8&page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?tid=8&page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?tid=8&page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?tid=8&page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?tid=8&page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page == $lastPage){
-$paginationDisplay .=  '<a class="first" href="?tid=8&page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?tid=8&page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?tid=8&page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?tid=8&page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 }
 
 	$limit = 'LIMIT ' .($page - 1) * $itemsPerPage .',' .$itemsPerPage; 
@@ -185,15 +185,15 @@ if(!isset($_GET['tid'])){ $_GET['tid']='1'; }
             <table class="transparent">
                 <tbody><tr>
                     <td>
-                        <span>rank <input type="text" class="text ra" maxlength="5" name="rank" value="" /></span>
+                        <span>rango <input type="text" class="text ra" maxlength="5" name="rank" value="" /></span>
                     </td>
                     <td>
-                        <span>name <input type="text" class="text name" maxlength="20" name="name" value="<?php if(!is_numeric($search)) {echo $search; } ?>" /></span>
+                        <span>nombre <input type="text" class="text name" maxlength="20" name="name" value="<?php if(!is_numeric($search)) {echo $search; } ?>" /></span>
                     </td>
                     <td>
                         <input type="hidden" name="ft" value="r<?php echo isset($_GET['tid'])? $_GET['tid'] : 1; ?>" />
                         <button type="submit" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="img/x.gif">
-            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Search</div></div></button>
+            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Buscar</div></div></button>
                     </td>
                 </tr>
                 </tbody>

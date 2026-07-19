@@ -1,10 +1,10 @@
-<h1><img class="unit ugeb" src="img/x.gif"> Palace</h1><img class="building g26" src="img/x.gif" alt="Palace" title="Palace" />The King or Queen of the empire lives in the palace. Only one palace can exist in your realm at a time. You need a palace in order to proclaim a village to be your capital. 
+<h1><img class="unit ugeb" src="img/x.gif"> Palacio</h1><img class="building g26" src="img/x.gif" alt="Palacio" title="Palacio" />El Rey o la Reina del imperio vive en el palacio. Solo puede existir un palacio en tu reino a la vez. Necesitas un palacio para proclamar a una aldea como tu capital.
 <br /><br />
-The capital can not be conquered. Additionally, the capital is the only place where resource fields can only be extended beyond level 10 and the only place where the stonemason's lodge can be built.<p><b>Costs</b> and <b>construction time</b> for level 1:<br /><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" />550 | <img class="r2" src="img/x.gif" alt="Clay" title="Clay" />800 | <img class="r3" src="img/x.gif" alt="Iron" title="Iron" />750 | <img class="r4" src="img/x.gif" alt="Crop" title="Crop" />250 | <img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" />1 | <span class="dur"><img class="clock" alt="duration" title="duration" src="img/x.gif" />1:23:20</span></p>
-	<p><b>Prerequisites</b><br /><a href="manual.php?typ=4&gid=18">Embassy</a> Level 1, <a href="manual.php?typ=4&gid=15">Main Building</a> Level 5, <a href="manual.php?typ=4&gid=25"><strike>Residence</strike></a></p><map id="nav" name="nav">
- <area href="manual.php?typ=4&amp;s=28" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
- <area href="manual.php?typ=4&amp;s=30" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+La capital no se puede conquistar. Además, la capital es el único lugar donde los campos de recursos se pueden ampliar más allá del nivel 10 y el único lugar donde se puede construir la logia del picapedrero.<p><b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:<br /><img class="r1" src="img/x.gif" alt="Madera" title="Madera" />550 | <img class="r2" src="img/x.gif" alt="Barro" title="Barro" />800 | <img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" />750 | <img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" />250 | <img class="r5" src="img/x.gif" alt="Consumo de cereal" title="Consumo de cereal" />1 | <span class="dur"><img class="clock" alt="duración" title="duración" src="img/x.gif" />1:23:20</span></p>
+	<p><b>Requisitos</b><br /><a href="manual.php?typ=4&gid=18">Embajada</a> Nivel 1, <a href="manual.php?typ=4&gid=15">Edificio principal</a> Nivel 5, <a href="manual.php?typ=4&gid=25"><strike>Residencia</strike></a></p><map id="nav" name="nav">
+ <area href="manual.php?typ=4&amp;s=28" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
+ <area href="manual.php?typ=4&amp;s=30" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />
 

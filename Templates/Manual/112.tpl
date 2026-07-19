@@ -1,10 +1,10 @@
-<h1><img class="unit u12" src="img/x.gif" alt="Spearman" title="Spearman" /> Spearman <span class="tribe">(Teutons)</span></h1>
+<h1><img class="unit u12" src="img/x.gif" alt="Lancero" title="Lancero" /> Lancero <span class="tribe">(Teutones)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
-	<th><img class="att_all" src="img/x.gif" alt="attack value" title="attack value" /></th>
-	<th><img class="def_i" src="img/x.gif" alt="defence against infantry" title="defence against infantry" /></th>
-	<th><img class="def_c" src="img/x.gif" alt="defence against cavalry" title="defence against cavalry" /></th><th><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" /></th><th><img class="r2" src="img/x.gif" alt="Clay" title="Clay" /></th><th><img class="r3" src="img/x.gif" alt="Iron" title="Iron" /></th><th><img class="r4" src="img/x.gif" alt="Crop" title="Crop" /></th></tr></thead>
+	<th><img class="att_all" src="img/x.gif" alt="valor de ataque" title="valor de ataque" /></th>
+	<th><img class="def_i" src="img/x.gif" alt="defensa contra infantería" title="defensa contra infantería" /></th>
+	<th><img class="def_c" src="img/x.gif" alt="defensa contra caballería" title="defensa contra caballería" /></th><th><img class="r1" src="img/x.gif" alt="Madera" title="Madera" /></th><th><img class="r2" src="img/x.gif" alt="Barro" title="Barro" /></th><th><img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" /></th><th><img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" /></th></tr></thead>
 <tbody><tr>
 	<td>10</td>
 	<td>35</td>
@@ -20,31 +20,31 @@
 <table id="troop_details" cellpadding="1" cellspacing="1">
 <tbody><tr>
 
-	<th>Velocity</th>
-	<td><b>7</b> fields/hour</td>
+	<th>Velocidad</th>
+	<td><b>7</b> casillas/hora</td>
 </tr>
 <tr>
-	<th>Can carry</th>
-	<td><b>40</b> resources</td>
+	<th>Puede transportar</th>
+	<td><b>40</b> recursos</td>
 
 </tr>
 <tr>
-	<th>Upkeep</th>
-	<td><img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" /> 1</td>
+	<th>Manutención</th>
+	<td><img class="r5" src="img/x.gif" alt="Consumo de cereal" title="Consumo de cereal" /> 1</td>
 </tr>
 <tr>
-	<th>Duration of training</th>
-	<td><img class="clock" src="img/x.gif" alt="duration" title="duration" /> 0:18:40</td>
+	<th>Duración del entrenamiento</th>
+	<td><img class="clock" src="img/x.gif" alt="duración" title="duración" /> 0:18:40</td>
 
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u12" src="img/x.gif" alt="Spearman" title="Spearman" /><div id="t_desc">In the Teuton army the Spearman’s task is defence. He is especially good against cavalry thanks to his weapons length.
+<img id="big_unit" class="big_u12" src="img/x.gif" alt="Lancero" title="Lancero" /><div id="t_desc">En el ejército teutón, la función del Lancero es la defensa. Es especialmente bueno contra la caballería gracias a la longitud de su arma.
 <br /><br />
-However, don't use him as an attacking unit because his offensive capabilities are very low.</div><div id="prereqs"><b>Prerequisites</b><br /><a href="manual.php?typ=4&amp;gid=22">Academy</a> Level 1, <a href="manual.php?typ=4&amp;gid=19">Barracks</a> Level 3</div><map id="nav" name="nav">
- <area href="manual.php?typ=1&amp;s=11" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
+Sin embargo, no lo uses como unidad de ataque porque su capacidad ofensiva es muy baja.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 1, <a href="manual.php?typ=4&amp;gid=19">Cuartel</a> Nivel 3</div><map id="nav" name="nav">
+ <area href="manual.php?typ=1&amp;s=11" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
 
- <area href="manual.php?typ=1&amp;s=13" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+ <area href="manual.php?typ=1&amp;s=13" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

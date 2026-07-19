@@ -1,63 +1,63 @@
 
-<p><img src="img/un/h/faq_vp.jpg" width="116" height="128" border="0" alt="Rally point" title="Rally point" align="right"></p>
+<p><img src="img/un/h/faq_vp.jpg" width="116" height="128" border="0" alt="Plaza de reuniones" title="Plaza de reuniones" align="right"></p>
 
-<p class="question">How can I build a rally point?</p>
+<p class="question">¿Cómo puedo construir una plaza de reuniones?</p>
 
-<p class="answer">The rally point can only be built at one location. This location is found to the right of your villages centre on the meadow.</p>
-
-
-
-<p><img src="img/un/h/faq_botschaft.jpg" width="122" height="150" border="0" alt="Embassy" title="Embassy" align="left"></p>
-
-<p class="question">How can I found an alliance?</p>
-
-<p class="answer">To found an alliance you need an embassy at level 3. To be able to join an alliance you just need an embassy at level 1 and, of course, an invitation to join the alliance.</p>
+<p class="answer">La plaza de reuniones solo se puede construir en un lugar. Ese lugar se encuentra a la derecha del centro de tu aldea, en el prado.</p>
 
 
 
-<p class="question">How can I change the name of my village?</p>
+<p><img src="img/un/h/faq_botschaft.jpg" width="122" height="150" border="0" alt="Embajada" title="Embajada" align="left"></p>
 
-<p class="answer">First select the village you wish to remain by clicking it under <i>Villages</i>. Next click <i>Profile</i> at the left then <i>Change Profile</i>. Change the name in the <i>Village name</i> box and click OK.</p>
+<p class="question">¿Cómo puedo fundar una alianza?</p>
 
-
-
-<p class="question">How do I train troops?</p>
-
-<p class="answer">You need a rally point which is at least level 1 and a main building which is at least level 3. When you have those you can raise Barracks and there you can train infantry.</p>
+<p class="answer">Para fundar una alianza necesitas una embajada de nivel 3. Para poder unirte a una alianza solo necesitas una embajada de nivel 1 y, por supuesto, una invitación para unirte a la alianza.</p>
 
 
 
-<p class="question">How do I defend my village?</p>
+<p class="question">¿Cómo puedo cambiar el nombre de mi aldea?</p>
 
-<p class="answer">As long as there are troops (your own or troops sent to reinforce you) in your village they defend your village automatically.</p>
-
-<p class="answer">Each building increases the population of your village by a certain number of new inhabitants. How many new inhabitants are produced by raising/extending a building is shown next to the symbol <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="Use of crop" title="use of crop">.</p>
+<p class="answer">Primero selecciona la aldea que deseas renombrar haciendo clic en ella bajo <i>Aldeas</i>. Luego haz clic en <i>Perfil</i> a la izquierda y después en <i>Cambiar perfil</i>. Cambia el nombre en el campo <i>Nombre de la aldea</i> y haz clic en Aceptar.</p>
 
 
 
-<p class="question">Help, my crop production sinks more and more!</p>
+<p class="question">¿Cómo entreno tropas?</p>
 
-<p class="answer">At <i>Production</i> (e.g. 10) your crop production minus your use of crop because of <i>population</i> (e.g. 5) and <i>Troops</i> is shown. Your total crop production is shown in the upper right corner. e.g. <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="use of crop" title="use of crop"> 5/15
-
-<br>In the example 8 would be your use of crop, 15 your total crop production, <br>15 - 8 = 7 units of crop per hour. </p>
+<p class="answer">Necesitas una plaza de reuniones de al menos nivel 1 y un edificio principal de al menos nivel 3. Cuando los tengas, podrás construir un Cuartel y allí entrenar infantería.</p>
 
 
 
-<p class="question">Why do my troops plunder so few resources?</p>
+<p class="question">¿Cómo defiendo mi aldea?</p>
 
-<p class="answer">There are two explanations. Firstly, each troop type can only carry a certain number of resources. Secondly, your victim might have a <i>cranny</i> where his or her villagers automatically hide a certain number of resources that your plundering hordes cannot find.</p>
+<p class="answer">Mientras haya tropas (propias o enviadas para reforzarte) en tu aldea, defenderán tu aldea automáticamente.</p>
 
-
-
-<p class="question">How can I found or conquer new villages?</p>
-
-<p class="answer">You need three settlers to found a new village. To conquer a village you need an administrator (senator, chief or chieftain) which can be trained in your palace/residence at level 10. Additionally you need a certain number of <a href="anleitung.php?s=4">culture points</a>.</p>
+<p class="answer">Cada edificio aumenta la población de tu aldea en cierta cantidad de nuevos habitantes. Cuántos nuevos habitantes se producen al construir/ampliar un edificio se muestra junto al símbolo <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="Consumo de cereal" title="consumo de cereal">.</p>
 
 
 
-<p class="question">Can I lose a village?</p>
+<p class="question">¡Ayuda, mi producción de cereal cae cada vez más!</p>
 
-<p class="answer">Every village can be catapulted to 0 inhabitants and as long as it is not the last of your account it will disappear after a short time. The only village that cannot be conquered is the capital. Note that destroying the capital is still possible.</p>
+<p class="answer">En <i>Producción</i> (por ejemplo, 10) se muestra tu producción de cereal menos el consumo de cereal debido a la <i>población</i> (por ejemplo, 5) y las <i>Tropas</i>. Tu producción total de cereal se muestra en la esquina superior derecha. Por ejemplo, <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="consumo de cereal" title="consumo de cereal"> 5/15
+
+<br>En el ejemplo, 8 sería tu consumo de cereal, 15 tu producción total de cereal, <br>15 - 8 = 7 unidades de cereal por hora. </p>
+
+
+
+<p class="question">¿Por qué mis tropas saquean tan pocos recursos?</p>
+
+<p class="answer">Hay dos explicaciones. Primero, cada tipo de tropa solo puede transportar una cierta cantidad de recursos. Segundo, tu víctima podría tener un <i>escondite</i> donde sus aldeanos ocultan automáticamente una cierta cantidad de recursos que tus hordas saqueadoras no pueden encontrar.</p>
+
+
+
+<p class="question">¿Cómo puedo fundar o conquistar nuevas aldeas?</p>
+
+<p class="answer">Necesitas tres colonos para fundar una nueva aldea. Para conquistar una aldea necesitas un administrador (senador, jefe teutón o jefe galo) que se puede entrenar en tu palacio/residencia a partir del nivel 10. Además necesitas una cierta cantidad de <a href="anleitung.php?s=4">puntos de cultura</a>.</p>
+
+
+
+<p class="question">¿Puedo perder una aldea?</p>
+
+<p class="answer">Toda aldea puede ser catapultada hasta 0 habitantes y, mientras no sea la última de tu cuenta, desaparecerá después de un breve tiempo. La única aldea que no se puede conquistar es la capital. Ten en cuenta que aún es posible destruir la capital.</p>
 
 </div>
 	<div class="clear"></div> 

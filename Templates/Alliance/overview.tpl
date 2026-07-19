@@ -15,7 +15,7 @@ $totalpop = 0;
 foreach($memberlist as $member) {
     $totalpop += $database->getVSumField($member['id'],"pop");
 }
-echo "<h1 class=\"titleInHeader\">Alliance - ".$allianceinfo['tag']."</h1>";
+echo "<h1 class=\"titleInHeader\">Alianza - ".$allianceinfo['tag']."</h1>";
 
 $profiel="".$allianceinfo['notice']."".md5('skJkev3')."".$allianceinfo['desc']."";
 require("medal.php");
@@ -25,29 +25,29 @@ include("alli_menu.tpl");
 
 ?>
 <div id="details">
-			<h4 class="round small">Details:</h4>
+			<h4 class="round small">Detalles:</h4>
 			<table cellpadding="1" cellspacing="1" class="transparent">
 				<tbody>
 					<tr>
-						<th>Tag:</th>
+						<th>Etiqueta:</th>
 						<td><?php echo $allianceinfo['tag']; ?></td>
 					</tr>
 					<tr>
-						<th>Name:</th>
+						<th>Nombre:</th>
 						<td><?php echo $allianceinfo['name']; ?></td>
 					</tr>
 					<tr>
-						<th>Rank</th>
+						<th>Rango</th>
 						<td><?php echo $ranking->getAllianceRank($aid); ?></td>
 					</tr>
 
 					<tr>
-						<th>Points</th>
+						<th>Puntos</th>
 						<td><?php echo $totalpop; ?></td>
 					</tr>
 
 					<tr>
-						<th>Members</th>
+						<th>Miembros</th>
 						<td><?php echo count($memberlist); ?></td>
 					</tr>
 
@@ -55,7 +55,7 @@ include("alli_menu.tpl");
 			</table>
 		</div>
         <div id="memberTitles">
-				<h4 class="round small">Position</h4>
+				<h4 class="round small">Cargo</h4>
 				<table cellpadding="1" cellspacing="1" class="transparent">
 					<tbody>
                 <?php
@@ -85,7 +85,7 @@ include("alli_menu.tpl");
 				</table>
 </div>
             <div class="clear"></div>
-            <h4 class="round">Description</h4>
+            <h4 class="round">Descripción</h4>
             <div class="description description1">
 <?php echo nl2br($profiel[1]); ?>
 		</div>
@@ -93,13 +93,13 @@ include("alli_menu.tpl");
 <?php echo nl2br($profiel[0]); ?>
 		</div>
         <div class="clear"></div>
-<h4 class="round">Members</h4>
+<h4 class="round">Miembros</h4>
         <table cellpadding="1" cellspacing="1" id="member">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Population</th>
-                    <th>Villages</th>
+					<th>Nombre</th>
+					<th>Población</th>
+                    <th>Aldeas</th>
 				</tr>
 			</thead>
 			<tbody>

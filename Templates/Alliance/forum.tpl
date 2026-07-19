@@ -405,19 +405,19 @@ if($_GET['admin']== "newforum"){
 		include("Forum/forum_2.tpl"); 
 	}else if($opt['opt5'] == 1){
 	if($session->access==BANNED){
-"<p class=\"error\">A Forum has not been created</p><p>
+"<p class=\"error\">Todavía no se ha creado un foro</p><p>
 			<button type=\"button\" value=\"Upgrade level\" class=\"build\" onclick=\"window.location.href = 'banned.php'; return false;\">
 			<div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 			<div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-			</div><div class=\"button-contents\">New forum</div></div></button></p>";
+			</div><div class=\"button-contents\">Nuevo foro</div></div></button></p>";
 			}else{
-			echo "<p class=\"error\">A Forum has not been created</p><p>
+			echo "<p class=\"error\">Todavía no se ha creado un foro</p><p>
 			<button type=\"button\" value=\"Upgrade level\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&admin=newforum'; return false;\">
 			<div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 			<div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-			</div><div class=\"button-contents\">New forum</div></div></button></p>";
+			</div><div class=\"button-contents\">Nuevo foro</div></div></button></p>";
 			}}else{
-			echo '<p class="error">Forum is not created yet</p>';
+			echo '<p class="error">Todavía no se ha creado un foro</p>';
 			}
 	}				
 ?>

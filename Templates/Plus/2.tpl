@@ -1,7 +1,7 @@
 ﻿<?php
 include("Templates/Plus/pmenu.tpl");
 ?>
-<h4 class="round space">Advantages <span class="plus_g"></span></h4>
+<h4 class="round space">Ventajas <span class="plus_g"></span></h4>
 <table id="plus_features" class="features transparent" cellpadding="1" cellspacing="1">
 	<tbody>
 
@@ -9,11 +9,11 @@ include("Templates/Plus/pmenu.tpl");
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="waitingLoop" src="img/x.gif" alt="Cola de construcción"></a>
 	</td>
-	<th>Waiting loop for constructions</th>
+	<th>Cola de espera para construcciones</th>
 </tr>
 
 <tr>
-	<td class="text">The waiting loop enables you to give your builders another order to raise or extend a second building. After completing their first task they will begin working on the next construction order in the loop.</td>
+	<td class="text">La cola de espera te permite darles a tus constructores otra orden para levantar o ampliar un segundo edificio. Al terminar su primera tarea, comenzarán a trabajar en la siguiente orden de construcción de la cola.</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -23,11 +23,11 @@ include("Templates/Plus/pmenu.tpl");
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="mapFullscreen" src="img/x.gif" alt="Mapa grande"></a>
 	</td>
-	<th>Larger map</th>
+	<th>Mapa más grande</th>
 </tr>
 
 <tr>
-	<td class="text">You can enlarge the map to get a better overview. Instead of 7x9 fields, you can have a map of 11x19 fields. Other alliances which are allied or have a non-aggression pact (NAP) with you are shown in special colours.
+	<td class="text">Puedes ampliar el mapa para tener una mejor visión general. En vez de 7x9 casillas, puedes tener un mapa de 11x19 casillas. Otras alianzas que sean aliadas o tengan un pacto de no agresión (NAP) contigo se muestran con colores especiales.
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -37,11 +37,11 @@ include("Templates/Plus/pmenu.tpl");
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="archive" src="img/x.gif" alt="Archivar informes y mensajes"></a>
 	</td>
-	<th>Archive function for reports and messages</th>
+	<th>Función de archivo para informes y mensajes</th>
 </tr>
 
 <tr>
-	<td class="text">Important reports and messages can be archived and thereby be looked up faster. Additionally, you can choose several messages or reports and archive or delete them at once.
+	<td class="text">Los informes y mensajes importantes se pueden archivar para encontrarlos más rápido. Además, puedes elegir varios mensajes o informes y archivarlos o eliminarlos a la vez.
 </td>
 </tr>
 <tr>
@@ -52,11 +52,11 @@ include("Templates/Plus/pmenu.tpl");
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="sorting" src="img/x.gif" alt="Ordenar mensajes e informes"></a>
 	</td>
-	<th>Sorting function for reports and messages</th>
+	<th>Función de ordenamiento para informes y mensajes</th>
 </tr>
 
 <tr>
-	<td class="text">By clicking the table heading "Sent", you can reverse the sorting of reports and messages. If you get many messages a day and need to look up older ones, you are able to do so very fast with this function. It can also be used in the archives
+	<td class="text">Al hacer clic en el encabezado "Enviado" de la tabla, puedes invertir el orden de los informes y mensajes. Si recibes muchos mensajes al día y necesitas buscar los más antiguos, con esta función puedes hacerlo muy rápido. También se puede usar en los archivos
 </td>
 </tr>
 <tr>
@@ -67,13 +67,13 @@ include("Templates/Plus/pmenu.tpl");
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="market" src="img/x.gif" alt="Ordenar ofertas del mercado"></a>
 	</td>
-	<th>Sorting function for the marketplace</th>
+	<th>Función de ordenamiento para el mercado</th>
 </tr>
 
 <tr>
-	<td class="text">To use the marketplace more efficiently, you can filter the offers for certain resources only. Additionally, you can use a ratio filter to only see 1:1 offers.
+	<td class="text">Para usar el mercado de forma más eficiente, puedes filtrar las ofertas para ver solo ciertos recursos. Además, puedes usar un filtro de proporción para ver solo ofertas 1:1.
 
-This feature is available for everything and NOT part of the plus account any more</td>
+Esta función está disponible para todos y ya NO forma parte de la cuenta Plus</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -83,11 +83,11 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="autoCompletion" src="img/x.gif" alt="Autocompletar"></a>
 	</td>
-	<th>Auto-completion</th>
+	<th>Autocompletado</th>
 </tr>
 
 <tr>
-	<td class="text">By using the auto-completion you can easily "write" a whole village name by entering just a few letters/figures. Depending on your preferences, you can use this function in any combination for your own villages, villages of alliance members or villages in your surroundings</td>
+	<td class="text">Con el autocompletado puedes "escribir" fácilmente el nombre completo de una aldea ingresando solo unas pocas letras/números. Según tus preferencias, puedes usar esta función en cualquier combinación para tus propias aldeas, las de miembros de tu alianza o las de tus alrededores</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -97,11 +97,11 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="reportFilter" src="img/x.gif" alt="Filtrar informes"></a>
 	</td>
-	<th>Report filter</th>
+	<th>Filtro de informes</th>
 </tr>
 
 <tr>
-	<td class="text">Thanks to the report filter, unwanted reports concerning marketplace transactions are a problem of the past. Depending on your personal preferences, you can easily switch off reports concerning trades from/to other villages or between your own villages</td>
+	<td class="text">Gracias al filtro de informes, los informes no deseados sobre transacciones del mercado son cosa del pasado. Según tus preferencias, puedes desactivar fácilmente los informes de comercio hacia/desde otras aldeas o entre tus propias aldeas</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -111,11 +111,11 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="directLinks" src="img/x.gif" alt="Enlaces directos"></a>
 	</td>
-	<th>Freely definable direct links</th>
+	<th>Enlaces directos personalizables</th>
 </tr>
 
 <tr>
-	<td class="text">Thanks to these links, you can reach every page you want with just one click. Just create a link to every destination you want and you can directly reach your alliance's overview, your barracks or the tempting 1:1 biddings at the marketplace</td>
+	<td class="text">Gracias a estos enlaces, puedes llegar a cualquier página que quieras con un solo clic. Simplemente crea un enlace a cada destino que quieras y podrás acceder directamente al resumen de tu alianza, tu cuartel o las tentadoras ofertas 1:1 del mercado</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -125,11 +125,11 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="graphicStatistics" src="img/x.gif" alt="Estadísticas gráficas"></a>
 	</td>
-	<th>Graphical statistics</th>
+	<th>Estadísticas gráficas</th>
 </tr>
 
 <tr>
-	<td class="text">These statistics show you the chronological development of your account, e.g. the ranking, your army's strength or your population's development</td>
+	<td class="text">Estas estadísticas muestran la evolución cronológica de tu cuenta, por ejemplo el ranking, la fuerza de tu ejército o el crecimiento de tu población</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
@@ -139,11 +139,11 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="villageOverview" src="img/x.gif" alt="Resumen de aldeas"></a>
 	</td>
-	<th>Central account overview</th>
+	<th>Resumen central de la cuenta</th>
 </tr>
 
 <tr>
-	<td class="text">Anyone who reigns over several villages might easily miss something important going on within his realm: where are those troops I've trained, are all my workers working hard or are some of them being lazy, am I losing resources because one of my warehouses isn't big enough? Just take a look at your central village overview and you can check out all your villages at once. If you own more than one village, you can reach the central village overview by clicking "Villages" directly above the list of your villages
+	<td class="text">Cualquiera que gobierne varias aldeas puede fácilmente perderse algo importante que sucede en su reino: ¿dónde están las tropas que entrené?, ¿están todos mis trabajadores esforzándose o hay alguno vago?, ¿estoy perdiendo recursos porque uno de mis almacenes no es lo bastante grande? Solo echa un vistazo al resumen central de aldeas y podrás revisar todas tus aldeas a la vez. Si tienes más de una aldea, puedes acceder al resumen central haciendo clic en "Aldeas" justo encima de la lista de tus aldeas
 </td>
 </tr>
 <tr>
@@ -154,18 +154,18 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="notepad" src="img/x.gif" alt="Bloc de notas"></a>
 	</td>
-	<th>Notepad</th>
+	<th>Bloc de notas</th>
 </tr>
 
 <tr>
-	<td class="text">A paper and pencil aren't always at hand. In order to make sure you don't forget important things, or if you simply want to make a few notes, you can use your ingame notebook</td>
+	<td class="text">No siempre tienes papel y lápiz a mano. Para asegurarte de no olvidar cosas importantes, o si simplemente quieres anotar algo, puedes usar tu bloc de notas dentro del juego</td>
 </tr>
 <tr>
 	<td colspan="2" class="empty"></td>
 </tr>
 	</tbody>
 </table>
-<h4 class="round spacer">Features of Travian <font color="#71D000">Gold</font></h4>
+<h4 class="round spacer">Funciones de Travian <font color="#71D000">Gold</font></h4>
 <table id="gold_features" class="features transparent" cellpadding="1" cellspacing="1">
 	<tbody>
 
@@ -173,13 +173,13 @@ This feature is available for everything and NOT part of the plus account any mo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="p25Lumber" src="img/x.gif" alt="Aumentar la producción de madera"></a>
 	</td>
-	<th>Production bonus for lumber</th>
+	<th>Bonificación de producción de madera</th>
 </tr>
 
 <tr>
-	<td class="text">With this Gold advantage all your villages' lumber production will be increased by 25%.
+	<td class="text">Con esta ventaja de Gold, la producción de madera de todas tus aldeas aumentará un 25%.
 
-The bonus will not be added to the single resource fields but to the sum of the production
+La bonificación no se suma a cada campo de recurso individual, sino al total de la producción
 </td>
 </tr>
 <tr>
@@ -190,13 +190,13 @@ The bonus will not be added to the single resource fields but to the sum of the 
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="p25Clay" src="img/x.gif" alt="Aumentar la producción de barro"></a>
 	</td>
-	<th>Production bonus for clay</th>
+	<th>Bonificación de producción de barro</th>
 </tr>
 
 <tr>
-	<td class="text">With this Gold advantage, all of your villages' clay production will be increased by 25%.
+	<td class="text">Con esta ventaja de Gold, la producción de barro de todas tus aldeas aumentará un 25%.
 
-The bonus will not be added to the single resource fields, but to the sum of the production instead
+La bonificación no se suma a cada campo de recurso individual, sino al total de la producción
 </td>
 </tr>
 <tr>
@@ -207,13 +207,13 @@ The bonus will not be added to the single resource fields, but to the sum of the
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="p25Iron" src="img/x.gif" alt="Aumentar la producción de hierro"></a>
 	</td>
-	<th>Production bonus for iron</th>
+	<th>Bonificación de producción de hierro</th>
 </tr>
 
 <tr>
-	<td class="text">With this Gold advantage, all of your villages' iron production will be increased by 25%.
+	<td class="text">Con esta ventaja de Gold, la producción de hierro de todas tus aldeas aumentará un 25%.
 
-The bonus will not be added to the single resource fields, but to the sum of the production instead
+La bonificación no se suma a cada campo de recurso individual, sino al total de la producción
 </td>
 </tr>
 <tr>
@@ -224,13 +224,13 @@ The bonus will not be added to the single resource fields, but to the sum of the
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="p25Crop" src="img/x.gif" alt="Aumentar la producción de cereal"></a>
 	</td>
-	<th>Production bonus for crop</th>
+	<th>Bonificación de producción de cereal</th>
 </tr>
 
 <tr>
-	<td class="text">With this Gold advantage, all of your villages' crop production will be increased by 25%.
+	<td class="text">Con esta ventaja de Gold, la producción de cereal de todas tus aldeas aumentará un 25%.
 
-The bonus will not be added to the single resource fields, but to the sum of the production instead
+La bonificación no se suma a cada campo de recurso individual, sino al total de la producción
 
 </td>
 </tr>
@@ -242,13 +242,13 @@ The bonus will not be added to the single resource fields, but to the sum of the
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="constructionComplete" src="img/x.gif" alt="Completar edificios e investigaciones al instante"></a>
 	</td>
-	<th>Complete construction orders & research immediately..</th>
+	<th>Completa órdenes de construcción e investigación al instante.</th>
 </tr>
 
 <tr>
-	<td class="text">In the selected village, all construction and research orders in the academy as well as the smithy will be completed immediately.
+	<td class="text">En la aldea seleccionada, todas las órdenes de construcción e investigación en la academia y la herrería se completarán al instante.
 
-However, the Residence and Palace buildings and villages with a wonder of the world are excluded from this feature
+Sin embargo, los edificios Residencia y Palacio, y las aldeas con una Maravilla del mundo, quedan excluidos de esta función
 
 </td>
 </tr>
@@ -260,12 +260,12 @@ However, the Residence and Palace buildings and villages with a wonder of the wo
 	<td rowspan="2" class="preview">
 		<a href="plus.php?id=3"><img class="npcMerchant" src="img/x.gif" alt="Mercader NPC"></a>
 	</td>
-	<th>NPC Merchant</th>
+	<th>Mercader NPC</th>
 </tr>
 
 <tr>
-	<td class="text">1:1 NPC Merchant
-The NPC Merchant will exchange any desired amount of resources in a village with other resources at a ratio of 1:1
+	<td class="text">Mercader NPC 1:1
+El mercader NPC intercambiará la cantidad de recursos que desees en una aldea por otros recursos a una proporción de 1:1
 
 </td>
 </tr>

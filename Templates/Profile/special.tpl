@@ -25,18 +25,18 @@
 <table cellpadding="1" cellspacing="1" id="support_mh">
 	<thead>
 	<tr>
-	<th>Support Multihunter</th>
+	<th>Soporte del Multihunter</th>
 	</tr>
 	</thead>
 	<tbody>
 	<tr align="center">
-	<td align="center"><b>Support:</b><br>A group of experienced players who will answer your questions.<br />
-	 <a href="nachrichten.php?t=1&amp;id=1">&raquo; Write Message</a>
+	<td align="center"><b>Soporte:</b><br>Un grupo de jugadores experimentados que responderán tus preguntas.<br />
+	 <a href="nachrichten.php?t=1&amp;id=1">&raquo; Escribir mensaje</a>
 	</td>
 	</tr>
 	<tr align="center">
-	<td align="center"><b>If you have any questions about the rules of the game or want someone to report the abuse or violation of the rules, you can send a message Multihunter.<br />
-	 <a href="nachrichten.php?t=1&amp;id=0">&raquo; Write Message</a>
+	<td align="center"><b>Si tienes alguna pregunta sobre las reglas del juego o quieres reportar un abuso o violación de las reglas, puedes enviarle un mensaje al Multihunter.<br />
+	 <a href="nachrichten.php?t=1&amp;id=0">&raquo; Escribir mensaje</a>
 	</td>
 	</tr>
 	</tbody>

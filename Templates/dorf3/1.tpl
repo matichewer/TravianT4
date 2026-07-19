@@ -3,7 +3,7 @@
 ?>
 <table id="overview" cellpadding="1" cellspacing="1">
 <thead>
-<tr><td> Village </td><td> Attacks </td><td> building </td><td> troops </td><td> Merchants </td></tr>
+<tr><td> Aldea </td><td> Ataques </td><td> Construcción </td><td> Tropas </td><td> Mercaderes </td></tr>
 </thead>
 <tbody>
 <?php

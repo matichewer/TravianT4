@@ -18,17 +18,17 @@ mysql_query("UPDATE ".TB_PREFIX."research set timestamp = '1' where vref = '".$v
 
 
 
-$done1 = "&nbsp;&nbsp; All construction orders and Researches in this village has been Completed";
+$done1 = "&nbsp;&nbsp; Todas las órdenes de construcción e investigación de esta aldea han sido completadas";
     mysql_query("UPDATE ".TB_PREFIX."users set gold = ".($session->gold-2)." where `username`='".$session->username."'") or die(mysql_error());
     mysql_query("INSERT INTO ".TB_PREFIX."gold_fin_log VALUES ('".(mysql_num_rows($goldlog)+1)."', '".$village->wid."', 'Finish construction and research with gold')") or die(mysql_error());
 
 } else {
-$done1 = "&nbsp;&nbsp; Nothing has been Completed";
+$done1 = "&nbsp;&nbsp; No se completó nada";
     mysql_query("INSERT INTO ".TB_PREFIX."gold_fin_log VALUES ('".(mysql_num_rows($goldlog)+1)."', '".$village->wid."', 'Failed construction and research with gold')") or die(mysql_error());
 
 }
 } else {
-        $done1 = "&nbsp;&nbsp;You need more Gold";
+        $done1 = "&nbsp;&nbsp;Necesitas más oro";
 }
 
 

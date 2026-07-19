@@ -24,34 +24,34 @@ mysql_query("DELETE FROM ".TB_PREFIX."auction WHERE silver < 1 and owner = '".$s
 </div> 
 </div>
 					<div id="mid">
-<a id="ingameManual" href="help.php"><img class="question" alt="Help" src="img/x.gif"></a>
+<a id="ingameManual" href="help.php"><img class="question" alt="Ayuda" src="img/x.gif"></a>
 												<div class="clear"></div> 
 						<div id="contentOuterContainer"> 
 							<div class="contentTitle">&nbsp;</div> 
 
 <div class="contentContainer">
-								<div id="content" class="hero_auction"><h1 class="titleInHeader">Hero</h1>
+								<div id="content" class="hero_auction"><h1 class="titleInHeader">Héroe</h1>
 
 <div class="contentNavi subNavi">
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Attributes</span></a></div>
+					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Atributos</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero.php"><span class="tabItem">Appearance</span></a></div>
+					<div class="content"><a href="hero.php"><span class="tabItem">Apariencia</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Adventures</span></a></div>
+					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Aventuras</span></a></div>
 				</div>
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_auction.php"><span class="tabItem">Auction</span></a></div>
+					<div class="content"><a href="hero_auction.php"><span class="tabItem">Subasta</span></a></div>
 				</div><div class="clear"></div>
 		</div><script type="text/javascript">
 					window.addEvent('domready', function()
@@ -82,9 +82,9 @@ $bidError = '';
 $getBidData = $database->getBidData($_POST['a']);
 $total_silver = $_POST['silver'] + $session->silver;
 	if($_POST['maxBid'] <= $_POST['silver']){
-		$bidError .= "Too low bid. You need to offer at least ".($_POST['silver']+1)." silver.";
+		$bidError .= "Oferta demasiado baja. Debes ofrecer al menos ".($_POST['silver']+1)." de plata.";
 	}elseif($_POST['maxBid'] > $session->silver || ($_POST['uid'] == $session->uid && $_POST['maxBid'] > $total_silver)){
-		$bidError .= "You haven't enough silver for this bid.";
+		$bidError .= "No tienes suficiente plata para esta oferta.";
 	}else{
 		if($database->checkBid($_POST['a'], $_POST['maxBid'])){
 			
@@ -113,7 +113,7 @@ $total_silver = $_POST['silver'] + $session->silver;
 				$database->setNewSilver($_POST['a'],$_POST['maxBid']);
 			}else{
 				$database->editBid($_POST['a'], $_POST['maxBid']);
-				$bidError .= "Your bid is lower than the other player's one.";
+				$bidError .= "Tu oferta es menor que la del otro jugador.";
 			}
 			if(isset($_POST['page'])){ $page = "&page=".$_POST['page']; }else{ $page = ""; }
 			if($_POST['action']=='bids'){ $ssss = 'bids'; } elseif($_POST['action']=='buy'){ $ssss = 'buy'; }

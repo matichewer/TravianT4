@@ -2,36 +2,36 @@
 				<thead>
 					<tr>
 						<td class="role">
-							Defender
+							Defensor
 						</td><td>
 
-								<img src="img/x.gif" class="unit u11" title="Clubswinger" alt="Clubswinger" />
+								<img src="img/x.gif" class="unit u11" title="Luchador de porra" alt="Luchador de porra" />
 							</td><td>
-								<img src="img/x.gif" class="unit u12" title="Spearman" alt="Spearman" />
+								<img src="img/x.gif" class="unit u12" title="Lancero" alt="Lancero" />
 							</td><td>
-								<img src="img/x.gif" class="unit u13" title="Axeman" alt="Axeman" />
+								<img src="img/x.gif" class="unit u13" title="Hachero" alt="Hachero" />
 							</td><td>
-								<img src="img/x.gif" class="unit u14" title="Scout" alt="Scout" />
+								<img src="img/x.gif" class="unit u14" title="Explorador" alt="Explorador" />
 							</td><td>
-								<img src="img/x.gif" class="unit u15" title="Paladin" alt="Paladin" />
+								<img src="img/x.gif" class="unit u15" title="Paladín" alt="Paladín" />
 
 							</td><td>
-								<img src="img/x.gif" class="unit u16" title="Teutonic Knight" alt="Teutonic Knight" />
+								<img src="img/x.gif" class="unit u16" title="Caballero Teutón" alt="Caballero Teutón" />
 							</td><td>
-								<img src="img/x.gif" class="unit u17" title="Ram" alt="Ram" />
+								<img src="img/x.gif" class="unit u17" title="Ariete" alt="Ariete" />
 							</td><td>
-								<img src="img/x.gif" class="unit u18" title="Catapult" alt="Catapult" />
+								<img src="img/x.gif" class="unit u18" title="Catapulta" alt="Catapulta" />
 							</td><td>
-								<img src="img/x.gif" class="unit u19" title="Chief" alt="Chief" />
+								<img src="img/x.gif" class="unit u19" title="Jefe Teutón" alt="Jefe Teutón" />
 							</td><td>
 
-								<img src="img/x.gif" class="unit u20" title="Settler" alt="Settler" />
+								<img src="img/x.gif" class="unit u20" title="Colono" alt="Colono" />
 							</td></tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th>
-							Troops
+							Tropas
 						</th><td class="none">
 									0
 								</td><td class="none">
@@ -57,7 +57,7 @@
 								</td></tr>
 					<tr>
 						<th>
-							Casualties
+							Bajas
 						</th><td class="none">
 									0
 								</td><td class="none">

@@ -26,9 +26,9 @@ include("Templates/Plus/pmenu.tpl");
 
 if (mysql_num_rows($MyGold)) {
 	if($session->gold == 0) {
-		echo "<div class=\"boxes boxesColor gray goldBalance\"><div class=\"boxes-tl\"></div><div class=\"boxes-tr\"></div><div class=\"boxes-tc\"></div><div class=\"boxes-ml\"></div><div class=\"boxes-mr\"></div><div class=\"boxes-mc\"></div><div class=\"boxes-bl\"></div><div class=\"boxes-br\"></div><div class=\"boxes-bc\"></div><div class=\"boxes-contents\">You don't have any Gold!</div></div>";
+		echo "<div class=\"boxes boxesColor gray goldBalance\"><div class=\"boxes-tl\"></div><div class=\"boxes-tr\"></div><div class=\"boxes-tc\"></div><div class=\"boxes-ml\"></div><div class=\"boxes-mr\"></div><div class=\"boxes-mc\"></div><div class=\"boxes-bl\"></div><div class=\"boxes-br\"></div><div class=\"boxes-bc\"></div><div class=\"boxes-contents\">¡No tienes oro!</div></div>";
 	} else {
-		echo "<div class=\"boxes boxesColor gray goldBalance\"><div class=\"boxes-tl\"></div><div class=\"boxes-tr\"></div><div class=\"boxes-tc\"></div><div class=\"boxes-ml\"></div><div class=\"boxes-mr\"></div><div class=\"boxes-mc\"></div><div class=\"boxes-bl\"></div><div class=\"boxes-br\"></div><div class=\"boxes-bc\"></div><div class=\"boxes-contents\">You have <b>$session->gold</b>  Pieces of gold</div></div>";
+		echo "<div class=\"boxes boxesColor gray goldBalance\"><div class=\"boxes-tl\"></div><div class=\"boxes-tr\"></div><div class=\"boxes-tc\"></div><div class=\"boxes-ml\"></div><div class=\"boxes-mr\"></div><div class=\"boxes-mc\"></div><div class=\"boxes-bl\"></div><div class=\"boxes-br\"></div><div class=\"boxes-bc\"></div><div class=\"boxes-contents\">Tienes <b>$session->gold</b>  piezas de oro</div></div>";
 	}
 }
 
@@ -114,7 +114,7 @@ if($session->gold >= 2) {
 		header("Location: banned.php");
 		}
 } else {
-        $done1 = "Not enough Gold";
+        $done1 = "No tienes suficiente oro";
 }
 
 }
@@ -127,16 +127,16 @@ if($session->gold >= 2) {
 	<thead>
 
 		<tr>
-			<td>Description</td>
-			<td>Duration</td>
-			<td>Gold</td>
-			<td>Action</td>
+			<td>Descripción</td>
+			<td>Duración</td>
+			<td>Oro</td>
+			<td>Acción</td>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td class="desc">
-				Plus <b><font color="#71D000">Account</font></b><br><span class="run">
+				Cuenta <b><font color="#71D000">Plus</font></b><br><span class="run">
 <?php
 $datetimep=$golds['plus'];
 $datetime1=$golds['b1'];
@@ -161,14 +161,14 @@ $holdtotday=round(($datetimep-$date2)/86400, 1);
 $holdhr=intval($holdtothr-($holdtotday*24));
 $holdmr=intval($holdtotmin-(($holdhr*60)+($holdtotday*1440)));
 
-    echo "You have <b>".$holdtotday. "</b> days left till ".date('H:i',$golds['plus'])."";
+    echo "Te quedan <b>".$holdtotday. "</b> días hasta las ".date('H:i',$golds['plus'])."";
  }
 ?>
                 </span>			</td>
 			<td class="dur"><?php if(PLUS_TIME >= 86400){
-			echo ''.(PLUS_TIME/86400).' Days';
+			echo ''.(PLUS_TIME/86400).' Días';
 			} else if(PLUS_TIME < 86400){
-			echo ''.(PLUS_TIME/3600).' Days';
+			echo ''.(PLUS_TIME/3600).' Días';
 			} ?></td>
 			<td class="cost"><img src="img/x.gif" class="gold" alt="gold">10</td>
 			<td class="act">
@@ -195,16 +195,16 @@ if (mysql_num_rows($MyGold)) {
 <table class="plusFunctions" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td>Description</td>
-			<td>Duration</td>
-			<td>Gold</td>
-			<td>Action</td>
+			<td>Descripción</td>
+			<td>Duración</td>
+			<td>Oro</td>
+			<td>Acción</td>
 		</tr>
 	</thead>
 	<tbody>
 				<tr>
 			<td class="desc">
-				+<b>25</b>% Lumber <img class="r1" src="img/x.gif" alt="<br>
+				+<b>25</b>% Madera <img class="r1" src="img/x.gif" alt="<br>
 				<span class="run">
 <?php
 
@@ -222,7 +222,7 @@ $holdmr1=intval($holdtotmin1-(($holdhr1*60)+($holdtotday1*1440)));
  if ($tl_b1 < $date2) {
      print " ";
  } else {
-echo "    <br>You have <b>".$holdtotday1. "</b> days left till   ".date('H:i',$golds['b1'])."";
+echo "    <br>Te quedan <b>".$holdtotday1. "</b> días hasta las   ".date('H:i',$golds['b1'])."";
 
  }
 ?>
@@ -252,7 +252,7 @@ if (mysql_num_rows($MyGold)) {
 		</tr>
 			<tr>
 			<td class="desc">
-				+<b>25</b>% Clay <img class="r2" src="img/x.gif" alt="<br>
+				+<b>25</b>% Barro <img class="r2" src="img/x.gif" alt="<br>
 				<span class="run">
                 <?php
 
@@ -271,7 +271,7 @@ $holdmr2=intval($holdtotmin2-(($holdhr2*60)+($holdtotday2*1440)));
      print " ";
  } else {
 
-echo "<br> You have <b>".$holdtotday2. "</b> days left till ".date('H:i',$golds['b2'])."";
+echo "<br> Te quedan <b>".$holdtotday2. "</b> días hasta las ".date('H:i',$golds['b2'])."";
 
  }
 ?>
@@ -302,7 +302,7 @@ if (mysql_num_rows($MyGold)) {
 		</tr>
 			<tr>
 			<td class="desc">
-				+<b>25</b>% iron <img class="r3" src="img/x.gif" alt="<br>
+				+<b>25</b>% Hierro <img class="r3" src="img/x.gif" alt="<br>
 				<span class="run">
 <?php
 
@@ -320,7 +320,7 @@ $holdmr3=intval($holdtotmin3-(($holdhr3*60)+($holdtotday3*1440)));
  if ($tl_b3 < $date2) {
      print " ";
  } else {
-echo " <br> You have <b>".$holdtotday3. "</b> Days left till ".date('H:i',$golds['b3'])."";
+echo " <br> Te quedan <b>".$holdtotday3. "</b> días hasta las ".date('H:i',$golds['b3'])."";
 
  }
 ?>
@@ -349,7 +349,7 @@ if (mysql_num_rows($MyGold)) {
 		</tr>
 			<tr>
 			<td class="desc">
-				+<b>25</b>% wheat <img class="r4" src="img/x.gif" alt="<br>
+				+<b>25</b>% Cereal <img class="r4" src="img/x.gif" alt="<br>
 				<span class="run">
 <?php
 $tl_b4=$golds['b4'];
@@ -367,7 +367,7 @@ $holdmr4=intval($holdtotmin4-(($holdhr4*60)+($holdtotday4*1440)));
      print " ";
  } else {
 
-echo "<br> You have <b>".$holdtotday4. "</b> days left till ".date('H:i',$golds['b4'])."";
+echo "<br> Te quedan <b>".$holdtotday4. "</b> días hasta las ".date('H:i',$golds['b4'])."";
  }
 ?>
 		</td>
@@ -398,17 +398,17 @@ if (mysql_num_rows($MyGold)) {
 <table class="plusFunctions" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td>Description</td>
-			<td>Duration</td>
-			<td>Gold</td>
-			<td>Action</td>
+			<td>Descripción</td>
+			<td>Duración</td>
+			<td>Oro</td>
+			<td>Acción</td>
 		</tr>
 	</thead>
 	<tbody>
 
 		<tr>
-			<td class="desc">Complete all Building and Researches immediately.</td>
-			<td class="dur">Instant</td>
+			<td class="desc">Completa todas las construcciones e investigaciones al instante.</td>
+			<td class="dur">Instantáneo</td>
 			<td class="cost"><img src="img/x.gif" class="gold" alt="gold">2</td>
 			<td class="act">
 <?php
@@ -424,46 +424,46 @@ if (mysql_num_rows($MyGold)) {
 			</td>
 		</tr>
 			<tr>
-			<td class="desc">NPC Merchant 1:1</td>
-			<td class="dur">instant</td>
+			<td class="desc">Mercader NPC 1:1</td>
+			<td class="dur">instantáneo</td>
 			<td class="cost"><img src="img/x.gif" class="gold" alt="gold">3</td>
 			<td class="act link">
             <?php
             if($building->getTypeLevel(17)){ ?>
-            <a class="arrow" href="build.php?gid=17&amp;t=3">Go to Market</a>
+            <a class="arrow" href="build.php?gid=17&amp;t=3">Ir al mercado</a>
             <?php }else{ ?>
-            <span class="none"><center>Go To Market</center></span>
+            <span class="none"><center>Ir al mercado</center></span>
             <?php } ?>
 			</td>
 		</tr>
         <tr>
-				<td class="desc">Exchange Gold and Silver</td>
-				<td class="dur">Instant</td>
-				<td class="cost"><img src="img/x.gif" class="gold" title= "Gold" alt="Gold"></td>
-				<td class="act arrow" style="text-align: right"><a class="arrow" href="plus.php?id=6">Exchange Office</a></td>
+				<td class="desc">Intercambiar oro y plata</td>
+				<td class="dur">Instantáneo</td>
+				<td class="cost"><img src="img/x.gif" class="gold" title= "Oro" alt="Oro"></td>
+				<td class="act arrow" style="text-align: right"><a class="arrow" href="plus.php?id=6">Casa de cambio</a></td>
 			</tr>
         </tbody>
 </table>
-<h4 class="spacer">Gold Club</h4>
+<h4 class="spacer">Club de oro</h4>
 <table class="plusFunctions" cellpadding="1" cellspacing="1">
 		<thead>
 			<tr>
-				<td>Description</td>
-				<td>Duration</td>
-				<td>Gold</td>
-				<td>Action</td>
+				<td>Descripción</td>
+				<td>Duración</td>
+				<td>Oro</td>
+				<td>Acción</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="desc">
 					<a name="goldclub"></a>
-					<b>Gold Club</b>
+					<b>Club de oro</b>
 
-<div class="run">Activate Gold Club for extra.</div>
+<div class="run">Activa el Club de oro para obtener ventajas extra.</div>
 				</td>
 				<td class="dur">
-					The whole Game
+					Todo el juego
 
 				</td>
 				<td class="cost"><img src="img/x.gif" class="gold" alt="gold">100</td>

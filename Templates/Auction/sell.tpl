@@ -22,22 +22,22 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 $outputList = '';
 $timer = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"6\" class=\"none\"><center>No Items</center></td>";
+    $outputList .= "<td colspan=\"6\" class=\"none\"><center>Sin objetos</center></td>";
 }else{
 	while($row = mysql_fetch_array($sql)){
 $id = $row["id"];$owner = $row["owner"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$uid = $row["uid"];$bids = $row["bids"];$silver = $row["silver"];$time = $row["time"];
 include "Templates/Auction/alt.tpl";
     if($bids!=0){
-    $outputList .= "<tr><td class=\"delete\"><img class=\"del inactive\" src=\"img/x.gif\" title=\"Cancel\"></td><td class=\"icon\"><img class=\"itemCategory itemCategory_".$typeArray[$btype]."\" src=\"img/x.gif\" title=\"".$title."\"></td>";
+    $outputList .= "<tr><td class=\"delete\"><img class=\"del inactive\" src=\"img/x.gif\" title=\"Cancelar\"></td><td class=\"icon\"><img class=\"itemCategory itemCategory_".$typeArray[$btype]."\" src=\"img/x.gif\" title=\"".$title."\"></td>";
     }else{
-    $outputList .= "<tr><td class=\"delete\"><a href=\"?action=sell&abort=".$id."\"><img class=\"del\" src=\"img/x.gif\" title=\"Cancel\"></a></td><td class=\"icon\"><img class=\"itemCategory itemCategory_".$typeArray[$btype]."\" src=\"img/x.gif\" title=\"".$title."\"></td>";
+    $outputList .= "<tr><td class=\"delete\"><a href=\"?action=sell&abort=".$id."\"><img class=\"del\" src=\"img/x.gif\" title=\"Cancelar\"></a></td><td class=\"icon\"><img class=\"itemCategory itemCategory_".$typeArray[$btype]."\" src=\"img/x.gif\" title=\"".$title."\"></td>";
     }
 
 	$outputList .= "<td class=\"name\">".$num." x ".$name."</td>";
 	$outputList .= "<td class=\"bids\">";
     if($bids==0){ $outputList .= "<span class=\"none\">".$bids."</span>"; }else{ $outputList .= $bids; }
     $outputList .= "</td>";
-	$outputList .= "<td class=\"silver\" title=\"".round($silver/$num, 2)." For each unit\">".$silver."</td>";
+	$outputList .= "<td class=\"silver\" title=\"".round($silver/$num, 2)." por cada unidad\">".$silver."</td>";
 	$outputList .= "<td class=\"time\"><span id=\"timer".$timer."\">".$generator->getTimeFormat($time-time())."</span></td>";
 	$outputList .= "";
    	$outputList .= "</tr>";
@@ -45,16 +45,16 @@ include "Templates/Auction/alt.tpl";
     $timer++;
 	}
 }
-echo 'You currently have ' . $query . ' items for sale in the auction (Maximum allowed at the same time is 5)<br><br>';
+echo 'Actualmente tienes ' . $query . ' objetos en venta en la subasta (el máximo permitido a la vez es 5)<br><br>';
 $maxReached = ($query == 5 ? true : false);
 ?>
 <table class="sellings" cellspacing="1" cellpadding="1">
 	<thead>
 		<tr>
-			<th class="name" colspan="3">Description</th>
-			<th class="bids"><img title="Bids" class="bids" src="img/x.gif"></th>
-			<th class="silver"><img title="Silver" class="silver" src="img/x.gif"></th>
-			<th class="time"><img title="Time" class="clock" src="img/x.gif"></th>
+			<th class="name" colspan="3">Descripción</th>
+			<th class="bids"><img title="Ofertas" class="bids" src="img/x.gif"></th>
+			<th class="silver"><img title="Plata" class="silver" src="img/x.gif"></th>
+			<th class="time"><img title="Tiempo" class="clock" src="img/x.gif"></th>
 		</tr>
 	</thead>
 
@@ -72,7 +72,7 @@ $query2 = mysql_num_rows($sql2);
 
 $outputList = '';
 if($query2==0){
-	$outputList .= "<span class='none'>Finished auctions.</span>";
+	$outputList .= "<span class='none'>Subastas finalizadas.</span>";
 }else{
 while($row = mysql_fetch_array($sql2)){
 $id = $row["id"];$uid = $row["uid"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$proc = $row["proc"];
@@ -242,7 +242,7 @@ $typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","ba
 $outputList = '';
 $timer = 1;
 if($query == 0) {
-    $outputList .= "<td colspan=\"6\" class=\"none\"><center>No sales found.</center></td>";
+    $outputList .= "<td colspan=\"6\" class=\"none\"><center>No se encontraron ventas.</center></td>";
 }else{
 	while($row = mysql_fetch_array($sql2)){
 $id = $row["id"];$owner = $row["owner"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$uid = $row["uid"];$bids = $row["bids"];$silver = $row["silver"];$time = $row["time"];
@@ -265,14 +265,14 @@ include "Templates/Auction/alt.tpl";
 
 
 ?>
-<h4 class="auctionEnded spacer">Finished Auctions</h4>
+<h4 class="auctionEnded spacer">Subastas finalizadas</h4>
 <table cellspacing="1" cellpadding="1">
 	<thead>
 		<tr>
 			<th class="name" colspan="2">Description</th>
-			<th class="bids"><img title="Bids" class="bids" src="img/x.gif"></th>
-			<th class="silver"><img title="Silver" class="silver" src="img/x.gif"></th>
-			<th class="time"><img title="Time" class="clock" src="img/x.gif"></th>
+			<th class="bids"><img title="Ofertas" class="bids" src="img/x.gif"></th>
+			<th class="silver"><img title="Plata" class="silver" src="img/x.gif"></th>
+			<th class="time"><img title="Tiempo" class="clock" src="img/x.gif"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -295,8 +295,8 @@ include "Templates/Auction/alt.tpl";
 	Travian.Game.HeroAuction = new (new Class(
 	{
 		alreadyOpen: false,
-		textSingle: 'Really sell this item?',
-		textMulti: 'Sell &lt;input class=\"text\" id=\"sellAmount\" style=\"width:30px\" type=\"text\" value=\"0\" /&gt; Amount'.unescapeHtml(),
+		textSingle: '¿Realmente quieres vender este objeto?',
+		textMulti: 'Vender &lt;input class=\"text\" id=\"sellAmount\" style=\"width:30px\" type=\"text\" value=\"0\" /&gt; unidades'.unescapeHtml(),
 		initialize: function() {
 			var $this = this;
 <?php
@@ -340,8 +340,8 @@ $id = $row["id"];$num = $row["num"];
 				relativeTo:			$('content'),
 				elementFoucs:		'sellAmount',
 				buttonTextOk:		'OK',
-				buttonTextCancel:	'CANCEL',
-				title:				'Confirm Sale:',
+				buttonTextCancel:	'CANCELAR',
+				title:				'Confirmar venta:',
 				onOpen: function(dialog, contentElement)
 				{
 					if ($('sellAmount'))

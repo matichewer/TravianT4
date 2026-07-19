@@ -6,9 +6,9 @@ if(WW == True){
                         INNER JOIN ".TB_PREFIX."fdata ON ".TB_PREFIX."fdata.vref = ".TB_PREFIX."vdata.wref
                         WHERE ".TB_PREFIX."fdata.f99t = 40 ORDER BY ".TB_PREFIX."fdata.f99 Desc Limit 20");
 ?>
-<h4 class="round">Wonder of the world</h4>
+<h4 class="round">Maravilla del mundo</h4>
 <table cellpadding="1" cellspacing="1" id="wonder">
-		<thead><tr><td></td><td>Player</td><td>Name</td><td>Alliance</td><td>Level</td></tr></thead>
+		<thead><tr><td></td><td>Jugador</td><td>Nombre</td><td>Alianza</td><td>Nivel</td></tr></thead>
 	<tbody>
         <?php
         $cont = 1;

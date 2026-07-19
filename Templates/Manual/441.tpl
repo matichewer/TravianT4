@@ -1,9 +1,9 @@
-<h1><img class="unit ugeb" src="img/x.gif"> Horse Drinking Trough</h1><img class="building g41" src="img/x.gif" alt="Horse Drinking Trough" title="Horse Drinking Trough" />The horse drinking trough cares for the wellbeing of your horses and therefore also increases the speed of their training.<br /><br />
-The horse drinking trough reduces the crop usage by one for the following soldiers: Equites Legati from level 10, Equites Imperatoris from level 15 and Equites Caesaris from level 20.<br /><br />
-The horse drinking trough can only be built by Romans.<p><b>Costs</b> and <b>construction time</b> for level 1:<br /><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" />780 | <img class="r2" src="img/x.gif" alt="Clay" title="Clay" />420 | <img class="r3" src="img/x.gif" alt="Iron" title="Iron" />660 | <img class="r4" src="img/x.gif" alt="Crop" title="Crop" />540 | <img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" />5 | <span class="dur"><img class="clock" alt="duration" title="duration" src="img/x.gif" />0:36:40</span></p>
-	<p><b>Prerequisites</b><br /><a href="manual.php?typ=4&gid=20">Stable</a> Level 20, <a href="manual.php?typ=4&gid=16">Rally Point</a> Level 10</p><map id="nav" name="nav">
- <area href="manual.php?typ=4&amp;s=35" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
- <area href="manual.php?typ=4&amp;s=37" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+<h1><img class="unit ugeb" src="img/x.gif"> Abrevadero</h1><img class="building g41" src="img/x.gif" alt="Abrevadero" title="Abrevadero" />El Abrevadero cuida el bienestar de tus caballos y, por lo tanto, también aumenta la velocidad de su entrenamiento.<br /><br />
+El Abrevadero reduce en uno el consumo de cereal de los siguientes soldados: Equites Legati a partir del nivel 10, Equites Imperatoris a partir del nivel 15 y Equites Caesaris a partir del nivel 20.<br /><br />
+El Abrevadero solo puede ser construido por los romanos.<p><b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:<br /><img class="r1" src="img/x.gif" alt="Madera" title="Madera" />780 | <img class="r2" src="img/x.gif" alt="Barro" title="Barro" />420 | <img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" />660 | <img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" />540 | <img class="r5" src="img/x.gif" alt="Consumo de cereal" title="Consumo de cereal" />5 | <span class="dur"><img class="clock" alt="duración" title="duración" src="img/x.gif" />0:36:40</span></p>
+	<p><b>Requisitos</b><br /><a href="manual.php?typ=4&gid=20">Establo</a> Nivel 20, <a href="manual.php?typ=4&gid=16">Plaza de reuniones</a> Nivel 10</p><map id="nav" name="nav">
+ <area href="manual.php?typ=4&amp;s=35" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
+ <area href="manual.php?typ=4&amp;s=37" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

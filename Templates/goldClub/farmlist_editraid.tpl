@@ -20,13 +20,13 @@ if(isset($_POST['action']) == 'editSlot' && $_POST['eid']) {
     }
 
     if(!$validX && !$validY){
-    	$errormsg .= "Enter coordinates.";
+    	$errormsg .= "Ingresa las coordenadas.";
     }elseif(!$validX || !$validY){
-    	$errormsg .= "Enter the correct coordinates.";
+    	$errormsg .= "Ingresa las coordenadas correctas.";
     }elseif($oasistype == 0 && $vdata == 0){
-    	$errormsg .= "There is no village on those coordinates.";
+    	$errormsg .= "No hay ninguna aldea en esas coordenadas.";
     }elseif($troops == 0){
-     	$errormsg .= "No troops has been selected.";
+     	$errormsg .= "No se ha seleccionado ninguna tropa.";
     }else{
     
 		$coor = $database->getCoor($village->wid);
@@ -64,7 +64,7 @@ if(isset($_POST['action']) == 'editSlot' && $_POST['eid']) {
 
 		var option = new Element('option',
 		{
-			'html': 'Select village'
+			'html': 'Selecciona una aldea'
 		});
 		targetId.insert(option);
 
@@ -140,7 +140,7 @@ if(isset($_POST['action']) == 'editSlot' && $_POST['eid']) {
 </script>
 
 <div id="raidListSlot">
-	<h4>Add Slot</h4>
+	<h4>Agregar campo</h4>
 <font color="#FF0000"><b>    
 <?php echo $errormsg; ?>
 </b></font>
@@ -158,7 +158,7 @@ $lid2 = $getlid['lid'];
 			
 			<table cellpadding="1" cellspacing="1" class="transparent">
 				<tbody><tr>
-					<th>Farm Name:</th><?php echo $_GET["lid"]; ?>
+					<th>Nombre de la lista:</th><?php echo $_GET["lid"]; ?>
 					<td>
 						<select onchange="getTargetsByLid();" id="lid" name="lid">
 <?php
@@ -178,7 +178,7 @@ $lvname = $database->getVillageField($row["wref"], 'name');
 					</td>
 				</tr>
 				<tr>
-					<th>Select target:</th>
+					<th>Seleccionar objetivo:</th>
 					<td class="target">
 						
 			<div class="coordinatesInput">
@@ -193,14 +193,14 @@ $lvname = $database->getVillageField($row["wref"], 'name');
 				<div class="clear"></div>
 			</div>
 								<div class="targetSelect">
-							<label class="lastTargets" for="last_targets">Last targets:</label>
+							<label class="lastTargets" for="last_targets">Últimos objetivos:</label>
 							<select name="target_id">
 <?php
 $select_raidlist = "SELECT * FROM ".TB_PREFIX."raidlist WHERE id = ".$_GET['eid']."";
 $raidlist = mysql_fetch_array(mysql_query($select_raidlist));
 $getwref = "SELECT * FROM ".TB_PREFIX."raidlist WHERE id = ".$raidlist['lid']."";
 $arraywref = $database->query_return($getwref);
-	echo '<option value="">Select village</option>';
+	echo '<option value="">Selecciona una aldea</option>';
 if(mysql_num_rows(mysql_query($getwref)) != 0){
 foreach($arraywref as $row){
 $towref = $row["towref"];
@@ -229,9 +229,9 @@ $vill[$towref] = 1;
 		<?php include "Templates/goldClub/trooplist.tpl"; ?>
 
 		
-<button type="submit" value="save" name="save" id="save"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Save</div></div></button>&nbsp;
+<button type="submit" value="save" name="save" id="save"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Guardar</div></div></button>&nbsp;
 <button type="button" value="delete" name="delete" id="delete" onclick="return (function(){
-				('Are you sure that you want to delete this list?').dialog(
+				('¿Estás seguro de que quieres eliminar esta lista?').dialog(
 				{
 					onOkay: function(dialog, contentElement)
 					{
@@ -239,6 +239,6 @@ $vill[$towref] = 1;
 				});
 				return false;
 			})()">
-<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Delete</div></div></button>
+<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Eliminar</div></div></button>
 </form>
 </div>

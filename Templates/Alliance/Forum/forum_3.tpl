@@ -14,15 +14,15 @@ foreach($show_topic as $topi) {
 
 	<table cellpadding="1" cellspacing="1" id="edit_topic"><thead>
 		<tr>
-	        <th colspan="2">Editing forum</tr>
+	        <th colspan="2">Editar foro</tr>
 		</thead><tbody>
 		<tr>
-			<th>Subject:</th>
+			<th>Asunto:</th>
 
 			<td><input class="text" type="Text" name="thema" value="<?php echo $title; ?>" maxlength="35"></td>
 		</tr>
 		<tr>
-			<th>Transfer Thread </td>
+			<th>Trasladar tema </td>
 			<td><select class="dropdown" name="fid">
 <?php
 $show_cat = $database->ForumCat($session->alliance);
@@ -41,7 +41,7 @@ $show_cat = $database->ForumCat($session->alliance);
 	<p><button type="submit" value="????? ????" class="build">
 <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div>
 <div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div>
-</div><div class="button-contents">OK</div></div></button></form></p>
+</div><div class="button-contents">Aceptar</div></div></button></form></p>
 <?php }else{
 header("Location: banned.php");
 }

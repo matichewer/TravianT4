@@ -1,10 +1,10 @@
-<h1><img class="unit u19" src="img/x.gif" alt="Chief" title="Chief" /> Chief <span class="tribe">(Teutons)</span></h1>
+<h1><img class="unit u19" src="img/x.gif" alt="Jefe Teutón" title="Jefe Teutón" /> Jefe Teutón <span class="tribe">(Teutones)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
-	<th><img class="att_all" src="img/x.gif" alt="attack value" title="attack value" /></th>
-	<th><img class="def_i" src="img/x.gif" alt="defence against infantry" title="defence against infantry" /></th>
-	<th><img class="def_c" src="img/x.gif" alt="defence against cavalry" title="defence against cavalry" /></th><th><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" /></th><th><img class="r2" src="img/x.gif" alt="Clay" title="Clay" /></th><th><img class="r3" src="img/x.gif" alt="Iron" title="Iron" /></th><th><img class="r4" src="img/x.gif" alt="Crop" title="Crop" /></th></tr></thead>
+	<th><img class="att_all" src="img/x.gif" alt="valor de ataque" title="valor de ataque" /></th>
+	<th><img class="def_i" src="img/x.gif" alt="defensa contra infantería" title="defensa contra infantería" /></th>
+	<th><img class="def_c" src="img/x.gif" alt="defensa contra caballería" title="defensa contra caballería" /></th><th><img class="r1" src="img/x.gif" alt="Madera" title="Madera" /></th><th><img class="r2" src="img/x.gif" alt="Barro" title="Barro" /></th><th><img class="r3" src="img/x.gif" alt="Hierro" title="Hierro" /></th><th><img class="r4" src="img/x.gif" alt="Cereal" title="Cereal" /></th></tr></thead>
 <tbody><tr>
 	<td>40</td>
 	<td>60</td>
@@ -20,31 +20,31 @@
 <table id="troop_details" cellpadding="1" cellspacing="1">
 <tbody><tr>
 
-	<th>Velocity</th>
-	<td><b>4</b> fields/hour</td>
+	<th>Velocidad</th>
+	<td><b>4</b> casillas/hora</td>
 </tr>
 <tr>
-	<th>Can carry</th>
-	<td><b>0</b> resources</td>
+	<th>Puede transportar</th>
+	<td><b>0</b> recursos</td>
 
 </tr>
 <tr>
-	<th>Upkeep</th>
-	<td><img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" /> 4</td>
+	<th>Manutención</th>
+	<td><img class="r5" src="img/x.gif" alt="Consumo de cereal" title="Consumo de cereal" /> 4</td>
 </tr>
 <tr>
-	<th>Duration of training</th>
-	<td><img class="clock" src="img/x.gif" alt="duration" title="duration" /> 19:35:00</td>
+	<th>Duración del entrenamiento</th>
+	<td><img class="clock" src="img/x.gif" alt="duración" title="duración" /> 19:35:00</td>
 
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u19" src="img/x.gif" alt="Chief" title="Chief" /><div id="t_desc">Out of their midst the Teutons choose their Chief. To be chosen, bravery and strategy aren't enough; you also have to be a formidable speaker as it is the Chief's primary objective to convince the population of foreign villages to join the Chief's tribe. 
+<img id="big_unit" class="big_u19" src="img/x.gif" alt="Jefe Teutón" title="Jefe Teutón" /><div id="t_desc">Los teutones eligen a su Jefe de entre los suyos. Para ser elegido no basta con valentía y estrategia; también hay que ser un orador formidable, ya que el objetivo principal del Jefe es convencer a la población de aldeas extranjeras de unirse a su tribu.
 <br /><br />
-The more often the Chief speaks to the population of a village the more the loyalty of the village sinks until it finally joins the chief's tribe.</div><div id="prereqs"><b>Prerequisites</b><br /><a href="manual.php?typ=4&amp;gid=16">Rally Point</a> Level 5, <a href="manual.php?typ=4&amp;gid=22">Academy</a> Level 20</div><map id="nav" name="nav">
- <area href="manual.php?typ=1&amp;s=18" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
+Cuanto más habla el Jefe a la población de una aldea, más baja la lealtad de esa aldea hasta que finalmente se une a la tribu del jefe.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=16">Plaza de reuniones</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 20</div><map id="nav" name="nav">
+ <area href="manual.php?typ=1&amp;s=18" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
 
- <area href="manual.php?typ=1&amp;s=20" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+ <area href="manual.php?typ=1&amp;s=20" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

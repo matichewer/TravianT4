@@ -12,11 +12,11 @@ $noticeArray = $database->readAlliNotice($aid);
 echo "<h1>".$allianceinfo['tag']." - ".$allianceinfo['name']."</h1>";
 include("alli_menu.tpl"); 
 ?>
-<h4 class="chartHeadline">Events</h4>
+<h4 class="chartHeadline">Eventos</h4>
 <table cellpadding="1" cellspacing="1" id="events"><thead>
 <tr>
-<td>Event</td>
-<td>Date</td>
+<td>Evento</td>
+<td>Fecha</td>
 </tr>
 </thead>
 <tbody>

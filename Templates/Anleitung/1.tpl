@@ -1,17 +1,17 @@
 
 <p class=f9>
 
-    At the beginning you should try to get a good economic basis. In order to do so you have to extend the 18 resource fields (village overview). There are four different types of resource fields: Woodcutter, Clay pit, Iron mine and Cropland. If you click one of them, you will get more information and the option to extend it.
+    Al principio deberías intentar conseguir una buena base económica. Para ello tienes que ampliar los 18 campos de recursos (vista general de la aldea). Hay cuatro tipos diferentes de campos de recursos: Leñador, Barrera, Mina de hierro y Granja. Si haces clic en uno de ellos, obtendrás más información y la opción de ampliarlo.
 
 <br><br>
 
-Later in the game the buildings in the village become important too. In order to construct a new building you have to click on one of the green ovals. A list with every building that is available will appear.
+Más adelante en el juego, los edificios de la aldea también se vuelven importantes. Para construir un nuevo edificio tienes que hacer clic en uno de los óvalos verdes. Aparecerá una lista con todos los edificios disponibles.
 
 <br><br>
 
-Some buildings can only be built if you fulfil the prerequisites which are other buildings.</p>
+Algunos edificios solo se pueden construir si cumples los requisitos previos, que son otros edificios.</p>
 
-<h2>Main Building</h2>
+<h2>Edificio principal</h2>
 
 
 
@@ -19,31 +19,31 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 
 <p>
 
-<img src="img/un/h/gid15.gif" width=166 height=150 border=0 alt="Main Building" title="Main Building" align="left" />
+<img src="img/un/h/gid15.gif" width=166 height=150 border=0 alt="Edificio principal" title="Edificio principal" align="left" />
 
-The village's master builders live in the main building. The higher its level the faster your master builders complete the construction of new buildings.
+En el edificio principal viven los maestros de obra de la aldea. Cuanto más alto sea su nivel, más rápido completarán tus maestros de obra la construcción de nuevos edificios.
 
 <br><br>
 
-<b>Tribe advantage:</b><br>
+<b>Ventaja del pueblo:</b><br>
 
-Romans: Can build/extend a resource field and a village building at the same time.    <br>
+Romanos: pueden construir/ampliar un campo de recursos y un edificio de la aldea al mismo tiempo.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    70    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    70    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    40    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    40    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    60    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    60    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    20    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    20    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     2    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -53,13 +53,13 @@ Romans: Can build/extend a resource field and a village building at the same tim
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    none</p>
+    ninguno</p>
 
-<h2>Warehouse</h2>
+<h2>Almacén</h2>
 
 
 
@@ -67,25 +67,25 @@ Romans: Can build/extend a resource field and a village building at the same tim
 
 <p>
 
-<img src="img/un/h/gid10.gif" width=166 height=150 border=0 alt="Warehouse" title="Warehouse" align="right" />
+<img src="img/un/h/gid10.gif" width=166 height=150 border=0 alt="Almacén" title="Almacén" align="right" />
 
-The resources lumber, clay and iron are stored in your warehouse. By increasing its level you increase your warehouse's capacity.    <br>
+La madera, el barro y el hierro se almacenan en tu almacén. Al aumentar su nivel, aumentas la capacidad de tu almacén.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    130    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    130    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    40    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    40    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -95,13 +95,13 @@ The resources lumber, clay and iron are stored in your warehouse. By increasing 
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 1</p>
+    Edificio principal Nivel 1</p>
 
-<h2>Granary</h2>
+<h2>Granero</h2>
 
 
 
@@ -109,25 +109,25 @@ The resources lumber, clay and iron are stored in your warehouse. By increasing 
 
 <p>
 
-<img src="img/un/h/gid11.gif" width=166 height=150 border=0 alt="Granary" title="Granary" align="right" />
+<img src="img/un/h/gid11.gif" width=166 height=150 border=0 alt="Granero" title="Granero" align="right" />
 
-The crop produced by your farms is stored in the granary. By increasing its level you increase the granary?s capacity.    <br>
+El cereal producido por tus granjas se almacena en el granero. Al aumentar su nivel, aumentas la capacidad del granero.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    80    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    80    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    100    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    100    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    70    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    70    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    20    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    20    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -137,13 +137,13 @@ The crop produced by your farms is stored in the granary. By increasing its leve
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 1</p>
+    Edificio principal Nivel 1</p>
 
-<h2>Cranny</h2>
+<h2>Escondite</h2>
 
 
 
@@ -151,33 +151,33 @@ The crop produced by your farms is stored in the granary. By increasing its leve
 
 <p>
 
-<img src="img/un/h/gid23.gif" width=166 height=150 border=0 alt="Cranny" title="Cranny" align="left" />
+<img src="img/un/h/gid23.gif" width=166 height=150 border=0 alt="Escondite" title="Escondite" align="left" />
 
-The cranny is used to hide some of your resources when the village is attacked. These resources cannot be stolen. At level 1 100 resources are hidden.
+El escondite se usa para ocultar parte de tus recursos cuando la aldea es atacada. Estos recursos no se pueden robar. En el nivel 1 se ocultan 100 recursos.
 
 <br><br>
 
-<b>Tribe advantage:</b><br>
+<b>Ventaja del pueblo:</b><br>
 
-Gauls: The cranny is twice as big.<br>
+Galos: el escondite es el doble de grande.<br>
 
-Teutons: Enemy crannies only hides 66% of the normal amount in Travian version 2.5 and 3, and 80% of the normal amount in Travian version 3.5.    <br>
+Teutones: los escondites enemigos solo ocultan el 66% de la cantidad normal en la versión 2.5 y 3 de Travian, y el 80% de la cantidad normal en la versión 3.5.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    40    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    40    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    50    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    50    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    30    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    30    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    10    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    10    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     0    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -187,13 +187,13 @@ Teutons: Enemy crannies only hides 66% of the normal amount in Travian version 2
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    none</p>
+    ninguno</p>
 
-<h2>Embassy</h2>
+<h2>Embajada</h2>
 
 
 
@@ -201,25 +201,25 @@ Teutons: Enemy crannies only hides 66% of the normal amount in Travian version 2
 
 <p>
 
-<img src="img/un/h/gid18.gif" width=166 height=150 border=0 alt="Embassy" title="Embassy" align="right" />
+<img src="img/un/h/gid18.gif" width=166 height=150 border=0 alt="Embajada" title="Embajada" align="right" />
 
-In order to join an alliance you need an embassy. With an embassy level 3 you can even found one yourself. With each higher level the maximum size of the alliance increases by 3.    <br>
+Para unirte a una alianza necesitas una embajada. Con una embajada de nivel 3 incluso puedes fundar una tú mismo. Con cada nivel superior, el tamaño máximo de la alianza aumenta en 3.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    180    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    180    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    130    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    130    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    150    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    150    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    80    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    80    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     3    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -229,13 +229,13 @@ In order to join an alliance you need an embassy. With an embassy level 3 you ca
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 1</p>
+    Edificio principal Nivel 1</p>
 
-<h2>Rally Point</h2>
+<h2>Plaza de reuniones</h2>
 
 
 
@@ -243,25 +243,25 @@ In order to join an alliance you need an embassy. With an embassy level 3 you ca
 
 <p>
 
-<img src="img/un/h/gid16.gif" width=166 height=150 border=0 alt="Rally Point" title="Rally Point" align="right" />
+<img src="img/un/h/gid16.gif" width=166 height=150 border=0 alt="Plaza de reuniones" title="Plaza de reuniones" align="right" />
 
-At the rally point you can instruct your troops and can see the sender of oncoming troops. The rally point can only be build at the building site right of the village centre. The higher its level the more targets for the catapults become available.    <br>
+En la plaza de reuniones puedes dar órdenes a tus tropas y ver el remitente de las tropas entrantes. La plaza de reuniones solo se puede construir en el sitio de construcción a la derecha del centro de la aldea. Cuanto más alto sea su nivel, más objetivos estarán disponibles para las catapultas.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    110    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    110    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    70    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    70    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -271,13 +271,13 @@ At the rally point you can instruct your troops and can see the sender of oncomi
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    none</p>
+    ninguno</p>
 
-<h2>Marketplace</h2>
+<h2>Mercado</h2>
 
 
 
@@ -285,41 +285,41 @@ At the rally point you can instruct your troops and can see the sender of oncomi
 
 <p>
 
-<img src="img/un/h/gid17.gif" width=166 height=150 border=0 alt="Marketplace" title="Marketplace" align="left" />
+<img src="img/un/h/gid17.gif" width=166 height=150 border=0 alt="Mercado" title="Mercado" align="left" />
 
-At the marketplace you can trade resources with other players. The higher its level, the more resources can be transported at the same time.
+En el mercado puedes comerciar recursos con otros jugadores. Cuanto más alto sea su nivel, más recursos se podrán transportar al mismo tiempo.
 
 <br><br>
 
-<b>Tribe advantage:</b><br>
+<b>Ventaja del pueblo:</b><br>
 
-Romans: Each merchant can carry 500 resources.<br>
+Romanos: cada mercader puede transportar 500 recursos.<br>
 
-Velocity: 16 fields/hour.<br>
+Velocidad: 16 casillas/hora.<br>
 
-Teutons: Each merchant can carry 1000 resources.<br>
+Teutones: cada mercader puede transportar 1000 recursos.<br>
 
-Velocity: 12 fields/hour.<br>
+Velocidad: 12 casillas/hora.<br>
 
-Gauls: Each merchant can carry 750 resources.<br>
+Galos: cada mercader puede transportar 750 recursos.<br>
 
-Velocity: 24 fields/hour.    <br>
+Velocidad: 24 casillas/hora.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    80    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    80    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    70    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    70    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    120    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    120    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    70    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    70    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     4    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -329,13 +329,13 @@ Velocity: 24 fields/hour.    <br>
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 3, Warehouse Level 1, Granary Level 1</p>
+    Edificio principal Nivel 3, Almacén Nivel 1, Granero Nivel 1</p>
 
-<h2>Barracks</h2>
+<h2>Cuartel</h2>
 
 
 
@@ -343,25 +343,25 @@ Velocity: 24 fields/hour.    <br>
 
 <p>
 
-<img src="img/un/h/gid19.gif" width=166 height=150 border=0 alt="Barracks" title="Barracks" align="left" />
+<img src="img/un/h/gid19.gif" width=166 height=150 border=0 alt="Cuartel" title="Cuartel" align="left" />
 
-Infantry can be trained in the barracks. The higher its level the faster the troops are trained.    <br>
+En el cuartel se puede entrenar infantería. Cuanto más alto sea su nivel, más rápido se entrenan las tropas.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    210    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    210    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    140    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    140    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    260    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    260    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    120    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    120    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     4    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -371,13 +371,13 @@ Infantry can be trained in the barracks. The higher its level the faster the tro
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Rally Point Level 1, Main Building Level 3</p>
+    Plaza de reuniones Nivel 1, Edificio principal Nivel 3</p>
 
-<h2>Stable</h2>
+<h2>Establo</h2>
 
 
 
@@ -385,25 +385,25 @@ Infantry can be trained in the barracks. The higher its level the faster the tro
 
 <p>
 
-<img src="img/un/h/gid20.gif" width=166 height=150 border=0 alt="Stable" title="Stable" align="left" />
+<img src="img/un/h/gid20.gif" width=166 height=150 border=0 alt="Establo" title="Establo" align="left" />
 
-Cavalry is trained in the stable. The higher its level the faster the troops are trained.    <br>
+En el establo se entrena la caballería. Cuanto más alto sea su nivel, más rápido se entrenan las tropas.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    260    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    260    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    140    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    140    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    220    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    220    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    100    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    100    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     5    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -413,13 +413,13 @@ Cavalry is trained in the stable. The higher its level the faster the troops are
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Blacksmith Level 3, Academy Level 5</p>
+    Herrería Nivel 3, Academia Nivel 5</p>
 
-<h2>Workshop</h2>
+<h2>Taller</h2>
 
 
 
@@ -427,25 +427,25 @@ Cavalry is trained in the stable. The higher its level the faster the troops are
 
 <p>
 
-<img src="img/un/h/gid21.gif" width=166 height=150 border=0 alt="Workshop" title="Workshop" align="left" />
+<img src="img/un/h/gid21.gif" width=166 height=150 border=0 alt="Taller" title="Taller" align="left" />
 
-Siege engines like catapults and rams can be built in the workshop. The higher its level the faster the units are produced.    <br>
+En el taller se pueden construir máquinas de asedio como catapultas y arietes. Cuanto más alto sea su nivel, más rápido se producen las unidades.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    460    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    460    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    510    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    510    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    600    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    600    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    320    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    320    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     3    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -455,13 +455,13 @@ Siege engines like catapults and rams can be built in the workshop. The higher i
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Academy Level 10, Main Building Level 5</p>
+    Academia Nivel 10, Edificio principal Nivel 5</p>
 
-<h2>Academy</h2>
+<h2>Academia</h2>
 
 
 
@@ -469,25 +469,25 @@ Siege engines like catapults and rams can be built in the workshop. The higher i
 
 <p>
 
-<img src="img/un/h/gid22.gif" width=166 height=150 border=0 alt="Academy" title="Academy" align="right" />
+<img src="img/un/h/gid22.gif" width=166 height=150 border=0 alt="Academia" title="Academia" align="right" />
 
-New unit types can be developed in the academy. By increasing its level you can order the research of better units.    <br>
+En la academia se pueden desarrollar nuevos tipos de unidades. Al aumentar su nivel puedes ordenar la investigación de mejores unidades.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    220    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    220    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    160    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    90    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    40    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    40    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     4    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -497,13 +497,13 @@ New unit types can be developed in the academy. By increasing its level you can 
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Barracks Level 3, Main Building Level 3</p>
+    Cuartel Nivel 3, Edificio principal Nivel 3</p>
 
-<h2>Blacksmith</h2>
+<h2>Herrería</h2>
 
 
 
@@ -511,25 +511,25 @@ New unit types can be developed in the academy. By increasing its level you can 
 
 <p>
 
-<img src="img/un/h/gid12.gif" width=166 height=150 border=0 alt="Blacksmith" title="Blacksmith" align="left" />
+<img src="img/un/h/gid12.gif" width=166 height=150 border=0 alt="Herrería" title="Herrería" align="left" />
 
-Your warriors' weapons are enhanced in the blacksmith?s melting furnaces. By increasing its level you can order the fabrication of even better weapons.    <br>
+Las armas de tus guerreros se mejoran en los hornos de fundición de la herrería. Al aumentar su nivel puedes ordenar la fabricación de armas aún mejores.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    170    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    170    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    200    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    200    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    380    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    380    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    130    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    130    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     4    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -539,13 +539,13 @@ Your warriors' weapons are enhanced in the blacksmith?s melting furnaces. By inc
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 3, Academy Level 3</p>
+    Edificio principal Nivel 3, Academia Nivel 3</p>
 
-<h2>Armoury</h2>
+<h2>Armería</h2>
 
 
 
@@ -553,25 +553,25 @@ Your warriors' weapons are enhanced in the blacksmith?s melting furnaces. By inc
 
 <p>
 
-<img src="img/un/h/gid13.gif" width=166 height=150 border=0 alt="Armoury" title="Armoury" align="right" />
+<img src="img/un/h/gid13.gif" width=166 height=150 border=0 alt="Armería" title="Armería" align="right" />
 
-Your warriors' armour is enhanced in the armoury's melting furnaces. By increasing its level you can order the fabrication of even better armour.    <br>
+La armadura de tus guerreros se mejora en los hornos de fundición de la armería. Al aumentar su nivel puedes ordenar la fabricación de armaduras aún mejores.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    130    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    130    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    210    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    210    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    410    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    410    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    130    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    130    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     4    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -581,13 +581,13 @@ Your warriors' armour is enhanced in the armoury's melting furnaces. By increasi
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 3, Academy Level 1</p>
+    Edificio principal Nivel 3, Academia Nivel 1</p>
 
-<h2>Palace</h2>
+<h2>Palacio</h2>
 
 
 
@@ -595,33 +595,33 @@ Your warriors' armour is enhanced in the armoury's melting furnaces. By increasi
 
 <p>
 
-<img src="img/un/h/gid26.gif" width=166 height=150 border=0 alt="Palace" title="Palace" align="left" />
+<img src="img/un/h/gid26.gif" width=166 height=150 border=0 alt="Palacio" title="Palacio" align="left" />
 
-The King or Queen of the empire lives in the palace. The palace can only be built in one village at a time and can be used to make a village the capital. Capitals cannot be conquered.
+El Rey o la Reina del imperio vive en el palacio. El palacio solo se puede construir en una aldea a la vez y se puede usar para convertir una aldea en capital. Las capitales no se pueden conquistar.
 
 <br><br>
 
-At level 10, 15 and 20 three settlers or one administrator (Senator, Chief or Chieftain) can be trained.
+En los niveles 10, 15 y 20 se pueden entrenar tres colonos o un administrador (Senador, Jefe Teutón o Jefe Galo).
 
 <br><br>
 
-The Capital is the only place a stonemason's lodge can be erected. Also the capital is the only village where resource fields can be extended beyond level 10.    <br>
+La capital es el único lugar donde se puede erigir una cabaña del picapedrero. Además, la capital es la única aldea donde los campos de recursos se pueden ampliar más allá del nivel 10.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    550    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    550    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    800    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    800    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    750    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    750    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    250    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    250    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -631,13 +631,13 @@ The Capital is the only place a stonemason's lodge can be erected. Also the capi
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Embassy Level 1, Main Building Level 5, <strike>Residence</strike></p>
+    Embajada Nivel 1, Edificio principal Nivel 5, <strike>Residencia</strike></p>
 
-<h2>Residence</h2>
+<h2>Residencia</h2>
 
 
 
@@ -645,29 +645,29 @@ The Capital is the only place a stonemason's lodge can be erected. Also the capi
 
 <p>
 
-<img src="img/un/h/gid25.gif" width=166 height=150 border=0 alt="Residence" title="Residence" align="left" />
+<img src="img/un/h/gid25.gif" width=166 height=150 border=0 alt="Residencia" title="Residencia" align="left" />
 
-The residence is a small palace where the king or queen lives when he or she visits the village. The residence protects the village against enemies who want to conquer it as long as it is not destroyed. 
+La residencia es un pequeño palacio donde vive el rey o la reina cuando visita la aldea. La residencia protege la aldea contra los enemigos que quieren conquistarla, siempre que no sea destruida. 
 
 <br><br>
 
-At level 10 and 20 three settlers or one administrator (Senator, Chief or Chieftain) can be trained.    <br>
+En los niveles 10 y 20 se pueden entrenar tres colonos o un administrador (Senador, Jefe Teutón o Jefe Galo).    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    580    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    580    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    460    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    460    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    350    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    350    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    180    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    180    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -677,13 +677,13 @@ At level 10 and 20 three settlers or one administrator (Senator, Chief or Chieft
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Main Building Level 5, <strike>Palace</strike></p>
+    Edificio principal Nivel 5, <strike>Palacio</strike></p>
 
-<h2>Trade Office</h2>
+<h2>Oficina de comercio</h2>
 
 
 
@@ -691,35 +691,35 @@ At level 10 and 20 three settlers or one administrator (Senator, Chief or Chieft
 
 <p>
 
-<img src="img/un/h/gid28.gif" width=166 height=150 border=0 alt="Trade Office" title="Trade Office" align="left" />
+<img src="img/un/h/gid28.gif" width=166 height=150 border=0 alt="Oficina de comercio" title="Oficina de comercio" align="left" />
 
-In the trade office the merchants' carts get improved and equipped with powerful horses. The higher its level the more your merchants are able to carry.
-
-<br><br>
-
-With each level the capacity increases by 10%. At level 20 your merchants can carry thrice as much as normal.
+En la oficina de comercio las carretas de los mercaderes se mejoran y se equipan con caballos poderosos. Cuanto más alto sea su nivel, más podrán transportar tus mercaderes.
 
 <br><br>
 
-<b>Tribe advantage:</b><br>
+Con cada nivel la capacidad aumenta un 10%. En el nivel 20 tus mercaderes pueden transportar el triple de lo normal.
 
-Romans: In Travian version 3.5 the Roman trade office increases the capacity by 20% per level.    <br>
+<br><br>
+
+<b>Ventaja del pueblo:</b><br>
+
+Romanos: en la versión 3.5 de Travian, la oficina de comercio romana aumenta la capacidad un 20% por nivel.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    1400    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    1400    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    1330    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    1330    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    1200    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    1200    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    400    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    400    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     3    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -729,13 +729,13 @@ Romans: In Travian version 3.5 the Roman trade office increases the capacity by 
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Marketplace Level 20, Stable Level 10</p>
+    Mercado Nivel 20, Establo Nivel 10</p>
 
-<h2>Tournament Square</h2>
+<h2>Plaza de torneos</h2>
 
 
 
@@ -743,25 +743,25 @@ Romans: In Travian version 3.5 the Roman trade office increases the capacity by 
 
 <p>
 
-<img src="img/un/h/gid14.gif" width=166 height=150 border=0 alt="Tournament Square" title="Tournament Square" align="left" />
+<img src="img/un/h/gid14.gif" width=166 height=150 border=0 alt="Plaza de torneos" title="Plaza de torneos" align="left" />
 
-Your troops can train to increase their stamina at the tournament square. The further the building is upgraded the faster your troops are beyond a minimum distance of 30 squares.    <br>
+Tus tropas pueden entrenar para aumentar su resistencia en la plaza de torneos. Cuanto más se mejore el edificio, más rápidas serán tus tropas más allá de una distancia mínima de 30 casillas.    <br>
 
     <br>
 
-    <b>Costs</b> and <b>construction time</b> for level 1:    <br>
+    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
 
-    <img src=img/un/res/1.gif width=18 height=12 alt=Lumber " title="
+    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
 
-    Lumber    " style="padding-top: 4px" />
+    Madera    " style="padding-top: 4px" />
 
-    1750    | <img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">
+    1750    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
 
-    2250    | <img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">
+    2250    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
 
-    1530    | <img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">
+    1530    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
 
-    240    | <img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">
+    240    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
 
     1    | <img src=img/un/h/clock.gif width=18 height=12>
 
@@ -771,11 +771,11 @@ Your troops can train to increase their stamina at the tournament square. The fu
 
     <b>
 
-        Prerequisites:    </b>
+        Requisitos:    </b>
 
     <br>
 
-    Rally Point Level 15</p>
+    Plaza de reuniones Nivel 15</p>
 	</div> 
 	<div class="clear"></div> 
 </div> 

@@ -2,37 +2,37 @@
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="dorf3.php"><span class="tabItem">Overview</span></a></div>
+					<div class="content"><a href="dorf3.php"><span class="tabItem">Resumen</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><span class="tabItem">Resource</span></div>
+					<div class="content"><span class="tabItem">Recursos</span></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><span class="tabItem">Warehouse</span></div>
+					<div class="content"><span class="tabItem">Almacén</span></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><span class="tabItem">Culture Points</span></div>
+					<div class="content"><span class="tabItem">Puntos de cultura</span></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><span class="tabItem">Troops</span></div>
+					<div class="content"><span class="tabItem">Tropas</span></div>
 				</div><div class="clear"></div>
 </div>
 <table cellpadding="1" cellspacing="1" id="overview">
 <thead>
 <tr>
-	<td>Village</td>
-	<td>Attacks</td>
-	<td>Building</td> 
-	<td>Troops</td>
-	<td>Merchants</td>
+	<td>Aldea</td>
+	<td>Ataques</td>
+	<td>Construcción</td> 
+	<td>Tropas</td>
+	<td>Mercaderes</td>
 </tr></thead><tbody>
 <?php
 $varray = $database->getProfileVillages($session->uid);  

@@ -24,13 +24,13 @@ foreach($topics as $top) {
 	<input type="hidden" name="editans" value="1">
 
 	<input type="hidden" name="checkstr" value="c0d">
-    <h4 class="round">Edit answer</h4>
+    <h4 class="round">Editar respuesta</h4>
     
     
     <table class="transparent" id="new_post">
 	<tbody>
 	<tr>
-		<th>Thread:</th>
+		<th>Tema:</th>
 		<td><?php echo $title; ?></td>
 	</tr>
 	<tr>
@@ -59,8 +59,8 @@ foreach($topics as $top) {
 			</script>
 			
 	</td></tr>
-	</tbody></table><div class="spacer"></div><button type="submit" value="ok" name="s1" id="fbtn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">OK</div></div></button></form></p>
-<span style="color: #DD0000"><b>Warning:</b> you can't use the values <b>[message]</b> or <b>[/message]</b> in your post because it can cause problem with bbcode system.</span>
+	</tbody></table><div class="spacer"></div><button type="submit" value="ok" name="s1" id="fbtn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Aceptar</div></div></button></form></p>
+<span style="color: #DD0000"><b>Advertencia:</b> no puedes usar los valores <b>[message]</b> o <b>[/message]</b> en tu publicación porque puede causar problemas con el sistema de bbcode.</span>
 	<?php }else{
 header("Location: banned.php");
 }

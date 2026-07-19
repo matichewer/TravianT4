@@ -22,35 +22,35 @@ include "Templates/html.tpl";
 </div> 
 </div>
 					<div id="mid">
-<a id="ingameManual" href="help.php"><img class="question" alt="Help" src="img/x.gif"></a>
+<a id="ingameManual" href="help.php"><img class="question" alt="Ayuda" src="img/x.gif"></a>
 												<div class="clear"></div> 
 						<div id="contentOuterContainer"> 
 							<div class="contentTitle">&nbsp;</div> 
 
 <div class="contentContainer">
 <div id="content" class="hero_adventure">
-<h1 class="titleInHeader">Hero</h1>
+<h1 class="titleInHeader">Héroe</h1>
 
 <div class="contentNavi subNavi">
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Attributes</span></a></div>
+					<div class="content"><a href="hero_inventory.php"><span class="tabItem">Atributos</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero.php"><span class="tabItem">Appearance</span></a></div>
+					<div class="content"><a href="hero.php"><span class="tabItem">Apariencia</span></a></div>
 				</div>
 				<div class="container active">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Adventures</span></a></div>
+					<div class="content"><a href="hero_adventure.php"><span class="tabItem">Aventuras</span></a></div>
 				</div>
 				<div class="container normal">
 					<div class="background-start">&nbsp;</div>
 					<div class="background-end">&nbsp;</div>
-					<div class="content"><a href="hero_auction.php"><span class="tabItem">Auctions</span></a></div>
+					<div class="content"><a href="hero_auction.php"><span class="tabItem">Subastas</span></a></div>
 				</div><div class="clear"></div>
 		</div><script type="text/javascript">
 					window.addEvent('domready', function()
@@ -64,11 +64,11 @@ include "Templates/html.tpl";
 <table cellspacing="1" cellpadding="1">
 	<thead>
 		<tr>
-			<th class="location" colspan="2">Location</th>
-			<th class="moveTime">Time</th>
-			<th class="difficulty">Difficulty</th>
-			<th class="timeLeft">Lime Left</th>
-			<th class="goTo">Link</th>
+			<th class="location" colspan="2">Ubicación</th>
+			<th class="moveTime">Tiempo</th>
+			<th class="difficulty">Dificultad</th>
+			<th class="timeLeft">Tiempo restante</th>
+			<th class="goTo">Enlace</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -79,7 +79,7 @@ $query = mysql_num_rows($sql);
 $outputList = '';
 $timer = 1;
 if($query == 0) {        
-    $outputList .= "<td colspan=\"6\" class=\"none\"><center>No adventure found.</center></td>";
+    $outputList .= "<td colspan=\"6\" class=\"none\"><center>No se encontraron aventuras.</center></td>";
 }else{
 	while($row = mysql_fetch_array($sql)){ 
 include "Templates/Auction/alt.tpl";
@@ -105,22 +105,22 @@ switch($type) {
 case 1:
 case 2:
 case 3:
-$tname =  "forest";
+$tname =  "bosque";
 break;
 case 4:
 case 5:
 case 6:
-$tname =  "field";
+$tname =  "campo";
 break;
 case 7:
 case 8:
 case 9:
-$tname =  "mountain";
+$tname =  "montaña";
 break;
 case 10:
 case 11:
 case 12:
-$tname =  "sea";
+$tname =  "mar";
 break;
 }
 
@@ -135,12 +135,12 @@ break;
         </a></td>';
     $outputList .= "<td class=\"moveTime\"> ".$generator->getTimeFormat($time)." </td>";
 	if(!$row['dif']){
-		$outputList .= "<td class='difficulty'><img src='img/x.gif' class='adventureDifficulty2' title='Normális' /></td>";
+		$outputList .= "<td class='difficulty'><img src='img/x.gif' class='adventureDifficulty2' title='Normal' /></td>";
 	}else{
-		$outputList .= "<td class='difficulty'><img src='img/x.gif' class='adventureDifficulty0' title='Veszélyes' /></td>";	
+		$outputList .= "<td class='difficulty'><img src='img/x.gif' class='adventureDifficulty0' title='Peligroso' /></td>";	
 	}
 	$outputList .= "<td class=\"timeLeft\"><span id=\"timer".$timer."\">".$generator->getTimeFormat($row['time']-time())."</span></td>";
-	$outputList .= "<td class=\"goTo\"><a class=\"gotoAdventure arrow\" href=\"a2b.php?id=".$row['wref']."&h=1\">To the Adventure</a></td></tr>";	
+	$outputList .= "<td class=\"goTo\"><a class=\"gotoAdventure arrow\" href=\"a2b.php?id=".$row['wref']."&h=1\">Ir a la aventura</a></td></tr>";	
     $timer++;
 	}
 }

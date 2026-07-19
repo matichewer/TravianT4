@@ -67,7 +67,7 @@ function showCheckList() {
 			newTD2.innerHTML = html_input_1 + 'id="users_by_name_'+num_fields+'" class="text" maxlength="50" name="users_by_name['+num_fields+']" onkeyup="checkInputs('+num_fields+',\'users\')">';
 		}
 
-		newTD3.innerHTML = '<img class="add" src="img/x.gif" title="add" alt="add" onclick="addRow(\''+element_id+'\')">';
+		newTD3.innerHTML = '<img class="add" src="img/x.gif" title="agregar" alt="agregar" onclick="addRow(\''+element_id+'\')">';
     }
 
 </script>
@@ -108,21 +108,21 @@ function showCheckList() {
 	<table cellpadding="1" cellspacing="1" id="new_forum"><tbody>
 	<tr>
 
-		<th>Forum Name</th>
+		<th>Nombre del foro</th>
 		<td><input class="text" type="text" name="u1" value="" maxlength="20"></td>
 	</tr>
 
 	<tr>
-		<th>Description</th>
+		<th>Descripción</th>
 		<td><input class="text" type="text" name="u2" value="" maxlength="38"></td>
 	</tr>
 
-			<th>Type forum</th>
+			<th>Tipo de foro</th>
 		<td><select class="dropdown" id="bid" name="bid" onchange="showCheckList();">
-        <option value="1">Public forum</option>
-        <option value="2">Confederation Forum</option>
-        <option value="0"selected>Alliance Forum</option>
-        <option value="3">Closed Forum</option></select></td>
+        <option value="1">Foro público</option>
+        <option value="2">Foro de confederación</option>
+        <option value="0"selected>Foro de la alianza</option>
+        <option value="3">Foro cerrado</option></select></td>
 	</tr>
 	</tbody></table><Br />
    
@@ -140,7 +140,7 @@ function showCheckList() {
 <button type="submit" id="fbtn_ok" name="s1" value="ok" class="build">
 <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div>
 <div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div>
-</div><div class="button-contents">Create</div></div></button>
+</div><div class="button-contents">Crear</div></div></button>
 </p></form>
 <?php }else{
 header("Location: banned.php");

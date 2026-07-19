@@ -17,14 +17,14 @@ if($public1 != 0){
 ?>
 <table cellpadding="1" cellspacing="1" id="public"><thead>
 		<tr>
-	        <th colspan="4">Public Forum</th>
+	        <th colspan="4">Foro público</th>
 		</tr>
 
 		<tr>
 			<td></td>
-			<td>Forum name</td>
-			<td>&nbsp;Threads&nbsp;</td>
-			<td>&nbsp;Last post&nbsp;</td>
+			<td>Nombre del foro</td>
+			<td>&nbsp;Temas&nbsp;</td>
+			<td>&nbsp;Última publicación&nbsp;</td>
 		</tr></thead><tbody>
 <?php
 foreach($forumcat as $arr) {
@@ -50,13 +50,13 @@ if($arr['forum_area']==1){
 	}
 echo	'<tr><td class="ico">';
 if($database->CheckEditRes($aid)=="1"){
-	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="To top"><img src="img/x.gif" alt="To top" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="edit"><img src="img/x.gif" alt="edit" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="To bottom"><img src="img/x.gif" alt="To bottom" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'confirm delete?\');" title="delete"><img src="img/x.gif" alt="delete" /></a>';
+	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="Ir arriba"><img src="img/x.gif" alt="Ir arriba" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="editar"><img src="img/x.gif" alt="editar" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="Ir abajo"><img src="img/x.gif" alt="Ir abajo" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'¿confirmar eliminación?\');" title="eliminar"><img src="img/x.gif" alt="eliminar" /></a>';
 }else{
-	echo '<img class="folder" src="img/x.gif" title="Thread without new posts" alt="Thread without new posts">';
+	echo '<img class="folder" src="img/x.gif" title="Tema sin publicaciones nuevas" alt="Tema sin publicaciones nuevas">';
 }		
 echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$aid.'" title="'.stripslashes($arr['forum_name']).'">'.stripslashes($arr['forum_name']).'</a><br />'.stripslashes($arr['forum_des']).'</td>
 			<td class="cou">'.$countop.'</td>
-			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Show last post" title="Show last post" /></td>
+			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Ver última publicación" title="Ver última publicación" /></td>
 		</tr>';
 		
 }
@@ -68,14 +68,14 @@ echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$ai
 ?>
 <table cellpadding="1" cellspacing="1" id="confederation"><thead>
 		<tr>
-	        <th colspan="4">Confederation Forum</th>
+	        <th colspan="4">Foro de confederación</th>
 		</tr>
 
 		<tr>
 			<td></td>
-			<td>Forum name</td>
-			<td>&nbsp;Threads&nbsp;</td>
-			<td>&nbsp;Last post&nbsp;</td>
+			<td>Nombre del foro</td>
+			<td>&nbsp;Temas&nbsp;</td>
+			<td>&nbsp;Última publicación&nbsp;</td>
 		</tr></thead><tbody>
 <?php
 foreach($forumcat as $arr) {
@@ -101,13 +101,13 @@ if($arr['forum_area']==2){
 	}
 echo	'<tr><td class="ico">';
 if($database->CheckEditRes($aid)=="1"){
-	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="To top"><img src="img/x.gif" alt="To top" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="edit"><img src="img/x.gif" alt="edit" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="To bottom"><img src="img/x.gif" alt="To bottom" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'confirm delete?\');" title="delete"><img src="img/x.gif" alt="delete" /></a>';
+	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="Ir arriba"><img src="img/x.gif" alt="Ir arriba" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="editar"><img src="img/x.gif" alt="editar" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="Ir abajo"><img src="img/x.gif" alt="Ir abajo" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'¿confirmar eliminación?\');" title="eliminar"><img src="img/x.gif" alt="eliminar" /></a>';
 }else{
-	echo '<img class="folder" src="img/x.gif" title="Thread without new posts" alt="Thread without new posts">';
+	echo '<img class="folder" src="img/x.gif" title="Tema sin publicaciones nuevas" alt="Tema sin publicaciones nuevas">';
 }		
 echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$aid.'" title="'.stripslashes($arr['forum_name']).'">'.stripslashes($arr['forum_name']).'</a><br />'.stripslashes($arr['forum_des']).'</td>
 			<td class="cou">'.$countop.'</td>
-			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Show last post" title="Show last post" /></td>
+			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Ver última publicación" title="Ver última publicación" /></td>
 		</tr>';
 		
 }
@@ -119,14 +119,14 @@ echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$ai
 ?>
 <table cellpadding="1" cellspacing="1" id="alliance"><thead>
 		<tr>
-	        <th colspan="4">Alliance Forum</th>
+	        <th colspan="4">Foro de la alianza</th>
 		</tr>
 
 		<tr>
 			<td></td>
-			<td>Forum name</td>
-			<td>&nbsp;Threads&nbsp;</td>
-			<td>&nbsp;Last post&nbsp;</td>
+			<td>Nombre del foro</td>
+			<td>&nbsp;Temas&nbsp;</td>
+			<td>&nbsp;Última publicación&nbsp;</td>
 		</tr></thead><tbody>
 <?php
 foreach($forumcat as $arr) {
@@ -152,13 +152,13 @@ if($arr['forum_area']==0){
 	}
 echo	'<tr><td class="ico">';
 if($database->CheckEditRes($aid)=="1"){
-	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="To top"><img src="img/x.gif" alt="To top" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="edit"><img src="img/x.gif" alt="edit" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="To bottom"><img src="img/x.gif" alt="To bottom" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'confirm delete?\');" title="delete"><img src="img/x.gif" alt="delete" /></a>';
+	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="Ir arriba"><img src="img/x.gif" alt="Ir arriba" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="editar"><img src="img/x.gif" alt="editar" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="Ir abajo"><img src="img/x.gif" alt="Ir abajo" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'¿confirmar eliminación?\');" title="eliminar"><img src="img/x.gif" alt="eliminar" /></a>';
 }else{
-	echo '<img class="folder" src="img/x.gif" title="Thread without new posts" alt="Thread without new posts">';
+	echo '<img class="folder" src="img/x.gif" title="Tema sin publicaciones nuevas" alt="Tema sin publicaciones nuevas">';
 }		
 echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$aid.'" title="'.stripslashes($arr['forum_name']).'">'.stripslashes($arr['forum_name']).'</a><br />'.stripslashes($arr['forum_des']).'</td>
 			<td class="cou">'.$countop.'</td>
-			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Show last post" title="Show last post" /></td>
+			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Ver última publicación" title="Ver última publicación" /></td>
 		</tr>';
 		
 }
@@ -170,14 +170,14 @@ echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$ai
 ?>
 <table cellpadding="1" cellspacing="1" id="closed"><thead>
 		<tr>
-	        <th colspan="4">Closed Forum</th>
+	        <th colspan="4">Foro cerrado</th>
 		</tr>
 
 		<tr>
 			<td></td>
-			<td>Forum name</td>
-			<td>&nbsp;Threads&nbsp;</td>
-			<td>&nbsp;Last post&nbsp;</td>
+			<td>Nombre del foro</td>
+			<td>&nbsp;Temas&nbsp;</td>
+			<td>&nbsp;Última publicación&nbsp;</td>
 		</tr></thead><tbody>
 <?php
 foreach($forumcat as $arr) {
@@ -203,13 +203,13 @@ if($arr['forum_area']==3){
 	}
 echo	'<tr><td class="ico">';
 if($database->CheckEditRes($aid)=="1"){
-	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="To top"><img src="img/x.gif" alt="To top" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="edit"><img src="img/x.gif" alt="edit" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="To bottom"><img src="img/x.gif" alt="To bottom" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'confirm delete?\');" title="delete"><img src="img/x.gif" alt="delete" /></a>';
+	echo '<a class="up_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=-1" title="Ir arriba"><img src="img/x.gif" alt="Ir arriba" /></a><a class="edit" href="allianz.php?s=2&idf='.$arr['id'].'&admin=editforum" title="editar"><img src="img/x.gif" alt="editar" /></a><br /><a class="down_arr" href="allianz.php?s=2&fid='.$arr['id'].'&bid=0&admin=pos&res=1" title="Ir abajo"><img src="img/x.gif" alt="Ir abajo" /></a><a class="fdel" href="allianz.php?s=2&idf='.$arr['id'].'&admin=delforum" onClick="return confirm(\'¿confirmar eliminación?\');" title="eliminar"><img src="img/x.gif" alt="eliminar" /></a>';
 }else{
-	echo '<img class="folder" src="img/x.gif" title="Thread without new posts" alt="Thread without new posts">';
+	echo '<img class="folder" src="img/x.gif" title="Tema sin publicaciones nuevas" alt="Tema sin publicaciones nuevas">';
 }		
 echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$aid.'" title="'.stripslashes($arr['forum_name']).'">'.stripslashes($arr['forum_name']).'</a><br />'.stripslashes($arr['forum_des']).'</td>
 			<td class="cou">'.$countop.'</td>
-			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Show last post" title="Show last post" /></td>
+			<td class="last">'.$lpost.'</span><span><br /><a href="spieler.php?uid='.$owner['id'].'">'.$owner['username'].'</a> <img class="latest_reply" src="img/x.gif" alt="Ver última publicación" title="Ver última publicación" /></td>
 		</tr>';
 		
 }
@@ -226,12 +226,12 @@ echo '</td><td class="tit"><a href="allianz.php?s=2&fid='.$arr['id'].'&pid='.$ai
 				echo "<button type=\"button\" value=\"???? ????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&admin=newforum'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-</div><div class=\"button-contents\">New forum</div></div></button>
+</div><div class=\"button-contents\">Nuevo foro</div></div></button>
 
 <button type=\"button\" value=\"???????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=".$ids."&admin=switch_admin'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
-</div><div class=\"button-contents\">Options</div></div></button>";
+</div><div class=\"button-contents\">Opciones</div></div></button>";
 			}
 		?>
 </p>

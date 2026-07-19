@@ -1,2 +1,2 @@
-﻿<h1>Profile of</h1>
-<p>Cannot find</p>
+﻿<h1>Perfil de</h1>
+<p>No se pudo encontrar</p>

@@ -11,21 +11,21 @@ include("config/config.php");
 
 ?>
 
-<h1><img class="point" src="img/x.gif" alt="" title="" /> event jam (00:00:0?)</h1>
+<h1><img class="point" src="img/x.gif" alt="" title="" /> Atasco de eventos (00:00:0?)</h1>
 
 <p>
-All events occurring at a later time get calculated by an event system. In case the server is overloaded or the connection between webserver and database is bad an event jam can result of this.
+Todos los eventos que ocurran más adelante son calculados por un sistema de eventos. Si el servidor está sobrecargado o la conexión entre el servidor web y la base de datos es deficiente, puede producirse un atasco de eventos.
 <br />
-As soon as more events are received per second than can be calculated per second, events (e.g."construction finished" or "troops arrived") will be put into a waiting loop.
+En cuanto se reciben más eventos por segundo de los que se pueden calcular, los eventos (p. ej., "construcción finalizada" o "llegada de tropas") se colocan en una cola de espera.
 <br />
-The chronological order of troop movements stays the same, even in an event jam, so troops that would normally arrive somewhere first would still arrive there first.
+El orden cronológico de los movimientos de tropas se mantiene incluso durante un atasco de eventos, por lo que las tropas que normalmente llegarían primero a un lugar seguirán llegando primero.
 <br />
 
-As player, nothing can be done against an event jam except waiting. Normally these problems get resolved after a few minutes automatically. At the moment <b><?php echo $count; ?></b> events await </p>
+Como jugador, no puedes hacer nada frente a un atasco de eventos, salvo esperar. Normalmente, estos problemas se resuelven automáticamente después de unos minutos. En este momento hay <b><?php echo $count; ?></b> eventos en espera.</p>
 
 <map id="nav" name="nav">
- <area href="manual.php?s=1" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
+ <area href="manual.php?s=1" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

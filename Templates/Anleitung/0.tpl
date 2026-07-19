@@ -1,20 +1,20 @@
 <p>
 
-    You can choose between three tribes in Travian: Romans, Gauls and Teutons. Each tribe has advantages and disadvantages and their troops are also very different. It is important to choose the tribe that fits you perfectly.</p>
+    Puedes elegir entre tres pueblos en Travian: Romanos, Galos y Teutones. Cada pueblo tiene ventajas y desventajas, y sus tropas también son muy diferentes. Es importante elegir el pueblo que se adapte mejor a ti.</p>
 
 
 
-<h2>The Romans</h2>
+<h2>Los Romanos</h2>
 
 <p>
 
-	<img align="right" src="img/un/h//roemer.jpg" width="128" height="156" border="0" alt="Roman">
+	<img align="right" src="img/un/h//roemer.jpg" width="128" height="156" border="0" alt="Romano">
 
-Because of its high level of social and technological development the Romans are masters at building and its coordination. Also, their troops are part of the elite in Travian. They are very balanced and useful in attacking and defending.<br><br>
+Debido a su alto nivel de desarrollo social y tecnológico, los Romanos son maestros de la construcción y su coordinación. Además, sus tropas forman parte de la élite de Travian. Son muy equilibradas y útiles tanto para atacar como para defender.<br><br>
 
-To guarantee this variety the Roman troops are trained for a very long time and their training is expensive. Their infantry is a living legend, but their defence against enemy cavalry isn't as good as that of the other tribes. The amount of resources a Roman merchant is able to carry is very low.<br><br>
+Para garantizar esta variedad, las tropas romanas se entrenan durante mucho tiempo y su entrenamiento es costoso. Su infantería es una leyenda viviente, pero su defensa contra la caballería enemiga no es tan buena como la de los otros pueblos. La cantidad de recursos que puede transportar un mercader romano es muy baja.<br><br>
 
-Because they are weak at the beginning of the game, they are a bad choice for beginners.</p>
+Como son débiles al comienzo del juego, son una mala elección para principiantes.</p>
 
 
 
@@ -26,7 +26,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	<td colspan="10">
 
-	    <h3>The Roman troops</h3>
+	    <h3>Las tropas romanas</h3>
 
 	</td>
 
@@ -42,49 +42,49 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	<th>
 
-	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="Attack value" title="Attack value" />
+	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="valor de ataque" title="valor de ataque" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="Defence value against infantry" title="Defence value against infantry" />
+	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="defensa contra infantería" title="defensa contra infantería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="Defence value against cavalry" title="Defence value against cavalry" />
+	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="defensa contra caballería" title="defensa contra caballería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="lumber" />
+	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="Madera" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="clay" />
+	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="Barro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="iron" />
+	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="Hierro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="crop" />
+	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="Cereal" />
 
 	</th>
 
-	<th title="fields/hour">
+	<th title="casillas/hora">
 
-	    Speed	</th>
+	    Velocidad	</th>
 
 </tr>
 
@@ -100,7 +100,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Legionnaire</td>
+	<td class="text" width="135">Legionnario</td>
 
 	<td width="25">40</td>
 
@@ -128,7 +128,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Praetorian</td>
+	<td class="text" width="135">Praetoriano</td>
 
 	<td width="25">30</td>
 
@@ -156,7 +156,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Imperian</td>
+	<td class="text" width="135">Imperiano</td>
 
 	<td width="25">70</td>
 
@@ -268,7 +268,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Battering Ram</td>
+	<td class="text" width="135">Ariete</td>
 
 	<td width="25">60</td>
 
@@ -296,7 +296,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Fire Catapult</td>
+	<td class="text" width="135">Catapulta de fuego</td>
 
 	<td width="25">75</td>
 
@@ -324,7 +324,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Senator</td>
+	<td class="text" width="135">Senador</td>
 
 	<td width="25">50</td>
 
@@ -352,7 +352,7 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 	</td>
 
-	<td class="text" width="135">Settler</td>
+	<td class="text" width="135">Colono</td>
 
 	<td width="25">0</td>
 
@@ -378,37 +378,37 @@ Because they are weak at the beginning of the game, they are a bad choice for be
 
 
 
-<h3>The specialties</h3>
+<h3>Las especialidades</h3>
 
 
 
 <ul class="characteristics">
 
-	<li>Can raise or extend a building and resource field simultaneously</li>
+	<li>Puede construir o ampliar un edificio y un campo de recursos al mismo tiempo</li>
 
-<li>The City Wall gives a high defence bonus</li>
+<li>La Muralla otorga una gran bonificación de defensa</li>
 
-<li>Merchants can carry 500 units of resources (speed: 16 fields/hour)</li>
+<li>Los mercaderes pueden transportar 500 unidades de recursos (velocidad: 16 casillas/hora)</li>
 
-<li>Very powerful infantry, average cavalry</li>
+<li>Infantería muy poderosa, caballería promedio</li>
 
-<li>Development is expensive and takes a long time.</li></ul>
-
-
+<li>El desarrollo es costoso y toma mucho tiempo.</li></ul>
 
 
 
-<h2>The Gauls</h2>
+
+
+<h2>Los Galos</h2>
 
 <p>
 
-	<img align="right" src="img/un/h//gallier.jpg" width="96" height="156" border="0" alt="The Gauls">
+	<img align="right" src="img/un/h//gallier.jpg" width="96" height="156" border="0" alt="Los Galos">
 
-The Gauls are the most peaceful of all three tribes in Travian. Their troops are trained for an excellent defence, but their ability to attack can still compete with the other two tribes. The Gauls are born riders and their horses are famous for their speed. This means that their riders can hit the enemy exactly where they can cause the most damage and swiftly take care of them.<br><br>
+Los Galos son el más pacífico de los tres pueblos de Travian. Sus tropas están entrenadas para una excelente defensa, pero su capacidad de ataque aún puede competir con la de los otros dos pueblos. Los Galos son jinetes natos y sus caballos son famosos por su velocidad. Esto significa que sus jinetes pueden golpear al enemigo exactamente donde pueden causar más daño y encargarse de ellos rápidamente.<br><br>
 
-This tribe is very easy to defend, but an aggressive tactic is possible too. This gives you the opportunity to develop into any possible strategic direction (defensive or aggressive, lone wolf or reliable helper, merchant or plunderer, infantry or cavalry, settler or conqueror), but you need a bit of experience and talent.<br><br>
+Este pueblo es muy fácil de defender, pero también es posible una táctica agresiva. Esto te da la oportunidad de desarrollarte en cualquier dirección estratégica posible (defensiva o agresiva, lobo solitario o ayudante confiable, mercader o saqueador, infantería o caballería, colonizador o conquistador), pero necesitas algo de experiencia y talento.<br><br>
 
-For beginners and those players who don't know exactly what they want to play, the Gauls are the ideal choice.</p>
+Para los principiantes y los jugadores que no saben exactamente qué quieren jugar, los Galos son la elección ideal.</p>
 
 
 
@@ -420,7 +420,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	<td colspan="10">
 
-	    <h3>The Gallic Troops</h3>
+	    <h3>Las tropas galas</h3>
 
 	</td>
 
@@ -436,49 +436,49 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	<th>
 
-	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="Attack value" title="Attack value" />
+	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="valor de ataque" title="valor de ataque" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="Defence value against infantry" title="Defence value against infantry" />
+	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="defensa contra infantería" title="defensa contra infantería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="Defence value against cavalry" title="Defence value against cavalry" />
+	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="defensa contra caballería" title="defensa contra caballería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="lumber" />
+	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="Madera" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="clay" />
+	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="Barro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="iron" />
+	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="Hierro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="crop" />
+	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="Cereal" />
 
 	</th>
 
-	<th title="fields/hour">
+	<th title="casillas/hora">
 
-	    Speed	</th>
+	    Velocidad	</th>
 
 </tr>
 
@@ -494,7 +494,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Phalanx</td>
+	<td class="text" width="135">Phalange</td>
 
 	<td width="25">15</td>
 
@@ -522,7 +522,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Swordsman</td>
+	<td class="text" width="135">Espadachín</td>
 
 	<td width="25">65</td>
 
@@ -550,7 +550,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Pathfinder</td>
+	<td class="text" width="135">Pionero</td>
 
 	<td width="25">0</td>
 
@@ -578,7 +578,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Theutates Thunder</td>
+	<td class="text" width="135">Trueno de Tutatis</td>
 
 	<td width="25">90</td>
 
@@ -606,7 +606,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Druidrider</td>
+	<td class="text" width="135">Druida</td>
 
 	<td width="25">45</td>
 
@@ -662,7 +662,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Ram</td>
+	<td class="text" width="135">Ariete</td>
 
 	<td width="25">50</td>
 
@@ -718,7 +718,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Chieftain</td>
+	<td class="text" width="135">Jefe Galo</td>
 
 	<td width="25">40</td>
 
@@ -746,7 +746,7 @@ For beginners and those players who don't know exactly what they want to play, t
 
 	</td>
 
-	<td class="text" width="135">Settler</td>
+	<td class="text" width="135">Colono</td>
 
 	<td width="25">0</td>
 
@@ -772,41 +772,41 @@ For beginners and those players who don't know exactly what they want to play, t
 
 
 
-<h3>The specialties</h3>
+<h3>Las especialidades</h3>
 
 
 
 <ul class="characteristics">
 
-	<li>Speed bonus: Fastest troops in the game</li>
+	<li>Bono de velocidad: las tropas más rápidas del juego</li>
 
-<li>The palisade gives an average defence bonus</li>
+<li>La Empalizada otorga una bonificación de defensa promedio</li>
 
-<li>Merchants can carry 750 units of resources (speed: 24 fields/hour)</li>
+<li>Los mercaderes pueden transportar 750 unidades de recursos (velocidad: 24 casillas/hora)</li>
 
-<li>Cranny is twice as big</li>
+<li>El Escondite es el doble de grande</li>
 
-<li>Expensive siege weapons</li>
+<li>Armas de asedio costosas</li>
 
-<li>Cheap settlers</li></ul>
-
-
+<li>Colonos baratos</li></ul>
 
 
 
-<h2>The Teutons</h2>
+
+
+<h2>Los Teutones</h2>
 
 <p>
 
-	<img align="left" src="img/un/h//germane.jpg" width="104" height="151" border="0" alt="Teuton">
+	<img align="left" src="img/un/h//germane.jpg" width="104" height="151" border="0" alt="Teutón">
 
-The Teutons are the most aggressive tribe. Their troops are notorious and feared for their rage and frenzy when they attack. They move around as a plundering horde, not even afraid of death. 
+Los Teutones son el pueblo más agresivo. Sus tropas son famosas y temidas por su furia y frenesí al atacar. Se mueven como una horda saqueadora, sin siquiera temerle a la muerte. 
 
 <br><br>
 
-However, they lack the military discipline of the Gauls or Romans which causes them to be weak in speed and defence.<br><br><br>
+Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que hace que sean débiles en velocidad y defensa.<br><br><br>
 
-For aggressive and experienced players the Teutons are an excellent choice!</p>
+¡Para jugadores agresivos y experimentados, los Teutones son una excelente elección!</p>
 
 
 
@@ -818,7 +818,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	<td colspan="10">
 
-	    <h3>The Teutonic Troops</h3>
+	    <h3>Las tropas teutonas</h3>
 
 	</td>
 
@@ -834,49 +834,49 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	<th>
 
-	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="Attack value" title="Attack value" />
+	    <img src="img/un/h/att_all.gif" width="16" height="16" border="0" alt="valor de ataque" title="valor de ataque" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="Defence value against infantry" title="Defence value against infantry" />
+	    <img src="img/un/h/def_i.gif" width="16" height="16" border="0" alt="defensa contra infantería" title="defensa contra infantería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="Defence value against cavalry" title="Defence value against cavalry" />
+	    <img src="img/un/h/def_c.gif" width="16" height="16" border="0" alt="defensa contra caballería" title="defensa contra caballería" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="lumber" />
+	    <img src="img/un/res/1.gif" width="18" height="12" border="0" alt="Madera" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="clay" />
+	    <img src="img/un/res/2.gif" width="18" height="12" border="0" alt="Barro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="iron" />
+	    <img src="img/un/res/3.gif" width="18" height="12" border="0" alt="Hierro" />
 
 	</th>
 
 	<th>
 
-	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="crop" />
+	    <img src="img/un/res/4.gif" width="18" height="12" border="0" alt="Cereal" />
 
 	</th>
 
-	<th title="fields/hour">
+	<th title="casillas/hora">
 
-	    Speed	</th>
+	    Velocidad	</th>
 
 </tr>
 
@@ -920,7 +920,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Spearman</td>
+	<td class="text" width="135">Lancero</td>
 
 	<td width="25">10</td>
 
@@ -948,7 +948,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Axeman</td>
+	<td class="text" width="135">Hachero</td>
 
 	<td width="25">60</td>
 
@@ -976,7 +976,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Scout</td>
+	<td class="text" width="135">Explorador</td>
 
 	<td width="25">0</td>
 
@@ -1032,7 +1032,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Teutonic Knight</td>
+	<td class="text" width="135">Caballero Teutón</td>
 
 	<td width="25">150</td>
 
@@ -1060,7 +1060,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Ram</td>
+	<td class="text" width="135">Ariete</td>
 
 	<td width="25">65</td>
 
@@ -1088,7 +1088,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Catapult</td>
+	<td class="text" width="135">Catapulta</td>
 
 	<td width="25">50</td>
 
@@ -1116,7 +1116,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Chief</td>
+	<td class="text" width="135">Jefe Teutón</td>
 
 	<td width="25">40</td>
 
@@ -1144,7 +1144,7 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 	</td>
 
-	<td class="text" width="135">Settler</td>
+	<td class="text" width="135">Colono</td>
 
 	<td width="25">10</td>
 
@@ -1170,21 +1170,21 @@ For aggressive and experienced players the Teutons are an excellent choice!</p>
 
 
 
-<h3>The specialties</h3>
+<h3>Las especialidades</h3>
 
 
 
 <ul class="characteristics">
 
-	<li>Plunder bonus: enemy crannies only hides 66% of the normal amount in Travian version 2.5 and 3, and 80% of the normal amount in Travian version 3.5.</li>
+	<li>Bono de saqueo: los escondites enemigos solo ocultan el 66% de la cantidad normal en la versión 2.5 y 3 de Travian, y el 80% de la cantidad normal en la versión 3.5.</li>
 
-<li>The earth wall is almost indestructible but only gives a minimal defence bonus</li>
+<li>El Muro de tierra es casi indestructible, pero solo otorga una bonificación de defensa mínima</li>
 
-<li>Merchants can carry 1000 units of resources (speed: 12 fields/hour)</li>
+<li>Los mercaderes pueden transportar 1000 unidades de recursos (velocidad: 12 casillas/hora)</li>
 
-<li>Cheap, fast troops which are excellent plunderers</li>
+<li>Tropas baratas y rápidas que son excelentes saqueadoras</li>
 
-<li>Weak defence</li></ul>
+<li>Defensa débil</li></ul>
 
 
 

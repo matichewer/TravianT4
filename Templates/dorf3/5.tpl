@@ -16,12 +16,12 @@ if($tribe == 1){$t = 1;}elseif($tribe == 2){$t = 11;}elseif($tribe == 3){$t = 21
 	<div class="container active">
 		<div class="background-start">&nbsp;</div>
 		<div class="background-end">&nbsp;</div>
-		<div class="content"><span class="tabItem">Own Troops</span></div>
+		<div class="content"><span class="tabItem">Tropas propias</span></div>
 	</div>
     <div class="container normal">
 		<div class="background-start">&nbsp;</div>
 		<div class="background-end">&nbsp;</div>
-		<div class="content"><span class="tabItem">Troops in Villages</span></div>
+		<div class="content"><span class="tabItem">Tropas en aldeas</span></div>
 	</div>
 	<div class="clear"></div>
 </div>
@@ -29,7 +29,7 @@ if($tribe == 1){$t = 1;}elseif($tribe == 2){$t = 11;}elseif($tribe == 3){$t = 21
 <thead>
 <tr>
 
-<th>Village</th>
+<th>Aldea</th>
 
 	<?php        
 

@@ -1,6 +1,6 @@
-﻿<h4 class="round">Biggest Villages</h4>
+﻿<h4 class="round">Aldeas más grandes</h4>
 <table cellpadding="1" cellspacing="1" id="villages" class="row_table_data">
-	<thead><tr><td></td><td>Village</td><td>Owner</td><td>Population</td><td>Coordinate</td></tr></thead>
+	<thead><tr><td></td><td>Aldea</td><td>Propietario</td><td>Población</td><td>Coordenadas</td></tr></thead>
 <tbody>
 <?php
 if($_POST['rank'] > 0){
@@ -114,39 +114,39 @@ $nextPage = $_GET['page'] + 1;
 $previous = $_GET['page'] - 1;
 
 if ($page == "1" && $lastPage == "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($lastPage == 0){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 
 }elseif ($page == "1" && $lastPage != "1"){
-$paginationDisplay .=  '<img alt="Első oldal" src="img/x.gif" class="first disabled"> ';
-$paginationDisplay .=  '<img alt="Előző oldal" src="img/x.gif" class="previous disabled">';
+$paginationDisplay .=  '<img alt="Primera página" src="img/x.gif" class="first disabled"> ';
+$paginationDisplay .=  '<img alt="Página anterior" src="img/x.gif" class="previous disabled">';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?tid=2&page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?tid=2&page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?tid=2&page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?tid=2&page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page != "1" && $page != $lastPage){
-$paginationDisplay .=  '<a class="first" href="?tid=2&page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?tid=2&page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?tid=2&page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?tid=2&page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<a class="next" href="?tid=2&page=' . $nextPage . '"><img alt="Következő oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="last" href="?tid=2&page=' . $lastPage . '"><img alt="Utolsó oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="next" href="?tid=2&page=' . $nextPage . '"><img alt="Página siguiente" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="last" href="?tid=2&page=' . $lastPage . '"><img alt="Última página" src="img/x.gif"></a>';
 
 }elseif ($page == $lastPage){
-$paginationDisplay .=  '<a class="first" href="?tid=2&page=1"><img alt="Első oldal" src="img/x.gif"></a> ';
-$paginationDisplay .=  '<a class="previous" href="?tid=2&page=' . $previous . '"><img alt="Előző oldal" src="img/x.gif"></a>';
+$paginationDisplay .=  '<a class="first" href="?tid=2&page=1"><img alt="Primera página" src="img/x.gif"></a> ';
+$paginationDisplay .=  '<a class="previous" href="?tid=2&page=' . $previous . '"><img alt="Página anterior" src="img/x.gif"></a>';
 $paginationDisplay .= $centerPages;
-$paginationDisplay .=  '<img alt="Következő oldal" src="img/x.gif" class="next disabled"> ';
-$paginationDisplay .=  '<img alt="Utolsó oldal" src="img/x.gif" class="last disabled">';
+$paginationDisplay .=  '<img alt="Página siguiente" src="img/x.gif" class="next disabled"> ';
+$paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last disabled">';
 }
 
 	$limit = 'LIMIT ' .($page - 1) * $itemsPerPage .',' .$itemsPerPage; 
@@ -194,7 +194,7 @@ if(!isset($_GET['tid'])){ $_GET['tid']='1'; }
                     <td>
                         <input type="hidden" name="ft" value="r<?php echo isset($_GET['tid'])? $_GET['tid'] : 1; ?>" />
                         <button type="submit" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="img/x.gif">
-            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">OK</div></div></button>
+            <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Aceptar</div></div></button>
                     </td>
                 </tr>
                 </tbody>

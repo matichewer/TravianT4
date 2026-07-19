@@ -4,7 +4,7 @@ include('menu.tpl');
 <table id="ressources" cellpadding="1" cellspacing="1">
 <thead>
 <tr>
-<td> Village </td><td><img class="r1" src="img/x.gif" title="" alt=""></td><td><img class="r2" src="img/x.gif" title="" alt=""></td><td><img class="r3" src="img/x.gif" title="" alt=""></td><td><img class="r4" src="img/x.gif" title="" alt=""></td><td> Merchants </td>
+<td> Aldea </td><td><img class="r1" src="img/x.gif" title="" alt=""></td><td><img class="r2" src="img/x.gif" title="" alt=""></td><td><img class="r3" src="img/x.gif" title="" alt=""></td><td><img class="r4" src="img/x.gif" title="" alt=""></td><td> Mercaderes </td>
 </tr></thead><tbody>
 <?php
 $varray = $database->getProfileVillages($session->uid);  

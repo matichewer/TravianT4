@@ -3,36 +3,36 @@
 					<tr>
 
 						<td class="role">
-							Defender
+							Defensor
 						</td><td>
-								<img src="img/x.gif" class="unit u21" title="Phalanx" alt="Phalanx" />
+								<img src="img/x.gif" class="unit u21" title="Falange" alt="Falange" />
 							</td><td>
-								<img src="img/x.gif" class="unit u22" title="Swordsman" alt="Swordsman" />
+								<img src="img/x.gif" class="unit u22" title="Espadachín" alt="Espadachín" />
 							</td><td>
-								<img src="img/x.gif" class="unit u23" title="Pathfinder" alt="Pathfinder" />
+								<img src="img/x.gif" class="unit u23" title="Pionero" alt="Pionero" />
 							</td><td>
 
-								<img src="img/x.gif" class="unit u24" title="Theutates Thunder" alt="Theutates Thunder" />
+								<img src="img/x.gif" class="unit u24" title="Trueno de Tutatis" alt="Trueno de Tutatis" />
 							</td><td>
-								<img src="img/x.gif" class="unit u25" title="Druidrider" alt="Druidrider" />
+								<img src="img/x.gif" class="unit u25" title="Druida" alt="Druida" />
 							</td><td>
-								<img src="img/x.gif" class="unit u26" title="Haeduan" alt="Haeduan" />
+								<img src="img/x.gif" class="unit u26" title="Haeduano" alt="Haeduano" />
 							</td><td>
-								<img src="img/x.gif" class="unit u27" title="Ram" alt="Ram" />
+								<img src="img/x.gif" class="unit u27" title="Ariete" alt="Ariete" />
 							</td><td>
-								<img src="img/x.gif" class="unit u28" title="Trebuchet" alt="Trebuchet" />
+								<img src="img/x.gif" class="unit u28" title="Catapulta" alt="Catapulta" />
 
 							</td><td>
-								<img src="img/x.gif" class="unit u29" title="Chieftain" alt="Chieftain" />
+								<img src="img/x.gif" class="unit u29" title="Jefe Galo" alt="Jefe Galo" />
 							</td><td>
-								<img src="img/x.gif" class="unit u30" title="Settler" alt="Settler" />
+								<img src="img/x.gif" class="unit u30" title="Colono" alt="Colono" />
 							</td></tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th>
 
-							Troops
+							Tropas
 						</th><td class="none">
 									0
 								</td><td class="none">
@@ -58,7 +58,7 @@
 					<tr>
 
 						<th>
-							Casualties
+							Bajas
 						</th><td class="none">
 									0
 								</td><td class="none">

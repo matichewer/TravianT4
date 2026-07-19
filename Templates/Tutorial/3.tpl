@@ -16,9 +16,9 @@
 ##                                                                             ##
 #################################################################################
 ?>
-<h3 class="pop popgreen bold">Game Tour</h3>
+<h3 class="pop popgreen bold">Recorrido por el juego</h3>
 <div id="gtour">
-	<h3 class="gt bold">3. Buildings</h3>
+	<h3 class="gt bold">3. Edificios</h3>
 	<div class="col2row">
 		<div class="col1"><img src="img/x.gif" class="slide slide3_1" alt="" border="0" /></div>
 		<div class="col2"><img src="img/x.gif" class="slide slide3_2" alt="" border="0" /></div>
@@ -27,14 +27,14 @@
 		<div class="col1round">
 			<div class="grlt"></div>
             <div class="grrt"></div>
-			1. Choose building site
+			1. Elige un sitio de construcción
             <div class="grlb"></div>
             <div class="grrb"></div>
 		</div>
 		<div class="col2round">
 			<div class="grlt"></div>
             <div class="grrt"></div>
-			2. Construct a building
+			2. Construye un edificio
             <div class="grlb"></div>
             <div class="grrb"></div>
 		</div>
@@ -48,7 +48,7 @@
 		<span class="orange">3</span><span class="grey"> / 5</span>
 	</div>
     <a class="browse prev" href="tutorial.php?s=2"></a>
-    <a class="browsetxt prevtxt" href="tutorial.php?s=2">back</a>
+    <a class="browsetxt prevtxt" href="tutorial.php?s=2">atrás</a>
     <a class="browse next" href="tutorial.php?s=4"></a>
-    <a class="browsetxt nexttxt" href="tutorial.php?s=4">forward</a>
+    <a class="browsetxt nexttxt" href="tutorial.php?s=4">adelante</a>
 </div>

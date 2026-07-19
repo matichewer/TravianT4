@@ -12,17 +12,17 @@ ob_start();
 ?>
 <div id="attributes"><div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
     	<div class="attribute headline">
-			<div class="attributesHeadline">Attributes</div>
-			<div class="pointsHeadline">Point</div>
+			<div class="attributesHeadline">Atributos</div>
+			<div class="pointsHeadline">Puntos</div>
 			<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 		<?php if($hero['itempower']==0){ ?>
-  <div class="attribute power tooltip" title="Fighting Strength Combines with your heros defence and offense. The higher the Fighting strength the better in battle.<br><font color='#5dcbfb'>Fighting Strength: <?php echo $hero['power']; ?> from hero</font>">
+  <div class="attribute power tooltip" title="La fuerza de lucha se combina con la defensa y el ataque de tu héroe. Cuanto más alta sea la fuerza de lucha, mejor en batalla.<br><font color='#5dcbfb'>Fuerza de lucha: <?php echo $hero['power']; ?> del héroe</font>">
 			<?php }else{ ?>
-  <div class="attribute power tooltip" title="Fighting Strength Combines with your heros defence and offense. The higher the Fighting strength the better in battle.<br><font color='#5dcbfb'>Fighting Strength: <?php echo 100+$tp*$hero['power']; ?> from hero + <?php echo $hero['itempower']; ?> bonus from items</font>">
+  <div class="attribute power tooltip" title="La fuerza de lucha se combina con la defensa y el ataque de tu héroe. Cuanto más alta sea la fuerza de lucha, mejor en batalla.<br><font color='#5dcbfb'>Fuerza de lucha: <?php echo 100+$tp*$hero['power']; ?> del héroe + <?php echo $hero['itempower']; ?> de bonificación por objetos</font>">
 			<?php } ?>
-			<div class="element attribName">Fighting Strength</div>
+			<div class="element attribName">Fuerza de lucha</div>
 			<div class="element current power"><?php echo 100+$tp*$hero['power']+$hero['itempower']; ?></div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -36,8 +36,8 @@ ob_start();
 		</div>
 
   <div class="clear"></div>
-  <div class="attribute offBonus tooltip" title="Offence bonus gives a bonus when attacking.<br><font color='#5dcbfb'>Offence Bonus <?php echo ($hero['offBonus']/5); ?>%</font>">
-			<div class="element attribName">Offence Bonus</div>
+  <div class="attribute offBonus tooltip" title="La bonificación de ataque otorga un bono al atacar.<br><font color='#5dcbfb'>Bonificación de ataque <?php echo ($hero['offBonus']/5); ?>%</font>">
+			<div class="element attribName">Bonificación de ataque</div>
 			<div class="element current power"><span class="value"><?php echo ($hero['offBonus']/5); ?></span>%</div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -52,8 +52,8 @@ ob_start();
 
 		<div class="clear"></div>
 
-  <div class="attribute defBonus tooltip" title="Defence Bonus gives an extra bonus when attacked <?php echo ($hero['defBonus']/5); ?>%</font>">
-			<div class="element attribName">Defence Bonus</div>
+  <div class="attribute defBonus tooltip" title="La bonificación de defensa otorga un bono extra al ser atacado <?php echo ($hero['defBonus']/5); ?>%</font>">
+			<div class="element attribName">Bonificación de defensa</div>
 			<div class="element current power"><span class="value"><?php echo ($hero['defBonus']/5); ?></span>%</div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -68,9 +68,9 @@ ob_start();
 
 		<div class="clear"></div>
 
-  <div class="attribute productionPoints tooltip" title="The Hero also gathers resources, the higher the level the more resources.<br><font color='#5dcbfb'>Resources bonus : <?php if($hero['r0']!=0){echo $rp;}else if($hero['r1']!=0){echo $hero['r1']*10*SPEED;}else if($hero['r2']!=0){echo $hero['r2']*10*SPEED;}else 
+  <div class="attribute productionPoints tooltip" title="El héroe también recolecta recursos, cuanto más alto el nivel, más recursos.<br><font color='#5dcbfb'>Bonificación de recursos: <?php if($hero['r0']!=0){echo $rp;}else if($hero['r1']!=0){echo $hero['r1']*10*SPEED;}else if($hero['r2']!=0){echo $hero['r2']*10*SPEED;}else 
 if($hero['r3']!=0){echo $hero['r3']*10*SPEED;}else if($hero['r4']!=0){echo $hero['r4']*10*SPEED;}; ?></font>">
-			<div class="element attribName">Resources</div>
+			<div class="element attribName">Recursos</div>
 			<div class="element current power"><?php echo $hero['product']; ?></div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -89,40 +89,40 @@ if($hero['r3']!=0){echo $hero['r3']*10*SPEED;}else if($hero['r4']!=0){echo $hero
   </div>
 	<div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
     <div class="attribute res" id="setResource">
-		<div class="changeResourcesHeadline">Change the resources production of your Hero</div>
+		<div class="changeResourcesHeadline">Cambiar la producción de recursos de tu héroe</div>
 		<div class="clear"></div>
 		<div class="resource">
 		  <input type="radio" onclick="window.location.href = '?product=r0';" name="resource" value="0" id="resourceHero0" <?php if($hero['r0']!=0){ echo $checked="checked"; } ?>>
 			<label for="resourceHero0">
-				<img title="All resouces" class="r0" src="img/x.gif">
+				<img title="Todos los recursos" class="r0" src="img/x.gif">
                 <span class="current"> <?php echo $rp; ?></span>
 			</label>
 		</div>
 				<div class="resource">
 			<input type="radio" onclick="window.location.href = '?product=r1';" name="resource" value="1" id="resourceHero1" <?php if($hero['r1']!=0){ echo $checked="checked"; } ?> <?php echo $form->getRadio('resource',1); ?>>
 			<label for="resourceHero1">
-				<img title="Wood" class="r1" src="img/x.gif">
+				<img title="Madera" class="r1" src="img/x.gif">
                 <span class="current"> <?php echo $hero['product']*10*SPEED; ?></span>
 			</label>
 		</div>
 				<div class="resource">
 			<input type="radio" onclick="window.location.href = '?product=r2';" name="resource" value="2" id="resourceHero2" <?php if($hero['r2']!=0){ echo $checked="checked"; } ?> <?php echo $form->getRadio('resource',2); ?>>
 			<label for="resourceHero2">
-				<img title="Clay" class="r2" src="img/x.gif">
+				<img title="Barro" class="r2" src="img/x.gif">
                 <span class="current"> <?php echo $hero['product']*10*SPEED; ?></span>
 			</label>
 		</div>
 				<div class="resource">
 			<input type="radio" onclick="window.location.href = '?product=r3';" name="resource" value="3" id="resourceHero3" <?php if($hero['r3']!=0){ echo $checked="checked"; } ?> <?php echo $form->getRadio('resource',3); ?>>
 			<label for="resourceHero3">
-				<img title="Iron" class="r3" src="img/x.gif">
+				<img title="Hierro" class="r3" src="img/x.gif">
                 <span class="current"> <?php echo $hero['product']*10*SPEED; ?></span>
 			</label>
 		</div>
 				<div class="resource">
 			<input type="radio" onclick="window.location.href = '?product=r4';" name="resource" value="4" id="resourceHero4" <?php if($hero['r4']!=0){ echo $checked="checked"; } ?> <?php echo $form->getRadio('resource',4); ?>>
 			<label for="resourceHero4">
-				<img title="Crop" class="r4" src="img/x.gif">
+				<img title="Cereal" class="r4" src="img/x.gif">
                 <span class="current"> <?php echo $hero['product']*10*SPEED; ?></span>
 			</label>
 		</div>
@@ -132,9 +132,9 @@ if($hero['r3']!=0){echo $hero['r3']*10*SPEED;}else if($hero['r4']!=0){echo $hero
   </div>
 	<div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
 
-<div class="attribute health tooltip" title="Your hero regeneration: <?php echo $hero['autoregen']*INCREASE_SPEED; ?>% per day </font>">
+<div class="attribute health tooltip" title="Regeneración de tu héroe: <?php echo $hero['autoregen']*INCREASE_SPEED; ?>% por día </font>">
 <?php if($hero['dead']==0){ ?>
-			<div class="element attribName">Health</div>
+			<div class="element attribName">Salud</div>
 			<div class="element current power"><span class="value"><?php echo round($hero['health']); ?></span>%</div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -156,7 +156,7 @@ if($hero['r3']!=0){echo $hero['r3']*10*SPEED;}else if($hero['r4']!=0){echo $hero
 				</div>
 			</div>
 <?php }else{ ?>
-<div class="attributesHeadline"> The hero will revive in this village </div>
+<div class="attributesHeadline"> El héroe revivirá en esta aldea </div>
 <div class="clear"></div>
     <?php
     $vRes = ($village->awood+$village->aclay+$village->airon+$village->acrop);
@@ -165,40 +165,40 @@ $checkT = $database->getHeroTrain($hero['wref']);
 
 if(!$checkT){
     if($village->awood < $hero_t[$hero['level']]['wood'] || $village->aclay < $hero_t[$hero['level']]['clay'] || $village->airon < $hero_t[$hero['level']]['iron'] || $village->acrop < $hero_t[$hero['level']]['crop']){
-    	echo '<span class="none">Not enought resources for hero revive</span>';
+    	echo '<span class="none">No hay suficientes recursos para revivir al héroe</span>';
     }else{
-        echo "<span class=\"regeneratebtn\"><button type=\"submit\" value=\"Revive\" onclick=\"window.location.href = 'hero_inventory.php?revive=1'; return false;\" name=\"save\" id=\"save\"><div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div><div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div></div><div class=\"button-contents\">Revive</div></div></button></span>";
+        echo "<span class=\"regeneratebtn\"><button type=\"submit\" value=\"Revive\" onclick=\"window.location.href = 'hero_inventory.php?revive=1'; return false;\" name=\"save\" id=\"save\"><div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div><div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div></div><div class=\"button-contents\">Revivir</div></div></button></span>";
     }
 }else{
-	echo "Hero will be ready in <span id='timer1'>".$generator->getTimeFormat($checkT['eachtime']-time())."</span></br>";
+	echo "El héroe estará listo en <span id='timer1'>".$generator->getTimeFormat($checkT['eachtime']-time())."</span></br>";
 }
 if(!$checkT){
     ?>
         <div class="regenerateCosts">
         	<div class="showCosts">
-            	<span class="resources r1 little_res" title="Wood">
-                	<img class="r1" src="img/x.gif" title="Wood" />
+            	<span class="resources r1 little_res" title="Madera">
+                	<img class="r1" src="img/x.gif" title="Madera" />
 					<?php echo $hero_t[$hero['level']]['wood']; ?>
                 </span>
-                <span class="resources r2 little_res" title="Clay">
-                	<img class="r2" src="img/x.gif" title="Clay" />
+                <span class="resources r2 little_res" title="Barro">
+                	<img class="r2" src="img/x.gif" title="Barro" />
 					<?php echo $hero_t[$hero['level']]['clay']; ?>
                 </span>
-                <span class="resources r3 little_res" title="Iron">
-                	<img class="r3" src="img/x.gif" title="Iron" />
+                <span class="resources r3 little_res" title="Hierro">
+                	<img class="r3" src="img/x.gif" title="Hierro" />
 					<?php echo $hero_t[$hero['level']]['iron']; ?>
                 </span>
-                <span class="resources r4 little_res" title="Crop">
-                	<img class="r4" src="img/x.gif" title="Crop" />
+                <span class="resources r4 little_res" title="Cereal">
+                	<img class="r4" src="img/x.gif" title="Cereal" />
 					<?php echo $hero_t[$hero['level']]['crop']; ?>
                 </span>
-                <span class="resources r5" title="Crop Consumption">
-                	<img class="r5" src="img/x.gif" title="Crop Consumption" />
+                <span class="resources r5" title="Consumo de cereal">
+                	<img class="r5" src="img/x.gif" title="Consumo de cereal" />
                     6
                 </span>
                 <div class="clear"></div>
                 <span class="clock">
-                	<img class="clock" src="img/x.gif" title="Duration">
+                	<img class="clock" src="img/x.gif" title="Duración">
                     <?php echo $generator->getTimeFormat(($hero_t[$hero['level']]['time']/SPEED*1.5)); ?>
                 </span>
                 <button type="button" value="" class="icon" onclick="window.location.href = 'build.php?gid=17&amp;t=3&amp;r1=<?php echo $hero_t[$hero['level']]['wood']; ?>&amp;r2=<?php echo $hero_t[$hero['level']]['clay']; ?>&amp;r3=<?php echo $hero_t[$hero['level']]['iron']; ?>&amp;r4=<?php echo $hero_t[$hero['level']]['crop']; ?>'; return false;"><img src="img/x.gif" class="npc" alt="npc"></button>
@@ -215,8 +215,8 @@ if(!$checkT){
   
 	<div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
     
-<div class="attribute experience tooltip" title="Your hero need more <?php echo ($hero_levels[$hero['level']+1]-$hero['experience']); ?> experience to reach level <?php echo ($hero['level']+1); ?>">
-			<div class="element attribName">Experience</div>
+<div class="attribute experience tooltip" title="Tu héroe necesita <?php echo ($hero_levels[$hero['level']+1]-$hero['experience']); ?> puntos de experiencia más para alcanzar el nivel <?php echo ($hero['level']+1); ?>">
+			<div class="element attribName">Experiencia</div>
 			<div class="element current power"><?php echo $hero['experience']; ?></div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -229,8 +229,8 @@ if(!$checkT){
 			<div class="clear"></div>
 		</div>
 
-<div class="attribute level tooltip" title="<?php echo $tp; ?> The Higher the Hero level , the more points you get.</font>">
-			<div class="element attribName">Hero Level</div>
+<div class="attribute level tooltip" title="<?php echo $tp; ?> Cuanto más alto el nivel del héroe, más puntos obtienes.</font>">
+			<div class="element attribName">Nivel del héroe</div>
 			<div class="element current power"><?php echo $hero['level']; ?></div>
 			<div class="element progress">
 				<div class="bar-bg">
@@ -239,10 +239,10 @@ if(!$checkT){
 			</div>
 			<div class="clear"></div>
 </div>
-<div class="attribute speed tooltip" title="Your Heros speed determines how many fields he travels an hour <?php echo $hero['speed']; ?> </font>">
-	<div class="element attribName">Speed</div>
+<div class="attribute speed tooltip" title="La velocidad de tu héroe determina cuántas casillas recorre por hora <?php echo $hero['speed']; ?> </font>">
+	<div class="element attribName">Velocidad</div>
     <div class="element power">
-    	<span class="currect"><?php echo $hero['speed']*INCREASE_SPEED; ?></span> Fields Per Hour
+    	<span class="currect"><?php echo $hero['speed']*INCREASE_SPEED; ?></span> Casillas por hora
     </div>
     <div class="clear"></div>
 </div>

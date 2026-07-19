@@ -56,7 +56,7 @@ foreach ($yfull as $yy) {
         $maparray[] = $database->getMInfo($generator->getBaseID($xx, $yy));
     }
 }
-echo "<h1 dir=\"rtl\">Map</h1>";
+echo "<h1 dir=\"rtl\">Mapa</h1>";
 $row = 0;
 $coorindex = 0;
 ?>
@@ -70,7 +70,7 @@ $coorindex = 0;
 		<div class="mr">
 			<div class="mc">
 				<div class="contents">
-                	<a href="cropfinder.php"><div class="iconButton linkCropfinder" title="15-9 Crop Finder"></div></a>
+                	<a href="cropfinder.php"><div class="iconButton linkCropfinder" title="15-9 Buscador de cereal"></div></a>
 				</div>
 			</div>
 		</div>
@@ -142,38 +142,38 @@ break;
 case 0:
 switch($maparray[$index]['oasistype']) {
 case 1:
-$tt =  "<img class='r1' src='img/x.gif' /> Lumber 25%";
+$tt =  "<img class='r1' src='img/x.gif' /> Madera 25%";
 break;
 case 2:
-$tt =  "<img class='r1' src='img/x.gif' /> Lumber 50%";
+$tt =  "<img class='r1' src='img/x.gif' /> Madera 50%";
 break;
 case 3:
-$tt =  "<img class='r1' src='img/x.gif' /> Lumber 25%<br><img class='r4' src='img/x.gif' /> Crop 25%";
+$tt =  "<img class='r1' src='img/x.gif' /> Madera 25%<br><img class='r4' src='img/x.gif' /> Cereal 25%";
 break;
 case 4:
-$tt =  "<img class='r2' src='img/x.gif' /> Clay 25%";
+$tt =  "<img class='r2' src='img/x.gif' /> Barro 25%";
 break;
 case 5:
-$tt =  "<img class='r2' src='img/x.gif' /> Clay 50%";
+$tt =  "<img class='r2' src='img/x.gif' /> Barro 50%";
 break;
 case 6:
-$tt =  "<img class='r2' src='img/x.gif' /> Clay 25%<br><img class='r4' src='img/x.gif' /> Crop 25%";
+$tt =  "<img class='r2' src='img/x.gif' /> Barro 25%<br><img class='r4' src='img/x.gif' /> Cereal 25%";
 break;
 case 7:
-$tt =  "<img class='r3' src='img/x.gif' /> Iron 25%";
+$tt =  "<img class='r3' src='img/x.gif' /> Hierro 25%";
 break;
 case 8:
-$tt =  "<img class='r3' src='img/x.gif' /> Iron 50%";
+$tt =  "<img class='r3' src='img/x.gif' /> Hierro 50%";
 break;
 case 9:
-$tt =  "<img class='r3' src='img/x.gif' /> Iron 25%<br><img class='r4' src='img/x.gif' /> Crop 25%";
+$tt =  "<img class='r3' src='img/x.gif' /> Hierro 25%<br><img class='r4' src='img/x.gif' /> Cereal 25%";
 break;
 case 10:
 case 11:
-$tt =  "<img class='r4' src='img/x.gif' /> Crop 25%";
+$tt =  "<img class='r4' src='img/x.gif' /> Cereal 25%";
 break;
 case 12:
-$tt =  "<img class='r4' src='img/x.gif' /> Crop 50%";
+$tt =  "<img class='r4' src='img/x.gif' /> Cereal 50%";
 break;
 }
 break;
@@ -185,11 +185,11 @@ break;
     	$allyname = $database->getAllianceName($targetalliance);
     	}
     if($tribe==1) {
-    	$tribename = "Roman";
+    	$tribename = "Romano";
     }elseif($tribe==2) {
-    	$tribename = "Teuton";
+    	$tribename = "Teutón";
     }elseif($tribe==3) {
-    	$tribename = "Gaul";
+    	$tribename = "Galo";
     }elseif($tribe==5) {
     	$tribename = "Natar";
         }
@@ -202,16 +202,16 @@ break;
 	}
     
     if($maparray[$index]['fieldtype'] > 0 && $maparray[$index]['occupied'] == 1) {
-    $targettitle = "<font color='white'><b>Village ".$maparray[$index]['name']."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br>Player: ".$username."<br>Population: ".$maparray[$index]['pop']."<br>Alliance ".$allyname."<br>Tribe: ".$tribename."";
+    $targettitle = "<font color='white'><b>Aldea ".$maparray[$index]['name']."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br>Jugador: ".$username."<br>Población: ".$maparray[$index]['pop']."<br>Alianza ".$allyname."<br>Tribu: ".$tribename."";
     }
     if($maparray[$index]['oasistype'] == 0 && $maparray[$index]['occupied'] == 0) {
-    $targettitle = "<font color='white'><b>Abandoned valley ".$tt."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")";
+    $targettitle = "<font color='white'><b>Valle abandonado ".$tt."</b></font><br>(".$maparray[$index]['x']."|".$maparray[$index]['y'].")";
     }
     
     if($maparray[$index]['fieldtype'] == 0 && $maparray[$index]['oasistype'] > 0 && $maparray[$index]['occupied'] == 0) {
-    $targettitle = "<font color='white'><b>Unoccupied oasis</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."";
+    $targettitle = "<font color='white'><b>Oasis desocupado</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."";
     }elseif($maparray[$index]['fieldtype'] == 0 && $maparray[$index]['oasistype'] > 0 && $maparray[$index]['occupied'] > 0) {
-    $targettitle = "<font color='white'><b>occupied oasis</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."<br>Player: ".$uinfo."<br>Alliance: ".$allyname."<br>Tribe: ".$tribename."";
+    $targettitle = "<font color='white'><b>oasis ocupado</b></font><br /> (".$maparray[$index]['x']."|".$maparray[$index]['y'].")<br />".$tt."<br>Jugador: ".$uinfo."<br>Alianza: ".$allyname."<br>Tribu: ".$tribename."";
     }
     
     if(!$maparray[$index]['fieldtype'] && $maparray[$index]['oasistype'] && $maparray[$index]['occupied']){
@@ -254,12 +254,12 @@ break;
 </div>
 </div>
 		<div class="navigation">
-			<a href="karte.php?x=<?php echo $x-1; ?>&y=<?php echo $y; ?>" id="navigationMoveLeft" class="moveLeft"><img src="img/x.gif" title="move left"></a>
-            <a href="karte.php?x=<?php echo $x+1; ?>&y=<?php echo $y; ?>" id="navigationMoveRight" class="moveRight"><img src="img/x.gif" title="move right"></a>
-			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y+1; ?>" id="navigationMoveUp" class="moveUp"><img src="img/x.gif" title="move up"></a>
-			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y-1; ?>" id="navigationMoveDown" class="moveDown"><img src="img/x.gif" title="move down"></a>
+			<a href="karte.php?x=<?php echo $x-1; ?>&y=<?php echo $y; ?>" id="navigationMoveLeft" class="moveLeft"><img src="img/x.gif" title="mover a la izquierda"></a>
+            <a href="karte.php?x=<?php echo $x+1; ?>&y=<?php echo $y; ?>" id="navigationMoveRight" class="moveRight"><img src="img/x.gif" title="mover a la derecha"></a>
+			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y+1; ?>" id="navigationMoveUp" class="moveUp"><img src="img/x.gif" title="mover arriba"></a>
+			<a href="karte.php?x=<?php echo $x; ?>&y=<?php echo $y-1; ?>" id="navigationMoveDown" class="moveDown"><img src="img/x.gif" title="mover abajo"></a>
             <?php if($session->plus) { ?>
-            <a href="karte2.php?x=<?php echo $x ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen full"><img src="img/x.gif" alt="view fullscreen" title="view fullscreen"></a>
+            <a href="karte2.php?x=<?php echo $x ?>&y=<?php echo $y; ?>" id="navigationFullScreen" class="viewFullScreen full"><img src="img/x.gif" alt="ver a pantalla completa" title="ver a pantalla completa"></a>
             <?php } ?>
 		</div>
 		<form id="mapCoordEnter" name="map_coords" method="post" action="karte.php" class="toolbar ">

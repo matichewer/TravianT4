@@ -84,15 +84,15 @@ while($data = mysql_fetch_assoc($query)) {
 <form action="spieler.php?s=2" method="POST">
   <input type="hidden" name="ft" value="p2">
   <input type="hidden" name="uid" value="<?php echo $session->uid; ?>" />
-			<h4 class="round spacer">Direct Link</h4>
+			<h4 class="round spacer">Enlace directo</h4>
 
 		<table class="transparent" cellpadding="1" cellspacing="1" id="links">
 			<thead>
 				<tr>
-					<td>Delete</td>
-					<td>No.</td>
-					<td>Link Name</td>
-					<td>Link Address</td>
+					<td>Eliminar</td>
+					<td>N.º</td>
+					<td>Nombre del enlace</td>
+					<td>Dirección del enlace</td>
 					<td></td>
 				</tr>
 			</thead>
@@ -101,7 +101,7 @@ while($data = mysql_fetch_assoc($query)) {
 							<?php $i = 0; foreach($links as $link): ?>
 								<tr>
 						  <td>
-						<a href="spieler.php?del=<?php echo $link['id']; ?>&s=2"><img class="del" src="img/x.gif" alt="delete" title="delete"></a>
+						<a href="spieler.php?del=<?php echo $link['id']; ?>&s=2"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></a>
 						</td>
 					<td class="nr">
 						<input class="text" type="text" name="nr<?php print $i; ?>" value="<?php print $link['pos']; ?>" size="1" maxlength="3" /><input type="hidden" name="id<?php print $i; ?>" value="<?php print $link['id']; ?>" />
@@ -159,7 +159,7 @@ while($data = mysql_fetch_assoc($query)) {
 	
 	
 	<div class="submitButtonContainer">
-		<button type="submit" value="Mentés" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Save</div></div></button>
+		<button type="submit" value="Mentés" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Guardar</div></div></button>
         </div>
 </form>
 

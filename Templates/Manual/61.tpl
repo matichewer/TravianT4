@@ -3,9 +3,9 @@
 	color: #F00;
 }
 </style>
-<h1>Production bonus for lumber</h1>
-With this Gold advantage all your   villages' lumber production will be increased by 25%. <br>
+<h1>Bonificación de producción de madera</h1>
+Con esta ventaja de Gold, la producción de madera de todas tus   aldeas aumentará un 25%. <br>
 <br>
-The bonus will not be added to the single resource fields but to the sum   of the production. <br>
+La bonificación no se suma a cada campo de recurso individual, sino al total   de la producción. <br>
 <br>
-<span class="red">This feature is NOT included in the   gold club!</span>
+<span class="red">¡Esta función NO está incluida en el   Club Gold!</span>

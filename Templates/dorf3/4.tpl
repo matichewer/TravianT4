@@ -3,7 +3,7 @@ include('menu.tpl');
 ?>
 <table id="culture_points" cellpadding="1" cellspacing="1">
 <thead>
-<tr><td> Village </td><td> CPs/Day </td><td> Celebrations </td><td> Units </td><td> Slots </td></tr>
+<tr><td> Aldea </td><td> PC/Día </td><td> Celebraciones </td><td> Unidades </td><td> Espacios </td></tr>
 </thead>
 <tbody>
 <?php

@@ -9,10 +9,10 @@ if($session->access!=BANNED){
 	<input type="hidden" name="ac" value="newtopic">
 
 	<input type="hidden" name="checkstr" value="c4ca4238a0b923820dcc509a6f75849b">
-    <h4 class="round">Post new thread</h4><table class="transparent" id="new_topic">
+    <h4 class="round">Publicar nuevo tema</h4><table class="transparent" id="new_topic">
 	<tbody>
 	<tr>
-		<th>Thread:</th>
+		<th>Tema:</th>
 		<td colspan="2"><input class="text" type="text" name="thema" maxlength="35"></td>
 	</tr>
 	<tr>
@@ -41,8 +41,8 @@ if($session->access!=BANNED){
 				});
 			</script>
 			
-	</td></tr></tbody></table><div class="spacer"></div><button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">OK</div></div></button></form></p>
-<span style="color: #DD0000"><b>Warning:</b> you can't use the values <b>[message]</b> or <b>[/message]</b> in your post because it can cause problem with bbcode system.</span>
+	</td></tr></tbody></table><div class="spacer"></div><button type="submit" value="ok" name="s1" id="btn_ok"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Aceptar</div></div></button></form></p>
+<span style="color: #DD0000"><b>Advertencia:</b> no puedes usar los valores <b>[message]</b> o <b>[/message]</b> en tu publicación porque puede causar problemas con el sistema de bbcode.</span>
 <?php }else{
 header("Location: banned.php");
 }

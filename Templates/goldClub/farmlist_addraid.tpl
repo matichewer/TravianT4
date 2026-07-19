@@ -14,13 +14,13 @@ if(isset($_POST['action']) == 'addSlot' && $_POST['lid']) {
     }
 
     if(!$validX && !$validY){
-    	$errormsg .= "Enter coordinates.";
+    	$errormsg .= "Ingresa las coordenadas.";
     }elseif(!$validX || !$validY){
-    	$errormsg .= "Enter the correct coordinates.";
+    	$errormsg .= "Ingresa las coordenadas correctas.";
     }elseif($oasistype == 0 && $vdata == 0){
-    	$errormsg .= "There is no village on those coordinates.";
+    	$errormsg .= "No hay ninguna aldea en esas coordenadas.";
     }elseif($troops == 0){
-     	$errormsg .= "No troops has been selected.";
+     	$errormsg .= "No se ha seleccionado ninguna tropa.";
     }else{
     
         $coor = $database->getCoor($village->wid);
@@ -57,7 +57,7 @@ if(isset($_POST['action']) == 'addSlot' && $_POST['lid']) {
 
         var option = new Element('option',
         {
-            'html': 'Select village'
+            'html': 'Selecciona una aldea'
         });
         targetId.insert(option);
 
@@ -133,7 +133,7 @@ if(isset($_POST['action']) == 'addSlot' && $_POST['lid']) {
 </script>
 
 <div id="raidListSlot">
-    <h4>Add Slot</h4>
+    <h4>Agregar campo</h4>
 <font color="#FF0000"><b>    
 <?php echo $errormsg; ?>
 </b></font>
@@ -147,7 +147,7 @@ if(isset($_POST['action']) == 'addSlot' && $_POST['lid']) {
             
             <table cellpadding="1" cellspacing="1" class="transparent">
                 <tbody><tr>
-                    <th>Farm Name:</th>
+                    <th>Nombre de la lista:</th>
                     <td>
                         <select onchange="getTargetsByLid();" id="lid" name="lid">
 <?php
@@ -169,7 +169,7 @@ $lvname = $database->getVillageField($row["wref"], 'name');
                     </td>
                 </tr>
                 <tr>
-                    <th>Select target:</th>
+                    <th>Seleccionar objetivo:</th>
                     <td class="target">
                         
             <div class="coordinatesInput">
@@ -184,12 +184,12 @@ $lvname = $database->getVillageField($row["wref"], 'name');
                 <div class="clear"></div>
             </div>
                                 <div class="targetSelect">
-                            <label class="lastTargets" for="last_targets">Last targets:</label>
+                            <label class="lastTargets" for="last_targets">Últimos objetivos:</label>
 							<select name="target_id">
 <?php
 $getwref = "SELECT * FROM ".TB_PREFIX."raidlist WHERE lid = ".$_GET['lid']."";
 $arraywref = $database->query_return($getwref);
-	echo '<option value="">Select village</option>';
+	echo '<option value="">Selecciona una aldea</option>';
 if(mysql_num_rows(mysql_query($getwref)) != 0){
 foreach($arraywref as $row){
 $towref = $row["towref"];
@@ -218,7 +218,7 @@ $vill[$towref] = 1;
         <?php include "Templates/goldClub/trooplist2.tpl"; ?>
 
         
-<button type="submit" value="save" name="save" id="save"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">save</div></div></button>
+<button type="submit" value="save" name="save" id="save"><div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">guardar</div></div></button>
         
 </form>
 </div>

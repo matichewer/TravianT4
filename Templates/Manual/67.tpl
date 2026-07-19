@@ -3,9 +3,9 @@
 	color: #F00;
 }
 </style>
-<h1>Complete construction orders &amp; research immediately.</h1>
-In the   current village all construction orders and research in the academy as   well as the blacksmith and armoury will be completed immediately. <br />
+<h1>Completa órdenes de construcción e investigación al instante.</h1>
+En la   aldea actual, todas las órdenes de construcción y todas las investigaciones de la Academia, la   Herrería y la Armería se completarán al instante. <br />
 <br />
-However, the <em>buildings</em> Residence and Palace and <em>villages</em> with a wonder of the world inside them are excluded. <br>
+Sin embargo, quedan excluidos los <em>edificios</em> Residencia y Palacio, y las <em>aldeas</em> que contengan una Maravilla del mundo. <br>
 <br>
-<span class="red">This feature is NOT included in the   gold club!</span>
+<span class="red">¡Esta función NO está incluida en el   Club Gold!</span>
