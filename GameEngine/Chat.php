@@ -202,8 +202,8 @@ if (!isset($SAJAX_INCLUDED)) {
 				uri += "&rst=" + escape(sajax_target_id);
 				uri += "&rsrnd=" + new Date().getTime();
 				
-				for (i = 0; i < args.length-1; i++) 
-					uri += "&rsargs[]=" + escape(args[i]);
+				for (i = 0; i < args.length-1; i++)
+					uri += "&rsargs%5B%5D=" + encodeURIComponent(args[i]);
 
 				post_data = null;
 			} 
