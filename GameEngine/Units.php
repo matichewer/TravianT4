@@ -420,12 +420,12 @@ class Units {
 	public function Settlers($post) {
 		global $form, $database, $village, $session;
 
-    $mode = CP; 
-    $total = count($database->getProfileVillages($session->uid)); 
-    $need_cps = ${'cp'.$mode}[$total];
-    $cps = $session->cp;
+    $total = count($database->getVillagesID($session->uid));
+    $need_cps = travianCultureRequiredForVillageCount($total + 1, CP);
+    // Session data is populated before automation credits culture points.
+    $cps = (int)$database->getUserField($session->uid, 'cp', 0);
 
-    if($cps >= $need_cps) {
+    if($need_cps !== null && $cps >= $need_cps) {
     	$unit = ($session->tribe*10);
       		
 			

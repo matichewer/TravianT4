@@ -23,7 +23,7 @@ El escondite sirve para ocultar parte de tus recursos cuando la aldea es atacada
 <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
-		<th>Cranny Capacidad en el nivel  <?php echo $village->resarray['f'.$id]+1; ?></th>
+		<th>Capacidad del escondite en el nivel <?php echo $village->resarray['f'.$id]+1; ?></th>
 		<td><b>
         <?php
 		if($session->tribe == 3) {

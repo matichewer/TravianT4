@@ -10,7 +10,7 @@ $uprequire = $building->resourceRequired($id,$bid);
 
 	</a>
 	En la cervecería se elabora un sabroso hidromiel que los soldados beben durante sus celebraciones.
-    These drinks make your soldiers braver and stronger when attacking others (1% per level). Unfortunately the chiefs' power of persuasion is decreased by 50% and catapults can only do random hits.</div>
+    Estas bebidas hacen que tus soldados sean más valientes y fuertes al atacar (1% por nivel). Lamentablemente, el poder de persuasión de los jefes se reduce en un 50% y las catapultas solo pueden disparar al azar.</div>
 <div id="contract" class="contract contractNew contractWrapper">
 	<div class="contractText">Costo:</div>
 	<div class="contractCosts">

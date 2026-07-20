@@ -2502,7 +2502,17 @@ class Automation {
                             }
                         }
                         if(!isset($nochiefing)) {
-                            //$info_chief = "".$chief_pic.",You don't have enought CP to chief a village.";
+                            $attackerOwner = (int)$database->getVillageField($data['from'], "owner");
+                            $attackerVillageCount = count($database->getVillagesID($attackerOwner));
+                            $requiredCulturePoints = travianCultureRequiredForVillageCount($attackerVillageCount + 1, CP);
+                            $attackerCulturePoints = (int)$database->getUserField($attackerOwner, 'cp', 0);
+                        }
+
+                        if(!isset($nochiefing) && ($requiredCulturePoints === null || $attackerCulturePoints < $requiredCulturePoints)) {
+                            $info_chief = "".$chief_pic.", No tienes suficientes puntos de cultura para conquistar otra aldea.";
+                        }
+
+                        if(!isset($nochiefing) && $requiredCulturePoints !== null && $attackerCulturePoints >= $requiredCulturePoints) {
                             for ($i = 0; $i < ($data['t9'] - $dead9); $i++) {
                                 $rand += rand(15, 25);
                             }

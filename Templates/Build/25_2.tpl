@@ -30,6 +30,10 @@ $totalVillages = count($session->villages);
 $requiredCulturePoints = travianCultureRequiredForVillageCount($totalVillages + 1, CP);
 $currentCulturePoints = (int)$database->getUserField($session->uid, 'cp', 0);
 ?>
-<p>Para fundar una nueva aldea necesitas <b><?php echo $requiredCulturePoints === null ? 'un umbral aún no configurado' : number_format($requiredCulturePoints, 0, ',', '.'); ?></b> puntos de cultura. Tienes <b><?php echo number_format($currentCulturePoints, 0, ',', '.'); ?></b> puntos de cultura.</p>
+<?php if($requiredCulturePoints === null) { ?>
+<p>No hay un umbral de cultura configurado para fundar otra aldea. Tienes <b><?php echo number_format($currentCulturePoints, 0, ',', '.'); ?></b> puntos de cultura.</p>
+<?php } else { ?>
+<p>Para fundar una nueva aldea necesitas <b><?php echo number_format($requiredCulturePoints, 0, ',', '.'); ?></b> puntos de cultura. Tienes <b><?php echo number_format($currentCulturePoints, 0, ',', '.'); ?></b> puntos de cultura.</p>
+<?php } ?>
 </div><div class="clear">&nbsp;</div>
     <div class="clear"></div>

@@ -264,4 +264,76 @@ $cp1= array(
 	123 => 100635000,
 	124 => 102542000,
 	125 => 104470000);
+
+/*
+ * Keep every culture-point check on the same rule. This file is included more
+ * than once by some legacy templates, so the functions must be guarded.
+ */
+if(!function_exists('travianCultureThresholds')) {
+	function travianCultureThresholds($mode) {
+		global $cp0, $cp1;
+
+		$mode = (int)$mode;
+		if($mode === 0) {
+			return $cp0;
+		}
+		if($mode === 1) {
+			return $cp1;
+		}
+
+		return array();
+	}
+
+	function travianCultureRequiredForVillageCount($villageCount, $mode) {
+		$thresholds = travianCultureThresholds($mode);
+		$villageCount = max(1, (int)$villageCount);
+
+		return isset($thresholds[$villageCount]) ? (int)$thresholds[$villageCount] : null;
+	}
+
+	function travianCultureStatus($culturePoints, $ownedVillages, $mode) {
+		$thresholds = travianCultureThresholds($mode);
+		$culturePoints = max(0, (int)$culturePoints);
+		$ownedVillages = max(0, (int)$ownedVillages);
+		$cultureCapacity = 0;
+		$maxConfiguredVillages = 0;
+
+		foreach($thresholds as $villageCount => $requiredPoints) {
+			$villageCount = (int)$villageCount;
+			$requiredPoints = (int)$requiredPoints;
+			$maxConfiguredVillages = max($maxConfiguredVillages, $villageCount);
+			if($culturePoints >= $requiredPoints) {
+				$cultureCapacity = max($cultureCapacity, $villageCount);
+			}
+		}
+
+		// Imported/admin-edited accounts must never render an impossible X/Y value.
+		$cultureCapacity = max($cultureCapacity, $ownedVillages);
+		$nextVillageCount = $cultureCapacity + 1;
+		$nextRequiredPoints = isset($thresholds[$nextVillageCount]) ? (int)$thresholds[$nextVillageCount] : null;
+		$atConfiguredMaximum = ($nextRequiredPoints === null);
+
+		if($atConfiguredMaximum) {
+			$progressPercent = 100;
+		} elseif($nextRequiredPoints <= 0) {
+			$progressPercent = 100;
+		} else {
+			$progressPercent = min(100, max(0, ($culturePoints / $nextRequiredPoints) * 100));
+		}
+
+		return array(
+			'available' => !empty($thresholds),
+			'culturePoints' => $culturePoints,
+			'ownedVillages' => $ownedVillages,
+			'cultureCapacity' => $cultureCapacity,
+			'availableVillageSlots' => max(0, $cultureCapacity - $ownedVillages),
+			'nextVillageCount' => $nextVillageCount,
+			'nextRequiredPoints' => $nextRequiredPoints,
+			'remainingPoints' => $atConfiguredMaximum ? 0 : max(0, $nextRequiredPoints - $culturePoints),
+			'progressPercent' => $progressPercent,
+			'atConfiguredMaximum' => $atConfiguredMaximum,
+			'maxConfiguredVillages' => $maxConfiguredVillages
+		);
+	}
+}
 ?>

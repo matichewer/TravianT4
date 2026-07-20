@@ -7,7 +7,7 @@ $uprequire = $building->resourceRequired($id,$bid);
 <div class="build_desc">
 	<a href="#" onclick="return Travian.Game.iPopup(37,4);" class="build_logo">
 		<img class="building big white g37" src="img/x.gif" alt="Mansión del héroe">
-		<img class="building big white g37" src="img/x.gif" alt="Dimora dell'Eroe">
+		<img class="building big white g37" src="img/x.gif" alt="Mansión del héroe">
 
 	</a>
 En la casa del héroe puedes ver un resumen de los oasis cercanos. A partir del nivel 10 del edificio puedes ocupar oasis con tu héroe y aumentar la producción de recursos de esta aldea<div id="contract" class="contract contractNew contractWrapper">
