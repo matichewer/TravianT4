@@ -134,10 +134,13 @@ details.buildingLevelHelp summary:focus {
 /* Culture capacity indicator below the clickable village map. */
 div.village2 #cultureProgress {
 	box-sizing: border-box;
-	position: relative;
-	width: 490px;
-	margin: 2px auto 10px;
-	padding: 9px 13px 10px;
+	position: absolute;
+	top: 590px;
+	left: -161px;
+	z-index: 90;
+	width: 205px;
+	margin: 0;
+	padding: 9px 11px 10px;
 	border: 2px solid #684719;
 	border-radius: 3px 3px 6px 6px;
 	background-color: #ead69d;
@@ -182,10 +185,12 @@ div.village2 .cultureProgressInfo {
 div.village2 .cultureProgressHeader {
 	padding: 0 7px 5px;
 	border-bottom: 1px solid rgba(104, 71, 25, 0.35);
+	text-align: center;
 }
 
 div.village2 .cultureProgressTitle {
-	float: left;
+	display: inline-block;
+	float: none;
 	padding-left: 20px;
 	background-image: url("../gpack/travian_Travian_4.0_41/img/layout/icons/villageStatistics.gif");
 	background-position: left center;
@@ -202,6 +207,15 @@ div.village2 .cultureProgressInfo strong {
 	white-space: nowrap;
 }
 
+div.village2 #cultureProgress .cultureProgressVillages {
+	display: block;
+	float: none;
+	margin-top: 2px;
+	white-space: normal;
+	text-align: center;
+	line-height: 14px;
+}
+
 div.village2 .cultureProgressVillages em {
 	color: #4f7500;
 	font-style: normal;
@@ -212,10 +226,17 @@ div.village2 .cultureProgressInfo {
 	clear: both;
 	padding: 4px 7px 0;
 	color: #674d28;
+	text-align: center;
 }
 
 div.village2 .cultureProgressInfo strong {
+	display: block;
+	float: none;
 	color: #38250f;
+}
+
+div.village2 .cultureProgressInfo span {
+	display: block;
 }
 
 div.village2 .cultureProgressBar {
@@ -243,4 +264,9 @@ div.village2 .cultureProgressUnavailable {
 	padding: 4px 7px 0;
 	color: #a11818;
 	font-weight: bold;
+}
+
+/* Reserve room for the absolutely positioned sign before the footer. */
+body.village2 #mid {
+	min-height: 730px;
 }
