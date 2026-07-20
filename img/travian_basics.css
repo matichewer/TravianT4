@@ -154,6 +154,11 @@ div.village2 #cultureProgress.cultureProgressReady {
 	border-color: #5f4a19;
 }
 
+/* Lift the whole stacking context while its temporary help is active. */
+div.village2 #cultureProgress:hover {
+	z-index: 2000;
+}
+
 div.village2 #cultureProgress:before,
 div.village2 #cultureProgress:after {
 	content: "";
