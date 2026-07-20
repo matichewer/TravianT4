@@ -2134,8 +2134,9 @@
         		return $this->mysqli_fetch_all($result);
         	}
 
-        	function getAllMember($aid) {
-        		$q = "SELECT * FROM " . TB_PREFIX . "users where alliance = $aid order  by (SELECT sum(pop) FROM " . TB_PREFIX . "vdata WHERE owner =  " . TB_PREFIX . "users.id) desc";
+		function getAllMember($aid, $rankOnly = false) {
+				$rankFilter = $rankOnly ? " AND tribe <= 3 AND access < " . (INCLUDE_ADMIN ? "10" : "8") : "";
+				$q = "SELECT * FROM " . TB_PREFIX . "users WHERE alliance = $aid" . $rankFilter . " ORDER BY (SELECT sum(pop) FROM " . TB_PREFIX . "vdata WHERE owner =  " . TB_PREFIX . "users.id) DESC";
         		$result = mysqli_query($this->connection,$q);
         		return $this->mysqli_fetch_all($result);
         	}

@@ -1,10 +1,14 @@
 <?php
 if(WW == True){
+	$rankingAccessLimit = INCLUDE_ADMIN ? 10 : 8;
     $result = mysql_query("select ".TB_PREFIX."users.id, ".TB_PREFIX."users.username,".TB_PREFIX."users.alliance, ".TB_PREFIX."fdata.wwname, ".TB_PREFIX."fdata.f99, ".TB_PREFIX."vdata.name, ".TB_PREFIX."vdata.wref
                         FROM ".TB_PREFIX."users 
                         INNER JOIN ".TB_PREFIX."vdata ON ".TB_PREFIX."users.id = ".TB_PREFIX."vdata.owner
                         INNER JOIN ".TB_PREFIX."fdata ON ".TB_PREFIX."fdata.vref = ".TB_PREFIX."vdata.wref
-                        WHERE ".TB_PREFIX."fdata.f99t = 40 ORDER BY ".TB_PREFIX."fdata.f99 Desc Limit 20");
+                        WHERE ".TB_PREFIX."fdata.f99t = 40
+						AND ".TB_PREFIX."users.tribe <= 3
+						AND ".TB_PREFIX."users.access < ".$rankingAccessLimit."
+						ORDER BY ".TB_PREFIX."fdata.f99 Desc Limit 20");
 ?>
 <h4 class="round">Maravilla del mundo</h4>
 <table cellpadding="1" cellspacing="1" id="wonder">

@@ -182,7 +182,7 @@ $paginationDisplay .=  '<img alt="Última página" src="img/x.gif" class="last d
     	$rank = 1;
     }
 	while($row = mysql_fetch_array($sql2)){ 
-		$memberlist = $database->getAllMember($row['id']);
+		$memberlist = $database->getAllMember($row['id'], true);
 		$totalusers = 0;
 		$totalpoints = $row['Adp'];
 		foreach($memberlist as $member) {

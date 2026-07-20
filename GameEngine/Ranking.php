@@ -10,7 +10,8 @@
 				)totalpop
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY totalpop DESC, userid ASC";
 				$result = mysql_query($q);
 				$i = 1;
@@ -27,7 +28,8 @@
 			public function getUserAttRank($uid) {
 				$q = "SELECT " . TB_PREFIX . "users.id userid, " . TB_PREFIX . "users.username username, " . TB_PREFIX . "users.apall apall
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY apall DESC, userid ASC";
 					
 				$result = mysql_query($q);
@@ -45,7 +47,8 @@
 			public function getUserDefRank($uid) {
 				$q = "SELECT " . TB_PREFIX . "users.id userid, " . TB_PREFIX . "users.username username, " . TB_PREFIX . "users.dpall dpall
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY dpall DESC, userid ASC";
 					
 				$result = mysql_query($q);
@@ -147,7 +150,8 @@
 				)allitag
 					
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY totalpop DESC, totalraid DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
@@ -165,7 +169,8 @@
 				)totalvillages
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY apall DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
@@ -184,7 +189,8 @@
 				)totalvillages
 					
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY dpall DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
@@ -199,7 +205,7 @@
 				$holder = array();
 
 				foreach($array as $value) {
-					$memberlist = $database->getAllMember($value['id']);
+					$memberlist = $database->getAllMember($value['id'], true);
 					$totalpop = 0;
 					foreach($memberlist as $member) {
 						$totalpop += $database->getVSumField($member['id'], "pop");
@@ -228,7 +234,7 @@
 				$array = $database->getARanking($limit);
 				$holder = array();
 				foreach($array as $value) {
-					$memberlist = $database->getAllMember($value['id']);
+					$memberlist = $database->getAllMember($value['id'], true);
 					$totalap = $value['Aap'];
 					$value['players'] = count($memberlist);
 					$value['totalap'] = $totalap;
@@ -253,7 +259,7 @@
 				$array = $database->getARanking($limit);
 				$holder = array();
 				foreach($array as $value) {
-					$memberlist = $database->getAllMember($value['id']);
+					$memberlist = $database->getAllMember($value['id'], true);
 					$totaldp = $value['Adp'];
 					$value['players'] = count($memberlist);
 					$value['totaldp'] = $totaldp;
@@ -352,7 +358,11 @@
 			
 			
 			public function getVillageRank($wid) {
-        		$q = "SELECT * FROM ".TB_PREFIX."vdata WHERE wref != 0 AND owner != 2 ORDER BY pop DESC, owner DESC, lastupdate DESC";
+				$q = "SELECT v.* FROM ".TB_PREFIX."vdata AS v
+				INNER JOIN ".TB_PREFIX."users AS u ON u.id = v.owner
+				WHERE v.wref != 0 AND u.tribe <= 3
+				AND u.access < ".(INCLUDE_ADMIN ? "10" : "8")."
+				ORDER BY v.pop DESC, v.owner DESC, v.lastupdate DESC";
 				$result = mysql_query($q);
 				$i = 1;
 				$myrank = 0;
@@ -366,7 +376,11 @@
         	}
 			
 			public function procVillagesRanking($limit="") {				
-				$q = "SELECT * FROM ".TB_PREFIX."vdata WHERE wref != 0 AND owner != 2 ORDER BY pop DESC, owner DESC, lastupdate DESC $limit";
+				$q = "SELECT v.* FROM ".TB_PREFIX."vdata AS v
+				INNER JOIN ".TB_PREFIX."users AS u ON u.id = v.owner
+				WHERE v.wref != 0 AND u.tribe <= 3
+				AND u.access < ".(INCLUDE_ADMIN ? "10" : "8")."
+				ORDER BY v.pop DESC, v.owner DESC, v.lastupdate DESC $limit";
 				return mysql_query($q);
 			}
 			
@@ -393,7 +407,8 @@
 				)totalpop
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY experience DESC, totalpop ASC, userid ASC";
 				$result = mysql_query($q);
 				$i = 1;
@@ -426,7 +441,8 @@
 				)totalpop
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY experience DESC, totalpop ASC, userid ASC $limit";
 				
 				return mysql_query($q);
@@ -445,7 +461,8 @@
 				)totalvillages
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY ap DESC, userid ASC";
 					
 				$result = mysql_query($q);
@@ -475,7 +492,8 @@
 				)totalvillages
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY dp DESC, userid ASC";
 					
 				$result = mysql_query($q);
@@ -505,7 +523,8 @@
 				)totalvillages
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . "
 				ORDER BY clp DESC, userid ASC";
 					
 				$result = mysql_query($q);
@@ -534,7 +553,8 @@
 				)totalvillages
 				
 				FROM " . TB_PREFIX . "users
-				WHERE " . TB_PREFIX . "users.id > 4 AND RR >= 0
+				WHERE " . TB_PREFIX . "users.tribe <= 3
+				AND " . TB_PREFIX . "users.access < " . (INCLUDE_ADMIN ? "10" : "8") . " AND RR >= 0
 				ORDER BY RR DESC, userid ASC";
 					
 				$result = mysql_query($q);
