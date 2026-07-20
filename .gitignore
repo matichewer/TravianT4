@@ -4,3 +4,4 @@ config/connection.php
 .env
 GameEngine/Prevention/*.txt
 !GameEngine/Prevention/empty.txt
+backup-*.sql
