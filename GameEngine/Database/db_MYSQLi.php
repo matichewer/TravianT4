@@ -4005,4 +4005,12 @@ function mysql_fetch_array($var) {
 	return mysqli_fetch_array($var);
 }
 
+// Varios "or die(mysql_error())" repartidos por el proyecto (sysmsg, winner,
+// el instalador). Sin esto, un query fallido termina en "undefined function"
+// en vez del error real de MySQL.
+function mysql_error() {
+	global $database;
+	return mysqli_error($database->connection);
+}
+
 ?>
