@@ -360,6 +360,16 @@ echo "<div class=\"headline\"><span class=\"f10 c5\">Error creating constant.php
                         <option value="0">Fast</option></select></td>
             </tr>
             <tr class="hover">
+                <td><div title="Tracks who is online. Needed for the Online Users list in the admin panel.">Track online users:</div></td>
+                <td><select name="trackusers" dir="ltr" class="text">
+                        <option value="true" selected="selected">Enable</option>
+                        <option value="false">Disable</option></select></td>
+            </tr>
+            <tr class="hover">
+                <td><div title="Minutes without activity before a player stops counting as online.">Online timeout (minutes):</div></td>
+                <td><input name="timeout" dir="ltr" class="text" type="number" id="timeout" value="10" size="15"></td>
+            </tr>
+            <tr class="hover">
                 <td>Error Reporting:</td>
                 <td><select name="error" dir="ltr" class="text">
                         <option value="error_reporting(E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED);" selected="selected">Yes</option>

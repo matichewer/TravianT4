@@ -253,8 +253,8 @@ define("ADMIN_NAME", "%ANAME%");
 //////////////////////////////////////////
 //   ****  DO NOT EDIT SETTINGS  ****   //
 //////////////////////////////////////////
-define("TRACK_USR","%UTRACK%");
-define("USER_TIMEOUT","%UTOUT%"); 
+define("TRACK_USR",%UTRACK%);
+define("USER_TIMEOUT",%UTOUT%); 
 define("ALLOW_BURST",false);
 define("BASIC_MAX",1);
 define("INNER_MAX",1);
@@ -293,7 +293,7 @@ define("SINGLEPLAYER_ENABLED", "%SINGLEPLAYERMODE%");
 
 define("MODERATOR", 1);
 define("AUTO_DEL_INACTIVE", false);
-define("UN_ACT_TIME ", 0);
+define("UN_ACT_TIME", 0);
 define("ZRAVIANX4", false);
 
 ?>

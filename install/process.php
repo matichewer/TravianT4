@@ -56,8 +56,6 @@ class Process {
         $text = preg_replace("'%TRAPPERCAP%'", $_POST['trappercap'], $text);
         $text = preg_replace("'%UTRACK%'", $_POST['trackusers'], $text);
         $text = preg_replace("'%UTOUT%'", $_POST['timeout'], $text);
-        $text = preg_replace("'%AUTOD%'", $_POST['autodel'], $text);
-        $text = preg_replace("'%AUTODT%'", $_POST['autodeltime'], $text);
         $text = preg_replace("'%MAX%'", $_POST['wmax'], $text);
         $text = preg_replace("'%ANAME%'", $_POST['aname'], $text);
         $text = preg_replace("'%ARANK%'", $_POST['admin_rank'], $text);

@@ -253,8 +253,8 @@ define("ADMIN_NAME", "%ANAME%");
 //////////////////////////////////////////
 //   ****  DO NOT EDIT SETTINGS  ****   //
 //////////////////////////////////////////
-define("TRACK_USR","%UTRACK%");
-define("USER_TIMEOUT","%UTOUT%"); 
+define("TRACK_USR",%UTRACK%);
+define("USER_TIMEOUT",%UTOUT%); 
 define("ALLOW_BURST",false);
 define("BASIC_MAX",1);
 define("INNER_MAX",1);
