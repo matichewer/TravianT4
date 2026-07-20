@@ -100,7 +100,7 @@ Como son débiles al comienzo del juego, son una mala elección para principiant
 
 	</td>
 
-	<td class="text" width="135">Legionnario</td>
+	<td class="text" width="135">Legionario</td>
 
 	<td width="25">40</td>
 
@@ -128,7 +128,7 @@ Como son débiles al comienzo del juego, son una mala elección para principiant
 
 	</td>
 
-	<td class="text" width="135">Praetoriano</td>
+	<td class="text" width="135">Pretoriano</td>
 
 	<td width="25">30</td>
 
@@ -156,7 +156,7 @@ Como son débiles al comienzo del juego, son una mala elección para principiant
 
 	</td>
 
-	<td class="text" width="135">Imperiano</td>
+	<td class="text" width="135">Imperano</td>
 
 	<td width="25">70</td>
 
@@ -494,7 +494,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Phalange</td>
+	<td class="text" width="135">Falange</td>
 
 	<td width="25">15</td>
 
@@ -550,7 +550,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Pionero</td>
+	<td class="text" width="135">Batidor</td>
 
 	<td width="25">0</td>
 
@@ -578,7 +578,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Trueno de Tutatis</td>
+	<td class="text" width="135">Rayo de Teutates</td>
 
 	<td width="25">90</td>
 
@@ -606,7 +606,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Druida</td>
+	<td class="text" width="135">Jinete Druida</td>
 
 	<td width="25">45</td>
 
@@ -634,7 +634,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Haeduan</td>
+	<td class="text" width="135">Jinete Eduo</td>
 
 	<td width="25">140</td>
 
@@ -690,7 +690,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Trebuchet</td>
+	<td class="text" width="135">Catapulta de guerra</td>
 
 	<td width="25">70</td>
 
@@ -718,7 +718,7 @@ Para los principiantes y los jugadores que no saben exactamente qué quieren jug
 
 	</td>
 
-	<td class="text" width="135">Jefe Galo</td>
+	<td class="text" width="135">Cacique</td>
 
 	<td width="25">40</td>
 
@@ -892,7 +892,7 @@ Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que
 
 	</td>
 
-	<td class="text" width="135">Clubswinger</td>
+	<td class="text" width="135">Luchador de porra</td>
 
 	<td width="25">40</td>
 
@@ -976,7 +976,7 @@ Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que
 
 	</td>
 
-	<td class="text" width="135">Explorador</td>
+	<td class="text" width="135">Emisario</td>
 
 	<td width="25">0</td>
 
@@ -1004,7 +1004,7 @@ Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que
 
 	</td>
 
-	<td class="text" width="135">Paladin</td>
+	<td class="text" width="135">Paladín</td>
 
 	<td width="25">55</td>
 
@@ -1032,7 +1032,7 @@ Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que
 
 	</td>
 
-	<td class="text" width="135">Caballero Teutón</td>
+	<td class="text" width="135">Jinete Teutón</td>
 
 	<td width="25">150</td>
 
@@ -1116,7 +1116,7 @@ Sin embargo, carecen de la disciplina militar de los Galos o los Romanos, lo que
 
 	</td>
 
-	<td class="text" width="135">Jefe Teutón</td>
+	<td class="text" width="135">Cabecilla</td>
 
 	<td width="25">40</td>
 

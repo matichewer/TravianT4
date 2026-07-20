@@ -4,7 +4,7 @@
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(39,4);" class="build_logo">
         <img class="building big white g39" src="img/x.gif" alt="Gran granero" title="Gran granero"></a>
-        In the Granary, the wheat produced by your wheat fields is stored. The Great Granary offers you more space than the regular Granary to keep your wheat safe and dry.</div>
+        En el granero se almacena el cereal producido por tus campos de cereal. El gran granero ofrece más espacio que el granero normal para mantener tu cereal a salvo y protegido.</div>
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 	<tr>

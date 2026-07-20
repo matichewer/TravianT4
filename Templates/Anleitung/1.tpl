@@ -601,7 +601,7 @@ El Rey o la Reina del imperio vive en el palacio. El palacio solo se puede const
 
 <br><br>
 
-En los niveles 10, 15 y 20 se pueden entrenar tres colonos o un administrador (Senador, Jefe Teutón o Jefe Galo).
+En los niveles 10, 15 y 20 se pueden entrenar tres colonos o un administrador (Senador, Cabecilla o Cacique).
 
 <br><br>
 
@@ -651,7 +651,7 @@ La residencia es un pequeño palacio donde vive el rey o la reina cuando visita 
 
 <br><br>
 
-En los niveles 10 y 20 se pueden entrenar tres colonos o un administrador (Senador, Jefe Teutón o Jefe Galo).    <br>
+En los niveles 10 y 20 se pueden entrenar tres colonos o un administrador (Senador, Cabecilla o Cacique).    <br>
 
     <br>
 

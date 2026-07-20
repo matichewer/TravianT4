@@ -3,7 +3,7 @@
 <p class="build_desc">
 <a href="#" onClick="return Travian.Game.iPopup(30,4);" class="build_logo">
 <img class="building big white g30" src="img/x.gif" alt="Gran establo" title="Gran establo" /> </a>
-The great stable allows the training of additional cavalry. These troops cost three times as much, however. <br /></p>
+El gran establo permite entrenar caballería adicional. Sin embargo, estas tropas cuestan tres veces más. <br /></p>
 <?php 
 include("upgrade.tpl");
 ?>

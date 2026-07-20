@@ -1,4 +1,4 @@
-<h1><img class="unit u26" src="img/x.gif" alt="Haeduano" title="Haeduano" /> Haeduano <span class="tribe">(Galos)</span></h1>
+<h1><img class="unit u26" src="img/x.gif" alt="Jinete Eduo" title="Jinete Eduo" /> Jinete Eduo <span class="tribe">(Galos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
@@ -39,7 +39,7 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u26" src="img/x.gif" alt="Haeduano" title="Haeduano" /><div id="t_desc">Los Haeduanos son el arma definitiva de los galos para atacar y defender contra la caballería. Pocos pueden igualarlos en estos aspectos.
+<img id="big_unit" class="big_u26" src="img/x.gif" alt="Jinete Eduo" title="Jinete Eduo" /><div id="t_desc">Los Jinetes Eduo son el arma definitiva de los galos para atacar y defender contra la caballería. Pocos pueden igualarlos en estos aspectos.
 <br /><br />
 Sin embargo, su entrenamiento y equipamiento también son muy caros. Consumen 3 unidades de cereal por hora, así que deberías pensar bien si valen la pena.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 15, <a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 10</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=25" title="atrás" coords="0,0,45,18" shape="rect" alt="" />

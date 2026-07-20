@@ -7,6 +7,11 @@
 </a>
 Las tropas de tu aldea se reúnen aquí. Desde aquí puedes enviarlas a conquistar, saquear o reforzar otras aldeas.</div>
 <?php
+$buildingHelpType = 'rally-point';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+?>
+<?php
 if(isset($_SESSION['movement_cancel_status'])) {
 	$cancelStatus = $_SESSION['movement_cancel_status'];
 	unset($_SESSION['movement_cancel_status']);

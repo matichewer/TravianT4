@@ -17,7 +17,7 @@
 							</td><td>
 								<img src="img/x.gif" class="unit u25" alt="Jinete druida">
 							</td><td>
-								<img src="img/x.gif" class="unit u26" alt="Haeduano">
+								<img src="img/x.gif" class="unit u26" alt="Jinete Eduo">
 							</td><td>
 								<img src="img/x.gif" class="unit u27" alt="Ariete">
 							</td><td>

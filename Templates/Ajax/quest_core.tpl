@@ -633,7 +633,7 @@ if ($barrack==0){ ?>
 
 // Checking 2 warrior trained or no
 $units = $village->unitall;
-$unarray=array("","Legionnario", "Clubswinger","Phalange");
+$unarray=array("","Legionario", "Luchador de porra","Falange");
 $unarray2=array("","u1", "u11","u21");
 if ($units[$unarray2[$session->userinfo['tribe']]]<2){ ?>
 

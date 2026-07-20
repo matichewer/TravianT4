@@ -1,4 +1,4 @@
-<h1><img class="unit u23" src="img/x.gif" alt="Pionero" title="Pionero" /> Pionero <span class="tribe">(Galos)</span></h1>
+<h1><img class="unit u23" src="img/x.gif" alt="Batidor" title="Batidor" /> Batidor <span class="tribe">(Galos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
@@ -39,9 +39,9 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u23" src="img/x.gif" alt="Pionero" title="Pionero" /><div id="t_desc">El Pionero es la unidad de reconocimiento de los galos. Son muy rápidos y pueden avanzar con cautela sobre unidades, recursos o edificios enemigos para espiarlos.
+<img id="big_unit" class="big_u23" src="img/x.gif" alt="Batidor" title="Batidor" /><div id="t_desc">El Batidor es la unidad de reconocimiento de los galos. Son muy rápidos y pueden avanzar con cautela sobre unidades, recursos o edificios enemigos para espiarlos.
 <br /><br />
-Si no hay Exploradores, Equites Legati o Pioneros en la aldea explorada, el espionaje pasa inadvertido.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 1</div><map id="nav" name="nav">
+Si no hay Emisarios, Equites Legati o Batidores en la aldea explorada, el espionaje pasa inadvertido.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 1</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=22" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
  <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
 

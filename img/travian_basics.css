@@ -7,3 +7,118 @@
 div.reports table#overview tbody tr.reportUnread td {
 	background-color: #fce6c4;
 }
+
+/* Contextual level benefits shown on selected building pages. */
+details.buildingLevelHelp {
+	box-sizing: border-box;
+	width: calc(100% - 205px);
+	margin: 9px 0 13px;
+	border: 1px solid #c8c8c8;
+	border-radius: 5px;
+	background: #f4f4f4;
+	color: #333;
+}
+
+details.buildingLevelHelp summary {
+	box-sizing: border-box;
+	min-height: 31px;
+	padding: 6px 10px;
+	cursor: pointer;
+	list-style: none;
+	color: #568b0b;
+	font-weight: bold;
+	line-height: 19px;
+	user-select: none;
+}
+
+details.buildingLevelHelp summary::-webkit-details-marker {
+	display: none;
+}
+
+details.buildingLevelHelp summary:hover,
+details.buildingLevelHelp summary:focus {
+	color: #76a900;
+	background: #eaf2df;
+}
+
+.buildingLevelHelpIcon {
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	margin-right: 6px;
+	border: 1px solid #699700;
+	border-radius: 50%;
+	background: #fff;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 17px;
+	vertical-align: top;
+}
+
+.buildingLevelHelpContent {
+	padding: 4px 11px 10px;
+	border-top: 1px solid #d7d7d7;
+	background: #fff;
+}
+
+.buildingLevelHelpHeading {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 7px 0 5px;
+}
+
+.buildingLevelHelpHeading span {
+	white-space: nowrap;
+	color: #777;
+	font-size: 11px;
+}
+
+.buildingLevelHelpContent ul {
+	margin: 3px 0 8px;
+	padding-left: 20px;
+}
+
+.buildingLevelHelpContent li {
+	margin: 0 0 5px;
+	line-height: 16px;
+}
+
+.buildingLevelHelpContent li.unlocked strong {
+	color: #568b0b;
+}
+
+.buildingLevelHelpContent li.next {
+	margin-left: -4px;
+	padding: 4px;
+	border-radius: 3px;
+	background: #fff3d5;
+}
+
+.buildingLevelHelpNext {
+	display: inline-block;
+	margin-left: 4px;
+	padding: 1px 4px;
+	border-radius: 3px;
+	background: #f3a000;
+	color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.buildingLevelHelpNote {
+	margin: 0;
+	padding-top: 7px;
+	border-top: 1px dotted #c8c8c8;
+	color: #666;
+	font-size: 11px;
+	line-height: 15px;
+}
+
+@media (max-width: 760px) {
+	details.buildingLevelHelp {
+		width: 100%;
+	}
+}

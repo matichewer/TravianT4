@@ -4,7 +4,7 @@
     <div class="build_desc">
         <a href="#" onClick="return Travian.Game.iPopup(38,4);" class="build_logo">
         <img class="building big white g38" src="img/x.gif" alt="Gran almacén" title="Gran almacén"></a>
-        In your Warehouse, the resources wood, clay and iron are stored. The Great Warehouse offers you more space than the regular warehouse to keep your resources safe and dry.</div>
+        En el almacén se guardan los recursos madera, arcilla y hierro. El gran almacén ofrece más espacio que el almacén normal para mantener tus recursos a salvo y protegidos.</div>
 
 	<table cellpadding="1" cellspacing="1" id="build_value">
 	<tr>

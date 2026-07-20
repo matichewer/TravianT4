@@ -10,7 +10,7 @@
 	<table cellpadding="1" cellspacing="1" id="build_value">
 		<tr>
 			<th>
-Stability of buildings at current levels:</th>
+Resistencia de los edificios en el nivel actual:</th>
 			<td><b><?php echo $bid34[$village->resarray['f'.$id]]['attri']; ?>%</b></td>
 		</tr>
 		<tr>

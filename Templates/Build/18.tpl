@@ -7,6 +7,12 @@
 La embajada es la oficina de los diplomáticos. Cuanto mayor sea el nivel, más opciones tendrá el rey.</div>
 
 <?php
+$buildingHelpType = 'embassy';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+?>
+
+<?php
 include("upgrade.tpl");
 if($village->resarray['f'.$id] >= 3 && $session->alliance == 0) {
 include("18_create.tpl");

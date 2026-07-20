@@ -6,7 +6,7 @@
 	<img class="building big white g24" src="img/x.gif" alt="Ayuntamiento" title="Ayuntamiento" />
 </a>
 
-In the Town Hall you can hold pompous celebrations. Such a celebration increases your puntos de cultura.
+En el Ayuntamiento puedes organizar grandes celebraciones. Cada celebración aumenta tus puntos de cultura.
 </div>
 
 <?php

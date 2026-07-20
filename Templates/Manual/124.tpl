@@ -1,4 +1,4 @@
-<h1><img class="unit u24" src="img/x.gif" alt="Trueno de Tutatis" title="Trueno de Tutatis" /> Trueno de Tutatis <span class="tribe">(Galos)</span></h1>
+<h1><img class="unit u24" src="img/x.gif" alt="Rayo de Teutates" title="Rayo de Teutates" /> Rayo de Teutates <span class="tribe">(Galos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
@@ -39,7 +39,7 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u24" src="img/x.gif" alt="Trueno de Tutatis" title="Trueno de Tutatis" /><div id="t_desc">Los Truenos de Tutatis son unidades de caballería muy rápidas y poderosas. Pueden transportar una gran cantidad de recursos, lo que también los convierte en excelentes saqueadores.
+<img id="big_unit" class="big_u24" src="img/x.gif" alt="Rayo de Teutates" title="Rayo de Teutates" /><div id="t_desc">Los Rayos de Teutates son unidades de caballería muy rápidas y poderosas. Pueden transportar una gran cantidad de recursos, lo que también los convierte en excelentes saqueadores.
 <br /><br />
 En defensa, sus habilidades son mediocres en el mejor de los casos.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 3</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=23" title="atrás" coords="0,0,45,18" shape="rect" alt="" />

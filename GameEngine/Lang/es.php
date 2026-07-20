@@ -145,9 +145,9 @@ define("Q6_DESC","Se le informa que tiene un premio del taskmaster esperandolo.<
 //================ UNITS - DO NOT EDIT! ================//
 //======================================================//
 //ROMAN UNITS
-define("U1","Legionnario");
-define("U2","Praetoriano");
-define("U3","Imperiano");
+define("U1","Legionario");
+define("U2","Pretoriano");
+define("U3","Imperano");
 define("U4","Equites Legati");
 define("U5","Equites Imperatoris");
 define("U6","Equites Caesaris");
@@ -157,27 +157,27 @@ define("U9","Senador");
 define("U10","Colono");
 
 //TEUTON UNITS
-define("U11","Clubswinger");
+define("U11","Luchador de porra");
 define("U12","Lancero");
 define("U13","Hachero");
-define("U14","Explorador");
-define("U15","Paladin");
-define("U16","Caballero Teut&oacuten");
+define("U14","Emisario");
+define("U15","Paladín");
+define("U16","Jinete Teut&oacute;n");
 define("U17","Ariete");
 define("U18","Catapulta");
-define("U19","Jefe Teut&oacute;n");
+define("U19","Cabecilla");
 define("U20","Colono");
 
 //GAUL UNITS
-define("U21","Phalange");
+define("U21","Falange");
 define("U22","Espadach&iacute;n");
-define("U23","Pionero");
-define("U24","Trueno de Tutatis");
-define("U25","Druida");
-define("U26","Haeduan");
+define("U23","Batidor");
+define("U24","Rayo de Teutates");
+define("U25","Jinete Druida");
+define("U26","Jinete Eduo");
 define("U27","Ariete");
-define("U28","Trebuchet");
-define("U29","Jefe Galo");
+define("U28","Catapulta de guerra");
+define("U29","Cacique");
 define("U30","Colono");
 define("U99","Trampa");
 

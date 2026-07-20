@@ -1,4 +1,4 @@
-<h1><img class="unit u3" src="img/x.gif" alt="Imperiano" title="Imperiano" /> Imperiano <span class="tribe">(Romanos)</span></h1>
+<h1><img class="unit u3" src="img/x.gif" alt="Imperano" title="Imperano" /> Imperano <span class="tribe">(Romanos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
@@ -39,7 +39,7 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u3" src="img/x.gif" alt="Imperiano" title="Imperiano" /><div id="t_desc">El Imperiano es el atacante definitivo del Imperio Romano. Es rápido, fuerte y la pesadilla de todo defensor. Sin embargo, su entrenamiento es caro y lleva mucho tiempo.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=12">Herrería</a> Nivel 1</div><map id="nav" name="nav">
+<img id="big_unit" class="big_u3" src="img/x.gif" alt="Imperano" title="Imperano" /><div id="t_desc">El Imperano es el atacante definitivo del Imperio Romano. Es rápido, fuerte y la pesadilla de todo defensor. Sin embargo, su entrenamiento es caro y lleva mucho tiempo.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5, <a href="manual.php?typ=4&amp;gid=12">Herrería</a> Nivel 1</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=2" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
  <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
  <area href="manual.php?typ=1&amp;s=4" title="adelante" coords="71,0,116,18" shape="rect" alt="" />

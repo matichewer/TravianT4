@@ -41,7 +41,7 @@
 
 <img id="big_unit" class="big_u4" src="img/x.gif" alt="Equites Legati" title="Equites Legati" /><div id="t_desc">Los Equites Legati son las tropas de reconocimiento romanas. Son bastante rápidos y pueden espiar aldeas enemigas para ver sus recursos y tropas.
 <br /><br />
-Si no hay Exploradores, Equites Legati o Pioneros en la aldea explorada, el espionaje pasa inadvertido.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 1, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5</div><map id="nav" name="nav">
+Si no hay Emisarios, Equites Legati o Batidores en la aldea explorada, el espionaje pasa inadvertido.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=20">Establo</a> Nivel 1, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 5</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=3" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
  <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
 

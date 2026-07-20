@@ -11,18 +11,18 @@
 							</td><td>
 								<img src="img/x.gif" class="unit u13" title="Hachero" alt="Hachero" />
 							</td><td>
-								<img src="img/x.gif" class="unit u14" title="Explorador" alt="Explorador" />
+								<img src="img/x.gif" class="unit u14" title="Emisario" alt="Emisario" />
 							</td><td>
 								<img src="img/x.gif" class="unit u15" title="Paladín" alt="Paladín" />
 
 							</td><td>
-								<img src="img/x.gif" class="unit u16" title="Caballero Teutón" alt="Caballero Teutón" />
+								<img src="img/x.gif" class="unit u16" title="Jinete Teutón" alt="Jinete Teutón" />
 							</td><td>
 								<img src="img/x.gif" class="unit u17" title="Ariete" alt="Ariete" />
 							</td><td>
 								<img src="img/x.gif" class="unit u18" title="Catapulta" alt="Catapulta" />
 							</td><td>
-								<img src="img/x.gif" class="unit u19" title="Jefe Teutón" alt="Jefe Teutón" />
+								<img src="img/x.gif" class="unit u19" title="Cabecilla" alt="Cabecilla" />
 							</td><td>
 
 								<img src="img/x.gif" class="unit u20" title="Colono" alt="Colono" />

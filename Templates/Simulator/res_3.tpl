@@ -9,21 +9,21 @@
 							</td><td>
 								<img src="img/x.gif" class="unit u22" title="Espadachín" alt="Espadachín" />
 							</td><td>
-								<img src="img/x.gif" class="unit u23" title="Pionero" alt="Pionero" />
+								<img src="img/x.gif" class="unit u23" title="Batidor" alt="Batidor" />
 							</td><td>
 
-								<img src="img/x.gif" class="unit u24" title="Trueno de Tutatis" alt="Trueno de Tutatis" />
+								<img src="img/x.gif" class="unit u24" title="Rayo de Teutates" alt="Rayo de Teutates" />
 							</td><td>
-								<img src="img/x.gif" class="unit u25" title="Druida" alt="Druida" />
+								<img src="img/x.gif" class="unit u25" title="Jinete Druida" alt="Jinete Druida" />
 							</td><td>
-								<img src="img/x.gif" class="unit u26" title="Haeduano" alt="Haeduano" />
+								<img src="img/x.gif" class="unit u26" title="Jinete Eduo" alt="Jinete Eduo" />
 							</td><td>
 								<img src="img/x.gif" class="unit u27" title="Ariete" alt="Ariete" />
 							</td><td>
 								<img src="img/x.gif" class="unit u28" title="Catapulta" alt="Catapulta" />
 
 							</td><td>
-								<img src="img/x.gif" class="unit u29" title="Jefe Galo" alt="Jefe Galo" />
+								<img src="img/x.gif" class="unit u29" title="Cacique" alt="Cacique" />
 							</td><td>
 								<img src="img/x.gif" class="unit u30" title="Colono" alt="Colono" />
 							</td></tr>

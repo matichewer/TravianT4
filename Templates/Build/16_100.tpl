@@ -10,6 +10,11 @@ if(!$session->goldclub) {
 <img class="g16 big white" src="img/x.gif" alt="Plaza de reuniones" title="Plaza de reuniones" />
 </a>
 Las tropas de tu aldea se reúnen aquí. Desde aquí puedes enviarlas a conquistar, saquear o reforzar otras aldeas.</div>
+<?php
+$buildingHelpType = 'rally-point';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+?>
 <?php include("upgrade.tpl"); ?>
 <div class="contentNavi tabNavi">
 				<div class="container normal">

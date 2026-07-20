@@ -56,7 +56,7 @@ if($village->resarray['f'.$id] >= 10){
 	include ("26_train.tpl");	
 }
 else{
-	echo '<div class="c">In order to found a new village you need a level 10, 15 or 20 palace and 3 settlers. In order to conquer a new village you need a level 10, 15 or 20 palace and a senator, chief or chieftain.</div>';
+	echo '<div class="c">Para fundar una nueva aldea necesitas un palacio de nivel 10, 15 o 20 y 3 colonos. Para conquistar una nueva aldea necesitas un palacio de nivel 10, 15 o 20 y un senador, jefe o caudillo.</div>';
 }
 
 ?>

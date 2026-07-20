@@ -9,7 +9,7 @@
 <table cellpadding="1" cellspacing="1" id="build_value">
         <tr>
             <th>
-Current defense bonus</th>
+Bono de defensa actual</th>
             <td><b><?php echo $bid32[$village->resarray['f'.$id]]['attri']; ?>%</b></td>
         </tr><tr>
         <?php 

@@ -1,4 +1,4 @@
-<h1><img class="unit u29" src="img/x.gif" alt="Jefe Galo" title="Jefe Galo" /> Jefe Galo <span class="tribe">(Galos)</span></h1>
+<h1><img class="unit u29" src="img/x.gif" alt="Cacique" title="Cacique" /> Cacique <span class="tribe">(Galos)</span></h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
 <thead><tr>
@@ -39,9 +39,9 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u29" src="img/x.gif" alt="Jefe Galo" title="Jefe Galo" /><div id="t_desc">Cada tribu tiene un guerrero veterano y experimentado cuya presencia y discursos son capaces de convencer a la población de aldeas enemigas de unirse a su tribu.
+<img id="big_unit" class="big_u29" src="img/x.gif" alt="Cacique" title="Cacique" /><div id="t_desc">Cada tribu tiene un guerrero veterano y experimentado cuya presencia y discursos son capaces de convencer a la población de aldeas enemigas de unirse a su tribu.
 <br /><br />
-Cuanto más habla el Jefe frente a las murallas de una aldea enemiga, más baja su lealtad hasta que se une a la tribu del jefe.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=16">Plaza de reuniones</a> Nivel 10, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 20</div><map id="nav" name="nav">
+Cuanto más habla el Cacique frente a las murallas de una aldea enemiga, más baja su lealtad hasta que se une a la tribu del Cacique.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=16">Plaza de reuniones</a> Nivel 10, <a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 20</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=28" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
  <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
 
