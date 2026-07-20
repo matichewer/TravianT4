@@ -4217,27 +4217,35 @@ class Automation {
             $newsilver = $data['newsilver'];
             $btype = $data['btype'];
             if($data['finish'] != 1) {
+                // uid arranca en 0 y solo cambia cuando alguien puja. Sin ofertas
+                // el item vuelve al vendedor: al publicarlo se borro de su
+                // inventario, asi que entregarselo al usuario 0 lo haria
+                // desaparecer, y pagarle al vendedor creaba plata de la nada.
+                $noBids = ((int)$biderID === 0);
+                $receiverID = $noBids ? $ownerID : $biderID;
 				if($btype == 7 || $btype == 8 || $btype == 9) {
-					$id = $database->getHeroItemID($biderID, $btype);
+					$id = $database->getHeroItemID($receiverID, $btype);
 					if($id != 0) {
 						$database->editHeroNum2($id, $data['num'], 1);
 					} else {
-						$database->addHeroItem($biderID, $btype, 0, $data['num']);
+						$database->addHeroItem($receiverID, $btype, 0, $data['num']);
 					}
 				}
                 else if($btype == 10 || $btype == 11 || $btype == 14 || $btype == 15) {
-                    if($database->checkHeroItem($biderID, $btype)) {
-						$id = $database->getHeroItemID($biderID, $btype);
+                    if($database->checkHeroItem($receiverID, $btype)) {
+						$id = $database->getHeroItemID($receiverID, $btype);
                         $database->editHeroNum($id, $data['num'], 1);
                     } else {
-                        $database->addHeroItem($biderID, $data['btype'], $data['type'], $data['num']);
+                        $database->addHeroItem($receiverID, $data['btype'], $data['type'], $data['num']);
                     }
                 } else {
-                    $database->addHeroItem($biderID, $data['btype'], $data['type'], $data['num']);
+                    $database->addHeroItem($receiverID, $data['btype'], $data['type'], $data['num']);
                 }
-                $silver2 = $newsilver - $silver;
-                $database->setSilver($ownerID, $silver, 1);
-                $database->setSilver($biderID, $silver2, 1);
+                if(!$noBids) {
+                    $silver2 = $newsilver - $silver;
+                    $database->setSilver($ownerID, $silver, 1);
+                    $database->setSilver($biderID, $silver2, 1);
+                }
             }
             $q = "UPDATE ".TB_PREFIX."auction set finish=1 where id = ".$data['id'];
             $database->query($q);
