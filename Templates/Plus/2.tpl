@@ -1,7 +1,17 @@
 ﻿<?php
 include("Templates/Plus/pmenu.tpl");
 ?>
-<h4 class="round space">Ventajas <span class="plus_g"></span></h4>
+<div class="plusProductsIntro">
+	<strong>Elige el beneficio que necesitas</strong>
+	<p>La Cuenta Plus, las funciones pagadas con Oro y el Club de Oro son productos independientes. Activar uno no activa los demás.</p>
+	<p class="plusProductsLegend"><b>Oro</b> es la moneda del juego; puedes usarla para activar cualquiera de estos productos.</p>
+</div>
+
+<h4 class="round space">Cuenta <font color="#71D000">Plus</font> <span class="plus_g"></span></h4>
+<div class="plusFeatureIntro">
+	<span class="plusFeatureTag">Duración limitada</span>
+	Funciones de comodidad disponibles mientras tu Cuenta Plus esté activa.
+</div>
 <table id="plus_features" class="features transparent" cellpadding="1" cellspacing="1">
 	<tbody>
 
@@ -165,7 +175,12 @@ Esta función está disponible para todos y ya NO forma parte de la cuenta Plus<
 </tr>
 	</tbody>
 </table>
-<h4 class="round spacer">Funciones de Travian <font color="#71D000">Gold</font></h4>
+<h4 class="round spacer">Funciones pagadas con <font color="#71D000">Oro</font></h4>
+<div class="plusFeatureIntro">
+	<span class="plusFeatureTag">Duración limitada</span>
+	<span class="plusFeatureTag">Pago por uso</span>
+	Bonificaciones temporales y acciones individuales que puedes comprar con Oro.
+</div>
 <table id="gold_features" class="features transparent" cellpadding="1" cellspacing="1">
 	<tbody>
 
@@ -275,6 +290,11 @@ El mercader NPC intercambiará la cantidad de recursos que desees en una aldea p
 	</tbody>
 </table>
 <h4 class="round spacer">Club de <font color="#71D000">Oro</font></h4>
+<div class="plusFeatureIntro">
+	<span class="plusFeatureTag plusFeatureTagPermanent">Activo toda la partida</span>
+	<span class="plusFeatureTag">Pago único: 100 de Oro</span>
+	Herramientas especiales que se desbloquean con un único pago y permanecen activas durante toda la partida.
+</div>
 <table id="goldclub_features" class="features transparent" cellpadding="1" cellspacing="1">
 	<tbody>
 
