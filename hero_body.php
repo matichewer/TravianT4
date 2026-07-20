@@ -53,6 +53,22 @@ $gethelmet = $herodetail['helmet'];
 $gethorse = $herodetail['horse'];
 $getleftHand = $herodetail['leftHand'];
 $getrightHand = $herodetail['rightHand'];
+$heroInventory = $database->getHeroInventory($uid);
+$getbody = isset($heroInventory['body']) ? (int)$heroInventory['body'] : 0;
+$armor = false;
+if($getbody!=0){
+	$bodyItem = $database->getItemData($getbody);
+	$armorType = isset($bodyItem['type']) ? (int)$bodyItem['type'] : 0;
+	if($armorType>=82 && $armorType<=84){
+		$armor = 0;
+	}elseif($armorType>=85 && $armorType<=87){
+		$armor = 1;
+	}elseif($armorType>=88 && $armorType<=90){
+		$armor = 2;
+	}elseif($armorType>=91 && $armorType<=93){
+		$armor = 3;
+	}
+}
 
 // HERO FACE:
 $face0 = imagecreatefrompng('img/hero/head/'.$fsize.'/face0.png');
@@ -155,6 +171,11 @@ if($getfoot!=0){
 if($gethorse!=0){
 	$horse = imagecreatefrompng('img/hero/body/'.$size.'/horse0.png'); 
 }
+if($armor!==false && file_exists('img/hero/body/'.$size.'/armor'.$armor.'.png')){
+	$armor = imagecreatefrompng('img/hero/body/'.$size.'/armor'.$armor.'.png');
+}else{
+	$armor = false;
+}
 
 
 
@@ -169,7 +190,10 @@ $database->imagecopymerge_alpha($body, $hair, $w, $h, 0, 0, imagesx($hair), imag
 $database->imagecopymerge_alpha($body, $mouth, $w, $h, 0, 0, imagesx($mouth), imagesy($mouth),100);
 $database->imagecopymerge_alpha($body, $nose, $w, $h, 0, 0, imagesx($nose), imagesy($nose),100);
 if($getbeard!=5){
-$database->imagecopymerge_alpha($body, $beard, $w, $h, 0, 0, imagesx($beard), imagesy($beard),100);
+	$database->imagecopymerge_alpha($body, $beard, $w, $h, 0, 0, imagesx($beard), imagesy($beard),100);
+}
+if($armor!==false){
+	$database->imagecopymerge_alpha($body, $armor, 0, 0, 0, 0, imagesx($armor), imagesy($armor),100);
 }
 
 

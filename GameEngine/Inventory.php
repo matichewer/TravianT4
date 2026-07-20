@@ -1,6 +1,33 @@
 <?php
 include "Data/hero_full.php";
 $hero_levels = $GLOBALS["hero_levels"];
+
+if(!function_exists('getHeroArmorBonuses')){
+	function getHeroArmorBonuses($type){
+		$itemPower = array(
+			88 => 500,
+			89 => 1000,
+			90 => 1500,
+			91 => 250,
+			92 => 500,
+			93 => 750
+		);
+		$autoRegen = array(
+			82 => 20,
+			83 => 30,
+			84 => 40,
+			85 => 10,
+			86 => 15,
+			87 => 20
+		);
+
+		return array(
+			'itempower' => isset($itemPower[$type]) ? $itemPower[$type] : 0,
+			'autoregen' => isset($autoRegen[$type]) ? $autoRegen[$type] : 0
+		);
+	}
+}
+
 if($_POST && $_POST['a']=='inventory'){
 	$data = $_POST;
 	$uid = $session->uid;
@@ -20,14 +47,28 @@ if($_POST && $_POST['a']=='inventory'){
 		}
 	}
 
-	/*elseif($data['btype']==2){
-		//$database->editProcItem($data['id'], 1);
-		if($hero['helmet']!=0){
-			
-		}else{
-			
+	elseif($data['btype']==2 && (int)$itemData['btype']==2 && (int)$itemData['uid']==$uid){
+		$inventory = $database->getHeroInventory($uid);
+		$currentBodyId = (int)$inventory['body'];
+
+		if($currentBodyId!=(int)$data['id']){
+			$oldBonuses = array('itempower' => 0, 'autoregen' => 0);
+			if($currentBodyId!=0){
+				$currentBody = $database->getItemData($currentBodyId);
+				$oldBonuses = getHeroArmorBonuses((int)$currentBody['type']);
+				$database->editProcItem($currentBodyId, 0);
+			}
+
+			$newBonuses = getHeroArmorBonuses((int)$itemData['type']);
+			$itemPower = max(0, (int)$heroData['itempower'] - $oldBonuses['itempower']) + $newBonuses['itempower'];
+			$autoRegen = max(0, (int)$heroData['autoregen'] - $oldBonuses['autoregen']) + $newBonuses['autoregen'];
+
+			$database->editProcItem($data['id'], 1);
+			$database->setHeroInventory($uid, 'body', $data['id']);
+			$database->modifyHero2('itempower', $itemPower, $uid, 0);
+			$database->modifyHero2('autoregen', $autoRegen, $uid, 0);
 		}
-	}*/
+	}
 
 	elseif($data['btype']==3){
 		$database->editProcItem($data['id'], 1);

@@ -159,9 +159,20 @@ if(isset($_GET['inventory'])){
 		$database->modifyHeroFace($uid, "rightHand", 0);
 		
 	}elseif(isset($_GET['body'])){
-		$database->setHeroInventory($uid, "body", 0);
-		$database->editProcItem($_GET['body'], 0);
-		$database->modifyHeroFace($uid, "body", 0);
+		$inventory = $database->getHeroInventory($uid);
+		$currentBodyId = (int)$inventory['body'];
+		if($currentBodyId!=0){
+			$itemData = $database->getItemData($currentBodyId);
+			$bonuses = getHeroArmorBonuses((int)$itemData['type']);
+			$heroData = $database->getHeroData($uid);
+			$itemPower = max(0, (int)$heroData['itempower'] - $bonuses['itempower']);
+			$autoRegen = max(0, (int)$heroData['autoregen'] - $bonuses['autoregen']);
+
+			$database->setHeroInventory($uid, "body", 0);
+			$database->editProcItem($currentBodyId, 0);
+			$database->modifyHero2('itempower', $itemPower, $uid, 0);
+			$database->modifyHero2('autoregen', $autoRegen, $uid, 0);
+		}
 		
 	}elseif(isset($_GET['horse'])){
 		$itemData = $database->getHeroInventory($uid);
@@ -430,6 +441,7 @@ if($inv <= 12){
 		b15: '<table id="heroInventoryDataDialog" class="transparent" cellspacing="0" cellpadding="0"><tbody><tr class="rowBeforeUse"><th>Puntos de cultura actuales:</th><td><?php echo $database->getUserField($session->uid, 'cp',0); ?></td></tr><tr class="rowUseValue"><th>Puntos de cultura obtenidos al usar la obra de arte:</th><td class="displayUseValue"><?php echo $database->getVSumField($session->uid, 'cp'); ?></td></tr><tr class="rowAfterUse"><th>Puntos de cultura después de usar la obra de arte:</th><td class="displayAfterUse"><?php echo ($database->getUserField($session->uid, 'cp',0)+$database->getVSumField($session->uid, 'cp')); ?></td></tr></tbody></table>',
 		
 		alreadyOpen: false,
+		lastTouchActivation: 0,
 		textSingle: '¿Realmente quieres usar este objeto?',
 		textMulti: 'Cantidad de objetos que se usarán: &lt;input class=\"text\" id=\"amount\" type=\"text\" value=\"\" /&gt;'.unescapeHtml(),
 		initialize: function() {
@@ -444,20 +456,72 @@ $id = $row2["id"];$num = $row2["num"];$btype = $row2["btype"];$type = $row2["typ
 		if($hero['dead']==0){
 			if($num==1){
 ?>
-$('item_<?php echo $id; ?>').addEvent('click', function() { $this.showItem(<?php echo $id; ?>,<?php echo $num; ?>,<?php echo $btype; ?>,<?php echo $type; ?>);});															   
+	$this.bindItem($('item_<?php echo $id; ?>'), <?php echo $id; ?>, <?php echo $num; ?>, <?php echo $btype; ?>, <?php echo $type; ?>, true);
 <?php		}else{ ?>
-$('item_<?php echo $id; ?>').addEvent('click', function() { $this.sellItem(<?php echo $id; ?>,<?php echo $num; ?>,<?php echo $btype; ?>,<?php echo $type; ?>);});
+	$this.bindItem($('item_<?php echo $id; ?>'), <?php echo $id; ?>, <?php echo $num; ?>, <?php echo $btype; ?>, <?php echo $type; ?>, false);
 <?php
 			}
 		}
 	}else{
 ?>
-$('item_<?php echo $id; ?>').addEvent('click', function() { $this.sellItem(<?php echo $id; ?>,<?php echo $num; ?>,<?php echo $btype; ?>,<?php echo $type; ?>);});
+$this.bindItem($('item_<?php echo $id; ?>'), <?php echo $id; ?>, <?php echo $num; ?>, <?php echo $btype; ?>, <?php echo $type; ?>, false);
 <?php
 	}
 }
 ?>
-							},
+								},
+		bindItem: function(element, id, amount, btype, type, useImmediately){
+			var $this = this;
+			var touchStart = null;
+			var touchMoved = false;
+			var activate = function(){
+				if(useImmediately){
+					$this.showItem(id, amount, btype, type);
+				}else{
+					$this.sellItem(id, amount, btype, type);
+				}
+			};
+
+			if(!element){
+				return;
+			}
+
+			element.set({role: 'button', tabindex: '0'});
+			element.addEvent('click', function(event){
+				if((new Date()).getTime() - $this.lastTouchActivation < 700){
+					if(event){ event.stop(); }
+					return;
+				}
+				activate();
+			});
+			element.addEvent('touchstart', function(event){
+				var originalEvent = event.event || event;
+				var touch = originalEvent.touches && originalEvent.touches[0];
+				touchStart = touch ? {x: touch.pageX, y: touch.pageY} : null;
+				touchMoved = false;
+			});
+			element.addEvent('touchmove', function(event){
+				var originalEvent = event.event || event;
+				var touch = originalEvent.touches && originalEvent.touches[0];
+				if(touchStart && touch && (Math.abs(touch.pageX - touchStart.x) > 10 || Math.abs(touch.pageY - touchStart.y) > 10)){
+					touchMoved = true;
+				}
+			});
+			element.addEvent('touchend', function(event){
+				if(touchMoved){
+					return;
+				}
+				$this.lastTouchActivation = (new Date()).getTime();
+				if(event){ event.stop(); }
+				activate();
+			});
+			element.addEvent('keydown', function(event){
+				if(event.code == 13 || event.code == 32){
+					event.stop();
+					activate();
+				}
+			});
+		},
 		showItem: function (id, amount, btype, type){
 			var $this = this;
 			$('HeroInventory').id.value = id;

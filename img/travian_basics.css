@@ -346,3 +346,7 @@ details.buildingLevelHelp summary:focus {
 	color: #a11818;
 	font-weight: bold;
 }
+div.hero_inventory #itemsToSale .item[role="button"] {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: rgba(153, 192, 26, 0.25);
+}
