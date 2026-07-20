@@ -11,8 +11,11 @@ if(!in_array($village->wid, $session->villages)) {
 $culturePoints = (int)$database->getUserField($cultureOwnerId, 'cp', 0);
 $cultureStatus = travianCultureStatus($culturePoints, count($cultureVillageIds), CP);
 $cultureReadyClass = ($cultureStatus['availableVillageSlots'] > 0) ? ' cultureProgressReady' : '';
+$cultureProtectionClass = (isset($session->userinfo['protect']) && (int)$session->userinfo['protect'] > time())
+	? ' cultureProgressWithProtection'
+	: '';
 ?>
-<div id="cultureProgress" class="cultureProgress<?php echo $cultureReadyClass; ?>">
+<div id="cultureProgress" class="cultureProgress<?php echo $cultureReadyClass . $cultureProtectionClass; ?>">
 	<div class="cultureProgressHeader">
 		<span class="cultureProgressTitleWrap">
 			<span class="cultureProgressTitle" aria-describedby="cultureProgressTooltip">Puntos de cultura</span>

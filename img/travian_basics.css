@@ -154,6 +154,11 @@ details.buildingLevelHelp summary:focus {
 	border-color: #5f4a19;
 }
 
+/* Keep the culture panel below the beginner-protection sign while it is shown. */
+#cultureProgress.cultureProgressWithProtection {
+	top: 510px;
+}
+
 /* Lift the whole stacking context while its temporary help is active. */
 #cultureProgress:hover {
 	z-index: 2000;
