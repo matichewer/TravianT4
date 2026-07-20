@@ -1,4 +1,4 @@
-﻿<?php if($session->goldclub == 1 && count($database->getProfileVillages($session->uid)) > 1) { ?>
+<?php if($session->goldclub == 1 && count($database->getProfileVillages($session->uid)) > 1) { ?>
 <h1 class="titleInHeader">Mercado <span class="level"> Nivel <?php echo $village->resarray['f'.$id]; ?></span></h1>
 <div id="build" class="gid17">
 <div class="build_desc">

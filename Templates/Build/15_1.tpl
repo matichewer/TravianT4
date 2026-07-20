@@ -1,4 +1,4 @@
-﻿<div class="clear"></div>
+<div class="clear"></div>
 <?php
 
 if($_REQUEST["cancel"] == "1") {
