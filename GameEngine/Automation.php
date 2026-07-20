@@ -204,6 +204,7 @@ class Automation {
         $this->updateStore();
         $this->TradeRoute();
         $this->regenerateOasisTroops();
+        $this->weeklyMedals();
     }
 
     private function getfieldDistance($coorx1, $coory1, $coorx2, $coory2) {
@@ -4739,6 +4740,337 @@ class Automation {
         foreach ($array as $oasis) {
             $database->populateOasisUnitsLow2($oasis['wref']);
             $database->updateOasis2($oasis['wref']);
+        }
+    }
+
+    private function weeklyMedals() {
+        if(!file_exists("GameEngine/Prevention/medals.txt") or time() - filemtime("GameEngine/Prevention/medals.txt") > 604800) {
+            $ourFileHandle = @fopen("GameEngine/Prevention/medals.txt", 'w');
+            @fclose($ourFileHandle);
+            $this->giveOutMedals();
+        }
+    }
+
+    /**
+     * Categories: 1 attackers top10, 2 defenders top10, 3 climbers top10 (ally), 4 robbers top10,
+     * 5 bonus att+def top10, 6/12 att top3/top10 streak, 7/13 def top3/top10 streak,
+     * 8/14 pop climbers top3/top10 streak, 9/15 robbers top3/top10 streak, 10 rank climbers top10,
+     * 11/16 rank climbers top3/top10 streak.
+     */
+    public function giveOutMedals() {
+        $q = "SELECT * FROM ".TB_PREFIX."medal order by week DESC LIMIT 0, 1";
+        $result = mysql_query($q);
+        if(mysql_num_rows($result)) {
+            $row = mysql_fetch_assoc($result);
+            $week = ($row['week'] + 1);
+        } else {
+            $week = '1';
+        }
+
+        $q = "SELECT * FROM ".TB_PREFIX."allimedal order by week DESC LIMIT 0, 1";
+        $result = mysql_query($q);
+        if(mysql_num_rows($result)) {
+            $row = mysql_fetch_assoc($result);
+            $allyweek = ($row['week'] + 1);
+        } else {
+            $allyweek = '1';
+        }
+
+        //Aanvallers v/d Week
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY ap DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "t2_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '1', '" . ($i) . "', '" . $week . "', '" . $row['ap'] . "', '" . $img . "')");
+        }
+
+        //Verdediger v/d Week
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY dp DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "t3_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '2', '" . ($i) . "', '" . $week . "', '" . $row['dp'] . "', '" . $img . "')");
+        }
+
+        //Rank climbers of the week
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY clp DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "t1_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '10', '" . ($i) . "', '" . $week . "', '" . $row['clp'] . "', '" . $img . "')");
+        }
+
+        //Overvallers v/d Week
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 AND RR >= 0 ORDER BY RR DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "t4_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '4', '" . ($i) . "', '" . $week . "', '" . $row['RR'] . "', '" . $img . "')");
+        }
+
+        //deel de bonus voor aanval+defence top 10 uit
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY ap DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY dp DESC Limit 10");
+            while($row2 = mysql_fetch_array($result2)) {
+                if($row['id'] == $row2['id']) {
+                    $result3 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 5");
+                    $row3 = mysql_fetch_array($result3);
+                    if($row3[0] <= '2') {
+                        $img = "t22" . $row3[0] . "_1";
+                        switch ($row3[0]) {
+                            case "0":
+                                $tekst = "";
+                                break;
+                            case "1":
+                                $tekst = "twice ";
+                                break;
+                            case "2":
+                                $tekst = "three times ";
+                                break;
+                        }
+                        mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '5', '0', '" . $week . "', '" . $tekst . "', '" . $img . "')");
+                    }
+                }
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 3 aanvallers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY ap DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 1 AND plaats<=3");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t120_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '6', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t121_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '6', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t122_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '6', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 10 aanvallers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY ap DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 1 AND plaats<=10");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t130_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '12', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t131_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '12', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t132_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '12', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 3 verdedigers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY dp DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 2 AND plaats<=3");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t140_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '7', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t141_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '7', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t142_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '7', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 10 verdedigers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY dp DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 2 AND plaats<=10");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t150_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '13', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t151_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '13', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t152_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '13', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 3 klimmers (pop)
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY Rc DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 3 AND plaats<=3");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t100_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '8', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t101_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '8', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t102_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '8', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 10 klimmers (pop)
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY Rc DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 3 AND plaats<=10");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t110_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '14', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t111_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '14', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t112_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '14', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 3 rank climbers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY clp DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 10 AND plaats<=3");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t200_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '11', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t201_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '11', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t202_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '11', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 10 rank climbers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY clp DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 10 AND plaats<=10");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t210_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '16', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t211_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '16', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t212_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '16', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 3 overvallers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 AND RR >= 0 ORDER BY RR DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 4 AND plaats<=3");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t160_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '9', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t161_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '9', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t162_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '9', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //je staat voor 3e / 5e / 10e keer in de top 10 overvallers
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 AND RR >= 0 ORDER BY RR DESC Limit 10");
+        while($row = mysql_fetch_array($result)) {
+            $result1 = mysql_query("SELECT count(*) FROM ".TB_PREFIX."medal WHERE userid='" . $row['id'] . "' AND categorie = 4 AND plaats<=10");
+            $row1 = mysql_fetch_array($result1);
+            if($row1[0] == '3') {
+                $img = "t170_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '15', '0', '" . $week . "', 'Three', '" . $img . "')");
+            }
+            if($row1[0] == '5') {
+                $img = "t171_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '15', '0', '" . $week . "', 'Five', '" . $img . "')");
+            }
+            if($row1[0] == '10') {
+                $img = "t172_1";
+                mysql_query("insert into " . TB_PREFIX . "medal(userid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '15', '0', '" . $week . "', 'Ten', '" . $img . "')");
+            }
+        }
+
+        //Zet alle waardens weer op 0
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id > 3 ORDER BY id+0 DESC");
+        while($row = mysql_fetch_array($result)) {
+            mysql_query("UPDATE " . TB_PREFIX . "users SET ap=0, dp=0, Rc=0, clp=0, RR=0 WHERE id = " . $row['id']);
+        }
+
+        //Start alliance Medals
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY ap DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "a2_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "allimedal(allyid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '1', '" . ($i) . "', '" . $allyweek . "', '" . $row['ap'] . "', '" . $img . "')");
+        }
+
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY dp DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "a3_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "allimedal(allyid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '2', '" . ($i) . "', '" . $allyweek . "', '" . $row['dp'] . "', '" . $img . "')");
+        }
+
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE RR >= 0 ORDER BY RR DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "a4_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "allimedal(allyid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '4', '" . ($i) . "', '" . $allyweek . "', '" . $row['RR'] . "', '" . $img . "')");
+        }
+
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY clp DESC Limit 10");
+        $i = 0;
+        while($row = mysql_fetch_array($result)) {
+            $i++;
+            $img = "a1_" . ($i) . "";
+            mysql_query("insert into " . TB_PREFIX . "allimedal(allyid, categorie, plaats, week, points, img) values('" . $row['id'] . "', '3', '" . ($i) . "', '" . $allyweek . "', '" . $row['clp'] . "', '" . $img . "')");
+        }
+
+        $result = mysql_query("SELECT * FROM ".TB_PREFIX."alidata ORDER BY id+0 DESC");
+        while($row = mysql_fetch_array($result)) {
+            mysql_query("UPDATE " . TB_PREFIX . "alidata SET ap=0, dp=0, RR=0, clp=0 WHERE id = " . $row['id']);
         }
     }
 

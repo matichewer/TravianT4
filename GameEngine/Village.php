@@ -159,7 +159,6 @@ class Village {
 		if($session->bonus1 == 1) {
 			$wood *= 1.25;
 		}
-		$wood += $wood*$this->ocounter[0]*0.25;
 		$wood *= SPEED;
 		return round($wood);
 	}
@@ -186,7 +185,6 @@ class Village {
 		if($session->bonus2 == 1) {
 			$clay *= 1.25;
 		}
-		$clay += $clay*$this->ocounter[1]*0.25;
 		$clay *= SPEED;
 		return round($clay);
 	}
@@ -213,7 +211,6 @@ class Village {
 		if($session->bonus3 == 1) {
 			$iron *= 1.25;
 		}
-		$iron += $iron*$this->ocounter[2]*0.25;
 		$iron *= SPEED;
 		return round($iron);
 	}
@@ -243,7 +240,6 @@ class Village {
 		if($session->bonus4 == 1) {
 			$crop *= 1.25;
 		}
-		$crop += $crop*$this->ocounter[3]*0.25;
 		$crop *= SPEED;
 		return round($crop);
 	}
