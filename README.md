@@ -10,10 +10,6 @@ Servidor privado y clon no oficial de **Travian T4**, el juego de estrategia mul
 - Versión indicada por el instalador: `BETA 4`.
 - Runtime incluido: PHP `7.4` con Apache y MariaDB `10.6`.
 
-El repositorio no publica por el momento una versión semántica ni releases etiquetados.
-
-> [!WARNING]
-> Es una aplicación legacy. PHP 7.4 ya no recibe soporte de seguridad y el código no debe considerarse listo para producción sin una revisión de seguridad. No se recomienda exponer esta instalación directamente a Internet.
 
 ## Requisitos
 
