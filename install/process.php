@@ -91,8 +91,11 @@ class Process {
         fwrite($fh, $text);
 
         if (file_exists("installconfig/constant.php") && file_exists("installconfig/connection.php")) {
+            // constant.php arranca con un "SELECT * FROM config", asi que no se
+            // puede incluir hasta que la tabla exista y tenga la fila: en una
+            // base vacia el query devuelve false, mysqli_fetch_array() avisa por
+            // pantalla y esa salida rompe el header() del final.
             include_once ("installconfig/connection.php");
-            include_once ("installconfig/constant.php");
             include_once 'include/database.php';
             $str = file_get_contents("data/config.sql");
             $str = preg_replace("'%PREFIX%'", TB_PREFIX, $str);
@@ -105,6 +108,9 @@ class Process {
                 $database->mysql_exec_batch($str);
             }
             $database->query("INSERT into " . $_POST['prefix'] . "config values ('" . $_POST['servername'] . "', '" . $_POST['lang'] . "', '" . $_POST['speed'] . "', 'gpack/travian_Travian_4.0_41/', '" . $_POST['incspeed'] . "', '" . $_POST['evaspeed'] . "', '" . $_POST['healspeed'] . "', '" . $_POST['advspeed'] . "', '" . $_POST['demolish'] . "', '" . $_POST['quest'] . "', '" . $_POST['beginner'] . "', '" . $_POST['auction_time'] . "', '" . $_POST['ww'] . "', '" . $_POST['activate'] . "', '" . $_POST['plus_time'] . "', '" . $_POST['plus_production'] . "', '" . $_POST['log_build'] . "', '" . $_POST['log_tech'] . "', '" . $_POST['log_login'] . "', '" . $_POST['log_gold_fin'] . "', '" . $_POST['log_admin'] . "', '" . $_POST['log_war'] . "', '" . $_POST['log_market'] . "', '" . $_POST['log_illegal'] . "', '" . $_POST['box1'] . "', '" . $_POST['box2'] . "', '" . $_POST['box3'] . "', '" . $_POST['home1'] . "', '" . $_POST['home2'] . "', '" . $_POST['home3'] . "', '" . $_POST['aemail'] . "', '" . $_POST['homepage'] . "', '" . $_POST['paypal_gold'] . "', '" . (int)$_POST['medal_top'] . "', '" . (int)$_POST['medal_ally_top'] . "')");
+
+            // Ahora si: la tabla config existe y tiene su fila.
+            include_once ("installconfig/constant.php");
 
             header("Location: index.php?s=2");
         } else {
