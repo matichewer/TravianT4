@@ -232,8 +232,8 @@
 					$totalap = $value['Aap'];
 					$value['players'] = count($memberlist);
 					$value['totalap'] = $totalap;
-					if($value['avg'] > 0) {
-						$value['avg'] = round($totalap / count($memberlist));
+					if(!isset($value['avg'])) {
+						$value['avg'] = @round($totalap / count($memberlist));
 					} else {
 						$value['avg'] = 0;
 					}
@@ -257,8 +257,8 @@
 					$totaldp = $value['Adp'];
 					$value['players'] = count($memberlist);
 					$value['totaldp'] = $totaldp;
-					if($value['avg'] > 0) {
-						$value['avg'] = round($totaldp / count($memberlist));
+					if(!isset($value['avg'])) {
+						$value['avg'] = @round($totaldp / count($memberlist));
 					} else {
 						$value['avg'] = 0;
 					}
