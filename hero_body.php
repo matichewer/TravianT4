@@ -1,4 +1,6 @@
-<?php 
+<?php
+// Keep GD/libpng warnings and accidental include output out of the binary PNG response.
+ob_start();
 include("GameEngine/Database.php");
 if(isset($_GET['uid'])){
     $uid =  $_GET['uid'];
@@ -213,8 +215,9 @@ if($gethelmet!=0){
 }
 
 
-// OUTPUT IMAGE: 
-header("Content-Type: image/png"); 
+// OUTPUT IMAGE:
+ob_end_clean();
+header("Content-Type: image/png");
 imagesavealpha($body, true); 
 imagepng($body, NULL); 
 ?>

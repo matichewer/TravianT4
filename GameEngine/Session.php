@@ -39,6 +39,7 @@ ob_start(); //this is enough
         	var $villages = array();
 
         	function __construct() {
+			global $database;
         		$this->time = time();
         		session_start();
 
