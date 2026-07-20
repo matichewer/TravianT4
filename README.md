@@ -1,4 +1,4 @@
-# Travian T4 para PHP 7
+# Travian T4 en español
 
 Servidor privado y clon no oficial de **Travian T4**, el juego de estrategia multijugador para navegador. El proyecto está basado en TravianX/ZravianX y contiene cambios propios en la interfaz, la jugabilidad, la estabilidad y la traducción al español; no es una copia exacta del juego oficial.
 
