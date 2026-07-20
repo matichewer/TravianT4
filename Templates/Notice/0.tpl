@@ -8,7 +8,6 @@ if(isset($_GET['aid']) && $_GET['aid']==$session->alliance){
     $topic = $message->readingNotice['topic'];
     $time = $message->readingNotice['time'];
 }
-echo $dataarray[94];
 $trap = $faild = false;
 if($dataarray[154] != '?'){ //if attack didn't fail
 $trapstart = 159;
