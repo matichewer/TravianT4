@@ -41,7 +41,7 @@ $availres = $wood+$clay+$iron+$crop;
 if($availres >= $totalres){ $style = "npc"; } else { $style = "npc_inactive"; $disable = "disabled=\"disabled\""; }
 if($session->plus) {
 if($session->userinfo['gold'] >= 3 && $building->getTypeLevel(17) >= 1) {
-echo "&nbsp;&nbsp;<button ".$disable." type=\"button\" value=\"npc\" class=\"icon\" onclick=\"window.location.href = 'build.php?gid=17&t=3&r1=".$uprequire['wood']."&r2=".$uprequire['clay']."&r3=".$uprequire['iron']."&r4=".$uprequire['crop']."'; return false;\">&nbsp;<img src=\"img/x.gif\" style=\"margin-top:6px;\" class=\"".$style."\" alt=\"NPC\"></button>";
+echo "&nbsp;&nbsp;<button ".$disable." type=\"button\" value=\"npc\" class=\"icon\" title=\"Mercader NPC: cambia tus recursos sobrantes por los que faltan para esta mejora, a cambio de oro\" onclick=\"window.location.href = 'build.php?gid=17&t=3&r1=".$uprequire['wood']."&r2=".$uprequire['clay']."&r3=".$uprequire['iron']."&r4=".$uprequire['crop']."'; return false;\">&nbsp;<img src=\"img/x.gif\" style=\"margin-top:6px;\" class=\"".$style."\" alt=\"NPC\" title=\"Mercader NPC: cambia tus recursos sobrantes por los que faltan para esta mejora, a cambio de oro\"></button>";
 }
 
 }

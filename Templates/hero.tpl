@@ -52,7 +52,7 @@ ob_start();
 
 		<div class="clear"></div>
 
-  <div class="attribute defBonus tooltip" title="La bonificación de defensa otorga un bono extra al ser atacado <?php echo ($hero['defBonus']/5); ?>%</font>">
+  <div class="attribute defBonus tooltip" title="La bonificación de defensa otorga un bono extra al ser atacado.<br><font color='#5dcbfb'>Bonificación de defensa: <?php echo ($hero['defBonus']/5); ?>%</font>">
 			<div class="element attribName">Bonificación de defensa</div>
 			<div class="element current power"><span class="value"><?php echo ($hero['defBonus']/5); ?></span>%</div>
 			<div class="element progress">
@@ -132,7 +132,7 @@ if($hero['r3']!=0){echo $hero['r3']*10*SPEED;}else if($hero['r4']!=0){echo $hero
   </div>
 	<div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">
 
-<div class="attribute health tooltip" title="Regeneración de tu héroe: <?php echo $hero['autoregen']*INCREASE_SPEED; ?>% por día </font>">
+<div class="attribute health tooltip" title="Regeneración de tu héroe: <?php echo $hero['autoregen']*INCREASE_SPEED; ?>% por día">
 <?php if($hero['dead']==0){ ?>
 			<div class="element attribName">Salud</div>
 			<div class="element current power"><span class="value"><?php echo round($hero['health']); ?></span>%</div>
@@ -229,7 +229,7 @@ if(!$checkT){
 			<div class="clear"></div>
 		</div>
 
-<div class="attribute level tooltip" title="<?php echo $tp; ?> Cuanto más alto el nivel del héroe, más puntos obtienes.</font>">
+<div class="attribute level tooltip" title="Cuanto más alto el nivel del héroe, más puntos obtienes.<br><font color='#5dcbfb'>Nivel del héroe: <?php echo $hero['level']; ?></font>">
 			<div class="element attribName">Nivel del héroe</div>
 			<div class="element current power"><?php echo $hero['level']; ?></div>
 			<div class="element progress">
@@ -239,7 +239,7 @@ if(!$checkT){
 			</div>
 			<div class="clear"></div>
 </div>
-<div class="attribute speed tooltip" title="La velocidad de tu héroe determina cuántas casillas recorre por hora <?php echo $hero['speed']; ?> </font>">
+<div class="attribute speed tooltip" title="La velocidad de tu héroe determina cuántas casillas recorre por hora.<br><font color='#5dcbfb'>Velocidad: <?php echo $hero['speed']*INCREASE_SPEED; ?> casillas por hora</font>">
 	<div class="element attribName">Velocidad</div>
     <div class="element power">
     	<span class="currect"><?php echo $hero['speed']*INCREASE_SPEED; ?></span> Casillas por hora
