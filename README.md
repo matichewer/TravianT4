@@ -33,7 +33,6 @@ git clone https://github.com/matichewer/TravianT4-Spanish.git
 cd TravianT4-Spanish
 ```
 
-Si el repositorio ya está descargado, solo hay que entrar en su directorio.
 
 ### 2. Crear el archivo de entorno
 
