@@ -6,6 +6,12 @@
         <img class="building big white g35" src="img/x.gif" alt="Cervecería" title="Cervecería"></a>
        En la cervecería se elaboran sabrosas bebidas. Estas bebidas hacen a tus soldados más valientes y fuertes al atacar, pero por desgracia el poder de persuasión de los caudillos disminuye y las catapultas solo hacen impactos aleatorios. Solo puede construirse en la capital, pero afecta a todo el imperio.</div>
 
+<?php
+$buildingHelpType = 'brewery';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+?>
+
 	<table cellpadding="1" cellspacing="1" id="build_value">
 		<tr>
 			<th>Bono de ataque:</th>

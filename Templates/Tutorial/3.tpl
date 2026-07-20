@@ -40,9 +40,9 @@
 		</div>
 	</div>
 	<div class="col2row-text">
-		After taking care of your resource production, you can start the expansion of your village.
+		Una vez que hayas asegurado tu producción de recursos, puedes empezar a expandir tu aldea.
 		<br /><br />
-		A warehouse and a granary enable you to store more resources. A cranny protects your resources from getting stolen by enemy raiders.
+		Un almacén y un granero te permiten guardar más recursos. Un escondite protege tus recursos de ser robados por saqueadores enemigos.
 	</div>
 	<div class="col3row-button">
 		<span class="orange">3</span><span class="grey"> / 5</span>

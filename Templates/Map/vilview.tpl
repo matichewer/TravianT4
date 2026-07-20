@@ -58,22 +58,17 @@ if($tileDetailsPopup) {
  <?php if(!$basearray['occupied']) { ?>
  <div class="option">
  <?php 
-      $mode = CP; 
-      $total = count($database->getProfileVillages($session->uid)); 
-      $need_cps = ${'cp'.$mode}[$total+1]; 
-      $cps = $database->getUserField($session->uid, 'cp',0);      
-      
-      if($cps >= $need_cps) {
-        $enough_cp = true;
-      } else {
-        $enough_cp = false;
-      }
+      $total = count($session->villages);
+      $need_cps = travianCultureRequiredForVillageCount($total + 1, CP);
+      $cps = (int)$database->getUserField($session->uid, 'cp', 0);
+      $enough_cp = ($need_cps !== null && $cps >= $need_cps);
       
 			$otext = ($basearray['occupied'] == 1)? "Ocupado" : "Desocupado"; 
 			if($village->unitarray['u'.$session->tribe.'0'] >= 3 AND $enough_cp) {
         $test = "<a class=\"a arrow\" href=\"a2b.php?id=".$d."&amp;s=1\">Fundar nueva aldea</a>";
       } elseif($village->unitarray['u'.$session->tribe.'0'] >= 3 AND !$enough_cp) {
-        $test = "<span class=\"a arrow disabled\" title=\"(".$cps."/".$need_cps." puntos de cultura\">Fundar nueva aldea</span>";
+        $cultureTitle = ($need_cps === null) ? "No hay un umbral de cultura configurado para otra aldea" : number_format($cps, 0, ',', '.')."/".number_format($need_cps, 0, ',', '.')." puntos de cultura";
+        $test = "<span class=\"a arrow disabled\" title=\"".$cultureTitle."\">Fundar nueva aldea</span>";
       } else {
         $test = "<span class=\"a arrow disabled\">Fundar nueva aldea</span>";
       }

@@ -6,6 +6,10 @@
         <img class="building big white g27" src="img/x.gif" alt="Tesorería" title="Tesorería"></a>
         Las riquezas de tu imperio se guardan en la tesorería. A partir del nivel 10, cada tesorería tiene espacio para un artefacto. Después de capturar un artefacto, tarda 24 horas en hacer efecto, excepto en servidores rápidos, donde solo tarda 12 horas </div>
         <?php
+        $buildingHelpType = 'treasury';
+        $buildingHelpLevel = $village->resarray['f'.$id];
+        include('build_level_help.tpl');
+
         include("upgrade.tpl");
         include("27_menu.tpl");
         if(isset($_GET['show'])){  include("27_show.tpl");  }else{

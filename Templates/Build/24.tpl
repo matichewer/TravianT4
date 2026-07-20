@@ -10,6 +10,10 @@ En el Ayuntamiento puedes organizar grandes celebraciones. Cada celebración aum
 </div>
 
 <?php
+	$buildingHelpType = 'town-hall';
+	$buildingHelpLevel = $village->resarray['f'.$id];
+	include('build_level_help.tpl');
+
 	include("upgrade.tpl");
 	if ($building->getTypeLevel(24) > 0) {
 		include("Templates/Build/24_1.tpl"); 

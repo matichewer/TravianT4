@@ -8,6 +8,10 @@
 </a>
 Los nuevos tipos de tropas deben investigarse primero en la academia antes de poder entrenarlos. Cuanto mayor sea el nivel, más tipos de tropas estarán disponibles para investigar.</div>
 <?php
+$buildingHelpType = 'academy';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 ?>
 <div class="clear"></div>

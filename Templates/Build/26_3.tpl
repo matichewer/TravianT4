@@ -6,7 +6,11 @@
 	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta.</div>
 
 
-<?php 
+<?php
+$buildingHelpType = 'palace';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 include("26_menu.tpl"); 
 ?>

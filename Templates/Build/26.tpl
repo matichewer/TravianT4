@@ -32,7 +32,7 @@ if($_POST AND $_GET['action'] == 'change_capital') {
     }
     #print '<script language="javascript">location.href="build.php?id=' . $building->getTypeField(26) . '";</script>';
   } else {
-    $error = '<b><font class="error"> Hiba</font></b><br />';
+    $error = '<b><font class="error"> Contraseña incorrecta</font></b><br />';
     $_SESSION['error_p'] = $error;
     $_SESSION['time_p'] = time();
     print '<script language="javascript">location.href="build.php?id=' . $building->getTypeField(26) . '&confirm=yes";</script>';
@@ -45,7 +45,11 @@ if($_POST AND $_GET['action'] == 'change_capital') {
 	<a href="#" onClick="return Travian.Game.iPopup(26,4, 'gid');" class="build_logo"> 
     <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
 	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta. </div>
-<?php 
+<?php
+$buildingHelpType = 'palace';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 if ($building->getTypeLevel(26) > 0) {
 include("upgrade.tpl");
 include("26_menu.tpl"); 
@@ -75,7 +79,7 @@ if($data['wref'] == $village->wid) {
     print '<p>Introduce tu contraseña para convertir esta aldea en capital<br />
     <form method="post" action="build.php?id=' . $building->getTypeField(26) . '&action=change_capital">
      
-     Jelszó: <input type="password" name="pass" />' . $_SESSION['error_p'] . '<br />
+     Contraseña: <input type="password" name="pass" />' . $_SESSION['error_p'] . '<br />
      <button type="submit" value="ok" name="s1" id="btn_ok" value="ok" class="startTraining">
                     <div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents">Ok</div></div>
                     </button>

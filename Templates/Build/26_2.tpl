@@ -5,7 +5,11 @@
     <img class="building big white g26" src="img/x.gif" alt="Palacio" title="Palacio" /> </a>
 	El rey de la nación vive en el palacio. Cuanto mayor sea el nivel, más difícil será para los enemigos conquistar la aldea. Solo con un palacio se puede nombrar capital a una aldea. No se pueden construir un palacio y una residencia en la misma aldea. Solo se permite un palacio por cuenta.</div>
 
-<?php 
+<?php
+$buildingHelpType = 'palace';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 include("26_menu.tpl"); 
 ?>
@@ -21,5 +25,10 @@ include("26_menu.tpl");
 	<th>Producción de todas las aldeas:	</th>
 	<td><b><?php echo $database->getVSumField($session->uid, 'cp'); ?></b> puntos de cultura</td>
 </tr>
-</table><p>Necesitas <b><?php $mode = CP; $total = count($database->getProfileVillages($session->uid)); echo ${'cp'.$mode}[$total+1]; ?></b> puntos de cultura para fundar o conquistar una nueva aldea. <br></br>Actualmente tienes <b><?php echo $database->getUserField($session->uid, 'cp',0); ?> </b> puntos de cultura</p>
+</table><?php
+$totalVillages = count($session->villages);
+$requiredCulturePoints = travianCultureRequiredForVillageCount($totalVillages + 1, CP);
+$currentCulturePoints = (int)$database->getUserField($session->uid, 'cp', 0);
+?>
+<p>Necesitas <b><?php echo $requiredCulturePoints === null ? 'un umbral aún no configurado' : number_format($requiredCulturePoints, 0, ',', '.'); ?></b> puntos de cultura para fundar o conquistar una nueva aldea.<br />Actualmente tienes <b><?php echo number_format($currentCulturePoints, 0, ',', '.'); ?></b> puntos de cultura.</p>
 </div>

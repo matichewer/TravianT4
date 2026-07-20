@@ -14,7 +14,7 @@
                 }
 				if($aantal > 0){
 					$village_attack = "attack ";
-					$village_title = "attacks on this village: ".$aantal;
+					$village_title = "ataques a esta aldea: ".$aantal;
 				} else {
 					$village_attack = "";
 					$village_title = htmlspecialchars($returnVillageArray[$i-1]['name']);

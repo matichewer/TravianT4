@@ -7,6 +7,10 @@
 .</div>
 
 <?php
+$buildingHelpType = 'residence';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 include("25_menu.tpl"); ?>
 
@@ -21,6 +25,11 @@ include("25_menu.tpl"); ?>
         <th>Todas las aldeas producen </th>
         <td><b><?php echo $database->getVSumField($session->uid, 'cp'); ?></b> puntos de cultura</td>
 </tr>
-</table><p>Para fundar una nueva aldea necesitas <b><?php $mode = CP; $total = count($database->getProfileVillages($session->uid)); echo ${'cp'.$mode}[$total+1]; ?></b> puntos de cultura. Tienes <b><?php echo $database->getUserField($session->uid, 'cp',0); ?></b> puntos de cultura. </p>
+</table><?php
+$totalVillages = count($session->villages);
+$requiredCulturePoints = travianCultureRequiredForVillageCount($totalVillages + 1, CP);
+$currentCulturePoints = (int)$database->getUserField($session->uid, 'cp', 0);
+?>
+<p>Para fundar una nueva aldea necesitas <b><?php echo $requiredCulturePoints === null ? 'un umbral aún no configurado' : number_format($requiredCulturePoints, 0, ',', '.'); ?></b> puntos de cultura. Tienes <b><?php echo number_format($currentCulturePoints, 0, ',', '.'); ?></b> puntos de cultura.</p>
 </div><div class="clear">&nbsp;</div>
     <div class="clear"></div>

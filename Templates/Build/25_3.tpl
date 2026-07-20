@@ -6,5 +6,9 @@
         Para expandir tu nación necesitas puntos de cultura. Estos se acumulan con el tiempo gracias a tus edificios, y más rápido en niveles superiores.</div>
 
 <?php
+$buildingHelpType = 'residence';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl"); include("25_menu.tpl"); ?>
 Para expandir tu nación necesitas puntos de cultura. Estos se acumulan con el tiempo gracias a tus edificios, y más rápido en niveles superiores. La lealtad de esta aldea es  <b><?php echo $database->getVillageField($village->wid, 'loyalty'); ?></b>%. <br><br><b>Las capitales no pueden ser conquistadas </b></div>

@@ -6,6 +6,10 @@
         La residencia es un pequeño palacio donde vive el rey o la reina cuando visita la aldea. La residencia protege la aldea de los enemigos que quieren conquistarla</div>
 
 <?php
+$buildingHelpType = 'residence';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 include("25_menu.tpl"); ?>
 <h4>Expansiones</h4>

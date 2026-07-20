@@ -61,15 +61,14 @@ echo '</pre>';
 
 <p class="button">
 <?php
-$mode = CP; 
-$total = count($database->getProfileVillages($session->uid)); 
-$need_cps = ${'cp'.$mode}[$total];
-$cps = $database->getUserField($session->uid, 'cp',0);
+$total = count($session->villages);
+$need_cps = travianCultureRequiredForVillageCount($total + 1, CP);
+$cps = (int)$database->getUserField($session->uid, 'cp', 0);
 $wood = round($village->awood);
 $clay = round($village->aclay);
 $iron = round($village->airon);
 $crop = round($village->acrop);
-if($cps >= $need_cps) {
+if($need_cps !== null && $cps >= $need_cps) {
 	if($wood>=750 && $clay>=750 && $iron>=750 && $crop>=750){
 ?>
 
@@ -79,11 +78,11 @@ if($cps >= $need_cps) {
 		echo "<span class=\"none\">No hay suficientes recursos para fundar una nueva aldea.</span>";
 	}
 } else {
-  print "<span class=\"none\">$cps/$need_cps puntos de cultura</span>";
+  $cultureRequirement = ($need_cps === null) ? "No hay un umbral de cultura configurado para otra aldea." : number_format($cps, 0, ',', '.')."/".number_format($need_cps, 0, ',', '.')." puntos de cultura";
+  print "<span class=\"none\">$cultureRequirement</span>";
 }
 ?>
 </form>
 </p>
-
 
 

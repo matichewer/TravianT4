@@ -15,7 +15,7 @@ if($building->walling()) {
 	$wtitle = $building->procResType($building->walling())." Nivel ".$village->resarray['f40'];
 }
 else {
-	$wtitle = ($village->resarray['f40'] == 0)? "Solar exterior" : $building->procResType($village->resarray['f40t'],0)." Nivel ".$village->resarray['f40'];
+	$wtitle = ($village->resarray['f40'] == 0)? "Terreno exterior" : $building->procResType($village->resarray['f40t'],0)." Nivel ".$village->resarray['f40'];
 }
 ?>
 <map name="clickareas" id="clickareas">
@@ -50,9 +50,9 @@ if($village->resarray['f'.$t.'t'] != 0) {
 $title = "<div style=color:#FFF><b>".$building->procResType($village->resarray['f'.$t.'t'])."</b></div> Nivel ".$village->resarray['f'.$t];
 }
 else {
-    $title = "Building Site";
+    $title = "Terreno de construcción";
     if(($t == 39) && ($village->resarray['f'.$t] == 0)) {
-        $title = "Rally Point building site";
+        $title = "Terreno de construcción de la plaza de reuniones";
         }
 }
 	echo "<area href=\"build.php?id=$t\" alt= \"$title\" title=\"$title\" coords=\"$coords[$t]\" shape=\"poly\"/>";
@@ -63,14 +63,14 @@ else {
  if($village->resarray['f40'] == 0) { 
 if($building->walling()) {
     $wtitle = $building->procResType($building->walling())." Nivel ".$village->resarray['f40'];
-    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Top \" alt=\"$wtitle level ".$village->resarray['f40']."\">";
-     echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."bBottom \" alt=\"$wtitle level ".$village->resarray['f40']."\">";
+    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Top \" alt=\"$wtitle\">";
+     echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."bBottom \" alt=\"$wtitle\">";
 
     }
 }else {
           $wtitle = $building->procResType($building->walling())." Nivel ".$village->resarray['f40'];
-    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Top \" alt=\"$wtitle level ".$village->resarray['f40']."\">";
-    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Bottom \" alt=\"$wtitle level ".$village->resarray['f40']."\">";
+    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Top \" alt=\"$wtitle\">";
+    echo "<img src=\"img/x.gif\" class=\"wall g3".$session->tribe."Bottom \" alt=\"$wtitle\">";
 }
 ?>
 </map>
@@ -79,7 +79,7 @@ if($building->walling()) {
 for ($i=1;$i<=20;$i++) {
 	if(($village->resarray['f99t'] == 40 AND ($i+18)=='26') or ($village->resarray['f99t'] == 40 AND ($i+18)=='30') or ($village->resarray['f99t'] == 40 AND ($i+18)=='31') or ($village->resarray['f99t'] == 40 AND ($i+18)=='32')) {
 		} else {
-	$text = "Construction Site";
+	$text = "Terreno de construcción";
 	$img = "iso";
     	if($village->resarray['f'.($i+18).'t'] != 0) {
         	$text = $building->procResType($village->resarray['f'.($i+18).'t'])." Nivel ".$village->resarray['f'.($i+18)];
@@ -96,14 +96,14 @@ for ($i=1;$i<=20;$i++) {
 }
     if($village->resarray['f39'] == 0) {
             if($building->rallying()) {
-            echo "<img src=\"img/x.gif\" class=\"dx1 g16b\" alt=\"Rally Point ".$village->resarray['f39']."\" />";
+            echo "<img src=\"img/x.gif\" class=\"dx1 g16b\" alt=\"Plaza de reuniones ".$village->resarray['f39']."\" />";
             }
             else {
-            echo "<img src=\"img/x.gif\" class=\"dx1 g16e\" alt=\"Rally Point \" />";
+            echo "<img src=\"img/x.gif\" class=\"dx1 g16e\" alt=\"Plaza de reuniones \" />";
             }
         }
       else {
-      	echo "<img src=\"img/x.gif\" class=\"dx1 g16\" alt=\"Rally Point ".$village->resarray['f39']."\" />";
+      	echo "<img src=\"img/x.gif\" class=\"dx1 g16\" alt=\"Plaza de reuniones ".$village->resarray['f39']."\" />";
       }
 ?>
 <?php
@@ -171,7 +171,52 @@ echo "<div class=\"aid40\"><div style=\"background-color: ".$badgeColor." !impor
 						document.cookie = 't4level=0; max-age=31536000; path=/; SameSite=Lax';
 					}
 				" />
-	<img class="clickareas" usemap="#clickareas" src="img/x.gif" alt="" />
-            </div><div class="clear">&nbsp;</div>
-            
-           
+		<img class="clickareas" usemap="#clickareas" src="img/x.gif" alt="" />
+	</div>
+<?php
+$cultureOwnerId = (int)$session->uid;
+$cultureVillageIds = $session->villages;
+
+// Administrators can inspect a village owned by another account.
+if(!in_array($village->wid, $session->villages)) {
+	$cultureOwnerId = (int)$database->getVillageField($village->wid, 'owner');
+	$cultureVillageIds = $database->getVillagesID($cultureOwnerId);
+}
+
+$culturePoints = (int)$database->getUserField($cultureOwnerId, 'cp', 0);
+$cultureStatus = travianCultureStatus($culturePoints, count($cultureVillageIds), CP);
+$cultureReadyClass = ($cultureStatus['availableVillageSlots'] > 0) ? ' cultureProgressReady' : '';
+?>
+	<div id="cultureProgress" class="cultureProgress<?php echo $cultureReadyClass; ?>">
+		<div class="cultureProgressHeader">
+			<span class="cultureProgressTitle">Puntos de cultura</span>
+			<span class="cultureProgressVillages">Aldeas: <strong><?php echo $cultureStatus['ownedVillages']; ?> de <?php echo $cultureStatus['cultureCapacity']; ?></strong> posibles por cultura<?php
+			if($cultureStatus['availableVillageSlots'] > 0) {
+				$availableLabel = ($cultureStatus['availableVillageSlots'] == 1) ? '1 disponible' : $cultureStatus['availableVillageSlots'].' disponibles';
+				echo ' <em>('.$availableLabel.')</em>';
+			}
+			?></span>
+		</div>
+<?php if(!$cultureStatus['available']) { ?>
+		<div class="cultureProgressUnavailable">No hay una tabla de cultura configurada para este modo.</div>
+<?php } elseif($cultureStatus['atConfiguredMaximum']) { ?>
+		<div class="cultureProgressInfo">
+			<span>Máximo cultural configurado alcanzado</span>
+			<strong><?php echo number_format($cultureStatus['culturePoints'], 0, ',', '.'); ?> PC</strong>
+		</div>
+		<div class="cultureProgressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+			<div class="cultureProgressBarFill" style="width:100%;"></div>
+		</div>
+<?php } else { ?>
+		<div class="cultureProgressInfo">
+			<span>Próximo límite (<?php echo $cultureStatus['nextVillageCount']; ?> aldeas)</span>
+			<strong><?php echo number_format($cultureStatus['culturePoints'], 0, ',', '.'); ?> / <?php echo number_format($cultureStatus['nextRequiredPoints'], 0, ',', '.'); ?> PC</strong>
+		</div>
+		<div class="cultureProgressBar" role="progressbar" aria-valuemin="0" aria-valuemax="<?php echo $cultureStatus['nextRequiredPoints']; ?>" aria-valuenow="<?php echo min($cultureStatus['culturePoints'], $cultureStatus['nextRequiredPoints']); ?>" title="Faltan <?php echo number_format($cultureStatus['remainingPoints'], 0, ',', '.'); ?> puntos de cultura">
+			<div class="cultureProgressBarFill" style="width:<?php echo number_format($cultureStatus['progressPercent'], 2, '.', ''); ?>%;"></div>
+		</div>
+<?php } ?>
+	</div>
+	<div class="clear">&nbsp;</div>
+	            
+	           

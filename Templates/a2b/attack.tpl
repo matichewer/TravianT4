@@ -59,13 +59,13 @@ $process['c'] = 1;
 $id = $database->addA2b($ckey,time(),$process['0'],$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$process['c']);
 
 if ($process['c']==1){
-$actionType = "Scouting ";
+$actionType = "Explorar ";
 }else if ($process['c']==2){
-$actionType = "Reinforcement to ";
+$actionType = "Refuerzo a ";
 }elseif ($process['c']==3){
-$actionType = "Normal Attack to ";
+$actionType = "Ataque normal a ";
 }else{
-$actionType = "Raid to ";
+$actionType = "Saqueo a ";
 }
 
 

@@ -6,7 +6,11 @@
         <img class="building big white g41" src="img/x.gif" alt="Abrevadero" title="Abrevadero"></a>
         Tu caballería se beneficia de una salud mucho mejor gracias al abrevadero, lo que además aumenta la velocidad de su entrenamiento en un 1% por nivel.</div>
 
-<?php 
+<?php
+$buildingHelpType = 'horse-drinking-trough';
+$buildingHelpLevel = $village->resarray['f'.$id];
+include('build_level_help.tpl');
+
 include("upgrade.tpl");
 ?>
 </p></div>

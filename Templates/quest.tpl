@@ -25,7 +25,7 @@ if ($displayarray['fquest'] != "1,1,1,1,1,1,1,1,1,1,1" && QUEST==true){
 <script type="text/javascript"> 
 	Travian.Translation.add(
 	{
-		'close' : 'Bezárás'
+		'close' : 'Cerrar'
 	});
 </script>
 <?php
@@ -35,13 +35,13 @@ echo "<div id=\"sideInfoCountdown\"><div class=\"head\"></div>";
 echo "<div class=\"content\">";
 
 		$uurover=$generator->getTimeFormat($displayarray['protect']-time());
-        echo "You have <b><span
-		id=\"timer1\">".$uurover."</span></b> hours of protection.</div></div>";
+        echo "Tienes <b><span
+		id=\"timer1\">".$uurover."</span></b> horas de protección.</div></div>";
 }
 if($timestamp) {
 echo "<div id=\"sideInfoCountdown\"><div class=\"head\"></div>";
 echo "<div class=\"content\">";
 		$time=$generator->getTimeFormat(($timestamp-time()));
-       echo " The account will be deleted in <span id=\"timer1\">".$time."</span> .</div></div>";
+       echo " La cuenta será eliminada en <span id=\"timer1\">".$time."</span> .</div></div>";
 }
 ?>
