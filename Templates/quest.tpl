@@ -34,9 +34,31 @@ if($displayarray['protect'] > time()){
 echo "<div id=\"sideInfoCountdown\"><div class=\"head\"></div>";
 echo "<div class=\"content\">";
 
-		$uurover=$generator->getTimeFormat($displayarray['protect']-time());
-        echo "Tienes <b><span
-		id=\"timer1\">".$uurover."</span></b> horas de protección.</div></div>";
+		$protectionRemaining = $displayarray['protect'] - time();
+		$protectionHours = floor($protectionRemaining / 3600);
+		$protectionMinutes = floor(($protectionRemaining % 3600) / 60);
+        echo "Tienes <b><span id=\"protectionTime\" data-remaining=\"".$protectionRemaining."\">".$protectionHours." h ".$protectionMinutes." min</span></b> de protección.</div></div>";
+?>
+<script type="text/javascript">
+(function() {
+	var protectionTime = document.getElementById('protectionTime');
+	var initialRemaining = parseInt(protectionTime.getAttribute('data-remaining'), 10);
+	var startedAt = new Date().getTime();
+	var protectionTimer = window.setInterval(function() {
+		var elapsed = Math.floor((new Date().getTime() - startedAt) / 1000);
+		var remaining = Math.max(0, initialRemaining - elapsed);
+		var hours = Math.floor(remaining / 3600);
+		var minutes = Math.floor((remaining % 3600) / 60);
+
+		protectionTime.innerHTML = hours + ' h ' + minutes + ' min';
+		if (remaining === 0) {
+			window.clearInterval(protectionTimer);
+			window.location.reload();
+		}
+	}, 1000);
+})();
+</script>
+<?php
 }
 if($timestamp) {
 echo "<div id=\"sideInfoCountdown\"><div class=\"head\"></div>";
