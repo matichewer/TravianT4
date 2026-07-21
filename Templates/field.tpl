@@ -74,7 +74,14 @@ for($i=1;$i<=18;$i++) {
     $badgeState = $building->badgeUpgradeState($i, $village->resarray['f'.$i.'t']);
     $badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
     $badgeLabel = ($village->resarray['f'.$i] != 0) ? $village->resarray['f'.$i] : '';
-    echo "<div class=level style=\"".$style." ".$cstyle."\"><div class=labelLayer style=\"background-color: ".$badgeColor."; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 4px; left: 4px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$badgeLabel."</div></div> ";
+    $constructionState = $building->constructionState($i);
+    $constructionClass = $constructionState ? ' hasConstruction' : '';
+    echo "<div class=\"level".$constructionClass."\" style=\"".$style." ".$cstyle."\"><div class=labelLayer style=\"background-color: ".$badgeColor."; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 4px; left: 4px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$badgeLabel."</div>";
+    if($constructionState) {
+        $constructionTitle = ($constructionState == 'active') ? 'Mejora en construcción' : 'Mejora en cola';
+        echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
+    }
+    echo "</div> ";
     }
    }
   ?>     

@@ -138,21 +138,43 @@ $showBuildingLevels = !isset($_COOKIE['t4level']) || $_COOKIE['t4level'] !== '0'
     <div id="levels" <?php if($showBuildingLevels) { echo "class=\"on\""; } ?>>
 <?php
 for($i=1;$i<=20;$i++) {
-if ($village->resarray['f'.($i+18)] != 0) {
-$badgeState = $building->badgeUpgradeState($i+18, $village->resarray['f'.($i+18).'t']);
+$fieldId = $i + 18;
+$constructionState = $building->constructionState($fieldId);
+if ($village->resarray['f'.$fieldId] != 0 || $constructionState) {
+$badgeState = $building->badgeUpgradeState($fieldId, $village->resarray['f'.$fieldId.'t']);
 $badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-echo "<div class=\"l$i\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$village->resarray['f'.($i+18)]."</div></div>";
+$constructionClass = $constructionState ? ' hasConstruction' : '';
+echo "<div class=\"l$i".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f'.$fieldId] != 0) ? $village->resarray['f'.$fieldId] : '')."</div>";
+if($constructionState) {
+$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
+echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
+}
+echo "</div>";
 }
 }
-if($village->resarray['f39'] != 0) {
+$constructionState = $building->constructionState(39);
+if($village->resarray['f39'] != 0 || $constructionState) {
 $badgeState = $building->badgeUpgradeState(39, $village->resarray['f39t']);
 $badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-echo "<div class=\"l39\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$village->resarray['f39']."</div></div>";
+$constructionClass = $constructionState ? ' hasConstruction' : '';
+echo "<div class=\"l39".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f39'] != 0) ? $village->resarray['f39'] : '')."</div>";
+if($constructionState) {
+$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
+echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
 }
-if($village->resarray['f40'] != 0) {
+echo "</div>";
+}
+$constructionState = $building->constructionState(40);
+if($village->resarray['f40'] != 0 || $constructionState) {
 $badgeState = $building->badgeUpgradeState(40, $village->resarray['f40t']);
 $badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-echo "<div class=\"aid40\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$village->resarray['f40']."</div></div>";
+$constructionClass = $constructionState ? ' hasConstruction' : '';
+echo "<div class=\"aid40".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f40'] != 0) ? $village->resarray['f40'] : '')."</div>";
+if($constructionState) {
+$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
+echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
+}
+echo "</div>";
 
 }
 ?>

@@ -560,6 +560,24 @@ class Building {
 		return ($this->checkResource($tid,$id) == 4) ? "canUpgrade" : "";
 	}
 
+	/**
+	 * Returns the construction state for a village field so the map can mark it.
+	 * An active job takes precedence when the same field also has queued work.
+	 */
+	public function constructionState($field) {
+		$state = false;
+		foreach($this->buildArray as $job) {
+			if((int)$job['field'] !== (int)$field) {
+				continue;
+			}
+			if((int)$job['loopcon'] === 0) {
+				return 'active';
+			}
+			$state = 'queued';
+		}
+		return $state;
+	}
+
 	public function isMax($id,$field,$loop=0) {
 		$name = "bid".$id;
 		global $$name,$village;
