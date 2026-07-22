@@ -20,7 +20,7 @@ foreach ($lines as $lineNumber => $line) {
         continue;
     }
 
-    preg_match_all("/qst_next\('','(\d+)'/", $line, $actionMatches);
+    preg_match_all("/qst_next\([^,]*,'(\d+)'/", $line, $actionMatches);
     if (empty($actionMatches[1])) {
         $errors[] = 'Resource reward without a numeric claim action on line ' . ($lineNumber + 1) . '.';
         continue;
@@ -196,6 +196,13 @@ $securityChecks = array(
     'Main resource rewards are atomic' => '$database->claimQuestResources(',
     'Follow-up resource rewards are atomic' => '$database->claimFollowupQuestResources(',
     'Manual answer proofs are stored' => "\$_SESSION['quest_validated']",
+    'Quest progress is synchronized from the database' => "\$_SESSION['qst'] = (int)\$uArray['quest'];",
+    'Rank answers are revalidated when claimed' => "is_numeric(\$submittedRank) && (int)\$submittedRank === \$currentRank",
+    'Coordinate answers are revalidated when claimed' => "isset(\$_POST['x'], \$_POST['y'])",
+    'Lumber answers are revalidated when claimed' => "is_numeric(\$submittedLumber) && (int)\$submittedLumber === 210",
+    'Rank proof is carried into the claim' => 'id=\"qst_val\" value=\"<?php echo (int)$rRes; ?>\"',
+    'Coordinate proof is carried into the claim' => "qst_next(1,'10')",
+    'Lumber proof is carried into the claim' => 'id=\"qst_val\" value=\"210\"',
 );
 foreach ($securityChecks as $name => $needle) {
     if (strpos($source, $needle) === false) {
