@@ -2,6 +2,7 @@
 $hero = $database->getHeroData($session->uid);
 $userarray = $database->getUserArray($session->uid, 1);
 $adventureCount = $database->getAdventureCount($session->uid);
+$heroCanAdventure = $adventureCount > 0 && empty($hero['dead']) && !empty($village->unitarray['hero']);
 	if($session->tribe == 1){ $ttitle=TRIBE1; }
     elseif($session->tribe == 2){ $ttitle=TRIBE2; }
     elseif($session->tribe == 3){ $ttitle=TRIBE3; }
@@ -15,7 +16,7 @@ $allianceinfo = $database->getAlliance($aid);
 	<div class="heroImageBorder"></div> 
     <a id="heroProfile" href="hero_inventory.php" class="heroProfile"></a>
 	<a href="hero_adventure.php" class="adventures" title="<?php echo SIDEINFO_ADVENTURES; ?>: <?php echo $adventureCount; ?>">
-		<span class="adventureCount"><?php echo $adventureCount; ?></span>
+		<span class="adventureCount<?php echo $heroCanAdventure ? '' : ' adventureCountUnavailable'; ?>"><?php echo $adventureCount; ?></span>
 	</a>
     <a href="hero_auction.php" class="auctions" title="<?php echo SIDEINFO_AUCTIONS; ?>"></a>
 	</div>

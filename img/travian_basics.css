@@ -23,6 +23,12 @@
 	z-index: 2;
 }
 
+#side_info .sideInfoHero .adventures .adventureCountUnavailable {
+	border-color: #666;
+	background: #aaa;
+	color: #333;
+}
+
 /* Resource-field and building level badges share one visual state model. */
 div.village1 .levelBadge,
 div.village2 div#village_map div#levels .levelBadge {
