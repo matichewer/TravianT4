@@ -391,7 +391,7 @@ define("REGISTER_USERINFO","Registro");
 define("REGISTER_USERNAME","Nombre");
 
 //INFORMES
-define("REPORT_AT","En");
+define("REPORT_AT","a las");
 define("REPORT_ATK_AGAIN","repetir el ataque");
 define("REPORT_ATTACKER","Atacante");
 define("REPORT_BOUNTY","Botín");
@@ -411,9 +411,11 @@ define("REPORT_RESOURCES","Recursos");
 define("REPORT_SENDER","Remitente");
 define("REPORT_SEND_REINF_TO","enviar refuerzos a la aldea");
 define("REPORT_SEND_RES","enviar recursos");
-define("REPORT_SENT","Enviado el:");
+define("REPORT_SENT_RESOURCES_TO","envió recursos a");
+define("REPORT_SENT","Enviado:");
 define("REPORT_SUBJECT","Asunto:");
 define("REPORT_TO","A");
+define("REPORT_TRAVEL_TIME","Tiempo de viaje");
 define("REPORT_TROOPS","Tropas");
 define("REPORT_UPKEEP","Manutención");
 define("REPORT_WARSIM","simulador de combate");

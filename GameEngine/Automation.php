@@ -967,15 +967,17 @@ class Automation {
             $from = $database->getMInfo($data['from']);
             $toAlly = $database->getUserField($to['owner'], 'alliance', 0);
             $fromAlly = $database->getUserField($from['owner'], 'alliance', 0);
-            $database->addNotice($to['owner'], $to['wref'], $toAlly, $sort_type, ''.addslashes($from['name']).' envió recursos a '.addslashes($to['name']).'', ''.$from['wref'].','.$to['wref'].','.$data['wood'].','.$data['clay'].','.$data['iron'].','.$data['crop'].'', $data['endtime']);
+            $fromcoor = $database->getCoor($data['from']);
+            $tocoor = $database->getCoor($data['to']);
+            $senderTribe = $database->getUserField($from['owner'], "tribe", 0);
+            $travelTime = $this->procDistanceTime($fromcoor, $tocoor, $senderTribe, 0);
+            $noticeData = ''.$from['wref'].','.$to['wref'].','.$data['wood'].','.$data['clay'].','.$data['iron'].','.$data['crop'].','.$travelTime.'';
+            $database->addNotice($to['owner'], $to['wref'], $toAlly, $sort_type, ''.addslashes($from['name']).' envió recursos a '.addslashes($to['name']).'', $noticeData, $data['endtime']);
             if($from['owner'] != $to['owner']) {
-                $database->addNotice($from['owner'], $to['wref'], $fromAlly, $sort_type, ''.addslashes($from['name']).' envió recursos a '.addslashes($to['name']).'', ''.$from['wref'].','.$to['wref'].','.$data['wood'].','.$data['clay'].','.$data['iron'].','.$data['crop'].'', $data['endtime']);
+                $database->addNotice($from['owner'], $to['wref'], $fromAlly, $sort_type, ''.addslashes($from['name']).' envió recursos a '.addslashes($to['name']).'', $noticeData, $data['endtime']);
             }
             $database->modifyResource($data['to'], $data['wood'], $data['clay'], $data['iron'], $data['crop'], 1);
-            $tocoor = $database->getCoor($data['from']);
-            $fromcoor = $database->getCoor($data['to']);
-            $targettribe = $database->getUserField($database->getVillageField($data['from'], "owner"), "tribe", 0);
-            $endtime = $this->procDistanceTime($tocoor, $fromcoor, $targettribe, 0) + $data['endtime'];
+            $endtime = $travelTime + $data['endtime'];
             $database->addMovement(2, $data['to'], $data['from'], $data['merchant'], '0,0,0,0,0', $endtime, $data['send'], $data['wood'], $data['clay'], $data['iron'], $data['crop']);
             $database->setMovementProc($data['moveid']);
         }

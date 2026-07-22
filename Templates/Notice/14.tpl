@@ -41,9 +41,22 @@ if(isset($_GET['aid']) && $_GET['aid']==$session->alliance){
         $senderID = $SenderData['owner'];
 		$sender = $database->getUserArray($senderID,1);
         
-        $ReceiveData = $database->getVillage($dataarray[1]);
+		$ReceiveData = $database->getVillage($dataarray[1]);
         $receiveID = $ReceiveData['owner'];
 		$receive = $database->getUserArray($receiveID,1);
+
+        $sentResourcesToLabel = defined('REPORT_SENT_RESOURCES_TO') ? REPORT_SENT_RESOURCES_TO : REPORT_SEND_RES.' '.strtolower(REPORT_TO);
+        $travelTimeLabel = defined('REPORT_TRAVEL_TIME') ? REPORT_TRAVEL_TIME : REPORT_CLOCK;
+        if(isset($dataarray[6]) && is_numeric($dataarray[6])) {
+            $travelTime = max(0, (int)$dataarray[6]);
+        } else {
+            $travelTime = $generator->procDistanceTime(
+                $database->getCoor($dataarray[0]),
+                $database->getCoor($dataarray[1]),
+                (int)$sender['tribe'],
+                0
+            );
+        }
 ?>
 <table cellspacing="0" cellpadding="0" class="tbg">
 	<tbody>
@@ -78,8 +91,9 @@ if(isset($_GET['aid']) && $_GET['aid']==$session->alliance){
 	<thead>
 		<tr>
 			<td colspan="2" class="troopHeadline">
-				<a href="karte.php?d=<?php echo $dataarray[0]."&c=".$generator->getMapCheck($dataarray[0]); ?>"><?php echo $SenderData['name']; ?></a> <?php echo REPORT_TO; ?>  
-                <a href="karte.php?d=<?php echo $dataarray[1]."&c=".$generator->getMapCheck($dataarray[1]); ?>"><?php echo $ReceiveData['name']; ?></a> <?php echo REPORT_SEND_RES; ?></td>
+				<a href="karte.php?d=<?php echo $dataarray[0]."&c=".$generator->getMapCheck($dataarray[0]); ?>"><?php echo $SenderData['name']; ?></a>
+				<?php echo $sentResourcesToLabel; ?>
+				<a href="karte.php?d=<?php echo $dataarray[1]."&c=".$generator->getMapCheck($dataarray[1]); ?>"><?php echo $ReceiveData['name']; ?></a></td>
 		</tr>
 	</thead>
 
@@ -108,9 +122,9 @@ if(isset($_GET['aid']) && $_GET['aid']==$session->alliance){
 			<td class="empty" colspan="2"></td>
 		</tr>
 		<tr>
-			<th><?php echo REPORT_CLOCK; ?></th>
-			<td><img src="img/x.gif" class="clock" title="<?php echo REPORT_CLOCK; ?>"> 
-            0:00:00</td></tr>
+			<th><?php echo $travelTimeLabel; ?></th>
+			<td><img src="img/x.gif" class="clock" title="<?php echo $travelTimeLabel; ?>">
+			<?php echo $generator->getTimeFormat($travelTime); ?></td></tr>
 	</tbody>
 </table>
             

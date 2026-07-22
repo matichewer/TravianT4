@@ -100,12 +100,13 @@ class GeneratorX {
 			$time -= 3600;
 			break;
 		}*/
-		$today = date('d',time())-1;
+		$now = time();
+		$reportDate = date('Y/m/d', $time);
 		
-		if (date('Y/m/d',time()) == date('Y/m/d',$time)) {
+		if (date('Y/m/d', $now) == $reportDate) {
 		//if ((time()-$time) < 24*60*60 && (time()-$time) > 0) {
 			$day = "hoy";
-		}elseif($today == date('d',$time)){
+		}elseif(date('Y/m/d', strtotime('-1 day', $now)) == $reportDate){
 			$day = "ayer";
 		}
 		else {
