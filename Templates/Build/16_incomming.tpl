@@ -36,7 +36,7 @@ if ($units[$y]['sort_type']==3){
                     </span>
                     <span class=\"clear\">a</span></th>";
                   for($i=$start;$i<=$end;$i++) {
-                  	echo "<td><img src=\"img/x.gif\" class=\"unit u$i\" title=\"".$technology->getUnitName($i)."\" alt=\"".$technology->getUnitName($i)."\" /></td>";	
+                    echo "<td><a href=\"#\" onclick=\"return Travian.Game.iPopup($i,1);\"><img src=\"img/x.gif\" class=\"unit u$i\" title=\"".$technology->getUnitName($i)."\" alt=\"".$technology->getUnitName($i)."\" /></a></td>";
                   }
                   echo "<td><img src=\"img/x.gif\" class=\"unit uhero\" title=\"".$technology->getUnitName(52)."\" alt=\"".$technology->getUnitName(52)."\" /></td>";	
                   echo "</tr><tr><th>Tropas</th>";
@@ -111,7 +111,7 @@ $to = $database->getMInfo($units[$y]['vref']);
                     </span>
                     <span class=\"clear\"></span></th>";
                   for($i=$start;$i<=($end);$i++) {
-                  	echo "<td><img src=\"img/x.gif\" class=\"unit u$i\" title=\"".$technology->getUnitName($i)."\" alt=\"".$technology->getUnitName($i)."\" /></td>";	
+                    echo "<td><a href=\"#\" onclick=\"return Travian.Game.iPopup($i,1);\"><img src=\"img/x.gif\" class=\"unit u$i\" title=\"".$technology->getUnitName($i)."\" alt=\"".$technology->getUnitName($i)."\" /></a></td>";
                   }
                   if($units[$y]['t11']!=0){
                   echo "<td><img src=\"img/x.gif\" class=\"unit uhero\" title=\"".$technology->getUnitName(52)."\" alt=\"".$technology->getUnitName(52)."\" /></td>";
