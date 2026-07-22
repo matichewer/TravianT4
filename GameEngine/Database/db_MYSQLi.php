@@ -2735,7 +2735,7 @@
         	}
 
         	function countUser() {
-        		$q = "SELECT count(id) FROM " . TB_PREFIX . "users where id != 0";
+                        $q = "SELECT count(id) FROM " . TB_PREFIX . "users WHERE tribe BETWEEN 1 AND 3 AND access = " . USER;
         		$result = mysqli_query($this->connection,$q);
         		$row = mysqli_fetch_row($result);
         		return $row[0];
