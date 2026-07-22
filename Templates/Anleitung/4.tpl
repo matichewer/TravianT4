@@ -1427,94 +1427,6 @@ En cuanto el administrador de una ciudad (senador, jefe germano, jefe galo) haya
 
         <th class="text">
 
-            Armería        </th>
-
-                <td>
-
-            2        </td>
-
-                <td>
-
-            3        </td>
-
-                <td>
-
-            3        </td>
-
-                <td>
-
-            4        </td>
-
-                <td>
-
-            5        </td>
-
-                <td>
-
-            6        </td>
-
-                <td>
-
-            7        </td>
-
-                <td>
-
-            9        </td>
-
-                <td>
-
-            10        </td>
-
-                <td>
-
-            12        </td>
-
-                <td>
-
-            15        </td>
-
-                <td>
-
-            18        </td>
-
-                <td>
-
-            21        </td>
-
-                <td>
-
-            26        </td>
-
-                <td>
-
-            31        </td>
-
-                <td>
-
-            37        </td>
-
-                <td>
-
-            44        </td>
-
-                <td>
-
-            53        </td>
-
-                <td>
-
-            64        </td>
-
-                <td>
-
-            77        </td>
-
-            </tr>
-
-        <tr>
-
-        <th class="text">
-
             Plaza de torneos        </th>
 
                 <td>
@@ -3345,7 +3257,7 @@ En cuanto el administrador de una ciudad (senador, jefe germano, jefe galo) haya
 
 	</div> 
 	<div class="clear"></div> 
-</div> 
+</div>
  
 <div id="footer">
 
@@ -3357,5 +3269,5 @@ En cuanto el administrador de una ciudad (senador, jefe germano, jefe galo) haya
 
 	</div>
 
-</div> 
-</div> 
+</div>
+</div>

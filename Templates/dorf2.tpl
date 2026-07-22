@@ -44,10 +44,11 @@ $coords = array(19=>"110,135,132,120,132,121,160,122,179,136,179,151,158,163,128
 "71,450,2,374,3,374,-10,243,13,142,120,81,214,34,340,18,500,43,615,130,641,239,643,350,601,425,534,494,358,534,282,532,180,526,77,456,117,378,163,413,242,442,331,454,425,443,499,417,576,344,596,304,598,221,571,157,481,90,385,61,313,56,217,72,135,113,77,165,46,217,44,269,65,326,119,379");
 for($t=19;$t<=40;$t++) {
 	if(($village->resarray['f99t'] == 40 AND ($t)=='26') or ($village->resarray['f99t'] == 40 AND ($t)=='30') or ($village->resarray['f99t'] == 40 AND ($t)=='31') or ($village->resarray['f99t'] == 40 AND ($t)=='32')) {
-	echo "<area href=\"build.php?id=99\" title=\"<div style=color:#FFF><b>Maravilla del mundo</b></div> Nivel ".$village->resarray['f99']."\" coords=\"$coords[$t]\" shape=\"poly\"/>";
+	$title = $building->upgradeTooltip(99,$village->resarray['f99t']);
+	echo "<area href=\"build.php?id=99\" title=\"$title\" coords=\"$coords[$t]\" shape=\"poly\"/>";
 	} else {
 if($village->resarray['f'.$t.'t'] != 0) {
-$title = "<div style=color:#FFF><b>".$building->procResType($village->resarray['f'.$t.'t'])."</b></div> Nivel ".$village->resarray['f'.$t];
+$title = $building->upgradeTooltip($t,$village->resarray['f'.$t.'t']);
 }
 else {
     $title = "Terreno de construcción";
@@ -139,42 +140,27 @@ $showBuildingLevels = !isset($_COOKIE['t4level']) || $_COOKIE['t4level'] !== '0'
 <?php
 for($i=1;$i<=20;$i++) {
 $fieldId = $i + 18;
-$constructionState = $building->constructionState($fieldId);
-if ($village->resarray['f'.$fieldId] != 0 || $constructionState) {
+$constructionLevel = $building->constructionTargetLevel($fieldId);
+if ($village->resarray['f'.$fieldId] != 0 || $constructionLevel !== false) {
 $badgeState = $building->badgeUpgradeState($fieldId, $village->resarray['f'.$fieldId.'t']);
-$badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-$constructionClass = $constructionState ? ' hasConstruction' : '';
-echo "<div class=\"l$i".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f'.$fieldId] != 0) ? $village->resarray['f'.$fieldId] : '')."</div>";
-if($constructionState) {
-$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
-echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
-}
-echo "</div>";
+$badgeLabel = ($constructionLevel !== false) ? $constructionLevel : $village->resarray['f'.$fieldId];
+$badgeClass = "l$i levelBadge levelBadge".ucfirst($badgeState).(($constructionLevel !== false) ? " levelBadgeBuilding" : "");
+echo "<div class=\"".$badgeClass."\"><div class=\"levelBadgeLabel\">".$badgeLabel."</div></div>";
 }
 }
-$constructionState = $building->constructionState(39);
-if($village->resarray['f39'] != 0 || $constructionState) {
+$constructionLevel = $building->constructionTargetLevel(39);
+if($village->resarray['f39'] != 0 || $constructionLevel !== false) {
 $badgeState = $building->badgeUpgradeState(39, $village->resarray['f39t']);
-$badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-$constructionClass = $constructionState ? ' hasConstruction' : '';
-echo "<div class=\"l39".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f39'] != 0) ? $village->resarray['f39'] : '')."</div>";
-if($constructionState) {
-$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
-echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
+$badgeLabel = ($constructionLevel !== false) ? $constructionLevel : $village->resarray['f39'];
+$badgeClass = "l39 levelBadge levelBadge".ucfirst($badgeState).(($constructionLevel !== false) ? " levelBadgeBuilding" : "");
+echo "<div class=\"".$badgeClass."\"><div class=\"levelBadgeLabel\">".$badgeLabel."</div></div>";
 }
-echo "</div>";
-}
-$constructionState = $building->constructionState(40);
-if($village->resarray['f40'] != 0 || $constructionState) {
+$constructionLevel = $building->constructionTargetLevel(40);
+if($village->resarray['f40'] != 0 || $constructionLevel !== false) {
 $badgeState = $building->badgeUpgradeState(40, $village->resarray['f40t']);
-$badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-$constructionClass = $constructionState ? ' hasConstruction' : '';
-echo "<div class=\"aid40".$constructionClass."\"><div style=\"background-color: ".$badgeColor." !important; background-image:none; border:none; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 3px; left: 3px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".(($village->resarray['f40'] != 0) ? $village->resarray['f40'] : '')."</div>";
-if($constructionState) {
-$constructionTitle = ($constructionState == 'active') ? 'Construcción en curso' : 'Construcción en cola';
-echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
-}
-echo "</div>";
+$badgeLabel = ($constructionLevel !== false) ? $constructionLevel : $village->resarray['f40'];
+$badgeClass = "aid40 levelBadge levelBadge".ucfirst($badgeState).(($constructionLevel !== false) ? " levelBadgeBuilding" : "");
+echo "<div class=\"".$badgeClass."\"><div class=\"levelBadgeLabel\">".$badgeLabel."</div></div>";
 
 }
 ?>

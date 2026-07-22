@@ -186,7 +186,6 @@ class Building {
 			case 10: $build = "Almacén"; break;
 			case 11: $build = "Granero"; break;
 			case 12: $build = "Herrería"; break;
-			case 13: $build = "Armería"; break;
 			case 14: $build = "Plaza de torneos"; break;
 			case 15: $build = "Edificio principal"; break;
 			case 16: $build = "Plaza de reuniones"; break;
@@ -441,9 +440,6 @@ class Building {
 			case 12:
 			if($this->getTypeLevel(22) >= 1 && $this->getTypeLevel(15) >= 3) { return true; } else { return false; }
 			break;
-			case 13:
-			if($this->getTypeLevel(15) >= 3 && $this->getTypeLevel(22) >= 1) { return true; } else { return false; }
-			break;
 			case 14:
 			if($this->getTypeLevel(16) >= 15) { return true; } else { return false; }
 			break;
@@ -552,30 +548,52 @@ class Building {
 	
 	public function badgeUpgradeState($id,$tid) {
 		if(!$tid) {
-			return "";
+			return "cannotUpgrade";
 		}
 		if($this->isMax($tid,$id)) {
 			return "maxLevel";
 		}
-		return ($this->checkResource($tid,$id) == 4) ? "canUpgrade" : "";
+		return ($this->checkResource($tid,$id) == 4) ? "canUpgrade" : "cannotUpgrade";
 	}
 
 	/**
-	 * Returns the construction state for a village field so the map can mark it.
-	 * An active job takes precedence when the same field also has queued work.
+	 * Builds the HTML tooltip used by the village maps for an existing building.
 	 */
-	public function constructionState($field) {
-		$state = false;
+	public function upgradeTooltip($field,$tid) {
+		global $village;
+		$field = (int)$field;
+		$tid = (int)$tid;
+		$name = $this->procResType($tid);
+		$title = "<div style=color:#FFF><b>".$name."</b></div>";
+
+		if($this->isMax($tid,$field)) {
+			return $title."Nivel máximo";
+		}
+
+		$required = $this->resourceRequired($field,$tid);
+		$nextLevel = (int)$village->resarray['f'.$field] + 1;
+		return $title."Costo para nivel ".$nextLevel."<br>"
+			."<img class='r1' src='img/x.gif' alt='Madera'> ".number_format($required['wood'],0,',','.')
+			." &nbsp;<img class='r2' src='img/x.gif' alt='Barro'> ".number_format($required['clay'],0,',','.')
+			." &nbsp;<img class='r3' src='img/x.gif' alt='Hierro'> ".number_format($required['iron'],0,',','.')
+			." &nbsp;<img class='r4' src='img/x.gif' alt='Cereal'> ".number_format($required['crop'],0,',','.');
+	}
+
+	/**
+	 * Returns the final target level among active and queued jobs for a field.
+	 */
+	public function constructionTargetLevel($field) {
+		$targetLevel = false;
 		foreach($this->buildArray as $job) {
 			if((int)$job['field'] !== (int)$field) {
 				continue;
 			}
-			if((int)$job['loopcon'] === 0) {
-				return 'active';
+			$jobLevel = (int)$job['level'];
+			if($targetLevel === false || $jobLevel > $targetLevel) {
+				$targetLevel = $jobLevel;
 			}
-			$state = 'queued';
 		}
-		return $state;
+		return $targetLevel;
 	}
 
 	public function isMax($id,$field,$loop=0) {

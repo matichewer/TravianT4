@@ -2,7 +2,8 @@
                                 <?php 
     $coorarray = array(1=>"180,80,28","269,81,28","338,93,28","122,119,28","235,132,28","292,139,28","377,137,28","62,170,28","143,171,28","333,171,28","420,171,28","70,231,28","143,221,28","279,257,28","401,226,28","174,311,28","265,316,28","355,293,28");
         for($i=1;$i<=18;$i++) {
-            echo "<area href=\"build.php?id=$i\" coords=\"$coorarray[$i]\" shape=\"circle\" title=\"<div style=color:#FFF><b>".$building->procResType($village->resarray['f'.$i.'t'])."</b></div> Nivel ".$village->resarray['f'.$i]."\"/>";
+            $title = $building->upgradeTooltip($i,$village->resarray['f'.$i.'t']);
+            echo "<area href=\"build.php?id=$i\" coords=\"$coorarray[$i]\" shape=\"circle\" title=\"$title\"/>";
         }
     ?>
 <area href="dorf2.php" coords="250,191,32" shape="circle" title="Campos">
@@ -72,16 +73,10 @@ for($i=1;$i<=18;$i++) {
     break;
     }
     $badgeState = $building->badgeUpgradeState($i, $village->resarray['f'.$i.'t']);
-    $badgeColor = ($badgeState == 'maxLevel') ? '#FFD54F' : (($badgeState == 'canUpgrade') ? 'white' : '#BDBDBD');
-    $badgeLabel = ($village->resarray['f'.$i] != 0) ? $village->resarray['f'.$i] : '';
-    $constructionState = $building->constructionState($i);
-    $constructionClass = $constructionState ? ' hasConstruction' : '';
-    echo "<div class=\"level".$constructionClass."\" style=\"".$style." ".$cstyle."\"><div class=labelLayer style=\"background-color: ".$badgeColor."; border-radius: 50%; height: 18px; width: 18px; position: relative; top: 4px; left: 4px; line-height: 17px; font-size: 11px; text-align: center; font-family: Verdana;\">".$badgeLabel."</div>";
-    if($constructionState) {
-        $constructionTitle = ($constructionState == 'active') ? 'Mejora en construcción' : 'Mejora en cola';
-        echo "<span class=\"constructionMarker constructionMarker".ucfirst($constructionState)."\" title=\"".$constructionTitle."\" aria-label=\"".$constructionTitle."\">&#128296;</span>";
-    }
-    echo "</div> ";
+    $constructionLevel = $building->constructionTargetLevel($i);
+    $badgeLabel = ($constructionLevel !== false) ? $constructionLevel : (($village->resarray['f'.$i] != 0) ? $village->resarray['f'.$i] : '');
+    $badgeClass = "level levelBadge levelBadge".ucfirst($badgeState).(($constructionLevel !== false) ? " levelBadgeBuilding" : "");
+    echo "<div class=\"".$badgeClass."\" style=\"".$style."\"><div class=\"levelBadgeLabel\">".$badgeLabel."</div></div> ";
     }
    }
   ?>     

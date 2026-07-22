@@ -118,7 +118,6 @@ class funct {
 			case 10: $build = "Warehouse"; break;
 			case 11: $build = "Granary"; break;
 			case 12: $build = "Blacksmith"; break;
-			case 13: $build = "Armoury"; break;
 			case 14: $build = "Tournament Square"; break;
 			case 15: $build = "Main Building"; break;
 			case 16: $build = "Rally Point"; break;

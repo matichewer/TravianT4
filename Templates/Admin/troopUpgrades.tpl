@@ -4,7 +4,7 @@
 			<th colspan="16">Troop Upgrades</th>
 		</tr>
 		<tr>
-			<td colspan="8">Armoury</td>
+			<td colspan="8">Defensa heredada</td>
 			<td colspan="8">Blacksmith</td>
 		</tr>
 	</thead>

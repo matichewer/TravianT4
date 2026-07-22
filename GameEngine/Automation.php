@@ -38,7 +38,6 @@ class Automation {
             case 10: $build = "Almacén"; break;
             case 11: $build = "Granero"; break;
             case 12: $build = "Herrería"; break;
-            case 13: $build = "Armería"; break;
             case 14: $build = "Plaza de torneos"; break;
             case 15: $build = "Edificio principal"; break;
             case 16: $build = "Plaza de reuniones"; break;
@@ -1208,14 +1207,14 @@ class Automation {
                     "b8" => 0); // Blacksmith level
 
                 $att_ab = Array(
-                    "a1" => 0, // armoury level
-                    "a2" => 0, // armoury level
-                    "a3" => 0, // armoury level
-                    "a4" => 0, // armoury level
-                    "a5" => 0, // armoury level
-                    "a6" => 0, // armoury level
-                    "a7" => 0, // armoury level
-                    "a8" => 0); // armoury level
+                    "a1" => 0, // legacy defensive upgrade level
+                    "a2" => 0, // legacy defensive upgrade level
+                    "a3" => 0, // legacy defensive upgrade level
+                    "a4" => 0, // legacy defensive upgrade level
+                    "a5" => 0, // legacy defensive upgrade level
+                    "a6" => 0, // legacy defensive upgrade level
+                    "a7" => 0, // legacy defensive upgrade level
+                    "a8" => 0); // legacy defensive upgrade level
 
                 //rams attack
                 if($rams > 0 and $type == '3') {
@@ -1378,14 +1377,14 @@ class Automation {
                     "b8" => 0); // Blacksmith level
 
                 $att_ab = Array(
-                    "a1" => 0, // armoury level
-                    "a2" => 0, // armoury level
-                    "a3" => 0, // armoury level
-                    "a4" => 0, // armoury level
-                    "a5" => 0, // armoury level
-                    "a6" => 0, // armoury level
-                    "a7" => 0, // armoury level
-                    "a8" => 0); // armoury level
+                    "a1" => 0, // legacy defensive upgrade level
+                    "a2" => 0, // legacy defensive upgrade level
+                    "a3" => 0, // legacy defensive upgrade level
+                    "a4" => 0, // legacy defensive upgrade level
+                    "a5" => 0, // legacy defensive upgrade level
+                    "a6" => 0, // legacy defensive upgrade level
+                    "a7" => 0, // legacy defensive upgrade level
+                    "a8" => 0); // legacy defensive upgrade level
 
                 $empty = '1';
                 $tblevel = '0';

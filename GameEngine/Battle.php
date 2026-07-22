@@ -643,16 +643,16 @@ class Battle {
 		array_unshift($DefendersAll,$DefenderUnits);
 		foreach($DefendersAll as $defenders) {
 			$definf = $defcav = 0;
-			if(!empty($Armoury)) { reset($Armoury); }
-			$Armoury = $defenders['from'] != $defenders['vref'] ? $database->getABTech($defenders['from']) : $database->getABTech($defenders['vref']);
+			if(!empty($defenderUpgrades)) { reset($defenderUpgrades); }
+			$defenderUpgrades = $defenders['from'] != $defenders['vref'] ? $database->getABTech($defenders['from']) : $database->getABTech($defenders['vref']);
 			for($i=1;$i<=50;$i++) {
 				if($defenders['u'.$i] > 0) {
 					if(!empty($unitdata)) { reset($unitdata); }
 					$unitdata = $GLOBALS['u'.$i];
-					$definf += $defenders['u'.$i] * ($unitdata['di'] + ($unitdata['di'] + 300 * $unitdata['pop'] / 7) * (pow(1.007,$Armoury['a'.($i%10)]) - 1));
-					$defcav += $defenders['u'.$i] * ($unitdata['dc'] + ($unitdata['dc'] + 300 * $unitdata['pop'] / 7) * (pow(1.007,$Armoury['a'.($i%10)]) - 1));
+					$definf += $defenders['u'.$i] * ($unitdata['di'] + ($unitdata['di'] + 300 * $unitdata['pop'] / 7) * (pow(1.007,$defenderUpgrades['a'.($i%10)]) - 1));
+					$defcav += $defenders['u'.$i] * ($unitdata['dc'] + ($unitdata['dc'] + 300 * $unitdata['pop'] / 7) * (pow(1.007,$defenderUpgrades['a'.($i%10)]) - 1));
 					if(in_array($i,$unitsbytype['scout'])) {
-						$defense_scout += $defenders['u'.$i] * 20 * pow(1.03,$Armoury['a'.($i%10)]);
+						$defense_scout += $defenders['u'.$i] * 20 * pow(1.03,$defenderUpgrades['a'.($i%10)]);
 					}
 					$defender_count += $defenders['u'.$i];
 				}

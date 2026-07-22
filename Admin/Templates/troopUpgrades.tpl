@@ -1,11 +1,11 @@
 <table id="member">
 	<thead>
 		<tr>
-			<th colspan="16">Troop Upgrades</th>
+			<th colspan="16">Mejoras de tropas</th>
 		</tr>
 		<tr>
-			<td colspan="8">Armoury</td>
-			<td colspan="8">Blacksmith</td>
+			<td colspan="8">Defensa heredada</td>
+			<td colspan="8">Herrería</td>
 		</tr>
 	</thead>
 	<tbody>

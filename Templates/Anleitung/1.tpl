@@ -545,48 +545,6 @@ Las armas de tus guerreros se mejoran en los hornos de fundición de la herrerí
 
     Edificio principal Nivel 3, Academia Nivel 3</p>
 
-<h2>Armería</h2>
-
-
-
-
-
-<p>
-
-<img src="img/un/h/gid13.gif" width=166 height=150 border=0 alt="Armería" title="Armería" align="right" />
-
-La armadura de tus guerreros se mejora en los hornos de fundición de la armería. Al aumentar su nivel puedes ordenar la fabricación de armaduras aún mejores.    <br>
-
-    <br>
-
-    <b>Costos</b> y <b>tiempo de construcción</b> para el nivel 1:    <br>
-
-    <img src=img/un/res/1.gif width=18 height=12 alt=Madera " title="
-
-    Madera    " style="padding-top: 4px" />
-
-    130    | <img src=img/un/res/2.gif width=18 height=12 alt="Barro" title="Barro">
-
-    210    | <img src="img/un/res/3.gif" width=18 height=12 alt="Hierro" title="Hierro">
-
-    410    | <img src=img/un/res/4.gif width=18 height=12 alt="Cereal" title="Cereal">
-
-    130    | <img src=img/un/res/5.gif width=18 height=12 alt="Consumo de cereal" title="Consumo de cereal">
-
-    4    | <img src=img/un/h/clock.gif width=18 height=12>
-
-    0:33:20    <br>
-
-    <br>
-
-    <b>
-
-        Requisitos:    </b>
-
-    <br>
-
-    Edificio principal Nivel 3, Academia Nivel 1</p>
-
 <h2>Palacio</h2>
 
 
@@ -778,7 +736,7 @@ Tus tropas pueden entrenar para aumentar su resistencia en la plaza de torneos. 
     Plaza de reuniones Nivel 15</p>
 	</div> 
 	<div class="clear"></div> 
-</div> 
+</div>
  
 <div id="footer">
 
@@ -790,5 +748,5 @@ Tus tropas pueden entrenar para aumentar su resistencia en la plaza de torneos. 
 
 	</div>
 
-</div> 
-</div> 
+</div>
+</div>

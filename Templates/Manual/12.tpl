@@ -39,7 +39,7 @@
 </tr>
 </tbody></table>
 
-<img id="big_unit" class="big_u2" src="img/x.gif" alt="Pretoriano" title="Pretoriano" /><div id="t_desc">Los Pretorianos son la guardia del emperador y lo defienden con su vida. Como su entrenamiento está especializado en la defensa, son atacantes muy débiles.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 1, <a href="manual.php?typ=4&amp;gid=13">Armería</a> Nivel 1</div><map id="nav" name="nav">
+<img id="big_unit" class="big_u2" src="img/x.gif" alt="Pretoriano" title="Pretoriano" /><div id="t_desc">Los Pretorianos son la guardia del emperador y lo defienden con su vida. Como su entrenamiento está especializado en la defensa, son atacantes muy débiles.</div><div id="prereqs"><b>Requisitos</b><br /><a href="manual.php?typ=4&amp;gid=22">Academia</a> Nivel 1, <a href="manual.php?typ=4&amp;gid=12">Herrería</a> Nivel 1</div><map id="nav" name="nav">
  <area href="manual.php?typ=1&amp;s=1" title="atrás" coords="0,0,45,18" shape="rect" alt="" />
  <area href="manual.php?s=1" title="Resumen" coords="46,0,70,18" shape="rect" alt="" />
  <area href="manual.php?typ=1&amp;s=3" title="adelante" coords="71,0,116,18" shape="rect" alt="" />
