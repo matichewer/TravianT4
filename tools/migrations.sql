@@ -25,3 +25,8 @@ ALTER TABLE s1_config
 ALTER TABLE s1_config
   ADD COLUMN IF NOT EXISTS medal_top int(2) NOT NULL DEFAULT 10,
   ADD COLUMN IF NOT EXISTS medal_ally_top int(2) NOT NULL DEFAULT 10;
+
+-- 2026-07-22 - Sesiones simultaneas en varios dispositivos
+-- Conserva hasta 20 tokens de sesion independientes por cuenta.
+ALTER TABLE s1_users
+  MODIFY COLUMN sessid varchar(2048) NOT NULL;
