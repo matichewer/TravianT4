@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once("../GameEngine/Admin/admin_session.php");
 include("../GameEngine/Database.php");
 include("../GameEngine/Admin/database.php");
 if($funct->CheckLogin()){

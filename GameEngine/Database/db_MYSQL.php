@@ -342,6 +342,27 @@
         		}
         	}
 
+		function addActiveSession($username, $sessid) {
+			$username = mysql_real_escape_string($username);
+			$sessid = mysql_real_escape_string($sessid);
+			$q = "UPDATE " . TB_PREFIX . "users
+				SET sessid = CASE
+					WHEN FIND_IN_SET('$sessid', REPLACE(sessid, '+', ',')) > 0 THEN sessid
+					ELSE SUBSTRING_INDEX(CONCAT_WS('+', NULLIF(sessid, ''), '$sessid'), '+', -20)
+				END
+				WHERE username = '$username'";
+			return mysql_query($q, $this->connection);
+		}
+
+		function removeActiveSession($username, $sessid) {
+			$username = mysql_real_escape_string($username);
+			$sessid = mysql_real_escape_string($sessid);
+			$q = "UPDATE " . TB_PREFIX . "users
+				SET sessid = TRIM(BOTH '+' FROM REPLACE(CONCAT('+', sessid, '+'), '+$sessid+', '+'))
+				WHERE username = '$username'";
+			return mysql_query($q, $this->connection);
+		}
+
         	function submitProfile($uid, $gender, $location, $birthday, $des1, $des2) {
         		$q = "UPDATE " . TB_PREFIX . "users set gender = $gender, location = '$location', birthday = '$birthday', desc1 = '$des1', desc2 = '$des2' where id = $uid";
         		return mysql_query($q, $this->connection);

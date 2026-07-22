@@ -40,8 +40,10 @@ ob_start(); //this is enough
 
         	function __construct() {
 			global $database;
-        		$this->time = time();
-        		session_start();
+			$this->time = time();
+			ini_set("session.gc_maxlifetime", (string) COOKIE_EXPIRE);
+			session_set_cookie_params(COOKIE_EXPIRE, COOKIE_PATH);
+			session_start();
 
         		$this->logged_in = $this->checkLogin();
 
@@ -79,21 +81,29 @@ ob_start(); //this is enough
 
         		$logging->addLoginLog($this->uid, $_SERVER['REMOTE_ADDR']);
         		$database->addActiveUser($_SESSION['username'], $this->time);
-        		$database->updateUserField($_SESSION['username'], "sessid", $_SESSION['sessid'], 0);
+				$database->addActiveSession($_SESSION['username'], $_SESSION['sessid']);
 
         		header("Location: dorf1.php");
         	}
 
-        	public function Logout() {
-        		global $database;
-        		$this->logged_in = false;
-        		$database->updateUserField($_SESSION['username'], "sessid", "", 0);
-        		if(ini_get("session.use_cookies")) {
-        			$params = session_get_cookie_params();
-        			setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
-        		}
-        		session_destroy();
-        		session_start();
+		public function Logout($revokeToken = true, $restartSession = false) {
+			global $database;
+			$this->logged_in = false;
+			$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+			$sessid = isset($_SESSION['sessid']) ? $_SESSION['sessid'] : '';
+			if($revokeToken && $username !== '' && $sessid !== '') {
+				$database->removeActiveSession($username, $sessid);
+			}
+			$_SESSION = array();
+			if(ini_get("session.use_cookies")) {
+				$params = session_get_cookie_params();
+				setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+			}
+			session_destroy();
+			if($restartSession) {
+				session_id('');
+				session_start();
+			}
         	}
 
         	public function changeChecker() {
@@ -106,7 +116,7 @@ ob_start(); //this is enough
         		global $database;
         		if(isset($_SESSION['username']) && isset($_SESSION['sessid'])) {
         			if(!$database->checkActiveSession($_SESSION['username'], $_SESSION['sessid'])) {
-        				$this->Logout();
+					$this->Logout(false, true);
         				return false;
         			} else {
         				//Get and Populate Data

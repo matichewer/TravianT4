@@ -1548,7 +1548,7 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%users` (
   `sit1` int(11) unsigned NOT NULL DEFAULT '0',
   `sit2` int(11) unsigned NOT NULL DEFAULT '0',
   `alliance` int(11) unsigned NOT NULL DEFAULT '0',
-  `sessid` varchar(100) NOT NULL,
+  `sessid` varchar(2048) NOT NULL,
   `act` varchar(10) NOT NULL,
   `timestamp` int(11) unsigned NOT NULL DEFAULT '0',
   `ap` int(11) unsigned NOT NULL DEFAULT '0',

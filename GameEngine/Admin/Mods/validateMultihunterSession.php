@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once(dirname(__DIR__)."/admin_session.php");
 include_once("../../Database.php");
 
 $session = $_POST['admid'];
