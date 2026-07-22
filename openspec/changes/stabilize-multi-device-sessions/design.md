@@ -40,12 +40,17 @@ Explicit player logout will remove only the current `username`/`sessid` pair fro
 
 All live Admin entry points and Admin action validators will start PHP through one helper using `TRAVIANADMINSESSID`. Admin logout will clear and destroy only that named session. The cookie remains path `/` because Admin form actions also target `/GameEngine/Admin/Mods/`; isolation comes from the distinct cookie name.
 
+### Rotate the PHP session identifier after authentication
+
+Successful player, sitter, and Admin authentication will call `session_regenerate_id(true)` before storing authenticated state in the PHP session. This prevents a pre-authentication identifier from remaining usable after login, while preserving multi-device support because each device rotates only its own PHP session.
+
 ## Risks / Trade-offs
 
 - [Existing installed databases still have `varchar(100)`] → Add an idempotent migration and update the installer schema; apply the migration before relying on more than three simultaneous tokens.
 - [Old expired tokens have no individual timestamps] → Bound the registry to the 20 most recently created tokens; PHP still enforces the actual 30-day lifetime.
 - [Container recreation still deletes `/tmp` sessions] → Document this limitation separately; persistence can be added later without changing the token semantics.
 - [Admin users are logged out once when the cookie name changes] → Accept the one-time transition; player sessions are no longer disturbed afterward.
+- [Session identifier rotation deletes the pre-authentication session file] → Perform it only after credentials are accepted and before authenticated values are written.
 
 ## Migration Plan
 

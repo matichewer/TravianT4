@@ -64,10 +64,14 @@ $assert((int) $phpConfig['session.gc_maxlifetime'] === 2592000, 'PHP server-side
 $adminSessionSource = file_get_contents(dirname(__DIR__) . '/GameEngine/Admin/admin_session.php');
 $assert(strpos($adminSessionSource, "session_name('TRAVIANADMINSESSID')") !== false, 'Admin does not use an isolated session cookie name.');
 
+$adminLoginSource = file_get_contents(dirname(__DIR__) . '/GameEngine/Admin/function.php');
+$assert(strpos($adminLoginSource, 'session_regenerate_id(true)') !== false, 'Admin login does not rotate the PHP session identifier.');
+
 $playerSessionSource = file_get_contents(dirname(__DIR__) . '/GameEngine/Session.php');
 $assert(strpos($playerSessionSource, '$this->Logout(false, true)') !== false, 'A stale player session can still invoke token-revoking logout.');
 $assert(strpos($playerSessionSource, 'addActiveSession($_SESSION[\'username\'], $_SESSION[\'sessid\'])') !== false, 'Player login does not append its device token.');
+$assert(strpos($playerSessionSource, 'session_regenerate_id(true)') !== false, 'Player login does not rotate the PHP session identifier.');
 
-echo "Session management: OK (multi-device, isolated logout, bounded registry, 30-day lifetime, Admin isolation).\n";
+echo "Session management: OK (multi-device, isolated logout, bounded registry, 30-day lifetime, Admin isolation, login ID rotation).\n";
 
 ?>

@@ -17,3 +17,8 @@
 
 - [x] 4.1 Add a regression checker for multi-device token addition, stale-token isolation, and per-device removal
 - [x] 4.2 Run PHP syntax checks, the regression checker, OpenSpec validation, and inspect the final diff
+
+## 5. Session fixation protection
+
+- [x] 5.1 Regenerate the PHP session identifier after successful player, sitter, and Admin authentication
+- [x] 5.2 Extend the regression checker and run the focused validation suite

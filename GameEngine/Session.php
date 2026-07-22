@@ -61,6 +61,7 @@ ob_start(); //this is enough
 
         	public function Login($user) {
         		global $database, $generator, $logging;
+                session_regenerate_id(true);
         		$this->logged_in = true;
         		$_SESSION['sessid'] = $generator->generateRandID();
         		$_SESSION['username'] = $user;

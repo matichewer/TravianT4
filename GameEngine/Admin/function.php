@@ -87,6 +87,7 @@ class funct {
   function LogIN($username,$password){
     global $admin,$database;
     if($admin->Login($username,$password)){
+      session_regenerate_id(true);
       $_SESSION['access'] = $database->getUserField($username,'access',1);
       $_SESSION['id'] = $database->getUserField($username,'id',1);
       if ($_SESSION['username'] == '') { $_SESSION['username'] = $username; }

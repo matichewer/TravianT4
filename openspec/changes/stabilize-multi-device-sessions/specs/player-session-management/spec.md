@@ -38,3 +38,14 @@ The system SHALL use a distinct PHP session cookie name for the live Admin panel
 #### Scenario: Player logs out while Admin is authenticated
 - **WHEN** a browser with both player and Admin authentication logs out of the game
 - **THEN** only the player session is destroyed and the Admin session remains valid
+
+### Requirement: Successful authentication rotates the PHP session identifier
+The system MUST regenerate the active PHP session identifier after credentials are accepted and before authenticated state is stored.
+
+#### Scenario: Player or sitter logs in successfully
+- **WHEN** valid player or sitter credentials are accepted
+- **THEN** the pre-authentication PHP session identifier is invalidated and the authenticated session uses a new identifier
+
+#### Scenario: Admin logs in successfully
+- **WHEN** valid Admin credentials are accepted
+- **THEN** the pre-authentication Admin PHP session identifier is invalidated and the authenticated Admin session uses a new identifier

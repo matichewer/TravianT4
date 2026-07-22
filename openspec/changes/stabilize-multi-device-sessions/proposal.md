@@ -9,13 +9,14 @@ Player sessions currently become eligible for garbage collection after 24 minute
 - Revoke only the current device token during explicit logout; an invalid or stale client must not revoke other sessions.
 - Preserve existing valid sessions when a new player or sitter login is created.
 - Give the Admin panel an independent PHP session cookie and logout lifecycle so Admin and game logins cannot invalidate one another.
+- Regenerate the PHP session identifier after every successful player, sitter, or Admin login.
 - Add focused regression coverage for multi-device login, stale-session rejection, per-device logout, and session configuration.
 
 ## Capabilities
 
 ### New Capabilities
 
-- `player-session-management`: Defines multi-device player authentication, 30-day persistence, isolated token revocation, and Admin session separation.
+- `player-session-management`: Defines multi-device player authentication, 30-day persistence, isolated token revocation, login-time session identifier rotation, and Admin session separation.
 
 ### Modified Capabilities
 
