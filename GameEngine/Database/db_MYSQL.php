@@ -3843,6 +3843,14 @@ break;
         		}
         	}
 
+			function getAdventureCount($uid) {
+				$uid = (int) $uid;
+				$q = "SELECT COUNT(1) AS count FROM " . TB_PREFIX . "adventure WHERE uid = $uid AND end = 0";
+				$result = mysql_query($q, $this->connection);
+				$row = mysql_fetch_assoc($result);
+				return (int) $row['count'];
+			}
+
 			function editTableField($table, $field, $value, $refField, $ref) {
         		$q = "UPDATE " . TB_PREFIX . "".$table." set $field = '$value' where ".$refField." = '$ref'";
         		return mysql_query($q, $this->connection);
