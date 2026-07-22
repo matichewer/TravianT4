@@ -1380,6 +1380,24 @@
 				return $result && mysqli_affected_rows($this->connection) === 1;
 			}
 
+			function claimFollowupQuestResources($userid, $vref, $currentFquest, $nextFquest, $wood, $clay, $iron, $crop) {
+				$userid = (int)$userid;
+				$vref = (int)$vref;
+				$wood = (int)$wood;
+				$clay = (int)$clay;
+				$iron = (int)$iron;
+				$crop = (int)$crop;
+				if($userid <= 0 || $vref <= 0 || min($wood, $clay, $iron, $crop) < 0 || !preg_match('/^[01](,[01]){10}$/', $currentFquest) || !preg_match('/^[01](,[01]){10}$/', $nextFquest)) {
+					return false;
+				}
+
+				$currentFquest = mysqli_real_escape_string($this->connection, $currentFquest);
+				$nextFquest = mysqli_real_escape_string($this->connection, $nextFquest);
+				$q = "UPDATE " . TB_PREFIX . "users AS u INNER JOIN " . TB_PREFIX . "vdata AS v ON v.wref = $vref AND v.owner = u.id SET u.fquest = '$nextFquest', v.wood = v.wood + $wood, v.clay = v.clay + $clay, v.iron = v.iron + $iron, v.crop = v.crop + $crop WHERE u.id = $userid AND u.quest = 24 AND u.fquest = '$currentFquest'";
+				$result = mysqli_query($this->connection, $q);
+				return $result && mysqli_affected_rows($this->connection) === 2;
+			}
+
         	function setArchived($id) {
         		$q = "UPDATE " . TB_PREFIX . "mdata set archived = 1 where id = $id";
         		return mysqli_query($this->connection,$q);

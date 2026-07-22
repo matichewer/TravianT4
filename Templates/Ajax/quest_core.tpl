@@ -283,108 +283,86 @@ if (isset($qact)){
 	break;
 
     case '26':
-	$dataarray[1] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give the reward shown for the complementary branch quest.
-	if((int)$uArray['quest_choose'] === 2) {
-		$database->modifyResource($session->villages[0],70,100,90,100,1);
-	} else {
-		$database->modifyResource($session->villages[0],140,200,180,200,1);
-	}
-	break;
-
     case '27':
-	$dataarray[2] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],200,120,180,80,1);
-	break;
-
     case '28':
-	$dataarray[3] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],240,280,180,100,1);
-	break;
-
     case '29':
-	$dataarray[4] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],600,750,600,300,1);
-	break;
-
     case '30':
-	$dataarray[5] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],900,850,600,300,1);
-	break;
-
     case '31':
-	$dataarray[6] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],1800,2000,1650,800,1);
-	break;
-
     case '32':
-	$dataarray[7] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],1600,1800,1950,1200,1);
-	break;
-
     case '33':
-	$dataarray[8] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],3400,2800,3600,2200,1);
-	break;
-
     case '34':
-	$dataarray[9] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
-
-	$_SESSION['qst']= 24;
-
-	//Give Reward
-	$database->modifyResource($session->villages[0],1050,800,900,750,1);
-	break;
-
     case '35':
-	$dataarray[10] = 1;
-	$database->updateUserField($_SESSION['username'],'fquest',''.$dataarray[0].','.$dataarray[1].','.$dataarray[2].','.$dataarray[3].','.$dataarray[4].','.$dataarray[5].','.$dataarray[6].','.$dataarray[7].','.$dataarray[8].','.$dataarray[9].','.$dataarray[10].'',0);
+	$_SESSION['qst'] = (int)$database->getUserField($session->uid, 'quest', 0);
+	$questNumber = (int)$qact;
+	$questIndex = $questNumber - 25;
+	$currentFquest = implode(',', $dataarray);
+	$requirementMet = false;
+	$reward = array(0, 0, 0, 0);
 
-    $database->updateUserField($_SESSION['username'],'quest','',0);
-	$_SESSION['qst']= 24;
+	switch($questNumber) {
+		case 26:
+			if((int)$uArray['quest_choose'] === 2) {
+				$requirementMet = $building->getTypeLevel(19) >= 1;
+				$reward = array(70, 100, 90, 100);
+			} else {
+				$requirementMet = $building->getTypeLevel(17) >= 1;
+				$reward = array(140, 200, 180, 200);
+			}
+			break;
+		case 27:
+			$requirementMet = $building->getTypeLevel(18) >= 1;
+			$reward = array(200, 120, 180, 80);
+			break;
+		case 28:
+			$requirementMet = (int)$uArray['alliance'] > 0;
+			$reward = array(240, 280, 180, 100);
+			break;
+		case 29:
+			$requirementMet = $building->getTypeLevel(15) >= 5;
+			$reward = array(600, 750, 600, 300);
+			break;
+		case 30:
+			$requirementMet = $building->getTypeLevel(11) >= 3;
+			$reward = array(900, 850, 600, 300);
+			break;
+		case 31:
+			$requirementMet = $building->getTypeLevel(10) >= 7;
+			$reward = array(1800, 2000, 1650, 800);
+			break;
+		case 32:
+			$resourceLevels = $database->getResourceLevel($session->villages[0]);
+			$requirementMet = true;
+			for($field = 1; $field <= 18; $field++) {
+				if((int)$resourceLevels['f'.$field] < 5) {
+					$requirementMet = false;
+					break;
+				}
+			}
+			$reward = array(1600, 1800, 1950, 1200);
+			break;
+		case 33:
+			$requirementMet = $building->getTypeLevel(25) >= 10 || $building->getTypeLevel(26) >= 10;
+			$reward = array(3400, 2800, 3600, 2200);
+			break;
+		case 34:
+			$settlers = array(1 => 'u10', 2 => 'u20', 3 => 'u30');
+			$tribe = (int)$session->userinfo['tribe'];
+			$requirementMet = isset($settlers[$tribe], $village->unitall[$settlers[$tribe]]) && (int)$village->unitall[$settlers[$tribe]] >= 3;
+			$reward = array(1050, 800, 900, 750);
+			break;
+		case 35:
+			$requirementMet = count($database->getProfileVillages($session->uid)) >= 2;
+			$reward = array(1600, 2000, 1800, 1300);
+			break;
+	}
 
-	//Give Reward
-	$database->modifyResource($session->villages[0],1600,2000,1800,1300,1);
+	if($_SESSION['qst'] === 24 && isset($dataarray[$questIndex]) && (int)$dataarray[$questIndex] === 0 && $requirementMet) {
+		$dataarray[$questIndex] = 1;
+		$nextFquest = implode(',', $dataarray);
+		if(!$database->claimFollowupQuestResources($session->uid, $session->villages[0], $currentFquest, $nextFquest, $reward[0], $reward[1], $reward[2], $reward[3])) {
+			$dataarray = explode(',', $database->getUserField($session->uid, 'fquest', 0));
+		}
+	}
 	break;
 
 

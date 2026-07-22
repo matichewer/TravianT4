@@ -76,6 +76,35 @@ for ($index = 0; $index < $caseCount; $index++) {
     }
 }
 
+$followupSwitchStart = strpos($source, 'switch($questNumber)');
+$followupClaimStart = strpos($source, "if(\$_SESSION['qst'] === 24", $followupSwitchStart);
+if ($followupSwitchStart === false || $followupClaimStart === false) {
+    $errors[] = 'Follow-up resource claims are missing their validated reward switch.';
+} else {
+    $followupSwitch = substr($source, $followupSwitchStart, $followupClaimStart - $followupSwitchStart);
+    preg_match_all('/case (\d+):(.*?)(?=\n\t\tcase \d+:|\n\t})/s', $followupSwitch, $followupCases, PREG_SET_ORDER);
+
+    foreach ($followupCases as $followupCase) {
+        $action = (int)$followupCase[1];
+        if (strpos($followupCase[2], '$requirementMet =') === false) {
+            $errors[] = 'Follow-up action ' . $action . ' has no server-side completion check.';
+        }
+        preg_match_all('/\$reward = array\((\d+), (\d+), (\d+), (\d+)\);/', $followupCase[2], $rewardMatches, PREG_SET_ORDER);
+        foreach ($rewardMatches as $rewardMatch) {
+            if (!isset($awardedRewards[$action])) {
+                $awardedRewards[$action] = array();
+            }
+            $awardedRewards[$action][] = array_map('intval', array_slice($rewardMatch, 1));
+        }
+    }
+
+    foreach (array('$requirementMet', '(int)$dataarray[$questIndex] === 0', 'claimFollowupQuestResources') as $claimGuard) {
+        if (strpos(substr($source, $followupSwitchStart, 6000), $claimGuard) === false) {
+            $errors[] = 'Follow-up resource claims are missing guard: ' . $claimGuard;
+        }
+    }
+}
+
 $normalise = function ($rewards) {
     foreach ($rewards as &$variants) {
         usort($variants, function ($left, $right) {
