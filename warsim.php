@@ -44,7 +44,10 @@ if(isset($_POST['result'])) {
     foreach($target as $tar) {
         include("Templates/Simulator/res_d".$tar.".tpl");
     }
-    echo '<h4 class="round">Configuración del ataque</h4>';
+    $hasSiegeResult = isset($_POST['result']['target_level_after']) || isset($_POST['result']['wall_level_after']);
+    if($hasSiegeResult) {
+        echo '<h4 class="round">Configuración del ataque</h4>';
+    }
     if(isset($_POST['result']['target_level_after'])) {
         $targetLevel = (int)$form->getValue('kata');
         $remainingLevel = (int)$_POST['result']['target_level_after'];
@@ -56,14 +59,14 @@ if(isset($_POST['result'])) {
     }
     if(isset($_POST['result']['wall_level_after'])) {
         $defenderTribe = (int)$target[0];
-        $wallNames = array(1 => WARSIM_WALL1, 2 => WARSIM_WALL2, 3 => WARSIM_WALL3);
-		$wallArticles = array(1 => 'La', 2 => 'El', 3 => 'La');
+        $wallSubjects = array(1 => 'La muralla', 2 => 'El terraplén', 3 => 'La empalizada');
+        $wallObjects = array(1 => 'de la muralla', 2 => 'del terraplén', 3 => 'de la empalizada');
         $wallLevel = (int)$form->getValue('wall'.$defenderTribe);
         $remainingWallLevel = (int)$_POST['result']['wall_level_after'];
         if($remainingWallLevel < $wallLevel) {
-			echo "<p>".$wallArticles[$defenderTribe]." ".$wallNames[$defenderTribe]." bajó del nivel <b>".$wallLevel."</b> al nivel <b>".$remainingWallLevel."</b>.</p>";
+			echo "<p>".$wallSubjects[$defenderTribe]." bajó del nivel <b>".$wallLevel."</b> al nivel <b>".$remainingWallLevel."</b>.</p>";
         } else {
-			echo "<p>Los arietes supervivientes no alcanzaron a reducir el nivel de ".$wallArticles[$defenderTribe]." ".strtolower($wallNames[$defenderTribe]).".</p>";
+			echo "<p>Los arietes supervivientes no alcanzaron a reducir el nivel ".$wallObjects[$defenderTribe].".</p>";
         }
     }
 }
