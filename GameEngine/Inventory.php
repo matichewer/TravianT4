@@ -28,414 +28,220 @@ if(!function_exists('getHeroArmorBonuses')){
 	}
 }
 
-if($_POST && $_POST['a']=='inventory'){
-	$data = $_POST;
-	$uid = $session->uid;
-	$hero = $database->HeroFace($uid);
-	$heroData = $database->getHeroData($uid);
-	$itemData = $database->getItemData($data['id']);
-
-	if($data['btype']==1){
-		$database->editProcItem($data['id'], 1);
-		$database->setHeroInventory($uid, 'helmet', $data['id']);
-		if($hero['helmet']!=0){
-			$database->modifyHeroFace($uid, 'helmet', $data['type']);
-			$id = $database->getHeroItemID2($uid, 1, $hero['helmet']);
-			$database->editProcItem($id, 0);
-		}else{
-			$database->modifyHeroFace($uid, 'helmet', $data['type']);
+if(!function_exists('getHeroWeaponPowerBonus')){
+	function getHeroWeaponPowerBonus($type){
+		$type = (int)$type;
+		if($type<16 || $type>60){
+			return 0;
 		}
+
+		return (($type-16)%3+1)*500;
 	}
+}
 
-	elseif($data['btype']==2 && (int)$itemData['btype']==2 && (int)$itemData['uid']==$uid){
-		$inventory = $database->getHeroInventory($uid);
-		$currentBodyId = (int)$inventory['body'];
+if(!function_exists('getHeroHorseSpeedBonus')){
+	function getHeroHorseSpeedBonus($type){
+		$bonuses = array(103 => 7, 104 => 10, 105 => 13);
+		return isset($bonuses[(int)$type]) ? $bonuses[(int)$type] : 0;
+	}
+}
 
-		if($currentBodyId!=(int)$data['id']){
-			$oldBonuses = array('itempower' => 0, 'autoregen' => 0);
-			if($currentBodyId!=0){
-				$currentBody = $database->getItemData($currentBodyId);
-				$oldBonuses = getHeroArmorBonuses((int)$currentBody['type']);
-				$database->editProcItem($currentBodyId, 0);
-			}
+if(!function_exists('getHeroEquipmentDefinition')){
+	function getHeroEquipmentDefinition($btype){
+		$definitions = array(
+			1 => array('slot' => 'helmet', 'face' => 'helmet'),
+			2 => array('slot' => 'body', 'face' => null),
+			3 => array('slot' => 'leftHand', 'face' => 'leftHand'),
+			4 => array('slot' => 'rightHand', 'face' => 'rightHand'),
+			5 => array('slot' => 'shoes', 'face' => 'foot'),
+			6 => array('slot' => 'horse', 'face' => 'horse')
+		);
 
-			$newBonuses = getHeroArmorBonuses((int)$itemData['type']);
-			$itemPower = max(0, (int)$heroData['itempower'] - $oldBonuses['itempower']) + $newBonuses['itempower'];
-			$autoRegen = max(0, (int)$heroData['autoregen'] - $oldBonuses['autoregen']) + $newBonuses['autoregen'];
+		return isset($definitions[(int)$btype]) ? $definitions[(int)$btype] : false;
+	}
+}
 
-			$database->editProcItem($data['id'], 1);
-			$database->setHeroInventory($uid, 'body', $data['id']);
+if(!function_exists('isOwnedHeroItem')){
+	function isOwnedHeroItem($item, $uid, $btype=null){
+		return is_array($item)
+			&& isset($item['id'], $item['uid'], $item['btype'])
+			&& (int)$item['id']>0
+			&& (int)$item['uid']==(int)$uid
+			&& ($btype===null || (int)$item['btype']==(int)$btype);
+	}
+}
+
+if(!function_exists('applyHeroEquipmentBonusChange')){
+	function applyHeroEquipmentBonusChange($database, $uid, $btype, $oldItem, $newItem){
+		$heroData = $database->getHeroData($uid);
+		if(!is_array($heroData)){
+			return;
+		}
+
+		if((int)$btype===2){
+			$oldBonuses = is_array($oldItem) ? getHeroArmorBonuses((int)$oldItem['type']) : array('itempower' => 0, 'autoregen' => 0);
+			$newBonuses = is_array($newItem) ? getHeroArmorBonuses((int)$newItem['type']) : array('itempower' => 0, 'autoregen' => 0);
+			$itemPower = max(0, (int)$heroData['itempower']-$oldBonuses['itempower'])+$newBonuses['itempower'];
+			$autoRegen = max(0, (int)$heroData['autoregen']-$oldBonuses['autoregen'])+$newBonuses['autoregen'];
 			$database->modifyHero2('itempower', $itemPower, $uid, 0);
 			$database->modifyHero2('autoregen', $autoRegen, $uid, 0);
+		}elseif((int)$btype===4){
+			$oldBonus = is_array($oldItem) ? getHeroWeaponPowerBonus((int)$oldItem['type']) : 0;
+			$newBonus = is_array($newItem) ? getHeroWeaponPowerBonus((int)$newItem['type']) : 0;
+			$itemPower = max(0, (int)$heroData['itempower']-$oldBonus)+$newBonus;
+			$database->modifyHero2('itempower', $itemPower, $uid, 0);
+		}elseif((int)$btype===6){
+			$oldBonus = is_array($oldItem) ? getHeroHorseSpeedBonus((int)$oldItem['type']) : 0;
+			$newBonus = is_array($newItem) ? getHeroHorseSpeedBonus((int)$newItem['type']) : 0;
+			$speed = max(7, (int)$heroData['speed']-$oldBonus)+$newBonus;
+			$database->modifyHero2('speed', $speed, $uid, 0);
 		}
 	}
+}
 
-	elseif($data['btype']==3){
-		$database->editProcItem($data['id'], 1);
-		$database->setHeroInventory($uid, 'leftHand', $data['id']);
-		if($hero['leftHand']!=0){
-			$database->modifyHeroFace($uid, 'leftHand', $data['type']);
-			$id = $database->getHeroItemID2($uid, 3, $hero['leftHand']);
-			$database->editProcItem($id, 0);
-		}else{
-			$database->modifyHeroFace($uid, 'leftHand', $data['type']);
+if(!function_exists('equipHeroItem')){
+	function equipHeroItem($database, $uid, $item){
+		$btype = isset($item['btype']) ? (int)$item['btype'] : 0;
+		$definition = getHeroEquipmentDefinition($btype);
+		if(!$definition || !isOwnedHeroItem($item, $uid, $btype) || (int)$item['proc']!==0){
+			return false;
 		}
-	}
 
-	elseif($data['btype']==4){
-		$database->editProcItem($data['id'], 1);
-		$id2 = $database->getHeroItemID2($uid, 4, $hero['rightHand']);
-		$database->setHeroInventory($uid, 'rightHand', $data['id']);
-		if($data['type']==16){
-		$database->modifyHero2("itempower",500,$uid,1);
+		$inventory = $database->getHeroInventory($uid);
+		if(!is_array($inventory)){
+			return false;
 		}
-		if($data['type']==17){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==18){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==19){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==20){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==21){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==22){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==23){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==24){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==25){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==26){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==27){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==28){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==29){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==30){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==31){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==32){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==33){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==34){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==35){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==36){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==37){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==38){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==39){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==40){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==41){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==42){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==43){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==44){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==45){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==46){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==47){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==48){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==49){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==50){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==51){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==52){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==53){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==54){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==55){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==56){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==57){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($data['type']==58){
-		$database->modifyHero2("itempower",500,$uid,1);
-		}
-		if($data['type']==59){
-		$database->modifyHero2("itempower",1000,$uid,1);
-		}
-		if($data['type']==60){
-		$database->modifyHero2("itempower",1500,$uid,1);
-		}
-		if($hero['rightHand']!=0){
-			$database->modifyHeroFace($uid, 'rightHand', $data['type']);
-			$itemData2 = $database->getItemData($hero['rightHand']);
-		if($itemData2['type']==16){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==17){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==18){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==19){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==20){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==21){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==22){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==23){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==24){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==25){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==26){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==27){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==28){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==29){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==30){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==31){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==32){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==33){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==34){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==35){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==36){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==37){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==38){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==39){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==40){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==41){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==42){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==43){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==44){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==45){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==46){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==47){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==48){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==49){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==50){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==51){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==52){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==53){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==54){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==55){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==56){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==57){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==58){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==59){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==60){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-			$database->editProcItem($id, 0);
-		}else{
-			$database->modifyHeroFace($uid, 'rightHand', $data['type']);
-		}
-	}
 
-	elseif($data['btype']==5){
-		$database->editProcItem($data['id'], 1);
-		$database->setHeroInventory($uid, 'shoes', $data['id']);
-		if($hero['foot']!=0){
-			$database->modifyHeroFace($uid, 'foot', $data['type']);
-			$id = $database->getHeroItemID2($uid, 5, $hero['foot']);
-			$database->editProcItem($id, 0);
-		}else{
-			$database->modifyHeroFace($uid, 'foot', $data['type']);
+		$currentId = (int)$inventory[$definition['slot']];
+		if($currentId===(int)$item['id']){
+			return true;
 		}
-	}
 
-	elseif($data['btype']==6){
-		$database->editProcItem($data['id'], 1);
-		$database->setHeroInventory($uid, 'horse', $data['id']);
-		if($hero['horse']!=0){
-		$database->editProcItem($hero['horse'], 1);
-		$itemData2 = $database->getItemData($hero['rightHand']);
-			if($itemData2['type']==103){
-				$value2 = 7;
-			}elseif($itemData2['type']==104){
-				$value2 = 10;
-			}elseif($itemData2['type']==105){
-				$value2 = 13;
+		$oldItem = null;
+		if($currentId>0){
+			$candidate = $database->getItemData($currentId);
+			if(isOwnedHeroItem($candidate, $uid, $btype)){
+				$oldItem = $candidate;
+				$database->editProcItem($currentId, 0);
 			}
-			$database->modifyHero2('speed', $value2, $uid, 2);
 		}
-			if($data['type']==103){
-				$value = 7;
-			}elseif($data['type']==104){
-				$value = 10;
-			}elseif($data['type']==105){
-				$value = 13;
+
+		applyHeroEquipmentBonusChange($database, $uid, $btype, $oldItem, $item);
+		$database->editProcItem((int)$item['id'], 1);
+		$database->setHeroInventory($uid, $definition['slot'], (int)$item['id']);
+		if($definition['face']!==null){
+			$database->modifyHeroFace($uid, $definition['face'], (int)$item['type']);
+		}
+
+		return true;
+	}
+}
+
+if(!function_exists('unequipHeroItem')){
+	function unequipHeroItem($database, $uid, $btype, $requestedItemId){
+		$definition = getHeroEquipmentDefinition($btype);
+		$inventory = $database->getHeroInventory($uid);
+		if(!$definition || !is_array($inventory)){
+			return false;
+		}
+
+		$currentId = (int)$inventory[$definition['slot']];
+		if($currentId<=0 || $currentId!==(int)$requestedItemId){
+			return false;
+		}
+
+		$item = $database->getItemData($currentId);
+		if(!isOwnedHeroItem($item, $uid, $btype)){
+			return false;
+		}
+
+		applyHeroEquipmentBonusChange($database, $uid, $btype, $item, null);
+		$database->setHeroInventory($uid, $definition['slot'], 0);
+		$database->editProcItem($currentId, 0);
+		if($definition['face']!==null){
+			$database->modifyHeroFace($uid, $definition['face'], 0);
+		}
+
+		return true;
+	}
+}
+
+if(!function_exists('equipHeroBagItem')){
+	function equipHeroBagItem($database, $uid, $item, $amount){
+		$btype = isset($item['btype']) ? (int)$item['btype'] : 0;
+		$amount = (int)$amount;
+		if($btype<7 || $btype>9 || !isOwnedHeroItem($item, $uid, $btype) || (int)$item['proc']!==0 || $amount<1 || $amount>(int)$item['num']-(int)$item['type']){
+			return false;
+		}
+
+		$inventory = $database->getHeroInventory($uid);
+		if(!is_array($inventory)){
+			return false;
+		}
+
+		$currentId = (int)$inventory['bag'];
+		if($currentId>0 && $currentId!==(int)$item['id']){
+			$currentItem = $database->getItemData($currentId);
+			if(isOwnedHeroItem($currentItem, $uid) && (int)$currentItem['btype']>=7 && (int)$currentItem['btype']<=9){
+				$database->editHeroType($currentId, 0, 2);
+				$database->editProcItem($currentId, 0);
 			}
-			$database->modifyHeroFace($uid, 'horse', $data['type']);
-			$database->modifyHero2('speed', $value, $uid, 1);
+		}
+
+		$database->editProcItem((int)$item['id'], 1);
+		$database->editHeroType((int)$item['id'], $amount, 1);
+		$database->setHeroInventory($uid, 'bag', (int)$item['id']);
+
+		return true;
+	}
+}
+
+if(!function_exists('unequipHeroBagItem')){
+	function unequipHeroBagItem($database, $uid, $requestedItemId){
+		$inventory = $database->getHeroInventory($uid);
+		if(!is_array($inventory) || (int)$inventory['bag']<1 || (int)$inventory['bag']!==(int)$requestedItemId){
+			return false;
+		}
+
+		$currentId = (int)$inventory['bag'];
+		$item = $database->getItemData($currentId);
+		if(!isOwnedHeroItem($item, $uid) || (int)$item['btype']<7 || (int)$item['btype']>9){
+			return false;
+		}
+
+		$database->setHeroInventory($uid, 'bag', 0);
+		$database->editProcItem($currentId, 0);
+		$database->editHeroType($currentId, 0, 2);
+
+		return true;
+	}
+}
+
+if($_POST && isset($_POST['a']) && $_POST['a']=='inventory'){
+	$data = $_POST;
+	$uid = (int)$session->uid;
+	$heroData = $database->getHeroData($uid);
+	$itemId = isset($data['id']) ? (int)$data['id'] : 0;
+	$itemData = $itemId>0 ? $database->getItemData($itemId) : false;
+
+	if(!isOwnedHeroItem($itemData, $uid) || (int)$itemData['proc']!==0){
+		$data['btype'] = 0;
+	}else{
+		$data['id'] = $itemId;
+		$data['btype'] = (int)$itemData['btype'];
+		$data['type'] = (int)$itemData['type'];
+		$data['amount'] = isset($data['amount']) ? (int)$data['amount'] : 0;
 	}
 
-	elseif($data['btype']==7){
-	if($data['amount'] <= $itemData['num']-$itemData['type']){
-		$database->editProcItem($data['id'], 1);
-		$database->editHeroType($data['id'], $data['amount'], 1);
-		if($hero['bag']!=0){
-			$id = $database->getHeroItemID2($uid, 7, $hero['bag']);
-			$database->editProcItem($id, 0);
-		}
-			$database->setHeroInventory($uid, 'bag', $data['id']);
+	if($data['btype']>=1 && $data['btype']<=6){
+		if((int)$heroData['dead']===0){
+			equipHeroItem($database, $uid, $itemData);
 		}
 	}
 
-	elseif($data['btype']==8){
-		if($data['amount'] <= $itemData['num']-$itemData['type']){
-		$database->editProcItem($data['id'], 1);
-		$database->editHeroType($data['id'], $data['amount'], 1);
-		if($hero['bag']!=0){
-			$id = $database->getHeroItemID2($uid, 8, $hero['bag']);
-			$database->editProcItem($id, 0);
-		}
-			$database->setHeroInventory($uid, 'bag', $data['id']);
-		}
-	}
-
-	elseif($data['btype']==9){
-		if($data['amount'] <= $itemData['num']-$itemData['type']){
-		$database->editProcItem($data['id'], 1);
-		$database->editHeroType($data['id'], $data['amount'], 1);
-		if($hero['bag']!=0){
-			$id = $database->getHeroItemID2($uid, 9, $hero['bag']);
-			$database->editProcItem($id, 0);
-		}
-		$database->setHeroInventory($uid, 'bag', $data['id']);
+	elseif($data['btype']>=7 && $data['btype']<=9){
+		if((int)$heroData['dead']===0){
+			equipHeroBagItem($database, $uid, $itemData, $data['amount']);
 		}
 	}
 

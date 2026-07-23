@@ -5,197 +5,27 @@ $start = $generator->pageLoadTimeStart();
 include "Templates/html.tpl";
 
 if(isset($_GET['inventory'])){
-	$uid = $session->uid;
-	if(isset($_GET['helmet'])){
-		$database->setHeroInventory($uid, "helmet", 0);
-		$database->editProcItem($_GET['helmet'], 0);
-		$database->modifyHeroFace($uid, "helmet", 0);
-		
-	}elseif(isset($_GET['leftHand'])){
-		$database->setHeroInventory($uid, "leftHand", 0);
-		$database->editProcItem($_GET['leftHand'], 0);
-		$database->modifyHeroFace($uid, "leftHand", 0);
-		
-	}elseif(isset($_GET['rightHand'])){
-		$itemData = $database->getHeroInventory($uid);
-		$itemData2 = $database->getItemData($itemData['rightHand']);
-		if($itemData2['type']==16){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==17){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==18){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==19){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==20){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==21){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==22){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==23){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==24){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==25){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==26){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==27){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==28){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==29){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==30){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==31){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==32){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==33){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==34){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==35){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==36){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==37){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==38){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==39){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==40){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==41){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==42){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==43){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==44){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==45){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==46){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==47){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==48){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==49){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==50){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==51){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==52){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==53){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==54){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==55){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==56){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==57){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		if($itemData2['type']==58){
-		$database->modifyHero2("itempower",500,$uid,2);
-		}
-		if($itemData2['type']==59){
-		$database->modifyHero2("itempower",1000,$uid,2);
-		}
-		if($itemData2['type']==60){
-		$database->modifyHero2("itempower",1500,$uid,2);
-		}
-		$database->setHeroInventory($uid, "rightHand", 0);
-		$database->editProcItem($_GET['rightHand'], 0);
-		$database->modifyHeroFace($uid, "rightHand", 0);
-		
-	}elseif(isset($_GET['body'])){
-		$inventory = $database->getHeroInventory($uid);
-		$currentBodyId = (int)$inventory['body'];
-		if($currentBodyId!=0){
-			$itemData = $database->getItemData($currentBodyId);
-			$bonuses = getHeroArmorBonuses((int)$itemData['type']);
-			$heroData = $database->getHeroData($uid);
-			$itemPower = max(0, (int)$heroData['itempower'] - $bonuses['itempower']);
-			$autoRegen = max(0, (int)$heroData['autoregen'] - $bonuses['autoregen']);
+	$uid = (int)$session->uid;
+	$heroData = $database->getHeroData($uid);
+	if(is_array($heroData) && (int)$heroData['dead']===0){
+		$equipmentRequests = array(
+			'helmet' => 1,
+			'body' => 2,
+			'leftHand' => 3,
+			'rightHand' => 4,
+			'shoes' => 5,
+			'horse' => 6
+		);
 
-			$database->setHeroInventory($uid, "body", 0);
-			$database->editProcItem($currentBodyId, 0);
-			$database->modifyHero2('itempower', $itemPower, $uid, 0);
-			$database->modifyHero2('autoregen', $autoRegen, $uid, 0);
+		foreach($equipmentRequests as $requestField => $btype){
+			if(isset($_GET[$requestField])){
+				unequipHeroItem($database, $uid, $btype, (int)$_GET[$requestField]);
+				break;
+			}
 		}
-		
-	}elseif(isset($_GET['horse'])){
-		$itemData = $database->getHeroInventory($uid);
-		$itemData2 = $database->getItemData($itemData['horse']);
-		if($itemData2['type']==103){
-		$database->modifyHero2("speed",7,$uid,2);
-		}
-		if($itemData2['type']==104){
-		$database->modifyHero2("speed",10,$uid,2);
-		}
-		if($itemData2['type']==105){
-		$database->modifyHero2("speed",13,$uid,2);
-		}
-		$database->setHeroInventory($uid, "horse", 0);
-		$database->editProcItem($_GET['horse'], 0);
-		$database->modifyHeroFace($uid, "horse", 0);
-		
-	}elseif(isset($_GET['bag'])){
-		$database->setHeroInventory($uid, "bag", 0);
-		$database->editProcItem($_GET['bag'], 0);
-		$itemdata = $database->getItemData($_GET['bag']);
-		if($itemdata['btype'] >= 7 && $itemdata['btype']<=9){
-		$database->editHeroType($itemdata['id'], 0, 2);
+
+		if(isset($_GET['bag'])){
+			unequipHeroBagItem($database, $uid, (int)$_GET['bag']);
 		}
 	}
 }
@@ -277,62 +107,34 @@ include("Templates/hero.tpl");
 
 <?php
 $gi = $database->getHeroInventory($session->uid);
-$dis = '';
-if($hero['dead']==1){
-	$dis = ' disabled';
-}
-if($gi['helmet']!=0){
-	$data = $database->getItemData($gi['helmet']);
-	$item = '<a href="?inventory&helmet='.$gi['helmet'].'"><div id="item_'.$gi['helmet'].'" class="item item_'.$data['type'].' onHero'.$dis.'" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="helmet" class="draggable">'.$item.'</div>';
-}else{
-	echo '<div id="helmet" class="draggable"></div>';
-}
+$equipmentSlots = array(
+	'helmet' => 1,
+	'leftHand' => 3,
+	'rightHand' => 4,
+	'body' => 2,
+	'horse' => 6,
+	'shoes' => 5,
+	'bag' => 0
+);
+$disabledClass = $hero['dead']==1 ? ' disabled' : '';
 
-if($gi['leftHand']!=0){
-	$data = $database->getItemData($gi['leftHand']);
-	$item = '<a href="?inventory&leftHand='.$gi['leftHand'].'"><div id="item_'.$gi['leftHand'].'" class="item item_'.$data['type'].' onHero'.$dis.'" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="leftHand" class="draggable">'.$item.'</div>';
-}else{
-	echo '<div id="leftHand" class="draggable"></div>';
-}
-
-if($gi['rightHand']!=0){
-	$data = $database->getItemData($gi['rightHand']);
-	$item = '<a href="?inventory&rightHand='.$gi['rightHand'].'"><div id="item_'.$gi['rightHand'].'" class="item item_'.$data['type'].' onHero'.$dis.'" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="rightHand" class="draggable">'.$item.'</div>';
-}else{
-	echo '<div id="rightHand" class="draggable"></div>';
-}
-
-if($gi['body']!=0){
-	$data = $database->getItemData($gi['body']);
-	$item = '<a href="?inventory&body='.$gi['body'].'"><div id="item_'.$gi['body'].'" class="item item_'.$data['type'].' onHero'.$dis.'" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="body" class="draggable">'.$item.'</div>';
-}else{
-	echo '<div id="body" class="draggable"></div>';
-}
-
-if($gi['horse']!=0){
-	$data = $database->getItemData($gi['horse']);
-	$item = '<a href="?inventory&horse='.$gi['horse'].'"><div id="item_'.$gi['horse'].'" class="item item_'.$data['type'].' onHero'.$dis.'" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="horse" class="draggable">'.$item.'</div>';
-}else{
-	echo '<div id="horse" class="draggable"></div>';
-}
-
-if($gi['bag']!=0){
-	$data = $database->getItemData($gi['bag']);
-	if($data['btype'] < 7 && $data['btype'] > 9){
-	$item = '<a href="?inventory&bag='.$gi['bag'].'"><div id="item_'.$gi['bag'].'" class="item item_'.$data['type'].' onHero" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['num'].'</div></div></a>';
-	echo '<div id="bag" class="draggable">'.$item.'</div>';
-	}else{
-	$data = $database->getItemData($gi['bag']);
-	$item = '<a href="?inventory&bag='.$gi['bag'].'"><div id="item_'.$gi['bag'].'" class="item item_'.($data['btype']+105).' onHero" style="position: relative; left: 0px; top: 0px; "><div class="amount">'.$data['type'].'</div></div></a>';
-	echo '<div id="bag" class="draggable">'.$item.'</div>';
+foreach($equipmentSlots as $slot => $expectedBtype){
+	$itemId = isset($gi[$slot]) ? (int)$gi[$slot] : 0;
+	$itemMarkup = '';
+	if($itemId>0){
+		$data = $database->getItemData($itemId);
+		$isExpectedItem = isOwnedHeroItem($data, $session->uid)
+			&& ($slot==='bag'
+				? ((int)$data['btype']>=7 && (int)$data['btype']<=9)
+				: (int)$data['btype']===$expectedBtype);
+		if($isExpectedItem){
+			$itemClass = $slot==='bag' ? (int)$data['btype']+105 : (int)$data['type'];
+			$amount = $slot==='bag' ? (int)$data['type'] : (int)$data['num'];
+			$item = '<div id="item_'.$itemId.'" class="item item_'.$itemClass.' onHero'.$disabledClass.'" style="position: relative; left: 0px; top: 0px;"><div class="amount">'.$amount.'</div></div>';
+			$itemMarkup = $hero['dead']==1 ? $item : '<a href="?inventory&amp;'.$slot.'='.$itemId.'">'.$item.'</a>';
+		}
 	}
-}else{
-	echo '<div id="bag" class="draggable"></div>';
+	echo '<div id="'.$slot.'" class="draggable'.$disabledClass.'">'.$itemMarkup.'</div>';
 }
 ?>
 			</div>
@@ -393,6 +195,7 @@ include "Templates/Auction/alt.tpl";
 	$outputList .= "<div class=\"amount\">".$var."</div>";
 	$outputList .= "</div>";
 	$outputList .= '</div>';
+	$inv++;
 		}
 	}else{
 	if($num==1){$amount = '';}else{$amount = '('.$num.') ';}
