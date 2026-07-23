@@ -47,7 +47,12 @@ $animalNames = array(
 <h1 class="titleInHeader">Buscador de elefantes</h1>
 
 <div class="spacer"></div>
-<table cellpadding="1" cellspacing="1" id="croplist">
+<table cellpadding="1" cellspacing="1" id="croplist" class="elephantFinderTable">
+	<colgroup>
+		<col class="colDist" />
+		<col class="colCoords" />
+		<col class="colAnimals" />
+	</colgroup>
 	<thead>
 		<tr>
 			<th>Distancia</th>
@@ -93,8 +98,38 @@ $animalNames = array(
 </table>
 
 <style type="text/css">
+.elephantFinderTable{table-layout:fixed;width:100%;}
+.elephantFinderTable col.colDist{width:90px;}
+.elephantFinderTable col.colCoords{width:130px;}
+.elephantFinderTable td.typ{white-space:normal;}
 .elephantFinderAnimal{display:inline-flex;align-items:center;margin-right:10px;white-space:nowrap;}
 .elephantFinderAnimalCount{margin-right:4px;font-weight:bold;}
+
+body.cropfinder .dialog .dialog-contents .cancel{box-sizing:border-box;width:22px;height:22px;right:-10px;top:-10px;z-index:30;border:1px solid #777;border-radius:50%;background:#fff!important;color:#333;text-align:center;line-height:18px;}
+body.cropfinder .dialog .dialog-contents .cancel:before{content:'\00d7';font-family:Arial,sans-serif;font-size:22px;font-weight:normal;}
+body.cropfinder .dialog .dialog-contents .cancel:hover{background:#eee!important;color:#000;}
+.dialog.mapTileDetailsDialog{color:#333;font-size:13px;}
+.dialog.mapTileDetailsDialog .dialog-container{background:#fff;border:1px solid #9a9a9a;border-radius:8px;box-shadow:0 3px 12px rgba(0,0,0,.45);}
+.dialog.mapTileDetailsDialog .dialog-tl,.dialog.mapTileDetailsDialog .dialog-tc,.dialog.mapTileDetailsDialog .dialog-tr,
+.dialog.mapTileDetailsDialog .dialog-ml,.dialog.mapTileDetailsDialog .dialog-mc,.dialog.mapTileDetailsDialog .dialog-mr,
+.dialog.mapTileDetailsDialog .dialog-bl,.dialog.mapTileDetailsDialog .dialog-bc,.dialog.mapTileDetailsDialog .dialog-br,
+.dialog.mapTileDetailsDialog .dialog-background-tl,.dialog.mapTileDetailsDialog .dialog-background-tc,.dialog.mapTileDetailsDialog .dialog-background-tr,
+.dialog.mapTileDetailsDialog .dialog-background-ml,.dialog.mapTileDetailsDialog .dialog-background-mc,.dialog.mapTileDetailsDialog .dialog-background-mr,
+.dialog.mapTileDetailsDialog .dialog-background-bl,.dialog.mapTileDetailsDialog .dialog-background-bc,.dialog.mapTileDetailsDialog .dialog-background-br{background-image:none!important;}
+.dialog.mapTileDetailsDialog .title,.dialog.mapTileDetailsDialog #tileDetails,.dialog.mapTileDetailsDialog #tileDetails h4{color:#333;}
+.dialog.mapTileDetailsDialog #tileDetails .detailImage .option{background:#f4f4f4;border-top:1px solid #ddd;}
+.dialog #tileDetails.oasis-1 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w2-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-2 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w3-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-3 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w4-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-4 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w6-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-5 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w8-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-6 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w7-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-7 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w10-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-8 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w12-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-9 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w11-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-10 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w10-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-11 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w14-rtl.jpg')!important;}
+.dialog #tileDetails.oasis-12 .detailImage{background-image:url('/gpack/travian_Travian_4.0_41/img/g/detail.popup/oasis/w15-rtl.jpg')!important;}
 </style>
 
 <script type="text/javascript">
