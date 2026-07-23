@@ -36,6 +36,7 @@ echo "
 ";
 	$u++;
 }
+include("Templates/Simulator/hero_att.tpl");
 ?>
 					</tbody>
                 </table>
@@ -82,6 +83,12 @@ echo "
 	<td class="value"><input class="text" type="text" name="h_off_bonus" value="<?php echo $form->getValue('h_off_bonus')==""? 0 : $form->getValue('h_off_bonus'); ?>" maxlength="4" inputmode="decimal" title="Porcentaje de bonus ofensivo (0-20). Admite coma o punto decimal."></td>
 	<td class="research">
             </td>
+</tr>
+<tr>
+	<td class="ico"><img src="img/x.gif" class="unit uhero" title="Salud del héroe"></td>
+	<td class="desc">Salud del héroe (%)</td>
+	<td class="value"><input class="text" type="text" name="h_att_health" value="<?php echo $form->getValue('h_att_health') === '' ? 100 : $form->getValue('h_att_health'); ?>" maxlength="3" inputmode="numeric" title="Salud inicial del héroe (1-100)"></td>
+	<td class="research"></td>
 </tr>
 <tr>
 		                </tbody></table>

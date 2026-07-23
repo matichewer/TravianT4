@@ -44,6 +44,7 @@ if(isset($_POST['result'])) {
     foreach($target as $tar) {
         include("Templates/Simulator/res_d".$tar.".tpl");
     }
+	include("Templates/Simulator/hero_result.tpl");
     $hasSiegeResult = isset($_POST['result']['target_level_after']) || isset($_POST['result']['wall_level_after']);
     if($hasSiegeResult) {
         echo '<h4 class="round">Configuración del ataque</h4>';

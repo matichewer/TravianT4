@@ -43,6 +43,20 @@ class Battle {
 			$values['f1_'.$i] = $this->simulationNumber(!$configurationChanged && $i <= 8 && isset($post['f1_'.$i]) ? $post['f1_'.$i] : 0, 0, 20, true);
 			$attackerTotal += $values['a1_'.$i];
 		}
+		$values['a1_hero'] = $this->simulationNumber(!$configurationChanged && isset($post['a1_hero']) ? $post['a1_hero'] : 0, 0, 1, true);
+		$values['h_att_power'] = $this->simulationNumber(
+			!$configurationChanged && isset($post['h_att_power']) && $post['h_att_power'] !== '' ? $post['h_att_power'] : 100,
+			0,
+			99999,
+			true
+		);
+		$values['h_att_health'] = $this->simulationNumber(
+			!$configurationChanged && isset($post['h_att_health']) && $post['h_att_health'] !== '' ? $post['h_att_health'] : 100,
+			1,
+			100,
+			true
+		);
+		$attackerTotal += $values['a1_hero'];
 
 		for($unit = 1; $unit <= 40; $unit++) {
 			$unitTribe = (int)floor(($unit - 1) / 10) + 1;
@@ -54,6 +68,21 @@ class Battle {
 			$values['f2_'.$unit] = $isSelected && $unitTribe !== 4 && $unitPosition <= 8 && !$configurationChanged
 				? $this->simulationNumber(isset($post['f2_'.$unit]) ? $post['f2_'.$unit] : 0, 0, 20, true)
 				: 0;
+		}
+		for($tribe = 1; $tribe <= 3; $tribe++) {
+			$isSelected = in_array($tribe, $target, true);
+			$values['a2_hero_'.$tribe] = $isSelected && !$configurationChanged
+				? $this->simulationNumber(isset($post['a2_hero_'.$tribe]) ? $post['a2_hero_'.$tribe] : 0, 0, 1, true)
+				: 0;
+			$values['h_def_power_'.$tribe] = $isSelected && !$configurationChanged
+				? $this->simulationNumber(isset($post['h_def_power_'.$tribe]) && $post['h_def_power_'.$tribe] !== '' ? $post['h_def_power_'.$tribe] : 100, 0, 99999, true)
+				: 100;
+			$values['h_def_bonus_'.$tribe] = $isSelected && !$configurationChanged
+				? $this->simulationNumber(isset($post['h_def_bonus_'.$tribe]) ? $post['h_def_bonus_'.$tribe] : 0, 0, 20, false)
+				: 0;
+			$values['h_def_health_'.$tribe] = $isSelected && !$configurationChanged
+				? $this->simulationNumber(isset($post['h_def_health_'.$tribe]) && $post['h_def_health_'.$tribe] !== '' ? $post['h_def_health_'.$tribe] : 100, 1, 100, true)
+				: 100;
 		}
 
 		$defaultAttackerPopulation = 1;
@@ -129,6 +158,10 @@ class Battle {
 		$defenseInfantry = 0.0;
 		$defenseCavalry = 0.0;
 		$defenseScout = 0.0;
+		$defenseByTribe = array();
+		for($tribe = 1; $tribe <= 4; $tribe++) {
+			$defenseByTribe[$tribe] = array('infantry' => 0.0, 'cavalry' => 0.0);
+		}
 		$involved = 0;
 		$onlyScouts = true;
 
@@ -154,20 +187,40 @@ class Battle {
 				$attackInfantry += $amount * $strength;
 			}
 		}
+		$attackerHero = (int)$post['a1_hero'] === 1;
+		if($attackerHero) {
+			$onlyScouts = false;
+			$involved++;
+			$attackInfantry += (int)$post['h_att_power'];
+		}
 
 		for($unit = 1; $unit <= 40; $unit++) {
 			$amount = (int)$post['a2_'.$unit];
 			$upgrade = (int)$post['f2_'.$unit];
 			$unitData = $GLOBALS['u'.$unit];
+			$unitTribe = (int)floor(($unit - 1) / 10) + 1;
 			$involved += $amount;
 			if($amount <= 0) {
 				continue;
 			}
-			$defenseInfantry += $amount * ($unitData['di'] + ($unitData['di'] + 300 * $unitData['pop'] / 7) * (pow(1.007, $upgrade) - 1));
-			$defenseCavalry += $amount * ($unitData['dc'] + ($unitData['dc'] + 300 * $unitData['pop'] / 7) * (pow(1.007, $upgrade) - 1));
+			$defenseByTribe[$unitTribe]['infantry'] += $amount * ($unitData['di'] + ($unitData['di'] + 300 * $unitData['pop'] / 7) * (pow(1.007, $upgrade) - 1));
+			$defenseByTribe[$unitTribe]['cavalry'] += $amount * ($unitData['dc'] + ($unitData['dc'] + 300 * $unitData['pop'] / 7) * (pow(1.007, $upgrade) - 1));
 			if(in_array($unit, $scouts, true)) {
 				$defenseScout += $amount * 20 * pow(1.03, $upgrade);
 			}
+		}
+		for($tribe = 1; $tribe <= 4; $tribe++) {
+			if($tribe <= 3 && (int)$post['a2_hero_'.$tribe] === 1) {
+				$heroPower = (int)$post['h_def_power_'.$tribe];
+				$defenseByTribe[$tribe]['infantry'] += $heroPower;
+				$defenseByTribe[$tribe]['cavalry'] += $heroPower;
+				$heroDefenseBonus = 1 + (float)$post['h_def_bonus_'.$tribe] / 100;
+				$defenseByTribe[$tribe]['infantry'] *= $heroDefenseBonus;
+				$defenseByTribe[$tribe]['cavalry'] *= $heroDefenseBonus;
+				$involved++;
+			}
+			$defenseInfantry += $defenseByTribe[$tribe]['infantry'];
+			$defenseCavalry += $defenseByTribe[$tribe]['cavalry'];
 		}
 
 		if($onlyScouts) {
@@ -185,7 +238,7 @@ class Battle {
 			);
 		}
 
-		$heroBonus = 1 + (float)$post['h_off_bonus'] / 100;
+		$heroBonus = $attackerHero ? 1 + (float)$post['h_off_bonus'] / 100 : 1.0;
 		$attackInfantry *= $heroBonus;
 		$attackCavalry *= $heroBonus;
 		$attackPoints = $attackInfantry + $attackCavalry;
@@ -237,6 +290,29 @@ class Battle {
 			'Winner' => $attackerWins ? 'attacker' : 'defender',
 			'moral_bonus' => $moralBonus
 		);
+		if($attackerHero) {
+			$heroDamage = min(100, (int)round($attackerLosses * 100));
+			$heroHealth = (int)$post['h_att_health'];
+			$heroDead = $heroDamage >= $heroHealth || $heroDamage > 90;
+			$result['attacker_hero'] = array(
+				'damage' => $heroDamage,
+				'health' => $heroDead ? 0 : max(0, $heroHealth - $heroDamage),
+				'dead' => $heroDead
+			);
+		}
+		$result['defender_heroes'] = array();
+		for($tribe = 1; $tribe <= 3; $tribe++) {
+			if((int)$post['a2_hero_'.$tribe] === 1) {
+				$heroDamage = min(100, (int)round($defenderLosses * 100));
+				$heroHealth = (int)$post['h_def_health_'.$tribe];
+				$heroDead = $heroDamage >= $heroHealth || $heroDamage > 90;
+				$result['defender_heroes'][$tribe] = array(
+					'damage' => $heroDamage,
+					'health' => $heroDead ? 0 : max(0, $heroHealth - $heroDamage),
+					'dead' => $heroDead
+				);
+			}
+		}
 
 		$targetLevel = (int)$post['kata'];
 		$catapultCount = (int)$post['a1_8'];

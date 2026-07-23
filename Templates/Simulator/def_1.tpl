@@ -30,6 +30,8 @@ echo "
 ";
 	$u++;
 }
+$heroDefenderTribe = 1;
+include("Templates/Simulator/hero_def.tpl");
 ?>
 					</tbody>
                 </table>
