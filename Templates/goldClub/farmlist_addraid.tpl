@@ -1,6 +1,6 @@
 <?php
     
-if(isset($_POST['action']) == 'addSlot' && $_POST['lid']) {
+if(isset($_POST['action'],$_POST['lid']) && $_POST['action'] === 'addSlot' && $_POST['lid']) {
 
     $troops = $_POST['t1']+$_POST['t2']+$_POST['t3']+$_POST['t4']+$_POST['t5']+$_POST['t6']+$_POST['t7']+$_POST['t8']+$_POST['t9']+$_POST['t10']."";
     

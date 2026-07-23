@@ -86,7 +86,7 @@ include "Templates/html.tpl";
 
 <?php
 
-if(isset($_GET['n1']) && isset($_GET['del'])==1) {
+if(isset($_GET['n1'],$_GET['del']) && $_GET['del'] == 1) {
 	$database->delNotice($_GET['n1'], $session->uid);
 	header("Location: berichte.php");
 }

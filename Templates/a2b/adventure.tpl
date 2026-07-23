@@ -1,9 +1,15 @@
 ﻿<?php
+$targetId = isset($_GET['id']) && is_scalar($_GET['id']) && ctype_digit((string)$_GET['id']) ? (int)$_GET['id'] : 0;
 $eigen = $database->getCoor($village->wid);
-$adventure = $database->getMInfo($_GET['id']);
+$adventureRecord = $targetId ? $database->getAdventure($session->uid,$targetId) : false;
+$adventure = $targetId ? $database->getMInfo($targetId) : false;
+$herodetail = $database->getHeroData($session->uid);
+if(!is_array($eigen) || !is_array($adventureRecord) || (int)$adventureRecord['end'] !== 0 || !is_array($adventure) || !is_array($herodetail)) {
+	header("Location: build.php?id=39");
+	exit;
+}
 $from = array('x'=>$eigen['x'], 'y'=>$eigen['y']);
 $to = array('x'=>$adventure['x'], 'y'=>$adventure['y']);
-$herodetail = $database->getHeroData($session->uid);
 $speed = $herodetail['speed'];
 $time = $generator->procDistanceTime($from,$to,$speed,1);
 $founder = $database->getVillage($village->wid);
@@ -11,15 +17,16 @@ $founder = $database->getVillage($village->wid);
 
 <h1>Aventura</h1>
 				<form method="POST" action="build.php">
-				<input type="hidden" name="a" value="adventure" />
+					<input type="hidden" name="a" value="adventure" />
+					<input type="hidden" name="k" value="<?php echo $session->mchecker; ?>" />
 				<input type="hidden" name="c" value="5" />
-				<input type="hidden" name="h" value="<?php echo $_GET['id']; ?>" />
+				<input type="hidden" name="h" value="<?php echo $targetId; ?>" />
 				<input type="hidden" name="id" value="39" />
 				<input type="hidden" name="timestamp" value="<?php echo $time ?>" />
 		<table class="troop_details" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $village->vname; ?></a></td><td colspan="11">Aventura (<?php echo $adventure['x']; ?>|<?php echo $adventure['y']; ?>)</td>
+			<td class="role"><a href="karte.php?d=<?php echo (int)$founder['0']; ?>&amp;c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo htmlspecialchars((string)$village->vname,ENT_QUOTES,'UTF-8'); ?></a></td><td colspan="11">Aventura (<?php echo (int)$adventure['x']; ?>|<?php echo (int)$adventure['y']; ?>)</td>
 		</tr>
 	</thead>
 	<tbody class="units">

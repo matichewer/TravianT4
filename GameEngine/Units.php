@@ -41,16 +41,17 @@ class Units {
 				break;
 
 				case "4":
-				if (isset($post['a'])&& $post['a']==533374){
-					$this->sendTroops($post);
-				}else{
-				$post = $this->loadUnits($post);
-				return $post;								
-				}
+					if (isset($post['a'])&& $post['a']==533374){
+						$this->sendTroops($post);
+					}else{
+					$post = $this->loadUnits($post);
+					return $post;
+					}
+					break;
 
 				case "5":
-				if (isset($post['a'])&& $post['a']== "new"){
-					$this->Settlers($post);
+					if (isset($post['a']) && $post['a'] === "new"){
+						$this->Settlers($post);
 				}else{
 				$post = $this->loadUnits($post);
 				return $post;								
@@ -311,7 +312,7 @@ class Units {
         if (isset($post['spy'])){$post['spy'] = $post['spy'];}else{ $post['spy'] = 0;} 
 		$abdata = $database->getABTech($village->wid);
 		$reference = $database->addAttack(($village->wid),$data['u1'],$data['u2'],$data['u3'],$data['u4'],$data['u5'],$data['u6'],$data['u7'],$data['u8'],$data['u9'],$data['u10'],$data['u11'],$data['type'],$post['ctar1'],$post['ctar2'],$post['spy'],$abdata['b1'],$abdata['b2'],$abdata['b3'],$abdata['b4'],$abdata['b5'],$abdata['b6'],$abdata['b7'],$abdata['b8']);
-		
+
 		$database->addMovement(3,$village->wid,$data['to_vid'],$reference,$sentAt,($time+$sentAt));
    
 		$to_owner = $database->getVillageField($data['to_vid'],'owner');
@@ -322,9 +323,11 @@ class Units {
 		if($form->returnErrors() > 0) {
 			$_SESSION['errorarray'] = $form->getErrors();
 			$_SESSION['valuearray'] = $_POST;
-			header("Location: a2b.php");
-		}		
-		header("Location: build.php?id=39");
+				header("Location: a2b.php");
+				exit;
+			}
+			header("Location: build.php?id=39");
+			exit;
 
 	}}
 
@@ -404,7 +407,8 @@ class Units {
 				$database->addMovement(4,$village->wid,$enforce['from'],$reference,0,($time+time()));
 				$technology->checkReinf($post['ckey']);
 
-						header("Location: build.php?id=39");
+							header("Location: build.php?id=39");
+							exit;
 
 				}
 		} else {
@@ -417,50 +421,109 @@ class Units {
 		}
 	}
 
-	public function Settlers($post) {
-		global $form, $database, $village, $session;
+		public function Settlers($post) {
+			global $building, $database, $generator, $village, $session;
 
-    $total = count($database->getVillagesID($session->uid));
-    $need_cps = travianCultureRequiredForVillageCount($total + 1, CP);
-    // Session data is populated before automation credits culture points.
-    $cps = (int)$database->getUserField($session->uid, 'cp', 0);
-
-    if($need_cps !== null && $cps >= $need_cps) {
-    	$unit = ($session->tribe*10);
-      		
-			
-		  $database->modifyResource($village->wid,750,750,750,750,0);
-		  $database->modifyUnit($village->wid,$unit,3,0);
-		  $database->addMovement(5,$village->wid,$post['s'],0,0,time()+$post['timestamp']);
-		  header("Location: build.php?id=39");
-
-		  if($form->returnErrors() > 0) {
-			  $_SESSION['errorarray'] = $form->getErrors();
-			  $_SESSION['valuearray'] = $_POST;
-			  header("Location: a2b.php");
-		  }
-    } else {
-      header("Location: build.php?id=39");
-    }	
-	}
-	
-	public function Adventures($post) {
-		global $form, $database, $village, $session;
-		$getHero = count($database->getHero($session->uid));
-		if($getHero) {
-			$database->modifyUnit($village->wid,'hero',1,0);
-			$database->addMovement(9,$village->wid,$post['h'],0,0,time()+$post['timestamp']);
-			header("Location: build.php?id=39");
-
-			if($form->returnErrors() > 0) {
-				$_SESSION['errorarray'] = $form->getErrors();
-				$_SESSION['valuearray'] = $_POST;
-				header("Location: a2b.php");
+			$tokenIsValid = isset($post['k']) && is_scalar($post['k']) && hash_equals((string)$session->mchecker,(string)$post['k']);
+			$target = isset($post['s']) && is_scalar($post['s']) && ctype_digit((string)$post['s']) ? (int)$post['s'] : 0;
+			if(!$tokenIsValid || !isset($post['a'],$post['id']) || $post['a'] !== 'new' || (string)$post['id'] !== '39' || $target <= 0) {
+				$this->redirectToRallyPoint();
 			}
-		} else {
+			$session->changeChecker();
+
+			$targetInfo = $database->getMInfo($target);
+			if(!is_array($targetInfo) || (int)$targetInfo['occupied'] !== 0 || (int)$targetInfo['oasistype'] !== 0 || (int)$targetInfo['fieldtype'] <= 0) {
+				$this->redirectToRallyPoint();
+			}
+
+			$outgoingSettlers = $database->getMovement(5,$village->wid,0);
+			foreach($outgoingSettlers as $movement) {
+				if((int)$movement['to'] === $target) {
+					$this->redirectToRallyPoint();
+				}
+			}
+			$residenceLevel = (int)$building->getTypeLevel(25);
+			$palaceLevel = (int)$building->getTypeLevel(26);
+			$unlockedSlots = $residenceLevel >= 20 ? 2 : ($residenceLevel >= 10 ? 1 : 0);
+			if($palaceLevel >= 20) {
+				$unlockedSlots = max($unlockedSlots,3);
+			} elseif($palaceLevel >= 15) {
+				$unlockedSlots = max($unlockedSlots,2);
+			} elseif($palaceLevel >= 10) {
+				$unlockedSlots = max($unlockedSlots,1);
+			}
+			$usedSlots = 0;
+			foreach(array('exp1','exp2','exp3') as $field) {
+				if((int)$database->getVillageField($village->wid,$field) > 0) {
+					$usedSlots++;
+				}
+			}
+			if($unlockedSlots <= $usedSlots + count($outgoingSettlers)) {
+				$this->redirectToRallyPoint();
+			}
+
+			$total = count($database->getVillagesID($session->uid)) + count($outgoingSettlers);
+			$needCps = travianCultureRequiredForVillageCount($total + 1,CP);
+			$cps = (int)$database->getUserField($session->uid,'cp',0);
+			$unit = (int)$session->tribe * 10;
+			$units = $database->getUnit($village->wid);
+			if($needCps === null || $cps < $needCps || !is_array($units) || (int)$units['u'.$unit] < 3) {
+				$this->redirectToRallyPoint();
+			}
+
+			$targetCoor = array('x'=>$targetInfo['x'],'y'=>$targetInfo['y']);
+			$travelTime = $generator->procDistanceTime($village->coor,$targetCoor,300,0);
+			if($travelTime <= 0 || !$database->deductResourcesIfAvailable($village->wid,750,750,750,750)) {
+				$this->redirectToRallyPoint();
+			}
+			if(!$database->deductUnitIfAvailable($village->wid,$unit,3)) {
+				$database->modifyResource($village->wid,750,750,750,750,1);
+				$this->redirectToRallyPoint();
+			}
+			if(!$database->addMovement(5,$village->wid,$target,0,0,time()+$travelTime)) {
+				$database->modifyUnit($village->wid,$unit,3,1);
+				$database->modifyResource($village->wid,750,750,750,750,1);
+			}
+			$this->redirectToRallyPoint();
+		}
+
+		public function Adventures($post) {
+			global $database, $generator, $village, $session;
+
+			$tokenIsValid = isset($post['k']) && is_scalar($post['k']) && hash_equals((string)$session->mchecker,(string)$post['k']);
+			$target = isset($post['h']) && is_scalar($post['h']) && ctype_digit((string)$post['h']) ? (int)$post['h'] : 0;
+			if(!$tokenIsValid || !isset($post['a'],$post['id']) || $post['a'] !== 'adventure' || (string)$post['id'] !== '39' || $target <= 0) {
+				$this->redirectToRallyPoint();
+			}
+			$session->changeChecker();
+
+			$adventure = $database->getAdventure($session->uid,$target);
+			$hero = $database->getHeroData($session->uid);
+			$targetCoor = $database->getCoor($target);
+			if(!is_array($adventure) || (int)$adventure['end'] !== 0 || !is_array($hero) || (int)$hero['dead'] !== 0
+				|| (int)$hero['speed'] <= 0 || !$database->getHUnit($village->wid) || !is_array($targetCoor)) {
+				$this->redirectToRallyPoint();
+			}
+			foreach($database->getMovement(9,$village->wid,0) as $movement) {
+				if((int)$movement['to'] === $target) {
+					$this->redirectToRallyPoint();
+				}
+			}
+
+			$travelTime = $generator->procDistanceTime($village->coor,$targetCoor,(int)$hero['speed'],1);
+			if($travelTime <= 0 || !$database->deductUnitIfAvailable($village->wid,'hero',1)) {
+				$this->redirectToRallyPoint();
+			}
+			if(!$database->addMovement(9,$village->wid,$target,0,0,time()+$travelTime)) {
+				$database->modifyUnit($village->wid,'hero',1,1);
+			}
+			$this->redirectToRallyPoint();
+		}
+
+		private function redirectToRallyPoint() {
 			header("Location: build.php?id=39");
-		}	
-	}
+			exit;
+		}
 
 };
 

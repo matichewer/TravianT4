@@ -1,7 +1,12 @@
 <?php
 
+$targetId = isset($_GET['id']) && is_scalar($_GET['id']) && ctype_digit((string)$_GET['id']) ? (int)$_GET['id'] : 0;
 $founder = $database->getVillage($village->wid);
-$newvillage = $database->getMInfo($_GET['id']);
+$newvillage = $targetId ? $database->getMInfo($targetId) : false;
+if(!is_array($newvillage) || (int)$newvillage['occupied'] !== 0 || (int)$newvillage['oasistype'] !== 0 || (int)$newvillage['fieldtype'] <= 0) {
+	header("Location: build.php?id=39");
+	exit;
+}
 $eigen = $database->getCoor($village->wid);
 $from = array('x'=>$eigen['x'], 'y'=>$eigen['y']);
 $to = array('x'=>$newvillage['x'], 'y'=>$newvillage['y']);
@@ -15,15 +20,16 @@ echo '</pre>';
 <h1>Fundar nueva aldea</h1>
 <!--<p>De kolonisten kunnen nog niet vertrekken.<br> Voor het stichten van een nieuw dorp is er nog 750 grondstoffen hout, klei, ijzer en graan nodig.</p>-->
 				<form method="POST" action="build.php">
-				<input type="hidden" name="a" value="new" />
+					<input type="hidden" name="a" value="new" />
+					<input type="hidden" name="k" value="<?php echo $session->mchecker; ?>" />
 				<input type="hidden" name="c" value="5" />
-				<input type="hidden" name="s" value="<?php echo $_GET['id']; ?>" />
+				<input type="hidden" name="s" value="<?php echo $targetId; ?>" />
 				<input type="hidden" name="id" value="39" />
 				<input type="hidden" name="timestamp" value="<?php echo $time ?>" />
 		<table class="troop_details" cellpadding="1" cellspacing="1">
 	<thead>
 		<tr>
-			<td class="role"><a href="karte.php?d=<?php echo $founder['0']; ?>&c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo $database->getUserField($session->uid,'username',0); ?></a></td><td colspan="10"><a href="karte.php?d=<?php echo $newvillage['id']; ?>&c=<?php echo $generator->getMapCheck($newvillage['0']) ?>">Nueva aldea (<?php echo $newvillage['x']; ?>|<?php echo $newvillage['y']; ?>)</a></td>
+			<td class="role"><a href="karte.php?d=<?php echo (int)$founder['0']; ?>&amp;c=<?php echo $generator->getMapCheck($founder['0']); ?>"><?php echo htmlspecialchars((string)$database->getUserField($session->uid,'username',0),ENT_QUOTES,'UTF-8'); ?></a></td><td colspan="10"><a href="karte.php?d=<?php echo $targetId; ?>&amp;c=<?php echo $generator->getMapCheck($targetId); ?>">Nueva aldea (<?php echo (int)$newvillage['x']; ?>|<?php echo (int)$newvillage['y']; ?>)</a></td>
 		</tr>
 	</thead>
 	<tbody class="units">
@@ -84,5 +90,3 @@ if($need_cps !== null && $cps >= $need_cps) {
 ?>
 </form>
 </p>
-
-

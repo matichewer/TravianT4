@@ -3172,9 +3172,7 @@ class Automation {
         foreach ($dataarray as $data) {
             $to = $database->getMInfo($data['from']);
             $user = $database->getUserField($to['owner'], 'username', 0);
-            $taken = $database->getVillageState($data['to']);
-            if($taken['occupied'] == 0) {
-                $database->setFieldTaken($data['to']);
+            if($database->claimFieldForSettlement($data['to'])) {
                 $database->addVillage($data['to'], $to['owner'], $user, '0');
                 $database->addResourceFields($data['to'], $database->getVillageType($data['to']));
                 $database->addUnits($data['to']);
@@ -3198,7 +3196,12 @@ class Automation {
                 }
                 $database->setVillageField($data['from'], $exp, $value);
             } else {
-                // here must come movement from returning settlers
+                $tribe = (int)$database->getUserField($to['owner'], 'tribe', 0);
+                $settlerUnit = $tribe * 10;
+                if($settlerUnit > 0) {
+                    $database->modifyUnit($data['from'], $settlerUnit, 3, 1);
+                }
+                $database->modifyResource($data['from'], 750, 750, 750, 750, 1);
                 $database->setMovementProc($data['moveid']);
             }
         }

@@ -90,9 +90,9 @@ else if (isset($_GET['s'])) {
 	header("Location: ".$_SERVER['PHP_SELF']."?uid=".preg_replace("/[^a-zA-Z0-9_-]/","",$session->uid));
 	}
 }
-if (isset($_GET['id'])==$session->uid && isset($_GET['type'])==3) {
-	$owner = $_GET['owner'];
-	$id = $_GET['id'];
+if(isset($_GET['id'],$_GET['type'],$_GET['owner']) && (int)$_GET['id'] === (int)$session->uid && $_GET['type'] == 3) {
+	$owner = (int)$_GET['owner'];
+	$id = (int)$_GET['id'];
 	$database->removeMeSit($owner, $id);
 }
 ?>
@@ -118,5 +118,3 @@ include("Templates/quest.tpl");
 </div>
 </body>
 </html>
-
-

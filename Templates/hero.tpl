@@ -252,7 +252,7 @@ if(!$checkT){
 
 <?php
 $heroid = $hero['heroid'];
-if(isset($_GET['revive'])==1 && $village->awood > $hero_t[$hero['level']]['wood'] && $village->aclay > $hero_t[$hero['level']]['clay'] && $village->airon > $hero_t[$hero['level']]['iron'] && $village->acrop > $hero_t[$hero['level']]['crop']){
+if(isset($_GET['revive']) && $_GET['revive'] == 1 && $village->awood > $hero_t[$hero['level']]['wood'] && $village->aclay > $hero_t[$hero['level']]['clay'] && $village->airon > $hero_t[$hero['level']]['iron'] && $village->acrop > $hero_t[$hero['level']]['crop']){
 	if($tribe==1){
 		$each = (time() + ($hero_t1[$hero['level']]['time']/SPEED*1.5));
 	}elseif($tribe==2){

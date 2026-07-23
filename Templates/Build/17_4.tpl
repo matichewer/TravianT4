@@ -16,10 +16,13 @@ include("17_menu.tpl");
 
 if(isset($_GET['create']) && $session->gold > 1){
 include("17_create.tpl");
-}else if($_GET['action'] == 'editRoute' && isset($_GET['routeid']) && $_GET['routeid'] != ""){
-$traderoute = $database->getTradeRouteUid($_GET['routeid']);
-if($traderoute == $session->uid){
+}else if(isset($_GET['action'],$_GET['routeid']) && $_GET['action'] === 'editRoute' && ctype_digit((string)$_GET['routeid'])){
+$edited_route = $database->getTradeRoute2((int)$_GET['routeid']);
+if(is_array($edited_route) && (int)$edited_route['uid'] === (int)$session->uid && (int)$edited_route['from'] === (int)$village->wid){
 include("17_edit.tpl");
+} else {
+header("Location: build.php?gid=17&t=4");
+exit;
 }
 }else{
 ?>
@@ -35,17 +38,17 @@ include("17_edit.tpl");
 <?php
 $routes = $database->getTradeRoute($session->uid);
     if(count($routes) == 0) {
-    echo "<td colspan=\"5\" class=\"none\">No hay rutas comerciales activas.</td></tr>";
+    echo "<tr><td colspan=\"5\" class=\"none\">No hay rutas comerciales activas.</td></tr>";
     }else{
 foreach($routes as $route){
 ?>
 <tr>
-<th><a href="build.php?action=delRoute&routeid=<?php echo $route['id']; ?>"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></a></th>
+<th><a href="build.php?gid=17&amp;t=4&amp;action=delRoute&amp;routeid=<?php echo (int)$route['id']; ?>&amp;a=<?php echo urlencode($session->mchecker); ?>"><img class="del" src="img/x.gif" alt="eliminar" title="eliminar"></a></th>
 <th>
 <?php
-echo "Ruta comercial a <a href=karte.php?d=".$route['wid']."&c=".$generator->getMapCheck($route['wid']).">".$database->getVillageField($route['wid'],"name")."</a></br>";
+$routeVillageName = htmlspecialchars((string)$database->getVillageField($route['wid'],"name"),ENT_QUOTES,'UTF-8');
+echo "Ruta comercial a <a href=karte.php?d=".(int)$route['wid']."&amp;c=".$generator->getMapCheck($route['wid']).">".$routeVillageName."</a><br>";
 ?>
-<img src="<?php echo GP_LOCATE; ?>img/r/1.gif" alt="Madera" title="Madera"> <?php echo $route['wood']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/2.gif" alt="Barro" title="Barro"> <?php echo $route['clay']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/3.gif" alt="Hierro" title="Hierro"> <?php echo $route['iron']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/4.gif" alt="Cereal" title="Cereal"> <?php echo $route['crop']; ?>
 <img src="<?php echo GP_LOCATE; ?>img/r/1.gif" alt="Madera" title="Madera"> <?php echo $route['wood']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/2.gif" alt="Barro" title="Barro"> <?php echo $route['clay']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/3.gif" alt="Hierro" title="Hierro"> <?php echo $route['iron']; ?>  <img src="<?php echo GP_LOCATE; ?>img/r/4.gif" alt="Cereal" title="Cereal"> <?php echo $route['crop']; ?>
 
 </th>
@@ -62,6 +65,7 @@ echo "Ruta comercial a <a href=karte.php?d=".$route['wid']."&c=".$generator->get
 	</div>
 <?php
 }}else{
-header("Location: build.php?id=".$_GET['id']."");
+header("Location: build.php?gid=17");
+exit;
 }
 ?>

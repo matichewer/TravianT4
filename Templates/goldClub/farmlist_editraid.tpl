@@ -1,12 +1,12 @@
 <?php
-if(isset($_GET['action']) == 'editSlot' && $_GET['eid']) {
+if(isset($_GET['action'],$_GET['eid']) && $_GET['action'] === 'editSlot' && $_GET['eid']) {
 $eiddata = $database->getRaidList($_GET['eid']);
 $x = $eiddata['x'];
 $y = $eiddata['y'];
 $t1 = $eiddata['t1'];$t2 = $eiddata['t2'];$t3 = $eiddata['t3'];$t4 = $eiddata['t4'];$t5 = $eiddata['t5'];$t6 = $eiddata['t6'];$t7 = $eiddata['t7'];$t8 = $eiddata['t8'];$t9 = $eiddata['t9'];$t10 = $eiddata['t10'];
 }
 
-if(isset($_POST['action']) == 'editSlot' && $_POST['eid']) {
+if(isset($_POST['action'],$_POST['eid']) && $_POST['action'] === 'editSlot' && $_POST['eid']) {
 
     $troops = "".$_POST['t1']+$_POST['t2']+$_POST['t3']+$_POST['t4']+$_POST['t5']+$_POST['t6']+$_POST['t7']+$_POST['t8']+$_POST['t9']+$_POST['t10']."";
 

@@ -169,9 +169,10 @@ function testSum() {
 </script> 
 <script language="JavaScript">var summe=<?php echo floor($village->awood+$village->acrop+$village->airon+$village->aclay); ?>;var max123=<?php echo $village->maxstore; ?>;var max4=<?php echo $village->maxcrop; ?>;</script> 
 		<form method="post" name="snd" action="build.php"> 
-			<input type="hidden" name="id" value="<?php echo $id; ?>"> 
-			<input type="hidden" name="ft" value="mk3"> 
-			<input type="hidden" name="t" value="<?php echo $_GET['t']; ?>"> 
+			<input type="hidden" name="id" value="<?php echo (int)$id; ?>">
+			<input type="hidden" name="ft" value="mk3">
+			<input type="hidden" name="t" value="3">
+			<input type="hidden" name="a" value="<?php echo $session->mchecker; ?>">
 
 		<table id="npc" cellpadding="1" cellspacing="1"> 
 			<thead> 

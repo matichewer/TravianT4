@@ -19,45 +19,114 @@ class Market {
         if(isset($_SESSION['loadMarket'])) { 
             $this->loadOnsale(); 
             unset($_SESSION['loadMarket']); 
-        } 
-        if(isset($post['ft'])) { 
-            switch($post['ft']) { 
+        }
+        if(isset($post['ft'])) {
+            switch($post['ft']) {
                 case "mk1":
-                $this->sendResource($post);
-                break;
                 case "mk2":
-                if(isset($post['a']) && hash_equals($session->mchecker,(string)$post['a'])) {
-                    $session->changeChecker();
-                    $this->addOffer($post);
-                }
-                break;
                 case "mk3":
-                $this->tradeResource($post);
-                break;
-            } 
-        } 
+                    if(!isset($post['a']) || !is_scalar($post['a']) || !hash_equals((string)$session->mchecker,(string)$post['a'])) {
+                        $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,isset($post['t']) ? $post['t'] : null);
+                    }
+                    $session->changeChecker();
+                    if($post['ft'] === "mk1") {
+                        $this->sendResource($post);
+                    } elseif($post['ft'] === "mk2") {
+                        $this->addOffer($post);
+                    } else {
+                        $this->tradeResource($post);
+                    }
+                    break;
+            }
+        }
     } 
      
     public function procRemove($get) { 
         global $database,$village,$session; 
-        if(isset($get['t']) && $get['t'] == 1 && isset($get['a']) && isset($get['g']) && hash_equals($session->mchecker,(string)$get['a'])) {
+        if(isset($get['t'],$get['a'],$get['g']) && (string)$get['t'] === '1' && is_scalar($get['a']) && hash_equals((string)$session->mchecker,(string)$get['a'])) {
             $session->changeChecker();
             $this->acceptOffer($get);
             return;
         }
-        if(isset($get['t']) && $get['t'] == 1) { 
+        if(isset($get['t']) && (string)$get['t'] === '1') {
             $this->filterNeed($get); 
         } 
-        else if(isset($get['t']) && $get['t'] == 2 && isset($get['a']) && isset($get['del']) && hash_equals($session->mchecker,(string)$get['a'])) {
+        else if(isset($get['t'],$get['a'],$get['del']) && (string)$get['t'] === '2' && is_scalar($get['a']) && hash_equals((string)$session->mchecker,(string)$get['a'])) {
             $session->changeChecker();
             $this->cancelOffer($get['del']);
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']); 
-        } 
+            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,$get['t']);
+        }
     } 
      
     public function merchantAvail() { 
         return max(0,$this->merchant - $this->used);
-    } 
+    }
+
+    public function procTradeRoutes($post,$get) {
+        global $database,$village,$session;
+        $postAction = isset($post['action']) && is_scalar($post['action']) ? (string)$post['action'] : '';
+        $getAction = isset($get['action']) && is_scalar($get['action']) ? (string)$get['action'] : '';
+        if(in_array($postAction,array('addRoute','editRoute'),true)) {
+            $getAction = '';
+        } elseif($getAction !== 'delRoute') {
+            return;
+        }
+        if((int)$session->access == BANNED) {
+            header("Location: banned.php");
+            exit;
+        }
+        if(!$session->goldclub || count($session->villages) <= 1) {
+            $this->redirectToMarket(0,4);
+        }
+
+        $request = $postAction !== '' ? $post : $get;
+        if(!isset($request['a']) || !is_scalar($request['a']) || !hash_equals((string)$session->mchecker,(string)$request['a'])) {
+            $this->redirectToMarket(0,4);
+        }
+        $session->changeChecker();
+
+        if($getAction === 'delRoute') {
+            $routeId = $this->positiveInteger(isset($get['routeid']) ? $get['routeid'] : null);
+            if($routeId) {
+                $database->deleteTradeRouteOwned($routeId,$session->uid,$village->wid);
+            }
+            $this->redirectToMarket(0,4);
+        }
+
+        $resource = array();
+        foreach(array('r1','r2','r3','r4') as $field) {
+            $value = isset($post[$field]) && $post[$field] === '' ? 0 : $this->nonNegativeInteger(isset($post[$field]) ? $post[$field] : null);
+            if($value === false) {
+                $this->redirectToMarket(0,4);
+            }
+            $resource[] = $value;
+        }
+        $start = $this->nonNegativeInteger(isset($post['start']) ? $post['start'] : null);
+        $deliveries = $this->positiveInteger(isset($post['deliveries']) ? $post['deliveries'] : null);
+        $reqMerc = $this->requiredMerchants(array_sum($resource));
+        if(array_sum($resource) <= 0 || $start === false || $start > 23 || $deliveries < 1 || $deliveries > 3
+            || $reqMerc <= 0 || $reqMerc > $this->merchant) {
+            $this->redirectToMarket(0,4);
+        }
+        $timestamp = strtotime('today '.sprintf('%02d',$start).':00:00');
+        if($timestamp <= time()) {
+            $timestamp += 86400;
+        }
+
+        if($postAction === 'addRoute') {
+            $target = $this->positiveInteger(isset($post['tvillage']) ? $post['tvillage'] : null);
+            if(!$target || $target === (int)$village->wid || (int)$database->getVillageField($target,'owner') !== (int)$session->uid) {
+                $this->redirectToMarket(0,4);
+            }
+            $database->createTradeRoute($session->uid,$target,$village->wid,$resource[0],$resource[1],$resource[2],$resource[3],$start,$deliveries,$reqMerc,$timestamp);
+        } else {
+            $routeId = $this->positiveInteger(isset($post['routeid']) ? $post['routeid'] : null);
+            if($routeId) {
+                $database->updateTradeRouteOwned($routeId,$session->uid,$village->wid,$resource[0],$resource[1],$resource[2],$resource[3],$start,$deliveries,$reqMerc,$timestamp);
+            }
+        }
+        $this->redirectToMarket(0,4);
+    }
      
     private function loadMarket() { 
         global $session,$building,$bid28,$bid17,$database,$village; 
@@ -74,40 +143,44 @@ class Market {
         } 
     } 
      
-    private function sendResource($post) { 
-        global $database,$village,$session,$generator,$logging; 
-        $wtrans = (isset($post['r1']) && $post['r1'] != "")? $post['r1'] : 0; 
-        $ctrans = (isset($post['r2']) && $post['r2'] != "")? $post['r2'] : 0; 
-        $itrans = (isset($post['r3']) && $post['r3'] != "")? $post['r3'] : 0; 
-        $crtrans = (isset($post['r4']) && $post['r4'] != "")? $post['r4'] : 0; 
-        $wtrans = str_replace("-", "", $wtrans); 
-        $ctrans = str_replace("-", "", $ctrans); 
-        $itrans = str_replace("-", "", $itrans); 
-        $crtrans = str_replace("-", "", $crtrans); 
-        $availableWood = $database->getWoodAvailable($village->wid); 
-        $availableClay = $database->getClayAvailable($village->wid); 
-        $availableIron = $database->getIronAvailable($village->wid); 
-        $availableCrop = $database->getCropAvailable($village->wid); 
-        if($availableWood >= $post['r1'] AND $availableClay >= $post['r2'] AND $availableIron >= $post['r3'] AND $availableCrop >= $post['r4']){ 
-         
-        $resource = array($wtrans,$ctrans,$itrans,$crtrans); 
-        $reqMerc = ceil((array_sum($resource)-0.1)/$this->maxcarry); 
+	    private function sendResource($post) {
+	        global $database,$village,$session,$generator,$logging;
+	        $resource = array(
+	            $this->nonNegativeInteger(isset($post['r1']) ? $post['r1'] : null),
+	            $this->nonNegativeInteger(isset($post['r2']) ? $post['r2'] : null),
+	            $this->nonNegativeInteger(isset($post['r3']) ? $post['r3'] : null),
+	            $this->nonNegativeInteger(isset($post['r4']) ? $post['r4'] : null)
+	        );
+	        $target = $this->positiveInteger(isset($post['vid']) ? $post['vid'] : null);
+	        $sendCount = $this->positiveInteger(isset($post['send3']) ? $post['send3'] : 1);
+	        if(!$session->goldclub) {
+	            $sendCount = 1;
+	        }
+	        $reqMerc = $this->requiredMerchants(array_sum($resource));
+	        if(in_array(false,$resource,true) || $target == 0 || !$database->checkVilExist($target)
+	            || $sendCount < 1 || $sendCount > 3 || $reqMerc == 0 || $reqMerc > $this->merchantAvail()) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0);
+	        }
 
-        if($this->merchantAvail() != 0 && $reqMerc <= $this->merchantAvail()) { 
-					$id = $post['vid'];
-                    $coor = $database->getCoor($id); 
-                if($database->getVillageState($id)) {
-					$resdata = "".$resource[0].",".$resource[1].",".$resource[2].",".$resource[3]."";
-					$timetaken = $generator->procDistanceTime($coor,$village->coor,$session->tribe,0); 
-	                $reference = $database->sendResource($resource[0],$resource[1],$resource[2],$resource[3],$reqMerc,0); 
-		            $database->modifyResource($village->wid,$resource[0],$resource[1],$resource[2],$resource[3],0); 
-			        $database->addMovement(0,$village->wid,$id,$reference,$resdata,time()+$timetaken,$post['send3']);
-				    $logging->addMarketLog($village->wid,1,array($resource[0],$resource[1],$resource[2],$resource[3],$id));
-				}
-        } 
-        header("Location: build.php?id=".$post['id']); 
-    } else {} 
-    } 
+	        $coor = $database->getCoor($target);
+	        if(!is_array($coor) || !$database->deductResourcesIfAvailable($village->wid,$resource[0],$resource[1],$resource[2],$resource[3])) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0);
+	        }
+
+	        $resdata = implode(",",$resource);
+	        $timetaken = $generator->procDistanceTime($coor,$village->coor,$session->tribe,0);
+	        $reference = $database->sendResource($resource[0],$resource[1],$resource[2],$resource[3],$reqMerc,0);
+	        $movement = $reference ? $database->addMovement(0,$village->wid,$target,$reference,$resdata,time()+$timetaken,$sendCount) : false;
+	        if(!$movement) {
+	            if($reference) {
+	                $database->sendResource($reference,0,0,0,0,1);
+	            }
+	            $database->modifyResource($village->wid,$resource[0],$resource[1],$resource[2],$resource[3],1);
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0);
+	        }
+	        $logging->addMarketLog($village->wid,1,array($resource[0],$resource[1],$resource[2],$resource[3],$target));
+	        $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0);
+	    }
      
     private function addOffer($post) { 
         global $database,$village,$session; 
@@ -116,17 +189,15 @@ class Market {
         $gamt = $this->positiveInteger(isset($post['m1']) ? $post['m1'] : null);
         $wamt = $this->positiveInteger(isset($post['m2']) ? $post['m2'] : null);
 
-        if(!$this->validResourceType($gtype) || !$this->validResourceType($wtype) || $gtype == $wtype || $gamt == 0 || $wamt == 0) {
-            header("Location: build.php?id=".$post['id']."&t=".$post['t']);
-            return;
+	        if(!$this->validResourceType($gtype) || !$this->validResourceType($wtype) || $gtype == $wtype || $gamt == 0 || $wamt == 0) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,isset($post['t']) ? $post['t'] : 2);
         }
 
         $time = 0;
         if(isset($post['d1'])) {
             $hours = $this->positiveInteger(isset($post['d2']) ? $post['d2'] : null);
             if($hours == 0 || $hours > 99) {
-                header("Location: build.php?id=".$post['id']."&t=".$post['t']);
-                return;
+	                $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,isset($post['t']) ? $post['t'] : 2);
             }
             $time = $hours * 3600;
         }
@@ -134,8 +205,7 @@ class Market {
         $resource = $this->resourceArray($gtype,$gamt);
         $reqMerc = $this->requiredMerchants($gamt);
         if($reqMerc == 0 || $reqMerc > $this->merchantAvail()) {
-            header("Location: build.php?id=".$post['id']."&t=".$post['t']);
-            return;
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,isset($post['t']) ? $post['t'] : 2);
         }
 
         if($database->deductResourcesIfAvailable($village->wid,$resource[1],$resource[2],$resource[3],$resource[4])) {
@@ -145,59 +215,51 @@ class Market {
                 $database->modifyResource($village->wid,$resource[1],$resource[2],$resource[3],$resource[4],1);
             }
         }
-        header("Location: build.php?id=".$post['id']."&t=".$post['t']); 
-    } 
+	        $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,isset($post['t']) ? $post['t'] : 2);
+	    }
      
     private function acceptOffer($get) { 
         global $database,$village,$session,$logging,$generator; 
-        $offerId = $this->positiveInteger(isset($get['g']) ? $get['g'] : null);
-        $infoarray = $offerId ? $database->getMarketInfo($offerId) : false;
-        if(!$this->validOffer($infoarray) || (int)$infoarray['vref'] == (int)$village->wid) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
-        }
+	        $offerId = $this->positiveInteger(isset($get['g']) ? $get['g'] : null);
+	        $infoarray = $offerId ? $database->getMarketInfo($offerId) : false;
+	        if(!$this->validOffer($infoarray) || (int)$infoarray['vref'] == (int)$village->wid) {
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
+	        }
 
         $buyerAlliance = (int)$session->alliance;
         if((int)$infoarray['alliance'] != 0 && (int)$infoarray['alliance'] != $buyerAlliance) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         $sellerOwner = (int)$database->getVillageField($infoarray['vref'],"owner");
         if($sellerOwner == 0 || $sellerOwner == (int)$session->uid) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         $hiscoor = $database->getCoor($infoarray['vref']);
         if(!is_array($hiscoor)) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
         $mytime = $generator->procDistanceTime($hiscoor,$village->coor,$session->tribe,0);
         if((int)$infoarray['maxtime'] > 0 && $mytime > (int)$infoarray['maxtime']) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         $reqMerc = $this->requiredMerchants((int)$infoarray['wamt']);
         if($reqMerc == 0 || $reqMerc > $this->merchantAvail()) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         if(!$database->claimMarketOffer($offerId,$village->wid,$buyerAlliance)) {
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         $currentMerchantAvail = max(0,$this->merchant - $database->totalMerchantUsed($village->wid));
         $myresource = $this->resourceArray((int)$infoarray['wtype'],(int)$infoarray['wamt']);
         $hisresource = $this->resourceArray((int)$infoarray['gtype'],(int)$infoarray['gamt']);
         if($reqMerc > $currentMerchantAvail || !$database->deductResourcesIfAvailable($village->wid,$myresource[1],$myresource[2],$myresource[3],$myresource[4])) {
-            $database->releaseMarketOffer($offerId);
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $database->releaseMarketOffer($offerId);
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
         $mysendid = $database->sendResource($myresource[1],$myresource[2],$myresource[3],$myresource[4],$reqMerc,0);
@@ -210,14 +272,13 @@ class Market {
         $hismovement = $hissendid ? $database->addMovement(0,$infoarray['vref'],$village->wid,$hissendid,$hisresdata,$histime+time()) : false;
 
         if(!$mymovement || !$hismovement) {
-            $this->rollbackAcceptedOffer($offerId,$myresource,$mysendid,$hissendid);
-            header("Location: build.php?id=".$get['id']."&t=".$get['t']);
-            return;
+	            $this->rollbackAcceptedOffer($offerId,$myresource,$mysendid,$hissendid);
+	            $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
         }
 
-        $database->removeAcceptedOffer($offerId);
-        $logging->addMarketLog($village->wid,2,array($infoarray['vref'],$offerId));
-        header("Location: build.php?id=".$get['id']."&t=".$get['t']);
+	        $database->removeAcceptedOffer($offerId);
+	        $logging->addMarketLog($village->wid,2,array($infoarray['vref'],$offerId));
+	        $this->redirectToMarket(isset($get['id']) ? $get['id'] : 0,isset($get['t']) ? $get['t'] : 1);
     } 
 
     private function cancelOffer($offerId) {
@@ -255,7 +316,7 @@ class Market {
         $database->releaseMarketOffer($offerId);
     }
 
-    private function positiveInteger($value) {
+	    private function positiveInteger($value) {
         if(!is_scalar($value)) {
             return 0;
         }
@@ -264,8 +325,36 @@ class Market {
             return 0;
         }
         $value = (int)$value;
-        return ($value > 0 && $value <= 2147483647)? $value : 0;
-    }
+	        return ($value > 0 && $value <= 2147483647)? $value : 0;
+	    }
+
+	    private function nonNegativeInteger($value) {
+	        if(!is_scalar($value)) {
+	            return false;
+	        }
+	        $value = (string)$value;
+	        if($value === '' || !ctype_digit($value)) {
+	            return false;
+	        }
+	        $value = (int)$value;
+	        return ($value >= 0 && $value <= 2147483647)? $value : false;
+	    }
+
+	    private function redirectToMarket($id,$tab=null,$extra='') {
+	        global $village;
+	        $id = $this->positiveInteger($id);
+	        $isMarketField = $id > 0 && isset($village->resarray['f'.$id.'t']) && (int)$village->resarray['f'.$id.'t'] === 17;
+	        $location = $isMarketField ? "build.php?id=".$id : "build.php?gid=17";
+	        $tab = $this->positiveInteger($tab);
+	        if($tab >= 1 && $tab <= 4) {
+	            $location .= "&t=".$tab;
+	        }
+	        if($extra !== '') {
+	            $location .= "&".$extra;
+	        }
+	        header("Location: ".$location);
+	        exit;
+	    }
 
     private function validResourceType($type) {
         return in_array((int)$type,array(1,2,3,4),true);
@@ -359,24 +448,37 @@ class Market {
         } 
     } 
      
-    private function tradeResource($post) { 
-        global $session,$database,$village; 
-        if($session->userinfo['gold'] >= 3) { 
-            //kijken of ze niet meer gs invoeren dan ze hebben 
-            if (($post['m2'][0]+$post['m2'][1]+$post['m2'][2]+$post['m2'][3])<=(round($village->awood)+round($village->aclay)+round($village->airon)+round($village->acrop))){ 
-                $database->setVillageField($village->wid,"wood",$post['m2'][0]); 
-                $database->setVillageField($village->wid,"clay",$post['m2'][1]); 
-                $database->setVillageField($village->wid,"iron",$post['m2'][2]); 
-                $database->setVillageField($village->wid,"crop",$post['m2'][3]); 
-                $database->modifyGold($session->uid,3,0); 
-                header("Location: build.php?id=".$post['id']."&t=3&c");; 
-            } else { 
-                header("Location: build.php?id=".$post['id']."&t=3"); 
-            } 
-        } else {         
-            header("Location: build.php?id=".$post['id']."&t=3"); 
-        } 
-    } 
+	    private function tradeResource($post) {
+	        global $session,$database,$village;
+	        $values = isset($post['m2']) && is_array($post['m2']) ? array_values($post['m2']) : array();
+	        if(count($values) !== 4) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,3);
+	        }
+	        foreach($values as $index => $value) {
+	            $values[$index] = $this->nonNegativeInteger($value);
+	            if($values[$index] === false) {
+	                $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,3);
+	            }
+	        }
+
+	        $current = array(
+	            (float)$database->getVillageField($village->wid,"wood"),
+	            (float)$database->getVillageField($village->wid,"clay"),
+	            (float)$database->getVillageField($village->wid,"iron"),
+	            (float)$database->getVillageField($village->wid,"crop")
+	        );
+	        $expectedTotal = (int)floor(array_sum($current));
+	        if(array_sum($values) !== $expectedTotal
+	            || $values[0] > (int)$village->maxstore || $values[1] > (int)$village->maxstore
+	            || $values[2] > (int)$village->maxstore || $values[3] > (int)$village->maxcrop) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,3);
+	        }
+
+	        if(!$database->redistributeResourcesWithGold($session->uid,$village->wid,$values[0],$values[1],$values[2],$values[3],3,$expectedTotal)) {
+	            $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,3);
+	        }
+	        $this->redirectToMarket(isset($post['id']) ? $post['id'] : 0,3,"c");
+	    }
      
 }; 
 $market = new Market; 

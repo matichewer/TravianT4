@@ -23,29 +23,46 @@ var carry = <?php echo $market->maxcarry; ?>;
 				</div><div class="clear"></div>
 <?php
 
-if (!is_numeric($_POST['r1'])) { $_POST['r1'] = 0; }
-if (!is_numeric($_POST['r2'])) { $_POST['r2'] = 0; }
-if (!is_numeric($_POST['r3'])) { $_POST['r3'] = 0; }
-if (!is_numeric($_POST['r4'])) { $_POST['r4'] = 0; }
+$marketFormType = isset($_POST['ft']) && is_string($_POST['ft']) ? $_POST['ft'] : '';
+foreach(array('r1','r2','r3','r4') as $marketResourceField) {
+	if(!isset($_POST[$marketResourceField]) || !is_scalar($_POST[$marketResourceField]) || !ctype_digit((string)$_POST[$marketResourceField])) {
+		$_POST[$marketResourceField] = 0;
+	}
+}
+$marketX = isset($_POST['x']) && is_scalar($_POST['x']) ? (string)$_POST['x'] : '';
+$marketY = isset($_POST['y']) && is_scalar($_POST['y']) ? (string)$_POST['y'] : '';
+$marketVillageName = isset($_POST['dname']) && is_scalar($_POST['dname']) ? (string)$_POST['dname'] : '';
+$marketSendCount = isset($_POST['send3']) && is_scalar($_POST['send3']) && ctype_digit((string)$_POST['send3']) ? (int)$_POST['send3'] : 1;
+if(!$session->goldclub || $marketSendCount < 1 || $marketSendCount > 3) {
+	$marketSendCount = 1;
+}
+$marketCoordinatesValid = preg_match('/^-?\d+$/',$marketX) && preg_match('/^-?\d+$/',$marketY)
+	&& abs((int)$marketX) <= WORLD_MAX && abs((int)$marketY) <= WORLD_MAX;
+$_POST['x'] = $marketX;
+$_POST['y'] = $marketY;
+$_POST['dname'] = $marketVillageName;
+$getwref = 0;
+$checkexist = false;
 
 $allres = $_POST['r1']+$_POST['r2']+$_POST['r3']+$_POST['r4'];
-if($_POST['x']!="" && $_POST['y']!=""){
-	$getwref = $database->getVilWref($_POST['x'],$_POST['y']);
+if($marketCoordinatesValid){
+	$getwref = $database->getVilWref((int)$marketX,(int)$marketY);
 	$checkexist = $database->checkVilExist($getwref);
 }
-else if($_POST['dname']!=""){
-	$getwref = $database->getVillageByName($_POST['dname']);
+else if($marketVillageName !== ''){
+	$getwref = $database->getVillageByName($marketVillageName);
 	$checkexist = $database->checkVilExist($getwref);
 }
 // Need to set the max allowed to send as maxcarry * available merchants
 $canSend = $market->maxcarry * $market->merchantAvail();
 
-if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST['x']!="" && $_POST['y']!="" or $_POST['dname']!="") && $checkexist){
+if($marketFormType === 'check' && $allres > 0 && $allres <= $canSend && ($marketCoordinatesValid || $marketVillageName !== '') && !empty($checkexist)){
 ?>
 <form method="POST" name="snd" action="build.php"> 
-<input type="hidden" name="ft" value="mk1">
-<input type="hidden" name="id" value="<?php echo $id; ?>">
-<input type="hidden" name="send3" value="<?php echo $_POST['send3']; ?>">
+	<input type="hidden" name="ft" value="mk1">
+	<input type="hidden" name="id" value="<?php echo (int)$id; ?>">
+	<input type="hidden" name="a" value="<?php echo $session->mchecker; ?>">
+<input type="hidden" name="send3" value="<?php echo $marketSendCount; ?>">
 <input type="hidden" name="vid" value="<?php echo $getwref; ?>">
 <table id="send_select" class="send_res" cellpadding="1" cellspacing="1">
 	<tr>
@@ -78,27 +95,18 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 	<tbody><tr>
 		<th>Coordenadas:</th>
         <?php
-		if($_POST['x']!="" && $_POST['y']!=""){
-        $getwref = $database->getVilWref($_POST['x'],$_POST['y']);
-		$getvilname = $database->getVillageField($getwref, "name");
-		$getvilowner = $database->getVillageField($getwref, "owner");
-		$getvilcoor['y'] = $_POST['y'];
-		$getvilcoor['x'] = $_POST['x'];
-		$time = $generator->procDistanceTime($getvilcoor,$village->coor,$session->tribe,0);
-		}
-		else if($_POST['dname']!=""){
-		$getwref = $database->getVillageByName($_POST['dname']);
 		$getvilcoor = $database->getCoor($getwref);
 		$getvilname = $database->getVillageField($getwref, "name");
 		$getvilowner = $database->getVillageField($getwref, "owner");
 		$time = $generator->procDistanceTime($getvilcoor,$village->coor,$session->tribe,0);
-		}
+		$getvilnameEscaped = htmlspecialchars((string)$getvilname,ENT_QUOTES,'UTF-8');
+		$getvilownerName = htmlspecialchars((string)$database->getUserField($getvilowner,'username',0),ENT_QUOTES,'UTF-8');
         ?>
-		<td class="vil"><a href="position_details.php?x=<?php echo $getvilcoor['y']; ?>&y=<?php echo $getvilcoor['x']; ?>"><span class="coordinates coordinatesWithText"><span class="coordText"><?php echo $getvilname; ?></span><span class="coordinatesWrapper"><span class="coordinateY">(<?php echo $getvilcoor['y']; ?></span><span class="coordinatePipe">|</span><span class="coordinateX"><?php echo $getvilcoor['x']; ?>)</span></span></span><span class="clear"></span></a></td>
+		<td class="vil"><a href="position_details.php?x=<?php echo (int)$getvilcoor['x']; ?>&amp;y=<?php echo (int)$getvilcoor['y']; ?>"><span class="coordinates coordinatesWithText"><span class="coordText"><?php echo $getvilnameEscaped; ?></span><span class="coordinatesWrapper"><span class="coordinateX">(<?php echo (int)$getvilcoor['x']; ?></span><span class="coordinatePipe">|</span><span class="coordinateY"><?php echo (int)$getvilcoor['y']; ?>)</span></span></span><span class="clear"></span></a></td>
 	</tr>
 	<tr>
 		<th>Jugador:</th>
-		<td><a href="spieler.php?uid=<?php echo $getvilowner; ?>"><?php echo $database->getUserField($getvilowner,'username',0); ?></a></td>
+		<td><a href="spieler.php?uid=<?php echo (int)$getvilowner; ?>"><?php echo $getvilownerName; ?></a></td>
 	</tr>
 	<tr>
 		<th>Duración:</th>
@@ -124,7 +132,7 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 <?php }else{ ?>
 <form method="POST" name="snd" action="build.php"> 
 <input type="hidden" name="ft" value="check">
-<input type="hidden" name="id" value="<?php echo $id; ?>">
+<input type="hidden" name="id" value="<?php echo (int)$id; ?>">
 <table id="send_select" class="send_res" cellpadding="1" cellspacing="1">
 
 <tr>
@@ -194,7 +202,7 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 							<span>Nombre de la aldea:</span>
 						</td>
 						<td class="compactInput">
-                        	<input class="text village" type="text" name="dname" value="<?php echo stripslashes($_POST['dname']); ?>" maxlength="30" tabindex="5">
+							<input class="text village" type="text" name="dname" value="<?php echo htmlspecialchars(stripslashes($_POST['dname']),ENT_QUOTES,'UTF-8'); ?>" maxlength="30" tabindex="5">
 						</td>
 					</tr>
 				</tbody>
@@ -206,10 +214,11 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 						<td>
 							<span class="or">Coordenadas</span>
 <?php
-if(isset($_GET['z'])){
-$coor = $database->getCoor($_GET['z']);
+$coor = false;
+if(isset($_GET['z']) && is_scalar($_GET['z']) && ctype_digit((string)$_GET['z'])){
+$coor = $database->getCoor((int)$_GET['z']);
 }
-else{
+if(!is_array($coor)){
 $coor['x'] = "";
 $coor['y'] = "";
 }
@@ -250,7 +259,7 @@ $coor['y'] = "";
 </form>
 <?php
 $error = '';
-if(isset($_POST['ft'])=='check'){
+if($marketFormType === 'check'){
 
 	if(!$checkexist){
 		$error = '<span class="error"><b>No hay ninguna aldea en esas coordenadas.</b></span>';
@@ -258,7 +267,7 @@ if(isset($_POST['ft'])=='check'){
 		$error = '<span class="error"><b>No se seleccionaron recursos.</b></span>';
     }elseif(!$_POST['x'] && !$_POST['y'] && !$_POST['dname']){
 		$error = '<span class="error"><b>Introduce las coordenadas o el nombre de la aldea.</b></span>';
-    }elseif($allres >= $canSend){
+    }elseif($allres > $canSend){
 		$error = '<span class="error"><b>Mercaderes insuficientes.</b></span>';
     }
     echo $error;

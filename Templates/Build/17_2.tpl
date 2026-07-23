@@ -16,9 +16,9 @@ include("17_menu.tpl");
 <div class="boxes boxesColor gray traderCount"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">Mercaderes <?php echo $market->merchantAvail(); ?> / <?php echo $market->merchant; ?></div></div><div class="clear"></div>
 
 <form method="POST" name="snd" action="build.php"> 
-			<input type="hidden" name="id" value="<?php echo $id; ?>"> 
+			<input type="hidden" name="id" value="<?php echo (int)$id; ?>">
 			<input type="hidden" name="ft" value="mk2"> 
-			<input type="hidden" name="t" value="<?php echo $_GET['t']; ?>"> 
+			<input type="hidden" name="t" value="2">
 			<input type="hidden" name="a" value="<?php echo $session->mchecker; ?>">
  
 <table id="sell" cellpadding="1" cellspacing="1"> 

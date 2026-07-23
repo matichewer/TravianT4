@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_GET['t'])==99 && isset($_GET['action'])==0) {
+if(isset($_GET['t']) && $_GET['t'] == 99 && !isset($_GET['action'])) {
 
-if(isset($_GET['t'])==99 && isset($_POST['action'])=='addList'){
+if(isset($_GET['t']) && $_GET['t'] == 99 && isset($_POST['action']) && $_POST['action'] === 'addList'){
 	$database->createFarmList($_POST['did'], $session->uid, $_POST['name']);
 }
 

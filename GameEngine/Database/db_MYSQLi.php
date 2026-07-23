@@ -218,8 +218,27 @@
         		} else {
         			$q = "UPDATE " . TB_PREFIX . "users set gold = gold + $amt where id = $userid";
         		}
-        		return mysqli_query($this->connection,$q);
-        	}
+				return mysqli_query($this->connection,$q);
+			}
+
+			function redistributeResourcesWithGold($userid, $vid, $wood, $clay, $iron, $crop, $goldCost, $expectedTotal) {
+				$userid = (int) $userid;
+				$vid = (int) $vid;
+				$wood = (int) $wood;
+				$clay = (int) $clay;
+				$iron = (int) $iron;
+				$crop = (int) $crop;
+				$goldCost = (int) $goldCost;
+				$expectedTotal = (int) $expectedTotal;
+				if($userid <= 0 || $vid <= 0 || $goldCost <= 0 || $expectedTotal < 0
+					|| $wood < 0 || $clay < 0 || $iron < 0 || $crop < 0
+					|| $wood + $clay + $iron + $crop !== $expectedTotal) {
+					return false;
+				}
+				$q = "UPDATE " . TB_PREFIX . "vdata v INNER JOIN " . TB_PREFIX . "users u ON u.id = $userid AND v.owner = u.id SET v.wood = $wood, v.clay = $clay, v.iron = $iron, v.crop = $crop, u.gold = u.gold - $goldCost WHERE v.wref = $vid AND u.gold >= $goldCost AND FLOOR(v.wood + v.clay + v.iron + v.crop) = $expectedTotal";
+				$result = mysqli_query($this->connection,$q);
+				return $result && mysqli_affected_rows($this->connection) >= 1;
+			}
 
         	/*****************************************
         	Function to retrieve user array via Username or ID
@@ -431,6 +450,13 @@
         		return mysqli_query($this->connection,$q);
         	}
 
+			function claimFieldForSettlement($id) {
+				$id = (int) $id;
+				$q = "UPDATE " . TB_PREFIX . "wdata SET occupied = 1 WHERE id = $id AND occupied = 0 AND oasistype = 0 AND fieldtype > 0";
+				$result = mysqli_query($this->connection,$q);
+				return $result && mysqli_affected_rows($this->connection) === 1;
+			}
+
 		function addVillage($wid, $uid, $username, $capital) {
 			$total = count($this->getVillagesID($uid));
 			if($total >= 1) {
@@ -537,14 +563,17 @@
         	}
 
 			function getVilWref($x, $y) {
-        		$q = "SELECT * FROM " . TB_PREFIX . "wdata where x = $x AND y = $y";
+				$x = (int) $x;
+				$y = (int) $y;
+				$q = "SELECT * FROM " . TB_PREFIX . "wdata where x = $x AND y = $y";
         		$result = mysqli_query($this->connection,$q);
 				$dbarray = mysqli_fetch_array($result);
-        		return $dbarray['id'];
+				return $dbarray ? $dbarray['id'] : 0;
         	}
 
 			function checkVilExist($wref) {
-        		$q = "SELECT * FROM " . TB_PREFIX . "vdata where wref = '$wref'";
+				$wref = (int) $wref;
+				$q = "SELECT * FROM " . TB_PREFIX . "vdata where wref = $wref";
         		$result = mysqli_query($this->connection,$q);
         		if(mysqli_num_rows($result)) {
         			return true;
@@ -639,8 +668,9 @@
         		return mysqli_fetch_array($result);
         	}
 
-        	function getMInfo($id) {
-        		$q = "SELECT * FROM " . TB_PREFIX . "wdata left JOIN " . TB_PREFIX . "vdata ON " . TB_PREFIX . "vdata.wref = " . TB_PREFIX . "wdata.id where " . TB_PREFIX . "wdata.id = $id";
+			function getMInfo($id) {
+				$id = (int) $id;
+				$q = "SELECT * FROM " . TB_PREFIX . "wdata left JOIN " . TB_PREFIX . "vdata ON " . TB_PREFIX . "vdata.wref = " . TB_PREFIX . "wdata.id where " . TB_PREFIX . "wdata.id = $id";
         		$result = mysqli_query($this->connection,$q);
         		return mysqli_fetch_array($result);
         	}
@@ -706,6 +736,7 @@
         	}
 
         	function getCoor($wref) {
+				$wref = (int) $wref;
         		$q = "SELECT x,y FROM " . TB_PREFIX . "wdata where id = $wref";
         		$result = mysqli_query($this->connection,$q);
         		return mysqli_fetch_array($result);
@@ -1651,10 +1682,25 @@
 			}
 
 			function createTradeRoute($uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time) {
-			$x = "UPDATE " . TB_PREFIX . "users SET gold = gold - 2 WHERE id = ".$uid."";
-				mysqli_query($this->connection,$x);
-			$q = "INSERT into " . TB_PREFIX . "route values (0,$uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time)";
-				return mysqli_query($this->connection,$q);
+				$values = array_map('intval',array($uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time));
+				list($uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time) = $values;
+				if($uid <= 0 || $wid <= 0 || $from <= 0 || $wid === $from || min($r1,$r2,$r3,$r4) < 0
+					|| $r1 + $r2 + $r3 + $r4 <= 0 || $start < 0 || $start > 23
+					|| $deliveries < 1 || $deliveries > 3 || $merchant <= 0 || $time <= 0) {
+					return false;
+				}
+				mysqli_query($this->connection,"START TRANSACTION");
+				$charged = mysqli_query($this->connection,"UPDATE " . TB_PREFIX . "users SET gold = gold - 2 WHERE id = $uid AND gold >= 2");
+				if(!$charged || mysqli_affected_rows($this->connection) !== 1) {
+					mysqli_query($this->connection,"ROLLBACK");
+					return false;
+				}
+				$q = "INSERT into " . TB_PREFIX . "route values (0,$uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time)";
+				if(!mysqli_query($this->connection,$q)) {
+					mysqli_query($this->connection,"ROLLBACK");
+					return false;
+				}
+				return mysqli_query($this->connection,"COMMIT");
 			}
 
 			function getTradeRoute($uid) {
@@ -1664,17 +1710,39 @@
 			}
 
 			function getTradeRoute2($id) {
+				$id = (int) $id;
 				$q = "SELECT * FROM " . TB_PREFIX . "route where id = $id";
-				$result = mysqli_query($this->connection,$q) or die(mysqli_error());
+				$result = mysqli_query($this->connection,$q);
 				$dbarray = mysqli_fetch_array($result);
 				return $dbarray;
 			}
 
 			function getTradeRouteUid($id) {
+				$id = (int) $id;
 				$q = "SELECT * FROM " . TB_PREFIX . "route where id = $id";
-				$result = mysqli_query($this->connection,$q) or die(mysqli_error());
+				$result = mysqli_query($this->connection,$q);
 				$dbarray = mysqli_fetch_array($result);
-				return $dbarray['uid'];
+				return $dbarray ? $dbarray['uid'] : 0;
+			}
+
+			function updateTradeRouteOwned($id,$uid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time) {
+				$values = array_map('intval',array($id,$uid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time));
+				list($id,$uid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time) = $values;
+				if($id <= 0 || $uid <= 0 || $from <= 0 || min($r1,$r2,$r3,$r4) < 0
+					|| $r1 + $r2 + $r3 + $r4 <= 0 || $start < 0 || $start > 23
+					|| $deliveries < 1 || $deliveries > 3 || $merchant <= 0 || $time <= 0) {
+					return false;
+				}
+				$q = "UPDATE " . TB_PREFIX . "route SET wood = $r1, clay = $r2, iron = $r3, crop = $r4, start = $start, deliveries = $deliveries, merchant = $merchant, timestamp = $time WHERE id = $id AND uid = $uid AND `from` = $from";
+				return mysqli_query($this->connection,$q);
+			}
+
+			function deleteTradeRouteOwned($id,$uid,$from) {
+				$id = (int) $id;
+				$uid = (int) $uid;
+				$from = (int) $from;
+				$q = "DELETE FROM " . TB_PREFIX . "route WHERE id = $id AND uid = $uid AND `from` = $from";
+				return mysqli_query($this->connection,$q);
 			}
 
 			function editTradeRoute($id,$column,$value,$mode) {
@@ -1947,11 +2015,12 @@
                 return mysqli_query($this->connection,$q);
             }
 
-        	function getVillageByName($name) {
-        		$q = "SELECT wref FROM " . TB_PREFIX . "vdata where name = '$name' limit 1";
+			function getVillageByName($name) {
+				$name = mysqli_real_escape_string($this->connection,(string)$name);
+				$q = "SELECT wref FROM " . TB_PREFIX . "vdata where name = '$name' limit 1";
         		$result = mysqli_query($this->connection,$q);
-        		$dbarray = mysqli_fetch_array($result);
-        		return $dbarray['wref'];
+				$dbarray = mysqli_fetch_array($result);
+				return $dbarray ? $dbarray['wref'] : 0;
         	}
 
         	/***************************
@@ -2579,6 +2648,30 @@
         		}
         		return mysqli_query($this->connection,$q);
         	}
+
+			function deductUnitIfAvailable($vref, $unit, $amt) {
+				$vref = (int) $vref;
+				$amt = (int) $amt;
+				if($amt <= 0) {
+					return false;
+				}
+				if($unit === 'hero') {
+					$column = 'hero';
+				} else {
+					$unit = (int) $unit;
+					if($unit === 230) $unit = 30;
+					if($unit === 231) $unit = 31;
+					if($unit === 120) $unit = 20;
+					if($unit === 121) $unit = 21;
+					if($unit < 1 || $unit > 50) {
+						return false;
+					}
+					$column = 'u' . $unit;
+				}
+				$q = "UPDATE " . TB_PREFIX . "units SET $column = $column - $amt WHERE vref = $vref AND $column >= $amt";
+				$result = mysqli_query($this->connection,$q);
+				return $result && mysqli_affected_rows($this->connection) === 1;
+			}
 
         	function getEnforce($vid, $from) {
         		$q = "SELECT * from " . TB_PREFIX . "enforcement where `from` = $from and vref = $vid";
@@ -3844,7 +3937,9 @@ break;
         	}
 
 			function getAdventure($uid, $wref) {
-        		$q = "SELECT * FROM " . TB_PREFIX . "adventure WHERE uid = $uid and wref = '".$wref."'";
+				$uid = (int) $uid;
+				$wref = (int) $wref;
+				$q = "SELECT * FROM " . TB_PREFIX . "adventure WHERE uid = $uid AND wref = $wref ORDER BY id DESC LIMIT 1";
         		$result = mysqli_query($this->connection,$q);
 				if(mysqli_num_rows($result)) {
         			return mysqli_fetch_array($result);

@@ -125,7 +125,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
 	   }} elseif(isset($_POST['o'])) {
        	switch($_POST['o']) {
        		case 1:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a_user'])) {
+			if(isset($_POST['s'],$_POST['a_user']) && $_POST['s'] == 5) {
        				$alliance->procAlliForm($_POST);
        				//echo "Funcion para el cambio de nombre de la alianza";
        				include ("Templates/Alliance/changepos.tpl");
@@ -134,7 +134,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
        			}
        			break;
        		case 2:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a']) == 2) {
+			if(isset($_POST['s'],$_POST['a']) && $_POST['s'] == 5 && $_POST['a'] == 2) {
        				$alliance->procAlliForm($_POST);
        				include ("Templates/Alliance/kick.tpl");
        			} else {
@@ -142,7 +142,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
        			}
        			break;
        		case 3:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a']) == 3) {
+			if(isset($_POST['s'],$_POST['a']) && $_POST['s'] == 5 && $_POST['a'] == 3) {
        				$alliance->procAlliForm($_POST);
        				//echo "Funcion para el cambio de nombre de la alianza";
        				include ("Templates/Alliance/allidesc.tpl");
@@ -151,7 +151,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
        			}
        			break;
        		case 4:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a']) == 4) {
+			if(isset($_POST['s'],$_POST['a']) && $_POST['s'] == 5 && $_POST['a'] == 4) {
        				$alliance->procAlliForm($_POST);
        				//echo "Funcion para el cambio de nombre de la alianza";
        				include ("Templates/Alliance/invite.tpl");
@@ -171,7 +171,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
        			}
        			break;
        		case 11:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a']) == 11) {
+			if(isset($_POST['s'],$_POST['a']) && $_POST['s'] == 5 && $_POST['a'] == 11) {
        				$alliance->procAlliForm($_POST);
        				//echo "Funcion para el cambio de nombre de la alianza";
        				include ("Templates/Alliance/quitalli.tpl");
@@ -183,7 +183,7 @@ if($ally_exist['id']!=0 or $_GET['fid'] or $_GET['fid2'] or $session->alliance!=
        			include ("Templates/Alliance/option.tpl");
        			break;
        		case 100:
-       			if(isset($_POST['s']) == 5 && isset($_POST['a']) == 100) {
+			if(isset($_POST['s'],$_POST['a']) && $_POST['s'] == 5 && $_POST['a'] == 100) {
        				$alliance->procAlliForm($_POST);
        				//echo "Funcion para el cambio de nombre de la alianza";
        				include ("Templates/Alliance/changename.tpl");

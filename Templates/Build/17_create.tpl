@@ -1,6 +1,7 @@
 <form action="build.php" method="post">
 		<div class="boxes boxesColor gray"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents cf">
         <input type="hidden" name="action" value="addRoute">
+		<input type="hidden" name="a" value="<?php echo $session->mchecker; ?>">
 		
 			<table cellpadding="1" cellspacing="1" id="npc" class="transparent">
 			<thead>
@@ -29,7 +30,8 @@
     }
 	if($session->villages[$i-1] != $village->wid){
 		$coor = $database->getCoor($session->villages[$i-1]);
-		echo "<option value=\"".$session->villages[$i-1]."\" ".$select.">".$database->getVillageField($session->villages[$i-1],'name')." (".$coor['x']."|".$coor['y'].")</option>";
+		$targetName = htmlspecialchars((string)$database->getVillageField($session->villages[$i-1],'name'),ENT_QUOTES,'UTF-8');
+		echo "<option value=\"".(int)$session->villages[$i-1]."\" ".$select.">".$targetName." (".(int)$coor['x']."|".(int)$coor['y'].")</option>";
     }
 	}
 ?>						</select>
@@ -39,8 +41,7 @@
 					<th>
 						Recursos:					</th>
 					<td>
-						<img src="<?php echo GP_LOCATE; ?>img/r/1.gif" alt="Madera" title="Madera"> <input class="text" type="text" name="r1" id="r1" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/2.gif" alt="Barro" title="Barro"> <input class="text" type="text" name="r2" id="r2" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/3.gif" alt="Hierro" title="Hierro"> <input class="text" type="text" name="r3" id="r3" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/4.gif" alt="Cereal" title="Cereal"> <input class="text" type="text" name="r4" id="r4" value="" maxlength="5" tabindex="1" style="width:50px;">
-						<img src="<?php echo GP_LOCATE; ?>img/r/1.gif" alt="Madera" title="Madera"> <input class="text" type="text" name="r1" id="r1" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/2.gif" alt="Barro" title="Barro"> <input class="text" type="text" name="r2" id="r2" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/3.gif" alt="Hierro" title="Hierro"> <input class="text" type="text" name="r3" id="r3" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/4.gif" alt="Cereal" title="Cereal"> <input class="text" type="text" name="r4" id="r4" value="" maxlength="5" tabindex="1" style="width:50px;">
+						<img src="<?php echo GP_LOCATE; ?>img/r/1.gif" alt="Madera" title="Madera"> <input class="text" type="text" name="r1" id="r1" value="" maxlength="5" tabindex="1" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/2.gif" alt="Barro" title="Barro"> <input class="text" type="text" name="r2" id="r2" value="" maxlength="5" tabindex="2" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/3.gif" alt="Hierro" title="Hierro"> <input class="text" type="text" name="r3" id="r3" value="" maxlength="5" tabindex="3" style="width:50px;">  <img src="<?php echo GP_LOCATE; ?>img/r/4.gif" alt="Cereal" title="Cereal"> <input class="text" type="text" name="r4" id="r4" value="" maxlength="5" tabindex="4" style="width:50px;">
 
 					</td>
 				</tr>
