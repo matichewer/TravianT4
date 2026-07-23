@@ -12,7 +12,7 @@ $htitle = HEADER_DAY;
 	<div class="content-background-r">&nbsp;</div>
 	<div class="content <?php echo $hclass; ?>" title="<?php echo $htitle; ?>">
 		<?php echo SERVER_TIME; ?>&nbsp;<span id="tp1" ><?php echo date('H:i:s'); ?></span>
-    </div>
+\t</div>
 </div>
 
 <div id="plusLink">
@@ -24,9 +24,10 @@ $htitle = HEADER_DAY;
 			<a href="hero_auction.php" title="<?php echo HEADER_SILVER; ?>"><img src="img/x.gif" alt="<?php echo HEADER_SILVER; ?>" class="silver"><br><?php echo "$session->silver"; ?></a>
 		</p>
         <div class="clear"></div>
-	</div>
+    </div>
+    <?php $plusButtonState = $session->plus ? 'plus-active' : 'plus-inactive'; ?>
     <div id="plus">
-    	<a href="plus.php" class="plusBtn" title="<?php echo HEADER_PLUSMENU; ?>"><span class="plusBtn-l"><span class="plus_g"><?php echo HEADER_PLUS; ?></span></span><span class="plusBtn-r">&nbsp;</span></a>
+        <a href="plus.php" class="plusBtn <?php echo $plusButtonState; ?>" title="<?php echo HEADER_PLUSMENU; ?>"><span class="plusBtn-l"><span class="plus_g"><?php echo HEADER_PLUS; ?></span></span><span class="plusBtn-r">&nbsp;</span></a>
     </div>
         <?php if($session->access == MULTIHUNTER) { 
 		echo "<div id=\"plus\"> 

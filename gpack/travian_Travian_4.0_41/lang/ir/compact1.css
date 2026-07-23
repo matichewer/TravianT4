@@ -740,6 +740,9 @@ body.loader #myGameLinkHeaderWrapper,body.login #myGameLinkHeaderWrapper,body.lo
 .ie6 #plusLink #plus a.plusBtn .plusBtn-l,.ie6 #plusLink #plus a.plusBtn .plusBtn-r,.ie6 #plusLink #plus:hover a.plusBtn .plusBtn-l,.ie6 #plusLink #plus:hover a.plusBtn .plusBtn-r,.ie6 #gs p{background-image:url("../../img/layout/plusBtn.gif");}
 #plusLink #plus a.plusBtn .plusBtn-l{background-position:left -37px;display:inline-block;height:18px;padding:0 0 0 5px;}
 #plusLink #plus a.plusBtn .plusBtn-r{background-position:right -37px;display:inline-block;height:18px;width:5px;}
+#plusLink #plus a.plusBtn.plus-inactive{color:#727272;}
+#plusLink #plus a.plusBtn.plus-inactive .plusBtn-l{background-position:left -67px;}
+#plusLink #plus a.plusBtn.plus-inactive .plusBtn-r{background-position:right -67px;}
 #plusLink #plus:hover a.plusBtn .plusBtn-l{background-position:left -67px;}#plusLink #plus:hover a.plusBtn .plusBtn-r{background-position:right -67px;}
 #gs{font-size:10px;line-height:13px;left:0;position:absolute;bottom:0;text-align:center;width:100%;}
 #gs p{background-position:top right;color:#252525;display:inline-block;height:33px;text-align:center;width:41px;margin:0;}
