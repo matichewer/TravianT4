@@ -1,7 +1,13 @@
 <?php
 if($_GET){
-	$renderBbPreview = function() {
+	$isBbPreview = (isset($_GET['f']) && $_GET['f'] === 'bb')
+		|| (isset($_GET['cmd']) && $_GET['cmd'] === 'bb');
+	if ($isBbPreview) {
 		include_once("GameEngine/Village.php");
+	}
+
+	$renderBbPreview = function() {
+		global $database, $generator;
 
 		$input = isset($_POST['text']) ? $_POST['text'] : '';
 		$input = preg_replace_callback('/\[report([0-9]+)\](.*?)\[\/report\\1\]/is', function($matches) {
@@ -17,6 +23,7 @@ if($_GET){
 			$reportIndex++;
 			return $tag;
 		}, $input);
+		$input = '[message]'.$input.'[/message]';
 
 		$alliance = -1;
 		$player = -1;
