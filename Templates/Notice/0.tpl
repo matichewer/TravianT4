@@ -179,7 +179,7 @@ if (!$faild && $dataarray[$trapstart+11]!='' and $dataarray[$trapstart+11]!=''){
     </td></tr></tbody>
 <?php } ?>
 
-
+<?php if (!($dataarray[157]!='' && $dataarray[158]!='')) { //don't show bounty for spy reports ?>
 <tbody><tr><td class="empty" colspan="12"></td></tr></tbody>
 <tbody class="goods">
 	<tr><th><?php echo REPORT_BOUNTY; ?></th>
@@ -216,6 +216,7 @@ if (!$faild && $dataarray[$trapstart+11]!='' and $dataarray[$trapstart+11]!=''){
     </td>
     </tr>
 </tbody>
+<?php } ?>
 </table>
 
 <?php
