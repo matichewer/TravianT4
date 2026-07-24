@@ -31,7 +31,7 @@
         					break;
         				case "m2":
                         if ($post['an'] == "[ally]"){
-                        $this->sendAMessage($post['an'],$post['be'],addslashes($post['message']));
+                        $this->sendAMessage($post['be'],addslashes($post['message']));
                         }else{
                         $this->sendMessage($post['an'],$post['be'],addslashes($post['message']));
                         }header("Location: nachrichten.php");
@@ -154,6 +154,9 @@
         				}
         			}
         		}
+                        if(isset($this->reading['message'])) {
+                                $this->reading['message'] = $this->normalizeReportReferences($this->reading['message']);
+                        }
         		if($this->reading['viewed'] == 0) {
         			$database->getMessage($id, 4);
         		}
@@ -354,6 +357,20 @@
 
 				return $messages;
 			}
+
+			private function normalizeReportReferences($text) {
+				return preg_replace_callback(
+					'/\[report([0-9]+)\](.*?)\[\/report\1\]/is',
+					function($matches) {
+						$content = trim($matches[2]);
+						if(preg_match('/(?:^|[?&]|&amp;)id=([0-9]+)/i', $content, $idMatch)) {
+							$content = $idMatch[1];
+						}
+						return '[report'.$matches[1].']'.$content.'[/report'.$matches[1].']';
+					},
+					$text
+				);
+			}
             
 			private function sendAMessage($topic,$text) {
 				global $session,$database;
@@ -368,6 +385,7 @@
 				if(trim($topic) == "") {
 				$topic = defined('MESSAGE_NO_SUBJECT') ? MESSAGE_NO_SUBJECT : 'No subject';
 				}
+				$text = $this->normalizeReportReferences($text);
 				if(!preg_match('/\[message\]/',$text) && !preg_match('/\[\/message\]/',$text)){
 				$text = "[message]".$text."[/message]";
 				$alliance = $player = $coor = $report = 0;
@@ -443,6 +461,7 @@
 				if(trim($topic) == "") {
 					$topic = defined('MESSAGE_NO_SUBJECT') ? MESSAGE_NO_SUBJECT : 'No subject';
 				}
+				$text = $this->normalizeReportReferences($text);
 				if(!preg_match('/\[message\]/',$text) && !preg_match('/\[\/message\]/',$text)){
 				$text = "[message]".$text."[/message]";
 				$alliance = $player = $coor = $report = 0;
