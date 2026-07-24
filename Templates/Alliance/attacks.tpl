@@ -85,7 +85,7 @@ if($ntype==4 || $ntype==5 || $ntype==6 || $ntype==7){
 		$getUser = $database->getOasisField($dataarray[1],'owner');
 		}
 	}
-	$getUserAlly = $database->getUserField($getUser,alliance,0);
+	$getUserAlly = $database->getUserField($getUser,'alliance',0);
 	}else if($ntype==1 or $ntype==2 or $ntype==3 or $ntype==18 or $ntype==19){
     	$getUserAlly = $database->getUserField($dataarray[30],'alliance',0);
     }else{
