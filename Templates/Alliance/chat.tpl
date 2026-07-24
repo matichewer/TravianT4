@@ -22,14 +22,16 @@ function start_it() {
 	refresh_chat();
 	window.setInterval(refresh_chat, 1000);
 }
-function add_cb(saved) {
+function add_cb(saved, original) {
 	var input = document.form1.msg;
 	var button = document.getElementById("btn_ok");
 	button.disabled = false;
 	if(saved) {
-		input.value = "";
+		// message already cleared optimistically
 		refresh_chat();
 	} else {
+		// restore original text so user doesn't lose it
+		input.value = original;
 		alert("No se pudo enviar el mensaje. Inténtalo de nuevo.");
 	}
 	input.focus();
@@ -38,8 +40,12 @@ function send_data() {
 	var input = document.form1.msg;
 	var message = input.value.replace(/^\s+|\s+$/g, "");
 	if(message == "") return false;
+	var original = input.value;
 	document.getElementById("btn_ok").disabled = true;
-	x_add_data(message, add_cb);
+	// clear input optimistically so user sees it's been sent
+	input.value = "";
+	// pass original so we can restore if send fails
+	x_add_data(message, function(saved){ add_cb(saved, original); });
 	return false;
 }
 window.addEvent('domready', start_it);
