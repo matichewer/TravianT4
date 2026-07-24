@@ -389,8 +389,407 @@ class Battle {
 	}
 
 
-	//1 raid 0 normal
-	function calculateBattle($Attacker,$Defender,$def_wall,$att_tribe,$def_tribe,$residence,$attpop,$defpop,$type,$def_ab,$att_ab,$tblevel,$stonemason) {
+	private function battleUnitStrength($base, $population, $level) {
+		$base = max(0, (float)$base);
+		$population = max(0, (float)$population);
+		$level = max(0, min(20, (int)$level));
+		return $base + ($base + 300 * $population / 7) * (pow(1.007, $level) - 1);
+	}
+
+	private function battleHeroStrength($hero, $tribe) {
+		if(!is_array($hero)) {
+			return 0;
+		}
+		$pointsPerLevel = (int)$tribe === 1 ? 100 : 80;
+		return max(0, 100 + $pointsPerLevel * (int)$hero['power'] + (int)$hero['itempower']);
+	}
+
+	private function battleHeroBonus($points) {
+		return 1 + max(0, min(100, (float)$points)) / 500;
+	}
+
+	private function battleHeroIsMounted($uid) {
+		global $database;
+		if((int)$uid <= 0 || !method_exists($database, 'getEquippedHeroItem')) {
+			return false;
+		}
+		$horse = $database->getEquippedHeroItem((int)$uid, 6);
+		return is_array($horse) && !empty($horse['id']);
+	}
+
+	private function battleUpgradeLevel($upgrades, $position) {
+		$key = 'b'.(int)$position;
+		return is_array($upgrades) && isset($upgrades[$key])
+			? max(0, min(20, (int)$upgrades[$key]))
+			: 0;
+	}
+
+	private function battleHeroOutcome($hero, $losses, $experience) {
+		global $database;
+		$outcome = array('dead' => 0, 'damage' => 0);
+		if(!is_array($hero) || empty($hero['uid'])) {
+			return $outcome;
+		}
+
+		$damage = max(0, min(100, (int)round(100 * $losses)));
+		$health = max(0, min(100, (float)$hero['health']));
+		$dead = $damage > 90 || $damage >= $health;
+		$outcome['dead'] = $dead ? 1 : 0;
+		$outcome['damage'] = $damage;
+
+		if($dead) {
+			$database->modifyHero2('dead', 1, (int)$hero['uid'], 0);
+			$database->modifyHero2('health', 0, (int)$hero['uid'], 0);
+		} elseif($damage > 0) {
+			$database->modifyHero2('health', $damage, (int)$hero['uid'], 2);
+		}
+		if($experience > 0) {
+			$database->modifyHero2('experience', (int)$experience, (int)$hero['uid'], 1);
+		}
+
+		return $outcome;
+	}
+
+	// 1 = scouting, 3 = normal attack, 4 = raid
+	function calculateBattle($Attacker, $Defender, $def_wall, $att_tribe, $def_tribe, $residence, $attpop, $defpop, $type, $def_ab, $att_ab, $tblevel, $stonemason, $walllevel = 0, $AttackerID = 0, $DefenderID = 0, $AttackerWref = 0, $DefenderWref = 0) {
+		global $bid34, $database;
+
+		$cavalry = array(4, 5, 6, 15, 16, 23, 24, 25, 26, 35, 36, 45, 46);
+		$scouts = array(4, 14, 23, 34, 44);
+		$result = array(
+			1 => 0,
+			2 => 0,
+			3 => 0,
+			4 => 0,
+			5 => 1,
+			6 => $this->battleUpgradeLevel($att_ab, 8),
+			7 => 0,
+			8 => 0,
+			'Attack_points' => 0,
+			'Defend_points' => 0,
+			'Winner' => 'defender',
+			'bounty' => 0,
+			'deadherodef' => 0,
+			'deadheroref' => array(),
+			'casualties_attacker' => array()
+		);
+		for($i = 1; $i <= 11; $i++) {
+			$result['casualties_attacker'][$i] = 0;
+		}
+
+		$attackerInfantry = 0.0;
+		$attackerCavalry = 0.0;
+		$attackerScout = 0.0;
+		$attackerAmounts = array();
+		$attackerPopulationLost = 0;
+		$involved = 0;
+		$attackerStart = ((int)$att_tribe - 1) * 10 + 1;
+
+		for($position = 1; $position <= 10; $position++) {
+			$unit = $attackerStart + $position - 1;
+			$amount = max(0, (int)(isset($Attacker['u'.$unit]) ? $Attacker['u'.$unit] : 0));
+			$attackerAmounts[$position] = $amount;
+			$involved += $amount;
+			if($amount === 0) {
+				continue;
+			}
+			$unitData = $GLOBALS['u'.$unit];
+			$upgrade = $this->battleUpgradeLevel($att_ab, $position);
+			if(in_array($unit, $scouts, true)) {
+				$attackerScout += $amount * 35 * pow(1.021, $upgrade);
+			}
+			if((int)$type === 1) {
+				continue;
+			}
+			$strength = $this->battleUnitStrength($unitData['atk'], $unitData['pop'], $upgrade) * $amount;
+			if(in_array($unit, $cavalry, true)) {
+				$attackerCavalry += $strength;
+			} else {
+				$attackerInfantry += $strength;
+			}
+		}
+
+		$attackerHero = null;
+		if((int)$type !== 1 && !empty($Attacker['hero'])) {
+			$attackerHero = $database->getHeroData2((int)$Attacker['id']);
+			if(is_array($attackerHero)) {
+				$heroStrength = $this->battleHeroStrength($attackerHero, $att_tribe);
+				if($this->battleHeroIsMounted($attackerHero['uid'])) {
+					$attackerCavalry += $heroStrength;
+				} else {
+					$attackerInfantry += $heroStrength;
+				}
+				$heroBonus = $this->battleHeroBonus($attackerHero['offBonus']);
+				$attackerInfantry *= $heroBonus;
+				$attackerCavalry *= $heroBonus;
+				$involved++;
+			}
+		}
+
+		$defenderSources = array();
+		if((int)$DefenderWref > 0 && method_exists($database, 'getUnit')) {
+			$localUnits = $database->getUnit((int)$DefenderWref);
+			if(is_array($localUnits)) {
+				$defenderSources[] = array(
+					'units' => $localUnits,
+					'from' => (int)$DefenderWref,
+					'owner' => (int)$Defender['id'],
+					'reinforcement' => 0,
+					'local' => true
+				);
+			}
+			$reinforcements = $database->getEnforceVillage((int)$DefenderWref, 0);
+			if(is_array($reinforcements)) {
+				foreach($reinforcements as $reinforcement) {
+					$owner = (int)$database->getVillageField((int)$reinforcement['from'], 'owner');
+					$defenderSources[] = array(
+						'units' => $reinforcement,
+						'from' => (int)$reinforcement['from'],
+						'owner' => $owner,
+						'reinforcement' => (int)$reinforcement['id'],
+						'local' => false
+					);
+				}
+			}
+		}
+		if(empty($defenderSources)) {
+			$defenderSources[] = array(
+				'units' => $Defender,
+				'from' => (int)$DefenderWref,
+				'owner' => (int)$Defender['id'],
+				'reinforcement' => 0,
+				'local' => true
+			);
+		}
+
+		$defenderOwners = array();
+		$defenderScout = 0.0;
+		$defenderHeroes = array();
+		$defenderPopulationLost = 0;
+		foreach($defenderSources as $source) {
+			$sourceUpgrades = $def_ab;
+			if($source['from'] > 0 && method_exists($database, 'getABTech')) {
+				$storedUpgrades = $database->getABTech($source['from']);
+				if(is_array($storedUpgrades)) {
+					$sourceUpgrades = $storedUpgrades;
+				}
+			}
+			$ownerKey = $source['owner'] > 0 ? $source['owner'] : 'source-'.$source['from'].'-'.$source['reinforcement'];
+			if(!isset($defenderOwners[$ownerKey])) {
+				$defenderOwners[$ownerKey] = array(
+					'infantry' => 0.0,
+					'cavalry' => 0.0,
+					'bonus' => 1.0
+				);
+			}
+
+			for($unit = 1; $unit <= 50; $unit++) {
+				$amount = max(0, (int)(isset($source['units']['u'.$unit]) ? $source['units']['u'.$unit] : 0));
+				if($amount === 0) {
+					continue;
+				}
+				$involved += $amount;
+				$position = (($unit - 1) % 10) + 1;
+				$upgrade = $this->battleUpgradeLevel($sourceUpgrades, $position);
+				$unitData = $GLOBALS['u'.$unit];
+				if(in_array($unit, $scouts, true)) {
+					$defenderScout += $amount * 20 * pow(1.03, $upgrade);
+				}
+				if((int)$type === 1) {
+					continue;
+				}
+				$defenderOwners[$ownerKey]['infantry'] += $amount * $this->battleUnitStrength($unitData['di'], $unitData['pop'], $upgrade);
+				$defenderOwners[$ownerKey]['cavalry'] += $amount * $this->battleUnitStrength($unitData['dc'], $unitData['pop'], $upgrade);
+			}
+
+			if(!$source['local'] && !empty($source['units']['hero'])) {
+				$result['deadheroref'][$source['reinforcement']] = 0;
+			}
+			if((int)$type === 1 || empty($source['units']['hero'])) {
+				continue;
+			}
+			$hero = $source['local']
+				? $database->getHeroData3((int)$source['owner'])
+				: $database->getHeroData2((int)$source['owner']);
+			if(!is_array($hero)) {
+				continue;
+			}
+			$heroTribe = (int)$database->getUserField((int)$source['owner'], 'tribe', 0);
+			if($heroTribe < 1 || $heroTribe > 3) {
+				$heroTribe = (int)$def_tribe;
+			}
+			$heroStrength = $this->battleHeroStrength($hero, $heroTribe);
+			if($this->battleHeroIsMounted($hero['uid'])) {
+				$defenderOwners[$ownerKey]['cavalry'] += $heroStrength;
+			} else {
+				$defenderOwners[$ownerKey]['infantry'] += $heroStrength;
+			}
+			$defenderOwners[$ownerKey]['bonus'] = max(
+				$defenderOwners[$ownerKey]['bonus'],
+				$this->battleHeroBonus($hero['defBonus'])
+			);
+			$defenderHeroes[] = array(
+				'data' => $hero,
+				'local' => $source['local'],
+				'reinforcement' => $source['reinforcement']
+			);
+			$involved++;
+		}
+
+		if((int)$type === 1) {
+			$result['Attack_points'] = $attackerScout;
+			$result['Defend_points'] = $defenderScout;
+			$result['Winner'] = $attackerScout > $defenderScout ? 'attacker' : 'defender';
+			$scoutLosses = $attackerScout > 0
+				? ($defenderScout >= $attackerScout ? 1.0 : pow($defenderScout / $attackerScout, 1.5))
+				: 1.0;
+			$result[1] = max(0, min(1, $scoutLosses));
+			foreach($attackerAmounts as $position => $amount) {
+				$unit = $attackerStart + $position - 1;
+				if(in_array($unit, $scouts, true)) {
+					$result['casualties_attacker'][$position] = (int)round($amount * $result[1]);
+				}
+			}
+			return $result;
+		}
+
+		$defenderInfantry = 0.0;
+		$defenderCavalry = 0.0;
+		foreach($defenderOwners as $ownerDefense) {
+			$defenderInfantry += $ownerDefense['infantry'] * $ownerDefense['bonus'];
+			$defenderCavalry += $ownerDefense['cavalry'] * $ownerDefense['bonus'];
+		}
+
+		$wallFactors = array(1 => 1.030, 2 => 1.020, 3 => 1.025, 4 => 1.000, 5 => 1.000);
+		$wallBaseDefense = array(1 => 10, 2 => 6, 3 => 8, 4 => 0, 5 => 0);
+		$wallLevel = max(0, min(20, (int)$def_wall));
+		$wallFactor = pow(isset($wallFactors[(int)$def_tribe]) ? $wallFactors[(int)$def_tribe] : 1, $wallLevel);
+		$wallBase = isset($wallBaseDefense[(int)$def_tribe]) ? $wallBaseDefense[(int)$def_tribe] : 0;
+		$residenceDefense = 2 * pow(max(0, (int)$residence), 2);
+		$defenderInfantry = ($defenderInfantry + $residenceDefense) * $wallFactor + $wallLevel * $wallBase;
+		$defenderCavalry = ($defenderCavalry + $residenceDefense) * $wallFactor + $wallLevel * $wallBase;
+
+		$attackPoints = $attackerInfantry + $attackerCavalry;
+		$defensePoints = $attackPoints > 0
+			? $defenderInfantry * ($attackerInfantry / $attackPoints) + $defenderCavalry * ($attackerCavalry / $attackPoints) + 10
+			: $defenderInfantry + $defenderCavalry + 10;
+		$moralBonus = 1.0;
+		if((int)$attpop > (int)$defpop) {
+			$moralExponent = $attackPoints < $defensePoints
+				? 0.2 * ($attackPoints / max($defensePoints, 0.000001))
+				: 0.2;
+			$moralBonus = min(1.5, pow((int)$attpop / max(1, (int)$defpop), $moralExponent));
+		}
+		$effectiveDefense = $defensePoints * $moralBonus;
+		$lossExponent = $involved >= 1000
+			? max(1.0, 2 * (1.8592 - pow($involved, 0.015)))
+			: 1.5;
+		$attackerWins = $attackPoints > $effectiveDefense;
+
+		if($attackPoints <= 0) {
+			$attackerLosses = 1.0;
+			$defenderLosses = 0.0;
+		} elseif((int)$type === 4) {
+			$ratio = pow($effectiveDefense / $attackPoints, $lossExponent);
+			$attackerLosses = $ratio / (1 + $ratio);
+			$defenderLosses = 1 - $attackerLosses;
+		} elseif($attackerWins) {
+			$attackerLosses = min(1.0, pow($effectiveDefense / $attackPoints, $lossExponent));
+			$defenderLosses = 1.0;
+		} else {
+			$attackerLosses = 1.0;
+			$defenderLosses = min(1.0, pow($attackPoints / max($effectiveDefense, 0.000001), $lossExponent));
+		}
+
+		$result[1] = max(0, min(1, $attackerLosses));
+		$result[2] = max(0, min(1, $defenderLosses));
+		$result[5] = $moralBonus;
+		$result['Attack_points'] = $attackPoints;
+		$result['Defend_points'] = $defensePoints;
+		$result['Winner'] = $attackerWins ? 'attacker' : 'defender';
+
+		foreach($attackerAmounts as $position => $amount) {
+			$loss = (int)round($amount * $result[1]);
+			$result['casualties_attacker'][$position] = $loss;
+			if($loss > 0) {
+				$unitData = $GLOBALS['u'.($attackerStart + $position - 1)];
+				$attackerPopulationLost += $loss * (int)$unitData['pop'];
+			}
+		}
+
+		foreach($defenderSources as $source) {
+			for($unit = 1; $unit <= 50; $unit++) {
+				$amount = max(0, (int)(isset($source['units']['u'.$unit]) ? $source['units']['u'.$unit] : 0));
+				if($amount > 0) {
+					$loss = (int)round($amount * $result[2]);
+					$defenderPopulationLost += $loss * (int)$GLOBALS['u'.$unit]['pop'];
+				}
+			}
+		}
+
+		if(is_array($attackerHero)) {
+			$attackerOutcome = $this->battleHeroOutcome($attackerHero, $result[1], $defenderPopulationLost);
+			$result['casualties_attacker'][11] = $attackerOutcome['dead'];
+			if($attackerOutcome['dead']) {
+				$attackerPopulationLost += 6;
+			}
+		}
+
+		$heroExperience = count($defenderHeroes) > 0
+			? (int)floor($attackerPopulationLost / count($defenderHeroes))
+			: 0;
+		foreach($defenderHeroes as $defenderHero) {
+			$outcome = $this->battleHeroOutcome($defenderHero['data'], $result[2], $heroExperience);
+			if($defenderHero['local']) {
+				$result['deadherodef'] = $outcome['dead'];
+			} else {
+				$result['deadheroref'][$defenderHero['reinforcement']] = $outcome['dead'];
+			}
+		}
+
+		$maxBounty = 0;
+		foreach($attackerAmounts as $position => $amount) {
+			$unitData = $GLOBALS['u'.($attackerStart + $position - 1)];
+			$maxBounty += max(0, $amount - $result['casualties_attacker'][$position]) * (int)$unitData['cap'];
+		}
+		$result['bounty'] = $maxBounty;
+
+		if((int)$type === 3 && $attackPoints > 0) {
+			$stonemasonFactor = isset($bid34[(int)$stonemason]['attri'])
+				? max(1, $bid34[(int)$stonemason]['attri'] / 100)
+				: 1;
+			$battleRatio = pow($attackPoints / max($effectiveDefense, 0.000001), 1.5);
+			$firingFactor = $battleRatio >= 1 ? 1 - 0.5 / $battleRatio : 0.5 * $battleRatio;
+
+			$catapultCount = isset($attackerAmounts[8]) ? $attackerAmounts[8] : 0;
+			if($catapultCount > 0 && (int)$tblevel > 0) {
+				$upgradeFactor = round(200 * pow(1.0205, $result[6])) / 200;
+				$result[3] = (int)round(
+					$moralBonus * (pow((int)$tblevel, 2) + (int)$tblevel + 1)
+					/ (8 * $upgradeFactor / $stonemasonFactor)
+					+ 0.5
+				);
+				$result[4] = $catapultCount * (1 - $result[1]) * max(0, $firingFactor);
+			}
+
+			$ramCount = isset($attackerAmounts[7]) ? $attackerAmounts[7] : 0;
+			if($ramCount > 0 && $wallLevel > 0) {
+				$ramUpgrade = $this->battleUpgradeLevel($att_ab, 7);
+				$upgradeFactor = round(200 * pow(1.0205, $ramUpgrade)) / 200;
+				$result[7] = (int)round(
+					$moralBonus * (pow($wallLevel, 2) + $wallLevel + 1)
+					/ (8 * $upgradeFactor / $stonemasonFactor)
+					+ 0.5
+				);
+				$result[8] = $ramCount * (1 - $result[1]) * max(0, $firingFactor);
+			}
+		}
+
+		return $result;
+	}
+
+	// Legacy implementation retained temporarily for comparison with old reports.
+	private function calculateBattleLegacy($Attacker,$Defender,$def_wall,$att_tribe,$def_tribe,$residence,$attpop,$defpop,$type,$def_ab,$att_ab,$tblevel,$stonemason) {
 		global $bid34,$database;
 		// Definieer de array met de eenheden
 		$calvary = array(4,5,6,15,16,23,24,25,26,35,36,45,46);

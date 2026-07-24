@@ -1040,8 +1040,26 @@ class Automation {
         @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = '0' and ".TB_PREFIX."movement.sort_type = '3' and ".TB_PREFIX."attacks.attack_type != '2' and endtime < $time ORDER BY endtime ASC";
         $dataarray = $database->query_return($q);
-        $totalattackdead = 0;
         foreach ($dataarray as $data) {
+            $totalattackdead = 0;
+            $totaldead_att = $totaldead_def = $totalsend_def = 0;
+            $totaltraped_att = $DefenderHeroRef = 0;
+            $rams = $catp = $chiefs = 0;
+            $scout = 0;
+            $rom = $ger = $gal = $nat = $natar = 0;
+            $info_ram = $info_cat = $info_chief = $info_spy = $info_trap = '';
+            $eee = 0;
+            $walllevel = $stonemason = $tblevel = 0;
+            $herosend_att = (int)$data['t11'];
+            $cage = array('id' => 0, 'type' => 0);
+            $dead = array_fill(1, 50, 0);
+            $dead['hero'] = 0;
+            $DefenderHeroByTribe = array_fill(1, 5, 0);
+            $DeadHeroByTribe = array_fill(1, 5, 0);
+            for($i = 1; $i <= 11; $i++) {
+                ${'dead'.$i} = 0;
+                ${'traped'.$i} = 0;
+            }
             //set base things
             //$battle->resolveConflict($data);
             $tocoor = $database->getCoor($data['from']);
@@ -1073,7 +1091,7 @@ class Automation {
                         $cannotsend = 1;
                     }
                 }
-                if($evasion == 1 && $capital == 1 && $cannotsend == 0 && $dataarray[0]['attack_type'] > 2) {
+                if($evasion == 1 && $capital == 1 && $cannotsend == 0 && $data['attack_type'] > 2) {
                     $totaltroops = 0;
                     for ($i = 1; $i <= 10; $i++) {
                         $playerunit += $i;
@@ -1095,13 +1113,24 @@ class Automation {
                 $Defender = array();
                 $rom = $ger = $gal = $nat = $natar = 0;
                 $Defender = $database->getUnit($data['to']);
+                if(!empty($Defender['hero'])) {
+                    $DefenderHeroByTribe[$targettribe] += (int)$Defender['hero'];
+                }
                 $enforcementarray = $database->getEnforceVillage($data['to'], 0);
                 if(count($enforcementarray) > 0) {
                     foreach ($enforcementarray as $enforce) {
                         for ($i = 1; $i <= 50; $i++) {
                             $Defender['u'.$i] += $enforce['u'.$i];
                         }
-                        $DefenderHeroRef += $enforce['hero'];
+                        $reinforcementHeroes = (int)$enforce['hero'];
+                        $DefenderHeroRef += $reinforcementHeroes;
+                        if($reinforcementHeroes > 0) {
+                            $reinforcementOwner = $database->getVillageField($enforce['from'], "owner");
+                            $reinforcementTribe = (int)$database->getUserField($reinforcementOwner, "tribe", 0);
+                            if($reinforcementTribe >= 1 && $reinforcementTribe <= 5) {
+                                $DefenderHeroByTribe[$reinforcementTribe] += $reinforcementHeroes;
+                            }
+                        }
                     }
                 }
                 for ($i = 1; $i <= 50; $i++) {
@@ -1144,7 +1173,7 @@ class Automation {
                 $spys = array(4, 14, 23, 34, 44);
                 for ($i = $start; $i <= $end; $i++) {
                     $y = $i - $u;
-                    $Attacker['u'.$i] = $dataarray[0]['t'.$y];
+                    $Attacker['u'.$i] = $data['t'.$y];
                     //there are catas
                     if(in_array($i, $catapult)) {
                         $catp += $Attacker['u'.$i];
@@ -1163,7 +1192,7 @@ class Automation {
                         $spy_pic = $i;
                     }
                 }
-                $Attacker['hero'] = $dataarray[0]['t11'];
+                $Attacker['hero'] = $data['t11'];
                 $hero_pic = "hero";
                 $Attacker['id'] = $database->getVillageField($data['from'], "owner");
                 $Defender['id'] = $database->getVillageField($data['to'], "owner");
@@ -1184,17 +1213,17 @@ class Automation {
                 }
 
                 //type of attack
-                if($dataarray[0]['attack_type'] == 1) {
+                if($data['attack_type'] == 1) {
                     $type = 1;
                     $scout = 1;
                 }
-                if($dataarray[0]['attack_type'] == 2) {
+                if($data['attack_type'] == 2) {
                     $type = 2;
                 }
-                if($dataarray[0]['attack_type'] == 3) {
+                if($data['attack_type'] == 3) {
                     $type = 3;
                 }
-                if($dataarray[0]['attack_type'] == 4) {
+                if($data['attack_type'] == 4) {
                     $type = 4;
                 }
 
@@ -1239,7 +1268,7 @@ class Automation {
                 }
 
                 $tblevel = '1';
-                $stonemason = "1";
+                $stonemason = 0;
 
 
                 /*--------------------------------
@@ -1272,13 +1301,24 @@ class Automation {
                 $Defender = array();
                 $rom = $ger = $gal = $nat = $natar = 0;
                 $Defender = $database->getUnit($data['to']);
+                if(!empty($Defender['hero']) && $targettribe >= 1 && $targettribe <= 5) {
+                    $DefenderHeroByTribe[$targettribe] += (int)$Defender['hero'];
+                }
                 $enforcementarray = $database->getEnforceVillage($data['to'], 0);
                 if(count($enforcementarray) > 0) {
                     foreach ($enforcementarray as $enforce) {
                         for ($i = 1; $i <= 50; $i++) {
                             $Defender['u'.$i] += $enforce['u'.$i];
                         }
-                        $DefenderHeroRef += $enforce['hero'];
+                        $reinforcementHeroes = (int)$enforce['hero'];
+                        $DefenderHeroRef += $reinforcementHeroes;
+                        if($reinforcementHeroes > 0) {
+                            $reinforcementOwner = $database->getVillageField($enforce['from'], "owner");
+                            $reinforcementTribe = (int)$database->getUserField($reinforcementOwner, "tribe", 0);
+                            if($reinforcementTribe >= 1 && $reinforcementTribe <= 5) {
+                                $DefenderHeroByTribe[$reinforcementTribe] += $reinforcementHeroes;
+                            }
+                        }
                     }
                 }
                 for ($i = 1; $i <= 50; $i++) {
@@ -1321,7 +1361,7 @@ class Automation {
                 $spys = array(4, 14, 23, 34, 44);
                 for ($i = $start; $i <= $end; $i++) {
                     $y = $i - $u;
-                    $Attacker['u'.$i] = $dataarray[0]['t'.$y];
+                    $Attacker['u'.$i] = $data['t'.$y];
                     //there are catas
                     if(in_array($i, $catapult)) {
                         $catp += $Attacker['u'.$i];
@@ -1340,7 +1380,7 @@ class Automation {
                         $spy_pic = $i;
                     }
                 }
-                $Attacker['hero'] = $dataarray[0]['t11'];
+                $Attacker['hero'] = $data['t11'];
                 $hero_pic = "hero";
                 $Attacker['id'] = $database->getUserField($database->getVillageField($data['from'], "owner"), "id", 0);
                 $Defender['id'] = $database->getUserField($database->getVillageField($data['to'], "owner"), "id", 0);
@@ -1354,17 +1394,17 @@ class Automation {
 
 
                 //type of attack
-                if($dataarray[0]['attack_type'] == 1) {
+                if($data['attack_type'] == 1) {
                     $type = 1;
                     $scout = 1;
                 }
-                if($dataarray[0]['attack_type'] == 2) {
+                if($data['attack_type'] == 2) {
                     $type = 2;
                 }
-                if($dataarray[0]['attack_type'] == 3) {
+                if($data['attack_type'] == 3) {
                     $type = 3;
                 }
-                if($dataarray[0]['attack_type'] == 4) {
+                if($data['attack_type'] == 4) {
                     $type = 4;
                 }
 
@@ -1390,11 +1430,17 @@ class Automation {
 
                 $empty = '1';
                 $tblevel = '0';
-                $stonemason = "1";
+                $stonemason = 0;
 
             }
             $hidehero = $database->getHeroData($DefenderID);
             if($hidehero['hide'] == 1) {
+                if($targettribe >= 1 && $targettribe <= 5) {
+                    $DefenderHeroByTribe[$targettribe] = max(
+                        0,
+                        $DefenderHeroByTribe[$targettribe] - (int)$Defender['hero']
+                    );
+                }
                 $Defender['hero'] = 0;
             }
             if($cage['type'] == 0 || $Attacker['hero'] == 0 || $isoasis == 0) {
@@ -1422,7 +1468,7 @@ class Automation {
                         $j = $i - $start + 1;
                         $Attacker['u'.$i] -= ${'traped'.$j};
                     }
-                    $Attacker['uhero'] -= $traped11;
+                    $Attacker['hero'] -= $traped11;
                     $totaltraped_att = $traped1 + $traped2 + $traped3 + $traped4 + $traped5 + $traped6 + $traped7 + $traped8 + $traped9 + $traped10 + $traped11;
                     if($totaltraped_att > 0) {
                         $prisoners2 = $database->getPrisoners2($data['to'], $data['from']);
@@ -1433,21 +1479,68 @@ class Automation {
                         }
                     }
                 }
-                $battlepart = $battle->calculateBattle($Attacker, $Defender, $def_wall, $att_tribe, $def_tribe, $residence, $attpop, $defpop, $type, $def_ab, $att_ab, $tblevel, $stonemason, $walllevel, $AttackerID, $DefenderID);
+                $storedAttackerUpgrades = $database->getABTech($data['from']);
+                if(is_array($storedAttackerUpgrades)) {
+                    $att_ab = $storedAttackerUpgrades;
+                }
+                if($isoasis == 0) {
+                    $defenderFields = $database->getResourceLevel($data['to']);
+                    for($field = 19; $field <= 40; $field++) {
+                        if(isset($defenderFields['f'.$field.'t']) && (int)$defenderFields['f'.$field.'t'] === 34) {
+                            $stonemason = (int)$defenderFields['f'.$field];
+                            break;
+                        }
+                    }
+                }
+                $battlepart = $battle->calculateBattle(
+                    $Attacker,
+                    $Defender,
+                    $def_wall,
+                    $att_tribe,
+                    $def_tribe,
+                    $residence,
+                    $attpop,
+                    $defpop,
+                    $type,
+                    $def_ab,
+                    $att_ab,
+                    $tblevel,
+                    $stonemason,
+                    $walllevel,
+                    $AttackerID,
+                    $DefenderID,
+                    $data['from'],
+                    $data['to']
+                );
+                if($DefenderHeroByTribe[1] > 0) {
+                    $rom = '1';
+                }
+                if($DefenderHeroByTribe[2] > 0) {
+                    $ger = '1';
+                }
+                if($DefenderHeroByTribe[3] > 0) {
+                    $gal = '1';
+                }
+                if($DefenderHeroByTribe[4] > 0) {
+                    $nat = '1';
+                }
+                if($DefenderHeroByTribe[5] > 0) {
+                    $natar = '1';
+                }
                 //units attack string for battleraport
                 $unitssend_att = ''.$data['t1'].','.$data['t2'].','.$data['t3'].','.$data['t4'].','.$data['t5'].','.$data['t6'].','.$data['t7'].','.$data['t8'].','.$data['t9'].','.$data['t10'].','.$data['t11'].'';
                 $totalsend_att = $data['t1'] + $data['t2'] + $data['t3'] + $data['t4'] + $data['t5'] + $data['t6'] + $data['t7'] + $data['t8'] + $data['t9'] + $data['t10'] + $data['t11'];
 
                 //units defence string for battleraport
-                $unitssend_def[1] = ''.$Defender['u1'].','.$Defender['u2'].','.$Defender['u3'].','.$Defender['u4'].','.$Defender['u5'].','.$Defender['u6'].','.$Defender['u7'].','.$Defender['u8'].','.$Defender['u9'].','.$Defender['u10'].','.($Defender['hero'] + $DefenderHeroRef).'';
+                $unitssend_def[1] = ''.$Defender['u1'].','.$Defender['u2'].','.$Defender['u3'].','.$Defender['u4'].','.$Defender['u5'].','.$Defender['u6'].','.$Defender['u7'].','.$Defender['u8'].','.$Defender['u9'].','.$Defender['u10'].','.$DefenderHeroByTribe[1].'';
 
-                $unitssend_def[2] = ''.$Defender['u11'].','.$Defender['u12'].','.$Defender['u13'].','.$Defender['u14'].','.$Defender['u15'].','.$Defender['u16'].','.$Defender['u17'].','.$Defender['u18'].','.$Defender['u19'].','.$Defender['u20'].','.($Defender['hero'] + $DefenderHeroRef).'';
+                $unitssend_def[2] = ''.$Defender['u11'].','.$Defender['u12'].','.$Defender['u13'].','.$Defender['u14'].','.$Defender['u15'].','.$Defender['u16'].','.$Defender['u17'].','.$Defender['u18'].','.$Defender['u19'].','.$Defender['u20'].','.$DefenderHeroByTribe[2].'';
 
-                $unitssend_def[3] = ''.$Defender['u21'].','.$Defender['u22'].','.$Defender['u23'].','.$Defender['u24'].','.$Defender['u25'].','.$Defender['u26'].','.$Defender['u27'].','.$Defender['u28'].','.$Defender['u29'].','.$Defender['u30'].','.($Defender['hero'] + $DefenderHeroRef).'';
+                $unitssend_def[3] = ''.$Defender['u21'].','.$Defender['u22'].','.$Defender['u23'].','.$Defender['u24'].','.$Defender['u25'].','.$Defender['u26'].','.$Defender['u27'].','.$Defender['u28'].','.$Defender['u29'].','.$Defender['u30'].','.$DefenderHeroByTribe[3].'';
 
-                $unitssend_def[4] = ''.$Defender['u31'].','.$Defender['u32'].','.$Defender['u33'].','.$Defender['u34'].','.$Defender['u35'].','.$Defender['u36'].','.$Defender['u37'].','.$Defender['u38'].','.$Defender['u39'].','.$Defender['u40'].','.($Defender['hero'] + $DefenderHeroRef).'';
+                $unitssend_def[4] = ''.$Defender['u31'].','.$Defender['u32'].','.$Defender['u33'].','.$Defender['u34'].','.$Defender['u35'].','.$Defender['u36'].','.$Defender['u37'].','.$Defender['u38'].','.$Defender['u39'].','.$Defender['u40'].','.$DefenderHeroByTribe[4].'';
 
-                $unitssend_def[5] = ''.$Defender['u41'].','.$Defender['u42'].','.$Defender['u43'].','.$Defender['u44'].','.$Defender['u45'].','.$Defender['u46'].','.$Defender['u47'].','.$Defender['u48'].','.$Defender['u49'].','.$Defender['u50'].','.($Defender['hero'] + $DefenderHeroRef).'';
+                $unitssend_def[5] = ''.$Defender['u41'].','.$Defender['u42'].','.$Defender['u43'].','.$Defender['u44'].','.$Defender['u45'].','.$Defender['u46'].','.$Defender['u47'].','.$Defender['u48'].','.$Defender['u49'].','.$Defender['u50'].','.$DefenderHeroByTribe[5].'';
                 $unitssend_deff[1] = '?,?,?,?,?,?,?,?,?,?,?,';
                 $unitssend_deff[2] = '?,?,?,?,?,?,?,?,?,?,?,';
                 $unitssend_deff[3] = '?,?,?,?,?,?,?,?,?,?,?,';
@@ -1519,25 +1612,32 @@ class Automation {
                 //FIX
                 for ($i = $start; $i <= $end; $i++) {
                     if($unitlist) {
-                        $dead[$i] += round($battlepart[2] * $unitlist[0]['u'.$i]);
-                        $database->modifyUnit($data['to'], $i, round($battlepart[2] * $unitlist[0]['u'.$i]), 0);
+                        $localLoss = (int)round($battlepart[2] * $unitlist[0]['u'.$i]);
+                        $dead[$i] += $localLoss;
+                        if($localLoss > 0) {
+                            $database->modifyUnit($data['to'], $i, $localLoss, 0);
+                        }
                     }
                 }
-                $dead['hero'] = 0;
                 if($unitlist) {
-                    $dead['hero'] += $battlepart['deadherodef'];
-                    $database->modifyUnit($data['to'], 'hero', $battlepart['deadherodef'], 0);
+                    $localHeroLoss = (int)$battlepart['deadherodef'];
+                    $dead['hero'] += $localHeroLoss;
+                    $DeadHeroByTribe[$targettribe] += $localHeroLoss;
+                    if($localHeroLoss > 0) {
+                        $database->modifyUnit($data['to'], 'hero', $localHeroLoss, 0);
+                    }
                 }
 
 
                 //kill other defence in village
                 if(count($database->getEnforceVillage($data['to'], 0)) > 0) {
                     foreach ($database->getEnforceVillage($data['to'], 0) as $enforce) {
-                        $life = '';
-                        $notlife = '';
                         $wrong = '0';
-                        $tribe = $database->getUserField($database->getVillageField($enforce['from'], "owner"), "tribe", 0);
+                        $reinforcementOwner = $database->getVillageField($enforce['from'], "owner");
+                        $reinforcementAlly = $database->getUserField($reinforcementOwner, "alliance", 0);
+                        $tribe = $database->getUserField($reinforcementOwner, "tribe", 0);
                         $start = ($tribe - 1) * 10 + 1;
+                        $reinforcementDead = array_fill($start, 10, 0);
 
                         if($tribe == 1) {
                             $rom = '1';
@@ -1552,50 +1652,55 @@ class Automation {
                         }
                         for ($i = $start; $i <= ($start + 9); $i++) {
                             if($enforce['u'.$i] > '0') {
-                                $database->modifyEnforce($enforce['id'], $i, round($battlepart[2] * $enforce['u'.$i]), 0);
-                                $dead[$i] += round($battlepart[2] * $enforce['u'.$i]);
-                                $checkpoint = round($battlepart[2] * $enforce['u'.$i]);
-                                if($checkpoint != $enforce['u'.$i]) {
-                                    $wrong = '1';
+                                $reinforcementDead[$i] = (int)round($battlepart[2] * $enforce['u'.$i]);
+                                if($reinforcementDead[$i] > 0) {
+                                    $database->modifyEnforce($enforce['id'], $i, $reinforcementDead[$i], 0);
                                 }
-                            } else {
-                                $dead[$i] = '0';
-                            }
-                            if($enforce['hero'] > '0') {
-                                $database->modifyEnforce($enforce['id'], "hero", $battlepart['deadheroref'][$enforce['id']], 0);
-                                $dead['hero'] += $battlepart['deadheroref'][$enforce['id']];
-                                if($dead['hero'] != $enforce['hero']) {
+                                $dead[$i] += $reinforcementDead[$i];
+                                if($reinforcementDead[$i] != $enforce['u'.$i]) {
                                     $wrong = '1';
                                 }
                             }
                         }
-                        $notlife = ''.$dead[$start].','.$dead[$start + 1].','.$dead[$start + 2].','.$dead[$start + 3].','.$dead[$start + 4].','.$dead[$start + 5].','.$dead[$start + 6].','.$dead[$start + 7].','.$dead[$start + 8].','.$dead[$start + 9].'';
-                        $notlife1 = $dead[$start] + $dead[$start + 1] + $dead[$start + 2] + $dead[$start + 3] + $dead[$start + 4] + $dead[$start + 5] + $dead[$start + 6] + $dead[$start + 7] + $dead[$start + 8] + $dead[$start + 9];
+                        $reinforcementHeroLoss = !empty($enforce['hero']) && isset($battlepart['deadheroref'][$enforce['id']])
+                            ? (int)$battlepart['deadheroref'][$enforce['id']]
+                            : 0;
+                        if($reinforcementHeroLoss > 0) {
+                            $database->modifyEnforce($enforce['id'], "hero", $reinforcementHeroLoss, 0);
+                        }
+                        $dead['hero'] += $reinforcementHeroLoss;
+                        $DeadHeroByTribe[$tribe] += $reinforcementHeroLoss;
+                        if((int)$enforce['hero'] !== $reinforcementHeroLoss) {
+                            $wrong = '1';
+                        }
+
+                        $notlife = ''.$reinforcementDead[$start].','.$reinforcementDead[$start + 1].','.$reinforcementDead[$start + 2].','.$reinforcementDead[$start + 3].','.$reinforcementDead[$start + 4].','.$reinforcementDead[$start + 5].','.$reinforcementDead[$start + 6].','.$reinforcementDead[$start + 7].','.$reinforcementDead[$start + 8].','.$reinforcementDead[$start + 9].'';
+                        $notlife1 = array_sum($reinforcementDead);
                         $life = ''.$enforce['u'.$start.''].','.$enforce['u'.($start + 1).''].','.$enforce['u'.($start + 2).''].','.$enforce['u'.($start + 3).''].','.$enforce['u'.($start + 4).''].','.$enforce['u'.($start + 5).''].','.$enforce['u'.($start + 6).''].','.$enforce['u'.($start + 7).''].','.$enforce['u'.($start + 8).''].','.$enforce['u'.($start + 9).''].'';
                         $life1 = $enforce['u'.$start.''] + $enforce['u'.($start + 1).''] + $enforce['u'.($start + 2).''] + $enforce['u'.($start + 3).''] + $enforce['u'.($start + 4).''] + $enforce['u'.($start + 5).''] + $enforce['u'.($start + 6).''] + $enforce['u'.($start + 7).''] + $enforce['u'.($start + 8).''] + $enforce['u'.($start + 9).''];
                         $lifehero = $enforce['hero'];
-                        $notlifehero = $dead['hero'];
+                        $notlifehero = $reinforcementHeroLoss;
                         $totallife = $enforce['hero'] + $life1;
-                        $totalnotlife = $dead['hero'] + $notlife1;
+                        $totalnotlife = $reinforcementHeroLoss + $notlife1;
                         $totalsend_att = $data['t1'] + $data['t2'] + $data['t3'] + $data['t4'] + $data['t5'] + $data['t6'] + $data['t7'] + $data['t8'] + $data['t9'] + $data['t10'] + $data['t11'];
                         $totaldead_att = $dead1 + $dead2 + $dead3 + $dead4 + $dead5 + $dead6 + $dead7 + $dead8 + $dead9 + $dead10 + $dead11;
                         //NEED TO SEND A RAPPORTAGE!!!
-                        $data2 = ''.$database->getVillageField($enforce['from'], "owner").','.$to['wref'].','.addslashes($to['name']).','.$tribe.','.$life.','.$notlife.','.$lifehero.','.$notlifehero.'';
+                        $data2 = ''.$reinforcementOwner.','.$to['wref'].','.addslashes($to['name']).','.$tribe.','.$life.','.$notlife.','.$lifehero.','.$notlifehero.'';
                         if($scout) {
                             if($totaldead_att > 0) {
                                 if($totaldead_att == $totalsend_att) {
-                                    $database->addNotice($database->getVillageField($enforce['from'], "owner"), $from['wref'], $ownally, 15, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
+                                    $database->addNotice($reinforcementOwner, $from['wref'], $reinforcementAlly, 15, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
                                 } else {
-                                    $database->addNotice($database->getVillageField($enforce['from'], "owner"), $from['wref'], $ownally, 16, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
+                                    $database->addNotice($reinforcementOwner, $from['wref'], $reinforcementAlly, 16, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
                                 }
                             }
                         } else {
                             if($totalnotlife == 0) {
-                                $database->addNotice($database->getVillageField($enforce['from'], "owner"), $from['wref'], $ownally, 15, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
+                                $database->addNotice($reinforcementOwner, $from['wref'], $reinforcementAlly, 15, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
                             } else if($totallife > $totalnotlife) {
-                                $database->addNotice($database->getVillageField($enforce['from'], "owner"), $from['wref'], $ownally, 16, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
+                                $database->addNotice($reinforcementOwner, $from['wref'], $reinforcementAlly, 16, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
                             } else {
-                                $database->addNotice($database->getVillageField($enforce['from'], "owner"), $from['wref'], $ownally, 17, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
+                                $database->addNotice($reinforcementOwner, $from['wref'], $reinforcementAlly, 17, 'Refuerzo en '.addslashes($to['name']).' atacado', $data2, $AttackArrivalTime);
                             }
                             //delete reinf sting when its killed all.
                             if($wrong == '0') {
@@ -1605,11 +1710,11 @@ class Automation {
                     }
                 }
 
-                $unitsdead_def[1] = ''.$dead[1].','.$dead[2].','.$dead[3].','.$dead[4].','.$dead[5].','.$dead[6].','.$dead[7].','.$dead[8].','.$dead[9].','.$dead[10].','.$dead['hero'].'';
-                $unitsdead_def[2] = ''.$dead['11'].','.$dead['12'].','.$dead['13'].','.$dead['14'].','.$dead['15'].','.$dead['16'].','.$dead['17'].','.$dead['18'].','.$dead['19'].','.$dead['20'].','.$dead['hero'].'';
-                $unitsdead_def[3] = ''.$dead['21'].','.$dead['22'].','.$dead['23'].','.$dead['24'].','.$dead['25'].','.$dead['26'].','.$dead['27'].','.$dead['28'].','.$dead['29'].','.$dead['30'].','.$dead['hero'].'';
-                $unitsdead_def[4] = ''.$dead['31'].','.$dead['32'].','.$dead['33'].','.$dead['34'].','.$dead['35'].','.$dead['36'].','.$dead['37'].','.$dead['38'].','.$dead['39'].','.$dead['40'].','.$dead['hero'].'';
-                $unitsdead_def[5] = ''.$dead['41'].','.$dead['42'].','.$dead['43'].','.$dead['44'].','.$dead['45'].','.$dead['46'].','.$dead['47'].','.$dead['48'].','.$dead['49'].','.$dead['50'].','.$dead['hero'].'';
+                $unitsdead_def[1] = ''.$dead[1].','.$dead[2].','.$dead[3].','.$dead[4].','.$dead[5].','.$dead[6].','.$dead[7].','.$dead[8].','.$dead[9].','.$dead[10].','.$DeadHeroByTribe[1].'';
+                $unitsdead_def[2] = ''.$dead['11'].','.$dead['12'].','.$dead['13'].','.$dead['14'].','.$dead['15'].','.$dead['16'].','.$dead['17'].','.$dead['18'].','.$dead['19'].','.$dead['20'].','.$DeadHeroByTribe[2].'';
+                $unitsdead_def[3] = ''.$dead['21'].','.$dead['22'].','.$dead['23'].','.$dead['24'].','.$dead['25'].','.$dead['26'].','.$dead['27'].','.$dead['28'].','.$dead['29'].','.$dead['30'].','.$DeadHeroByTribe[3].'';
+                $unitsdead_def[4] = ''.$dead['31'].','.$dead['32'].','.$dead['33'].','.$dead['34'].','.$dead['35'].','.$dead['36'].','.$dead['37'].','.$dead['38'].','.$dead['39'].','.$dead['40'].','.$DeadHeroByTribe[4].'';
+                $unitsdead_def[5] = ''.$dead['41'].','.$dead['42'].','.$dead['43'].','.$dead['44'].','.$dead['45'].','.$dead['46'].','.$dead['47'].','.$dead['48'].','.$dead['49'].','.$dead['50'].','.$DeadHeroByTribe[5].'';
 
                 $unitsdead_deff[1] = '?,?,?,?,?,?,?,?,?,?,?,';
                 $unitsdead_deff[2] = '?,?,?,?,?,?,?,?,?,?,?,';
@@ -1766,7 +1871,7 @@ class Automation {
                 for ($i = 1; $i <= 50; $i++) {
                     $totalsend_def += $Defender['u'.$i];
                 }
-                $totalsend_def += $Defender['hero'];
+                $totalsend_def += $Defender['hero'] + $DefenderHeroRef;
 
                 for ($i = 1; $i <= 50; $i++) {
                     $totaldead_def += $dead[''.$i.''];
@@ -2830,14 +2935,8 @@ class Automation {
                     }
                     $data2 = $data2.','.addslashes($info_trap).',,';
                     if($totaldead_def == 0) {
-                        $getu = $database->getUnit($to['wref']);
                         $toAlly = $database->getUserField($to['owner'], 'alliance', 0);
-                        for ($i = 1; $i <= 50; $i++) {
-                            if($getu['u'.$i] != 0) {
-                                $eee = $getu['u'.$i];
-                            }
-                        }
-                        if($eee == 0) {
+                        if($totalsend_def == 0) {
                             $database->addNotice($to['owner'], $to['wref'], $toAlly, 7, ''.addslashes($from['name']).' ataca a '.addslashes($to['name']).'', $data2, $AttackArrivalTime);
                         } else {
                             $database->addNotice($to['owner'], $to['wref'], $toAlly, 4, ''.addslashes($from['name']).' ataca a '.addslashes($to['name']).'', $data2, $AttackArrivalTime);
