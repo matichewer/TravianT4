@@ -3,14 +3,15 @@ if($_GET){
 	$isBbPreview = (isset($_GET['f']) && $_GET['f'] === 'bb')
 		|| (isset($_GET['cmd']) && $_GET['cmd'] === 'bb');
 	$bbPreviewBufferLevel = ob_get_level();
+	$bbPreviewText = isset($_POST['text']) ? $_POST['text'] : '';
 	if ($isBbPreview) {
 		include_once("GameEngine/Village.php");
 	}
 
-	$renderBbPreview = function() use ($bbPreviewBufferLevel) {
+	$renderBbPreview = function() use ($bbPreviewBufferLevel, $bbPreviewText) {
 		global $database, $generator;
 
-		$input = isset($_POST['text']) ? $_POST['text'] : '';
+		$input = htmlspecialchars($bbPreviewText, ENT_QUOTES, 'UTF-8');
 		$input = preg_replace_callback('/\[report([0-9]+)\](.*?)\[\/report\\1\]/is', function($matches) {
 			$content = trim($matches[2]);
 			if (preg_match('/(?:^|[?&])id=([0-9]+)/i', $content, $idMatch)) {
