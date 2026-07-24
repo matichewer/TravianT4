@@ -34,7 +34,7 @@
                         $this->sendAMessage($post['an'],$post['be'],addslashes($post['message']));
                         }else{
                         $this->sendMessage($post['an'],$post['be'],addslashes($post['message']));
-                        }header("Location: nachrichten.php?t=2");
+                        }header("Location: nachrichten.php");
         					break;
         				case "m3":
         				case "m4":
