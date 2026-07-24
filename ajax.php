@@ -4,10 +4,31 @@ if($_GET){
 		include_once("GameEngine/Village.php");
 
 		$input = isset($_POST['text']) ? $_POST['text'] : '';
-		$alliance = 0;
-		$player = 0;
-		$report = 0;
-		$coor = 0;
+		$input = preg_replace_callback('/\[report([0-9]+)\](.*?)\[\/report\\1\]/is', function($matches) {
+			$content = trim($matches[2]);
+			if (preg_match('/(?:^|[?&])id=([0-9]+)/i', $content, $idMatch)) {
+				$content = $idMatch[1];
+			}
+			return '[report'.$matches[1].']'.$content.'[/report'.$matches[1].']';
+		}, $input);
+		$reportIndex = 0;
+		$input = preg_replace_callback('/\[report[0-9]+\](.*?)\[\/report[0-9]+\]/is', function($matches) use (&$reportIndex) {
+			$tag = '[report'.$reportIndex.']'.$matches[1].'[/report'.$reportIndex.']';
+			$reportIndex++;
+			return $tag;
+		}, $input);
+
+		$alliance = -1;
+		$player = -1;
+		$report = -1;
+		$coor = -1;
+		$rep1 = 89;
+		$rep2 = 89;
+		$rep3 = 89;
+		$xx = 0;
+		$yy = 0;
+		$cx = 0;
+		$cy = 0;
 
 		if (preg_match_all('/\[alliance([0-9]+)\]/i', $input, $matches) && !empty($matches[1])) {
 			$alliance = (int) max($matches[1]);
@@ -22,8 +43,10 @@ if($_GET){
 			$coor = (int) max($matches[1]);
 		}
 
+		ob_start();
 		include("GameEngine/BBCode.php");
-		$text = $bbcoded;
+		ob_end_clean();
+		$text = isset($bbcoded) ? $bbcoded : $input;
 
 		if (!empty($_POST['nl2br'])) {
 			$text = nl2br($text);
